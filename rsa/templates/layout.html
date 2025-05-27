@@ -1,0 +1,171 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>RNAseek</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="icon" type="image/x-icon" href="{% static 'images/logo.png' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <style>
+            html {
+                scroll-behavior: smooth;
+            }
+        </style>
+    </head>
+    <header>
+        <nav class="bg-white shadow-sm sticky top-0 z-50">
+            <div class="max-w mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 flex items-center">
+                            <a href="/" class="flex items-center">
+                                <img src="{% static 'images/logo.png' %}" alt="RNAseek Logo" class="h-8 w-8">
+                                <span class="text-xl font-bold bg-gradient-to-r from-blue-500 to-emerald-500 bg-clip-text text-transparent">RNAseek</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                        <a href="/" class="text-gray-700 hover:text-emerald-600 px-3 py-2 text-sm font-medium transition-colors">Home</a>
+                    </div>
+                    <div class="flex items-center md:hidden">
+                        <button
+                        type="button"
+                        id="mobile-menu-button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-emerald-500 transition-colors"
+                        aria-expanded="false"
+                        aria-controls="mobile-menu"
+                        >
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="hidden md:hidden absolute w-full bg-white shadow-lg z-40 transition-all duration-300 transform origin-top">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-emerald-600 hover:bg-gray-50 transition-colors text-center">Home</a>
+                </div>
+            </div>
+        </nav>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const menuButton = document.getElementById('mobile-menu-button');
+                const mobileMenu = document.getElementById('mobile-menu');
+                
+                menuButton.addEventListener('click', function() {
+                    const expanded = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', !expanded);
+                    mobileMenu.classList.toggle('hidden');
+                });
+
+                document.addEventListener('click', function(event) {
+                    if (!menuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+                        menuButton.setAttribute('aria-expanded', 'false');
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        menuButton.setAttribute('aria-expanded', 'false');
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            });
+        </script>
+    </header>
+    <body class="font-sans bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+
+    <section class="bg-gradient-to-b from-blue-50 to-white py-12 sm:py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <img src="{% static 'images/logo.png' %}" alt="RNAseek Logo" class="mx-auto h-40 w-40 mb-6">
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">
+                <span class="bg-gradient-to-r from-blue-500 to-emerald-500 bg-clip-text text-transparent">Welcome to RNAseek</span>
+            </h1>
+            <div class="mt-8 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto space-y-6 leading-relaxed">
+                <p class="font-medium">
+                    RNAseek is a powerful, all-in-one platform designed for transcriptase measurement 
+                    and comprehensive RNA-seq analysis, featuring an automated pipeline that streamlines 
+                    every step from raw data to biological insights.
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-emerald-500 flex items-center justify-center text-white font-bold mr-3 mt-0.5">1</div>
+                            <span>Quality control with FastQC and trimming with Trimmomatic</span>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-emerald-500 flex items-center justify-center text-white font-bold mr-3 mt-0.5">2</div>
+                            <span>Alignment with HISAT2 and BAM generation via SAMtools</span>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-emerald-500 flex items-center justify-center text-white font-bold mr-3 mt-0.5">3</div>
+                            <span>Quantification with featureCounts for count matrices</span>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-emerald-500 flex items-center justify-center text-white font-bold mr-3 mt-0.5">4</div>
+                            <span>Differential expression analysis with DESeq2</span>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-emerald-500 flex items-center justify-center text-white font-bold mr-3 mt-0.5">5</div>
+                            <span>GSEA and KEGG pathway enrichment with gseapy</span>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-emerald-500 flex items-center justify-center text-white font-bold mr-3 mt-0.5">6</div>
+                            <span>Rich visualization tools for publication-ready figures</span>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="bg-blue-50 border-l-4 border-emerald-500 italic p-4 rounded-r text-left">
+                    With RNAseek, transcriptase measurement and RNA-seq interpretation become fast, 
+                    reliable, and accessible to researchers at all levels.
+                </p>
+            </div>
+        </div>
+    </section>
+
+        <!-- Main Content -->
+        <div class="flex-grow">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-white">
+            <div class="max-w mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="border-t border-gray-800 pt-8 pb-8 flex flex-col md:flex-row justify-between items-start">
+                    <!-- Links on the left -->
+                    <div class="flex flex-row space-x-4 md:w-1/4">
+                        <a href="https://x.com/TMIC_Canada" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://github.com/LostLittleKiddo/RNAseek" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-github"></i> 
+                        </a>
+                        <a href="https://www.linkedin.com/company/metabolomicscentre/?original_referer=https%3A%2F%2Fwww%2Egoogle%2Ecom%2F&originalSubdomain=ca" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-linkedin"></i> 
+                        </a>
+                        <a href="https://www.youtube.com/channel/UC4CHrL7t9brRTIomi9rDLHA" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                    <!-- Paragraph with responsive alignment -->
+                    <p class="mt-4 md:mt-0 text-base text-gray-400 text-left sm:text-center md:text-right md:w-3/4">
+                        © 2025 RNAseek. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
