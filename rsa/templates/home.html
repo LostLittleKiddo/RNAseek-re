@@ -1,36 +1,434 @@
 <!-- rsa/templates/home.html -->
 {% extends 'layout.html' %}
 {% load static %}
-{% block content0%}
-    <div class="grid gap-6">
-        <div class="space-y-3">
-            <div class="flex items-start">
-                <span class="h-5 w-5 text-emerald-500 mt-1 mr-2 flex-shrink-0 font-bold">1.</span>
-                <span>Quality control with FastQC and trimming with Trimmomatic</span>
-            </div>
-            <div class="flex items-start">
-                <span class="h-5 w-5 text-emerald-500 mt-1 mr-2 flex-shrink-0 font-bold">2.</span>
-                <span>Alignment with HISAT2 and BAM generation via SAMtools</span>
-            </div>
-            <div class="flex items-start">
-                <span class="h-5 w-5 text-emerald-500 mt-1 mr-2 flex-shrink-0 font-bold">3.</span>
-                <span>Quantification with featureCounts for count matrices</span>
-            </div>
-            <div class="flex items-start">
-                <span class="h-5 w-5 text-emerald-500 mt-1 mr-2 flex-shrink-0 font-bold">4.</span>
-                <span>Differential expression analysis with DESeq2</span>
-            </div>
-            <div class="flex items-start">
-                <span class="h-5 w-5 text-emerald-500 mt-1 mr-2 flex-shrink-0 font-bold">5.</span>
-                <span>GSEA and KEGG pathway enrichment with gseapy</span>
-            </div>
-            <div class="flex items-start">
-                <span class="h-5 w-5 text-emerald-500 mt-1 mr-2 flex-shrink-0 font-bold">6.</span>
-                <span>Rich visualization tools for publication-ready figures: HeatMapper</span>
+{% block content0 %}
+    <div class="mt-8 text-lg md:text-xl text-black-600 max-w-3xl mx-auto space-y-6 leading-relaxed">
+        <p class="font-small">
+            RNAseek is a powerful, all-in-one platform designed for transcriptome measurement 
+            and comprehensive RNA-seq analysis, featuring an automated pipeline that streamlines 
+            every step from raw data to biological insights.
+        </p>
+        <div class="grid gap-6 justify-center">
+            <div class="space-y-3">
+                <div class="flex items-start">
+                    <span class="h-5 w-5 text-emerald-500 mt-1 mr-2 flex-shrink-0 font-bold">1.</span>
+                    <span class="text-lg text-gray-700 font-medium mt-1 mr-2">Quality control with FastQC and trimming with Trimmomatic</span>
+                </div>
+                <div class="flex items-start">
+                    <span class="h-5 w-5 text-emerald-500 mt-1 mr-2 flex-shrink-0 font-bold">2.</span>
+                    <span class="text-lg text-gray-700 font-medium mt-1 mr-2">Alignment with HISAT2 and BAM generation via SAMtools</span>
+                </div>
+                <div class="flex items-start">
+                    <span class="h-5 w-5 text-emerald-500 mt-1 mr-2 flex-shrink-0 font-bold">3.</span>
+                    <span class="text-lg text-gray-700 font-medium mt-1 mr-2">Quantification with featureCounts for count matrices</span>
+                </div>
+                <div class="flex items-start">
+                    <span class="h-5 w-5 text-emerald-500 mt-1 mr-2 flex-shrink-0 font-bold">4.</span>
+                    <span class="text-lg text-gray-700 font-medium mt-1 mr-2">Differential expression analysis with DESeq2</span>
+                </div>
+                <div class="flex items-start">
+                    <span class="h-5 w-5 text-emerald-500 mt-1 mr-2 flex-shrink-0 font-bold">5.</span>
+                    <span class="text-lg text-gray-700 font-medium mt-1 mr-2">GSEA and KEGG pathway enrichment with gseapy</span>
+                </div>
+                <div class="flex items-start">
+                    <span class="h-5 w-5 text-emerald-500 mt-1 mr-2 flex-shrink-0 font-bold">6.</span>
+                    <span class="text-lg text-gray-700 font-medium mt-1 mr-2">Visualization tools for publication-ready figures: HeatMapper</span>
+                </div>
             </div>
         </div>
     </div>
-{% endblock%}
+{% endblock %}
 
 {% block content %}
+    <div class="mt-8 w-full max-w-[90vw] sm:max-w-[80vw] lg:max-w-[60vw] mx-auto">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Start a New RNAseek Analysis</h2>
+        <form method="post" enctype="multipart/form-data" class="space-y-6" id="rnaseek-form">
+            {% csrf_token %}
+            <!-- Project Name -->
+            <div>
+                <div class="flex items-center">
+                    <label for="{{ form.project_name.id_for_label }}" class="block text-sm font-bold text-gray-700">{{ form.project_name.label }}</label>
+                    <div class="relative ml-2 group">
+                        <i class="fas fa-info-circle text-gray-400 hover:text-emerald-500 cursor-help"></i>
+                        <span class="absolute hidden group-hover:block bg-gray-800 text-white text-xs rounded-lg py-1 px-2 left-full ml-2 top-1/2 -translate-y-1/2 whitespace-nowrap">
+                            A unique name for your RNA-seq analysis project
+                        </span>
+                    </div>
+                </div>
+                {{ form.project_name }}
+            </div>
+            <!-- Genome of Interest -->
+            <div>
+                <div class="flex items-center">
+                    <label for="{{ form.genome_of_interest.id_for_label }}" class="block text-sm font-bold text-gray-700">{{ form.genome_of_interest.label }}</label>
+                    <div class="relative ml-2 group">
+                        <i class="fas fa-info-circle text-gray-400 hover:text-emerald-500 cursor-help"></i>
+                        <span class="absolute hidden group-hover:block bg-gray-800 text-white text-xs rounded-lg py-1 px-2 left-full ml-2 top-1/2 -translate-y-1/2 whitespace-nowrap">
+                            Select the reference genome for alignment (e.g., hg38, mm10)
+                        </span>
+                    </div>
+                </div>
+                {{ form.genome_of_interest }}
+            </div>
+            <!-- Sequencing Type -->
+            <div>
+                <div class="flex items-center">
+                    <label class="block text-sm font-bold text-gray-700">{{ form.sequencing_type.label }}</label>
+                    <div class="relative ml-2 group">
+                        <i class="fas fa-info-circle text-gray-400 hover:text-emerald-500 cursor-help"></i>
+                        <span class="absolute hidden group-hover:block bg-gray-800 text-white text-xs rounded-lg py-1 px-2 left-full ml-2 top-1/2 -translate-y-1/2 whitespace-nowrap">
+                            Choose between Single-End or Paired-End sequencing data
+                        </span>
+                    </div>
+                </div>
+                <div class="mt-2 space-y-2">
+                    {% for radio in form.sequencing_type %}
+                        <div class="flex items-center">
+                            {{ radio.tag }}
+                            <label for="{{ radio.id_for_label }}" class="ml-2 text-sm text-gray-700">{{ radio.choice_label }}</label>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- P-value Cutoff -->
+            <div>
+                <div class="flex items-center">
+                    <label for="{{ form.pvalue_cutoff.id_for_label }}" class="block text-sm font-bold text-gray-700">{{ form.pvalue_cutoff.label }}</label>
+                    <div class="relative ml-2 group">
+                        <i class="fas fa-info-circle text-gray-400 hover:text-emerald-500 cursor-help"></i>
+                        <span class="absolute hidden group-hover:block bg-gray-800 text-white text-xs rounded-lg py-1 px-2 left-full ml-2 top-1/2 -translate-y-1/2 whitespace-nowrap">
+                            Set the significance threshold for differential expression analysis
+                        </span>
+                    </div>
+                </div>
+                {{ form.pvalue_cutoff }}
+            </div>
+            <!-- File Upload (Drag and Drop) -->
+            <div>
+                <div class="flex items-center">
+                    <label for="{{ form.files.id_for_label }}" class="block text-sm font-bold text-gray-700">{{ form.files.label }}</label>
+                    <div class="relative ml-2 group">
+                        <i class="fas fa-info-circle text-gray-400 hover:text-emerald-500 cursor-help"></i>
+                        <span class="absolute hidden group-hover:block bg-gray-800 text-white text-xs rounded-lg py-1 px-2 left-full ml-2 top-1/2 -translate-y-1/2 whitespace-nowrap">
+                            Upload FASTQ or FASTQ.GZ files for RNA-seq analysis
+                        </span>
+                    </div>
+                </div>
+                <div id="drop-zone" class="mt-1 flex justify-center items-center px-4 py-5 border-2 border-gray-300 border-dashed rounded-lg hover:border-emerald-500 transition-all duration-300 w-full min-h-[150px] sm:min-h-[200px]">
+                    <div class="space-y-2 text-center">
+                        <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        <div class="flex justify-center text-sm text-gray-600">
+                            <label for="{{ form.files.id_for_label }}" class="relative cursor-pointer rounded-md font-medium text-emerald-600 hover:text-emerald-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-emerald-500">
+                                <span>Upload files</span>
+                                {{ form.files }}
+                            </label>
+                            <p class="pl-1">or drag and drop</p>
+                        </div>
+                        <p id="file-count" class="text-xs text-gray-500">FASTQ or FASTQ.GZ files, up to 70GB each</p>
+                    </div>
+                </div>
+                <!-- File Preview Section -->
+                <div id="file-preview" class="mt-4 space-y-3"></div>
+                <!-- Error Messages -->
+                <div id="error-messages" class="mt-2"></div>
+            </div>
+            <!-- DESeq2 Metadata -->
+            <div id="deseq-metadata" class="hidden space-y-6">
+                <h3 class="text-lg font-bold text-gray-900">DESeq2 Metadata</h3>
+                <!-- Condition Names -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <div class="flex items-center">
+                            <label for="id_condition1" class="block text-sm font-bold text-gray-700">Condition 1</label>
+                            <div class="relative ml-2 group">
+                                <i class="fas fa-info-circle text-gray-400 hover:text-emerald-500 cursor-help"></i>
+                                <span class="absolute hidden group-hover:block bg-gray-800 text-white text-xs rounded-lg py-1 px-2 left-full ml-2 top-1/2 -translate-y-1/2 whitespace-nowrap">
+                                    Name for the first condition (e.g., control)
+                                </span>
+                            </div>
+                        </div>
+                        <input type="text" name="condition1" id="id_condition1" value="control" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm transition-all duration-300" placeholder="e.g., control">
+                    </div>
+                    <div>
+                        <div class="flex items-center">
+                            <label for="id_condition2" class="block text-sm font-bold text-gray-700">Condition 2</label>
+                            <div class="relative ml-2 group">
+                                <i class="fas fa-info-circle text-gray-400 hover:text-emerald-500 cursor-help"></i>
+                                <span class="absolute hidden group-hover:block bg-gray-800 text-white text-xs rounded-lg py-1 px-2 left-full ml-2 top-1/2 -translate-y-1/2 whitespace-nowrap">
+                                    Name for the second condition (e.g., treatment)
+                                </span>
+                            </div>
+                        </div>
+                        <input type="text" name="condition2" id="id_condition2" value="treatment" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm transition-all duration-300" placeholder="e.g., treatment">
+                    </div>
+                </div>
+                <!-- Sample Conditions -->
+                <div id="sample-conditions" class="space-y-3"></div>
+            </div>
+            <!-- Submit Button -->
+            <div>
+                <button type="submit" id="submit-button" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-all duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed" disabled>
+                    Start Analysis
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- JavaScript for Drag and Drop, File Preview, and Form Validation -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const dropZone = document.getElementById('drop-zone');
+            const fileInput = document.getElementById('{{ form.files.id_for_label }}');
+            const filePreview = document.getElementById('file-preview');
+            const errorMessages = document.getElementById('error-messages');
+            const submitButton = document.getElementById('submit-button');
+            const projectNameInput = document.getElementById('{{ form.project_name.id_for_label }}');
+            const genomeSelect = document.getElementById('{{ form.genome_of_interest.id_for_label }}');
+            const sequencingTypeInputs = document.getElementsByName('{{ form.sequencing_type.name }}');
+            const pvalueInput = document.getElementById('{{ form.pvalue_cutoff.id_for_label }}');
+            const deseqMetadata = document.getElementById('deseq-metadata');
+            const sampleConditions = document.getElementById('sample-conditions');
+            const condition1Input = document.getElementById('id_condition1');
+            const condition2Input = document.getElementById('id_condition2');
+            let selectedFiles = new DataTransfer();
+
+            function updateFilePreview() {
+                filePreview.innerHTML = '';
+                errorMessages.innerHTML = '';
+                sampleConditions.innerHTML = '';
+                deseqMetadata.classList.add('hidden');
+                if (selectedFiles.files.length === 0) {
+                    document.getElementById('file-count').textContent = 'FASTQ or FASTQ.GZ files, up to 70GB each';
+                    validateForm();
+                    return;
+                }
+
+                document.getElementById('file-count').textContent = `Selected: ${selectedFiles.files.length} file(s)`;
+                Array.from(selectedFiles.files).forEach((file, index) => {
+                    const fileItem = document.createElement('div');
+                    fileItem.className = 'flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300';
+                    fileItem.innerHTML = `
+                        <span class="text-sm text-gray-700 truncate flex-1">${file.name}</span>
+                        <button type="button" class="ml-3 text-red-600 hover:text-red-800" data-index="${index}">
+                            <i class="fas fa-trash h-5 w-5"></i>
+                        </button>
+                    `;
+                    filePreview.appendChild(fileItem);
+                });
+
+                // Add delete functionality
+                filePreview.querySelectorAll('button').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const index = parseInt(e.currentTarget.getAttribute('data-index'));
+                        const newFiles = new DataTransfer();
+                        Array.from(selectedFiles.files).forEach((file, i) => {
+                            if (i !== index) {
+                                newFiles.items.add(file);
+                            }
+                        });
+                        selectedFiles = newFiles;
+                        fileInput.files = selectedFiles.files;
+                        updateFilePreview();
+                    });
+                });
+
+                // Populate sample conditions if files are valid
+                if (validateFiles()) {
+                    deseqMetadata.classList.remove('hidden');
+                    populateSampleConditions();
+                }
+
+                validateForm();
+            }
+
+            function validateFiles() {
+                const files = selectedFiles.files;
+                const sequencingType = Array.from(sequencingTypeInputs).find(input => input.checked)?.value;
+                const allowedExtensions = ['fastq', 'fq', 'gz'];
+                const maxSize = 70 * 1024 * 1024 * 1024; // 70GB
+                let errors = [];
+
+                // Check file count
+                if (sequencingType === 'single' && files.length < 2) {
+                    errors.push('For Single-End sequencing, you must upload at least 2 files.');
+                }
+                if (sequencingType === 'paired' && files.length < 4) {
+                    errors.push('For Paired-End sequencing, you must upload at least 4 files.');
+                }
+
+                // Check file extensions and size
+                Array.from(files).forEach(file => {
+                    const ext = file.name.split('.').pop().toLowerCase();
+                    if (!allowedExtensions.includes(ext)) {
+                        errors.push(`File ${file.name} has an invalid extension. Allowed: .fastq, .fastq.gz`);
+                    }
+                    if (file.size > maxSize) {
+                        errors.push(`File ${file.name} is too large. Maximum size is 70GB.`);
+                    }
+                });
+
+                // Check paired-end naming
+                if (sequencingType === 'paired') {
+                    if (files.length % 2 !== 0) {
+                        errors.push('For Paired-End sequencing, you must upload an even number of files (e.g., pairs of forward and reverse reads).');
+                    }
+
+                    const sampleNames = {};
+                    Array.from(files).forEach(file => {
+                        const match = file.name.match(/^(.*?)(?:_R[12])(?:_|\.|\d+|$)/i);
+                        if (!match) {
+                            errors.push(`File ${file.name} does not contain 'R1' or 'R2' (case-insensitive) in the filename for paired-end sequencing.`);
+                            return;
+                        }
+                        const sampleName = match[1];
+                        const direction = file.name.toUpperCase().includes('R1') ? 'r1' : 'r2';
+                        if (!sampleNames[sampleName]) {
+                            sampleNames[sampleName] = { r1: null, r2: null };
+                        }
+                        sampleNames[sampleName][direction] = file.name;
+                    });
+
+                    // Validate pairs
+                    Object.keys(sampleNames).forEach(sampleName => {
+                        if (!sampleNames[sampleName].r1 || !sampleNames[sampleName].r2) {
+                            errors.push(`Sample ${sampleName} is missing a matching pair. Each sample must have both R1 and R2 files.`);
+                        }
+                    });
+                }
+
+                // Display errors
+                errorMessages.innerHTML = errors.map(error => `
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded-lg mb-2">${error}</div>
+                `).join('');
+
+                return errors.length === 0;
+            }
+
+            function populateSampleConditions() {
+                sampleConditions.innerHTML = '';
+                const sequencingType = Array.from(sequencingTypeInputs).find(input => input.checked)?.value;
+                const condition1 = condition1Input.value.trim() || 'Condition 1';
+                const condition2 = condition2Input.value.trim() || 'Condition 2';
+                const samples = [];
+
+                if (sequencingType === 'single') {
+                    Array.from(selectedFiles.files).forEach(file => {
+                        const name = file.name.split('.fastq')[0];
+                        samples.push({ name, id: name });
+                    });
+                } else {
+                    const sampleNames = {};
+                    Array.from(selectedFiles.files).forEach(file => {
+                        const match = file.name.match(/^(.*?)(?:_R[12])(?:_|\.|\d+|$)/i);
+                        if (match) {
+                            const sampleName = match[1];
+                            if (!sampleNames[sampleName]) {
+                                sampleNames[sampleName] = true;
+                                samples.push({ name: sampleName, id: sampleName });
+                            }
+                        }
+                    });
+                }
+
+                samples.forEach(sample => {
+                    const div = document.createElement('div');
+                    div.className = 'flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg shadow-sm';
+                    div.innerHTML = `
+                        <label for="condition_${sample.id}" class="text-sm text-gray-700 flex-1">Condition for ${sample.name}</label>
+                        <select name="condition_${sample.id}" id="condition_${sample.id}" class="mt-1 block w-1/4 sm:w-1/6 px-4 py-3 sm:px-2 sm:py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-emerald-500 focus:border-emerald-500 sm:text-xs text-sm transition-all duration-300">
+                            <option value="">Select condition</option>
+                            <option value="condition1">${condition1}</option>
+                            <option value="condition2">${condition2}</option>
+                        </select>
+                    `;
+                    sampleConditions.appendChild(div);
+                });
+
+                // Update select options when conditions change
+                [ Dignostic, condition2Input].forEach(input => {
+                    input.addEventListener('input', () => {
+                        const newCondition1 = condition1Input.value.trim() || 'Condition 1';
+                        const newCondition2 = condition2Input.value.trim() || 'Condition 2';
+                        sampleConditions.querySelectorAll('select').forEach(select => {
+                            select.children[1].textContent = newCondition1;
+                            select.children[2].textContent = newCondition2;
+                        });
+                        validateForm();
+                    });
+                });
+
+                // Add change listeners to select elements
+                sampleConditions.querySelectorAll('select').forEach(select => {
+                    select.addEventListener('change', validateForm);
+                });
+            }
+
+            function validateForm() {
+                const projectName = projectNameInput.value.trim();
+                const genome = genomeSelect.value;
+                const sequencingType = Array.from(sequencingTypeInputs).find(input => input.checked)?.value;
+                const filesValid = validateFiles();
+                const condition1 = condition1Input.value.trim();
+                const condition2 = condition2Input.value.trim();
+                let conditionsValid = true;
+
+                if (filesValid && selectedFiles.files.length > 0) {
+                    const conditionSelects = sampleConditions.querySelectorAll('select');
+                    conditionsValid = condition1 && condition2 && condition1 !== condition2 &&
+                        Array.from(conditionSelects).every(select => select.value !== '');
+                }
+
+                // Check if all required fields are filled and files/conditions are valid
+                const isFormValid = projectName && genome && sequencingType && selectedFiles.files.length > 0 && filesValid && conditionsValid;
+
+                submitButton.disabled = !isFormValid;
+            }
+
+            // Validate form on input changes
+            projectNameInput.addEventListener('input', validateForm);
+            genomeSelect.addEventListener('change', validateForm);
+            sequencingTypeInputs.forEach(input => input.addEventListener('change', () => {
+                updateFilePreview();
+                validateForm();
+            }));
+            pvalueInput.addEventListener('input', validateForm);
+            fileInput.addEventListener('change', () => {
+                const files = fileInput.files;
+                selectedFiles = new DataTransfer();
+                Array.from(files).forEach(file => selectedFiles.items.add(file));
+                fileInput.files = selectedFiles.files;
+                updateFilePreview();
+            });
+
+            dropZone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                dropZone.classList.add('border-emerald-500');
+            });
+
+            dropZone.addEventListener('dragleave', (e) => {
+                e.preventDefault();
+                dropZone.classList.remove('border-emerald-500');
+            });
+
+            dropZone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                dropZone.classList.remove('border-emerald-500');
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    Array.from(files).forEach(file => selectedFiles.items.add(file));
+                    fileInput.files = selectedFiles.files;
+                    updateFilePreview();
+                }
+            });
+
+            dropZone.addEventListener('click', () => {
+                fileInput.click();
+            });
+
+            // Initial validation
+            validateForm();
+        });
+    </script>
 {% endblock %}

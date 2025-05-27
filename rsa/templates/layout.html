@@ -86,26 +86,19 @@
     <body class="font-sans bg-gray-50 text-gray-800 flex flex-col min-h-screen">
 
         <!-- Hero Section -->
-        <section class="bg-gradient-to-b from-blue-50 to-white py-12 sm:py-16">
+        <section class="bg-gradient-to-b from-blue-50 to-white pt-5 sm:pt-5 pb-6 sm:pb-8">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                <img src="{% static 'images/logo.png' %}" alt="RNAseek Logo" class="mx-auto h-40 w-40 mb-6">
                 <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">
                     <span class="bg-gradient-to-r from-blue-500 to-emerald-500 bg-clip-text text-transparent">Welcome to RNAseek</span>
                 </h1>
-                <div class="mt-8 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto space-y-6 leading-relaxed">
-                    <p class="font-medium">
-                        RNAseek is a powerful, all-in-one platform designed for transcriptase measurement 
-                        and comprehensive RNA-seq analysis, featuring an automated pipeline that streamlines 
-                        every step from raw data to biological insights.
-                    </p>
-                    {%block content0%}
-                    {% endblock%}
-                </div>
+                {%block content0%}
+                {% endblock%}
             </div>
         </section>
 
         <!-- Main Content -->
-        <div class="flex-grow">
+        <div class="flex-grow pb-12 sm:pb-16">
             {%block content%}
             {% endblock%}
         </div>
@@ -113,10 +106,10 @@
         <!-- Footer -->
         <footer class="bg-gray-900 text-white">
             <div class="max-w mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="border-t border-gray-800 pt-8 pb-8 flex flex-col md:flex-row justify-between items-start">
+                <div class="border-t border-gray-800 pt-8 pb-8 flex flex-col md:flex-row justify-between items-center w-full">
                     <!-- Links on the left -->
-                    <div class="flex flex-row space-x-4 md:w-1/4">
-                        <a href="https://www.youtube.com/channel/UC4CHrL7t9brRTIomi9rDLHA" class="text-gray-400 hover:text-white">
+                    <div class="flex flex-row space-x-4 md:w-auto">
+                        <a href="https://www.ualberta.ca/en/index.html" class="text-gray-400 hover:text-white">
                             <img src="{% static 'images/uofa.png' %}" alt="RNAseek Logo" class="h-6 w-6">
                         </a>
                         <a href="https://x.com/TMIC_Canada" class="text-gray-400 hover:text-white">
@@ -133,7 +126,7 @@
                         </a>
                     </div>
                     <!-- Paragraph with responsive alignment -->
-                    <p class="mt-4 md:mt-0 text-base text-gray-400 text-left sm:text-center md:text-right md:w-3/4">
+                    <p class="mt-4 md:mt-0 text-base text-gray-400 text-center md:text-right md:w-auto">
                         © 2025 RNAseek. All rights reserved.
                     </p>
                 </div>

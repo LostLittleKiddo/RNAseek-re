@@ -85,3 +85,6 @@ secrets.json
 *.key
 *.pem
 *.cert
+
+query_database.py
+database_results.txt
