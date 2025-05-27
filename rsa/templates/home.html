@@ -1,5 +1,36 @@
 <!-- rsa/templates/home.html -->
 {% extends 'layout.html' %}
 {% load static %}
+{% block content0%}
+    <div class="grid gap-6">
+        <div class="space-y-3">
+            <div class="flex items-start">
+                <span class="h-5 w-5 text-emerald-500 mt-1 mr-2 flex-shrink-0 font-bold">1.</span>
+                <span>Quality control with FastQC and trimming with Trimmomatic</span>
+            </div>
+            <div class="flex items-start">
+                <span class="h-5 w-5 text-emerald-500 mt-1 mr-2 flex-shrink-0 font-bold">2.</span>
+                <span>Alignment with HISAT2 and BAM generation via SAMtools</span>
+            </div>
+            <div class="flex items-start">
+                <span class="h-5 w-5 text-emerald-500 mt-1 mr-2 flex-shrink-0 font-bold">3.</span>
+                <span>Quantification with featureCounts for count matrices</span>
+            </div>
+            <div class="flex items-start">
+                <span class="h-5 w-5 text-emerald-500 mt-1 mr-2 flex-shrink-0 font-bold">4.</span>
+                <span>Differential expression analysis with DESeq2</span>
+            </div>
+            <div class="flex items-start">
+                <span class="h-5 w-5 text-emerald-500 mt-1 mr-2 flex-shrink-0 font-bold">5.</span>
+                <span>GSEA and KEGG pathway enrichment with gseapy</span>
+            </div>
+            <div class="flex items-start">
+                <span class="h-5 w-5 text-emerald-500 mt-1 mr-2 flex-shrink-0 font-bold">6.</span>
+                <span>Rich visualization tools for publication-ready figures: HeatMapper</span>
+            </div>
+        </div>
+    </div>
+{% endblock%}
+
 {% block content %}
 {% endblock %}

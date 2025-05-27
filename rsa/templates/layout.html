@@ -14,6 +14,7 @@
             }
         </style>
     </head>
+
     <header>
         <nav class="bg-white shadow-sm sticky top-0 z-50">
             <div class="max-w mx-auto px-4 sm:px-6 lg:px-8">
@@ -81,64 +82,32 @@
             });
         </script>
     </header>
+
     <body class="font-sans bg-gray-50 text-gray-800 flex flex-col min-h-screen">
 
-    <section class="bg-gradient-to-b from-blue-50 to-white py-12 sm:py-16">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <img src="{% static 'images/logo.png' %}" alt="RNAseek Logo" class="mx-auto h-40 w-40 mb-6">
-            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">
-                <span class="bg-gradient-to-r from-blue-500 to-emerald-500 bg-clip-text text-transparent">Welcome to RNAseek</span>
-            </h1>
-            <div class="mt-8 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto space-y-6 leading-relaxed">
-                <p class="font-medium">
-                    RNAseek is a powerful, all-in-one platform designed for transcriptase measurement 
-                    and comprehensive RNA-seq analysis, featuring an automated pipeline that streamlines 
-                    every step from raw data to biological insights.
-                </p>
-                
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="space-y-4">
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-emerald-500 flex items-center justify-center text-white font-bold mr-3 mt-0.5">1</div>
-                            <span>Quality control with FastQC and trimming with Trimmomatic</span>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-emerald-500 flex items-center justify-center text-white font-bold mr-3 mt-0.5">2</div>
-                            <span>Alignment with HISAT2 and BAM generation via SAMtools</span>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-emerald-500 flex items-center justify-center text-white font-bold mr-3 mt-0.5">3</div>
-                            <span>Quantification with featureCounts for count matrices</span>
-                        </div>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-emerald-500 flex items-center justify-center text-white font-bold mr-3 mt-0.5">4</div>
-                            <span>Differential expression analysis with DESeq2</span>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-emerald-500 flex items-center justify-center text-white font-bold mr-3 mt-0.5">5</div>
-                            <span>GSEA and KEGG pathway enrichment with gseapy</span>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-emerald-500 flex items-center justify-center text-white font-bold mr-3 mt-0.5">6</div>
-                            <span>Rich visualization tools for publication-ready figures</span>
-                        </div>
-                    </div>
+        <!-- Hero Section -->
+        <section class="bg-gradient-to-b from-blue-50 to-white py-12 sm:py-16">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+               <img src="{% static 'images/logo.png' %}" alt="RNAseek Logo" class="mx-auto h-40 w-40 mb-6">
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">
+                    <span class="bg-gradient-to-r from-blue-500 to-emerald-500 bg-clip-text text-transparent">Welcome to RNAseek</span>
+                </h1>
+                <div class="mt-8 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto space-y-6 leading-relaxed">
+                    <p class="font-medium">
+                        RNAseek is a powerful, all-in-one platform designed for transcriptase measurement 
+                        and comprehensive RNA-seq analysis, featuring an automated pipeline that streamlines 
+                        every step from raw data to biological insights.
+                    </p>
+                    {%block content0%}
+                    {% endblock%}
                 </div>
-
-                <p class="bg-blue-50 border-l-4 border-emerald-500 italic p-4 rounded-r text-left">
-                    With RNAseek, transcriptase measurement and RNA-seq interpretation become fast, 
-                    reliable, and accessible to researchers at all levels.
-                </p>
             </div>
-        </div>
-    </section>
+        </section>
 
         <!-- Main Content -->
         <div class="flex-grow">
-            {% block content %}
-            {% endblock %}
+            {%block content%}
+            {% endblock%}
         </div>
 
         <!-- Footer -->
@@ -147,6 +116,9 @@
                 <div class="border-t border-gray-800 pt-8 pb-8 flex flex-col md:flex-row justify-between items-start">
                     <!-- Links on the left -->
                     <div class="flex flex-row space-x-4 md:w-1/4">
+                        <a href="https://www.youtube.com/channel/UC4CHrL7t9brRTIomi9rDLHA" class="text-gray-400 hover:text-white">
+                            <img src="{% static 'images/uofa.png' %}" alt="RNAseek Logo" class="h-6 w-6">
+                        </a>
                         <a href="https://x.com/TMIC_Canada" class="text-gray-400 hover:text-white">
                             <i class="fab fa-twitter"></i>
                         </a>
@@ -167,5 +139,6 @@
                 </div>
             </div>
         </footer>
+
     </body>
 </html>
