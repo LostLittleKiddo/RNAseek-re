@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+<div class="mt-8 w-full max-w-[90vw] sm:max-w-[80vw] lg:max-w-[60vw] mx-auto">
+    <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Your Analysis Projects</h2>
+    
+    {% if projects %}
+    <div class="bg-white shadow-md rounded-lg p-6">
+        <h3 class="text-lg font-bold text-gray-900 mb-4">Projects</h3>
+        <div class="space-y-3">
+            {% for project in projects %}
+            <div class="flex items-center justify-between p-3 bg-gray-50 border border-gray-200 rounded-lg">
+                <div class="flex-1">
+                    <a href="{% url 'result' project.id %}" class="text-sm text-emerald-600 hover:text-emerald-700 font-medium">{{ project.name }}</a>
+                    <p class="text-sm text-gray-600">Status: {{ project.status|title }}</p>
+                    <p class="text-sm text-gray-600">Created: {{ project.created_at|date:"F j, Y, g:i a" }}</p>
+                </div>
+                <a href="{% url 'result' project.id %}" class="text-sm text-emerald-600 hover:text-emerald-700 font-medium">View Details</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% else %}
+    <div class="bg-white shadow-md rounded-lg p-6">
+        <p class="text-sm text-gray-600">No projects found. Start a new analysis from the <a href="{% url 'home' %}" class="text-emerald-600 hover:text-emerald-700 font-medium">home page</a>.</p>
+    </div>
+    {% endif %}
+
+    <div class="mt-6 text-center">
+        <a href="{% url 'home'%}#upload" class="inline-flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-all duration-300">
+            Start New Analysis
+        </a>
+    </div>
+</div>
+{% endblock %}

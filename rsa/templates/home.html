@@ -32,7 +32,7 @@
                 </div>
                 <div class="flex items-start">
                     <span class="h-5 w-5 text-emerald-500 mt-1 mr-2 flex-shrink-0 font-bold">6.</span>
-                    <span class="text-lg text-gray-700 font-medium mt-1 mr-2">Visualization tools for publication-ready figures: HeatMapper</span>
+                    <span class="text-lg text-gray-700 font-medium mt-1 mr-2">Visualization tools for figures: HeatMapper</span>
                 </div>
             </div>
         </div>
@@ -40,7 +40,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="mt-8 w-full max-w-[90vw] sm:max-w-[80vw] lg:max-w-[60vw] mx-auto">
+    <div id=upload class="mt-8 w-full max-w-[90vw] sm:max-w-[80vw] lg:max-w-[60vw] mx-auto">
         <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Start a New RNAseek Analysis</h2>
         <form method="post" enctype="multipart/form-data" class="space-y-6" id="rnaseek-form">
             {% csrf_token %}
