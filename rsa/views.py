@@ -128,7 +128,7 @@ def home(request):
                     logger.info(f"Project {project.name} created for user {user.username} with {len(form.cleaned_data['files'])} files")
                     logger.info(f"DESeq2 metadata saved to {metadata_path}")
                     messages.success(request, f"Project '{project.name}' created successfully! Analysis is pending.")
-                    return redirect('result', project_id=project.id)
+                    return redirect(' ') 
 
                 else:
                     logger.warning(f"DESeq2 metadata form validation failed: {deseq_form.errors}")
@@ -164,31 +164,3 @@ def home(request):
     )
 
     return response
-
-def results(request, project_id=None):
-    # Get session_id from cookie
-    session_id = request.COOKIES.get('session_id')
-    if not session_id:
-        logger.warning("No session_id found in cookies")
-        messages.error(request, "Session expired. Please log in again.")
-        return redirect('home')
-
-    try:
-        user = User.objects.get(session_id=session_id)
-    except User.DoesNotExist:
-        logger.warning(f"Invalid session_id: {session_id}")
-        messages.error(request, "Session expired. Please log in again.")
-        return redirect('home')
-
-    if project_id:
-        try:
-            project = Project.objects.get(id=project_id, user=user)
-            return render(request, 'result.html', {'project': project})
-        except Project.DoesNotExist:
-            logger.warning(f"Project {project_id} not found for user {user.username}")
-            messages.error(request, "Project not found.")
-            return redirect('results')
-
-    # Show all projects for the user
-    projects = Project.objects.filter(user=user).order_by('-created_at')
-    return render(request, 'results.html', {'projects': projects})

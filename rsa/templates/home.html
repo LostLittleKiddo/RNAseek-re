@@ -336,14 +336,12 @@
                     const div = document.createElement('div');
                     div.className = 'flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg shadow-sm';
                     div.innerHTML = `
-                            <label for="condition_${sample.id}" class="text-sm text-gray-700 flex-1">
-                                Condition for <span class="text-emerald-600 font-semibold">${sample.name}</span>
-                            </label>
-                            <select name="condition_${sample.id}" id="condition_${sample.id}" class="mt-1 block w-1/4 sm:w-1/6 px-4 py-3 sm:px-2 sm:py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-emerald-500 focus:border-emerald-500 sm:text-xs text-sm transition-all duration-300">
-                                <option value="">Select condition</option>
-                                <option value="condition1">${condition1}</option>
-                                <option value="condition2">${condition2}</option>
-                            </select>
+                        <label for="condition_${sample.id}" class="text-sm text-gray-700 flex-1">Condition for ${sample.name}</label>
+                        <select name="condition_${sample.id}" id="condition_${sample.id}" class="mt-1 block w-1/4 sm:w-1/6 px-4 py-3 sm:px-2 sm:py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-emerald-500 focus:border-emerald-500 sm:text-xs text-sm transition-all duration-300">
+                            <option value="">Select condition</option>
+                            <option value="condition1">${condition1}</option>
+                            <option value="condition2">${condition2}</option>
+                        </select>
                     `;
                     sampleConditions.appendChild(div);
                 });

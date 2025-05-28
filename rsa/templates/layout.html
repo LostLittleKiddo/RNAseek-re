@@ -30,7 +30,7 @@
                     <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
                         {% url 'home' as home_url %}
                         <a href="{% if request.path == home_url %}#upload{% else %}{{ home_url }}#upload{% endif %}" class="text-gray-700 hover:text-emerald-600 px-3 py-2 text-sm font-medium transition-colors">Upload</a>
-                        <a href="{% url 'results' %}" class="text-gray-700 hover:text-emerald-600 px-3 py-2 text-sm font-medium transition-colors">Results</a>
+                        <a href="{% url 'home' %}" class="text-gray-700 hover:text-emerald-600 px-3 py-2 text-sm font-medium transition-colors">Results</a>
                     </div>
                     <div class="flex items-center md:hidden">
                         <button
@@ -54,7 +54,7 @@
                 <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                     {% url 'home' as home_url %}
                     <a href="{% if request.path == home_url %}#upload{% else %}{{ home_url }}#upload{% endif %}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-emerald-600 hover:bg-gray-50 transition-colors text-center">Upload</a>
-                    <a href="{% url 'results' %}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-emerald-600 hover:bg-gray-50 transition-colors text-center">Results</a>
+                    <a href="{% url 'home' %}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-emerald-600 hover:bg-gray-50 transition-colors text-center">Results</a>
                 </div>
             </div>
         </nav>
