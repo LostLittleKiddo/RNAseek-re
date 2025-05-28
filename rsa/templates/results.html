@@ -1,0 +1,48 @@
+<!-- rsa/templates/results.html -->
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="mt-8 w-full max-w-[90vw] sm:max-w-[80vw] lg:max-w-[60vw] mx-auto">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Your Analysis Tasks</h2>
+        {% if projects %}
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm">
+                    <thead>
+                        <tr class="bg-gray-100">
+                            <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">Task Name</th>
+                            <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">Status</th>
+                            <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">Species</th>
+                            <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">Created At</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for project in projects %}
+                            <tr class="border-t border-gray-200">
+                                <td class="px-4 py-3 text-sm text-gray-700">{{ project.name }}</td>
+                                <td class="px-4 py-3 text-sm text-gray-700">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+                                        {% if project.status == 'completed' %}
+                                            bg-green-100 text-green-800
+                                        {% elif project.status == 'processing' %}
+                                            bg-yellow-100 text-yellow-800
+                                        {% elif project.status == 'pending' %}
+                                            bg-blue-100 text-blue-800
+                                        {% else %}
+                                            bg-red-100 text-red-800
+                                        {% endif %}">
+                                        {{ project.status|capfirst }}
+                                    </span>
+                                </td>
+                                <td class="px-4 py-3 text-sm text-gray-700">{{ project.species }}</td>
+                                <td class="px-4 py-3 text-sm text-gray-700">{{ project.created_at|date:"Y-m-d H:i:s" }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p class="text-center text-gray-600">No analysis tasks found. Start a new analysis on the <a href="{% url 'home' %}" class="text-emerald-600 hover:text-emerald-700">home page</a>.</p>
+        {% endif %}
+    </div>
+{% endblock %}

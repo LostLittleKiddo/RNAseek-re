@@ -40,7 +40,19 @@
 {% endblock %}
 
 {% block content %}
-    <div id=upload class="mt-8 w-full max-w-[90vw] sm:max-w-[80vw] lg:max-w-[60vw] mx-auto">
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg p-6 shadow-lg text-center relative">
+            <div class="relative flex items-center justify-center">
+                <div class="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-emerald-500 mx-auto"></div>
+                <i class="fas fa-dna text-emerald-500 absolute text-lg"></i>
+            </div>
+            <p class="mt-4 text-lg font-medium text-gray-700">Processing your analysis...</p>
+            <p class="mt-2 text-sm text-gray-500">Estimated time: ~5 seconds</p>
+        </div>
+    </div>
+
+    <div id="upload" class="mt-8 w-full max-w-[90vw] sm:max-w-[80vw] lg:max-w-[60vw] mx-auto">
         <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Start a New RNAseek Analysis</h2>
         <form method="post" enctype="multipart/form-data" class="space-y-6" id="rnaseek-form">
             {% csrf_token %}
@@ -176,7 +188,7 @@
         </form>
     </div>
 
-    <!-- JavaScript for Drag and Drop, File Preview, and Form Validation -->
+    <!-- JavaScript for Drag and Drop, File Preview, Form Validation, and Async Submission -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const dropZone = document.getElementById('drop-zone');
@@ -192,6 +204,7 @@
             const sampleConditions = document.getElementById('sample-conditions');
             const condition1Input = document.getElementById('id_condition1');
             const condition2Input = document.getElementById('id_condition2');
+            const loadingOverlay = document.getElementById('loading-overlay');
             let selectedFiles = new DataTransfer();
 
             function updateFilePreview() {
@@ -347,7 +360,7 @@
                 });
 
                 // Update select options when conditions change
-                [ condition1Input, condition2Input].forEach(input => {
+                [condition1Input, condition2Input].forEach(input => {
                     input.addEventListener('input', () => {
                         const newCondition1 = condition1Input.value.trim() || 'Condition 1';
                         const newCondition2 = condition2Input.value.trim() || 'Condition 2';
@@ -385,6 +398,41 @@
 
                 submitButton.disabled = !isFormValid;
             }
+
+            // Handle form submission with AJAX
+            document.getElementById('rnaseek-form').addEventListener('submit', function (e) {
+                e.preventDefault();
+                submitButton.disabled = true;
+                loadingOverlay.classList.remove('hidden');
+
+                const formData = new FormData(this);
+                fetch('', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        errorMessages.innerHTML = `<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded-lg mb-2">${data.error}</div>`;
+                        loadingOverlay.classList.add('hidden');
+                        submitButton.disabled = false;
+                    } else {
+                        // Simulate 5-second delay before redirect
+                        setTimeout(() => {
+                            loadingOverlay.classList.add('hidden');
+                            window.location.href = '/results/';
+                        }, 3000);
+                    }
+                })
+                .catch(error => {
+                    errorMessages.innerHTML = `<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded-lg mb-2">Error submitting form: ${error.message}</div>`;
+                    loadingOverlay.classList.add('hidden');
+                    submitButton.disabled = false;
+                });
+            });
 
             // Validate form on input changes
             projectNameInput.addEventListener('input', validateForm);

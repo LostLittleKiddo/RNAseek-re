@@ -1,4 +1,3 @@
-# rsa/tasks.py
 from celery import shared_task
 from .models import Project
 import time
@@ -9,26 +8,33 @@ logger = logging.getLogger(__name__)
 @shared_task
 def run_rnaseek_pipeline(project_id):
     """
-    Celery task to simulate the RNAseek pipeline by updating project status.
+    Celery task to simulate the RNAseek pipeline with status updates over 5 seconds.
     """
     try:
-        # Fetch the project
         project = Project.objects.get(id=project_id)
-        
-        # Transition to running
-        project.status = 'running'
+        logger.info(f"Starting pipeline for project {project.name} (ID: {project_id})")
+
+        # Simulate initial status
+        project.status = 'pending'
         project.save()
-        logger.info(f"Project {project.id} status updated to running")
+        logger.debug(f"Project {project.name} status set to 'pending'")
+        time.sleep(2)
 
-        # Simulate pipeline processing with a 5-second delay
-        time.sleep(5)
+        # Simulate processing
+        project.status = 'processing'
+        project.save()
+        logger.debug(f"Project {project.name} status set to 'processing'")
+        time.sleep(2)
 
-        # Transition to completed
+        # Simulate completion
         project.status = 'completed'
         project.save()
-        logger.info(f"Project {project.id} status updated to completed")
+        logger.info(f"Project {project.name} completed successfully")
 
     except Project.DoesNotExist:
-        logger.error(f"Project {project_id} not found")
+        logger.error(f"Project with ID {project_id} not found")
     except Exception as e:
-        logger.error(f"Error in run_rnaseek_pipeline for project {project_id}: {e}")
+        logger.error(f"Error in pipeline for project {project_id}: {e}")
+        if project:
+            project.status = 'failed'
+            project.save()

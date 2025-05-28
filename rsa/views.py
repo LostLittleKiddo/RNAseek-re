@@ -1,13 +1,14 @@
-# rsa/views.py
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import User, Project, ProjectFiles
 from .forms import RNAseekForm, DeseqMetadataForm
+from .tasks import run_rnaseek_pipeline
 import uuid
 import logging
 import os
 import csv
 from django.conf import settings
+from django.http import JsonResponse
 
 # Set up logging for debugging
 logger = logging.getLogger(__name__)
@@ -82,7 +83,7 @@ def home(request):
                             'human': 'Homo sapiens (GRCh38)',
                             'mouse': 'Mus musculus (GRCm39)'
                         }.get(form.cleaned_data['genome_of_interest'], 'Unknown'),
-                        pipeline_version='1.0.0',  # Adjust as needed
+                        pipeline_version='1.0.0',
                         sequencing_type=form.cleaned_data['sequencing_type'],
                         pvalue_cutoff=form.cleaned_data['pvalue_cutoff']
                     )
@@ -125,10 +126,12 @@ def home(request):
                             writer.writerow([sample_name, condition])
                             logger.debug(f"Metadata entry: sample={sample_name}, condition={condition}")
 
-                    logger.info(f"Project {project.name} created for user {user.username} with {len(form.cleaned_data['files'])} files")
-                    logger.info(f"DESeq2 metadata saved to {metadata_path}")
-                    messages.success(request, f"Project '{project.name}' created successfully! Analysis is pending.")
-                    return redirect(' ') 
+                    # Trigger the Celery task
+                    run_rnaseek_pipeline.delay(project.id)
+                    logger.info(f"Triggered Celery task for project {project.name} (ID: {project.id})")
+
+                    # Return JSON response with project ID for client-side redirect
+                    return JsonResponse({'project_id': str(project.id), 'message': f"Project '{project.name}' created successfully! Analysis is pending."})
 
                 else:
                     logger.warning(f"DESeq2 metadata form validation failed: {deseq_form.errors}")
@@ -137,9 +140,11 @@ def home(request):
             except Exception as e:
                 logger.error(f"Error processing form: {e}")
                 messages.error(request, "An error occurred while processing your submission. Please try again.")
+                return JsonResponse({'error': 'Form processing failed'}, status=400)
         else:
             logger.warning(f"RNAseek form validation failed: {form.errors}")
             messages.error(request, "Please correct the errors in the form.")
+            return JsonResponse({'error': 'Invalid form data'}, status=400)
 
     # Render the home page
     response = render(request, 'home.html', {
@@ -164,3 +169,20 @@ def home(request):
     )
 
     return response
+
+def results(request):
+    """
+    View to display all analysis tasks for the current user.
+    """
+    session_id = request.COOKIES.get('session_id')
+    if not session_id:
+        messages.error(request, "Session expired. Please start a new session.")
+        return redirect('home')
+
+    try:
+        user = User.objects.get(session_id=session_id)
+        projects = Project.objects.filter(user=user).order_by('-created_at')
+        return render(request, 'results.html', {'projects': projects})
+    except User.DoesNotExist:
+        messages.error(request, "Invalid session. Please start a new session.")
+        return redirect('home')
