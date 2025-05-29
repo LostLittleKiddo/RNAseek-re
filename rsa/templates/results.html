@@ -7,21 +7,28 @@
         <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Analysis Results</h2>
         {% if projects %}
             <div class="overflow-x-auto">
-                <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm">
+                <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm" id="projects-table">
                     <thead>
                         <tr class="bg-gray-100">
                             <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">Task Name</th>
                             <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">Status</th>
                             <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">Species</th>
+                            <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">Genome Reference</th>
+                            <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">Pipeline Version</th>
+                            <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">Sequencing Type</th>
+                            <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">P-Value Cutoff</th>
                             <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">Created At</th>
+                            <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">Error Message</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="projects-table-body">
                         {% for project in projects %}
-                            <tr class="border-t border-gray-200">
+                            <tr class="border-t border-gray-200 {% if project.status == 'completed' %}cursor-pointer hover:bg-gray-50{% endif %}" 
+                                data-project-id="{{ project.id }}"
+                                {% if project.status == 'completed' %}onclick="window.location.href='{% url 'project_detail' project.id %}'"{% endif %}>
                                 <td class="px-4 py-3 text-sm text-gray-700">{{ project.name }}</td>
                                 <td class="px-4 py-3 text-sm text-gray-700">
-                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+                                    <span class="status-badge inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
                                         {% if project.status == 'completed' %}
                                             bg-green-100 text-green-800
                                         {% elif project.status == 'processing' %}
@@ -35,7 +42,12 @@
                                     </span>
                                 </td>
                                 <td class="px-4 py-3 text-sm text-gray-700">{{ project.species }}</td>
+                                <td class="px-4 py-3 text-sm text-gray-700">{{ project.genome_reference }}</td>
+                                <td class="px-4 py-3 text-sm text-gray-700">{{ project.pipeline_version }}</td>
+                                <td class="px-4 py-3 text-sm text-gray-700">{{ project.sequencing_type }}</td>
+                                <td class="px-4 py-3 text-sm text-gray-700">{{ project.pvalue_cutoff }}</td>
                                 <td class="px-4 py-3 text-sm text-gray-700">{{ project.created_at|date:"Y-m-d H:i:s" }}</td>
+                                <td class="px-4 py-3 text-sm text-gray-700">{{ project.error_message|default:"None" }}</td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -45,4 +57,88 @@
             <p class="text-center text-gray-600">No analysis tasks found. Start a new analysis on the <a href="{% url 'home' %}" class="text-emerald-600 hover:text-emerald-700">home page</a>.</p>
         {% endif %}
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Establish WebSocket connection
+            const wsProtocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
+            const wsUrl = `${wsProtocol}://${window.location.host}/ws/projects/`;
+            const socket = new WebSocket(wsUrl);
+
+            socket.onopen = function () {
+                console.log('WebSocket connected');
+            };
+
+            socket.onmessage = function (event) {
+                const data = JSON.parse(event.data);
+                const projectId = data.project_id;
+                const status = data.status;
+                const projectName = data.project_name;
+
+                // Find the row for the project
+                const row = document.querySelector(`tr[data-project-id="${projectId}"]`);
+                if (row) {
+                    const statusCell = row.querySelector('.status-badge');
+                    if (statusCell) {
+                        // Update status text and classes
+                        statusCell.textContent = status.charAt(0).toUpperCase() + status.slice(1);
+                        statusCell.className = `status-badge inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                            status === 'completed' ? 'bg-green-100 text-green-800' :
+                            status === 'processing' ? 'bg-yellow-100 text-yellow-800' :
+                            status === 'pending' ? 'bg-blue-100 text-blue-800' :
+                            'bg-red-100 text-red-800'
+                        }`;
+                        // Make row clickable if status is completed
+                        if (status === 'completed') {
+                            row.classList.add('cursor-pointer', 'hover:bg-gray-50');
+                            row.onclick = function() {
+                                window.location.href = `/result/${projectId}/`;
+                            };
+                        } else {
+                            row.classList.remove('cursor-pointer', 'hover:bg-gray-50');
+                            row.onclick = null;
+                        }
+                    }
+                } else {
+                    // Optionally add a new row if the project is new
+                    const tbody = document.getElementById('projects-table-body');
+                    const newRow = document.createElement('tr');
+                    newRow.setAttribute('data-project-id', projectId);
+                    newRow.className = `border-t border-gray-200 ${status === 'completed' ? 'cursor-pointer hover:bg-gray-50' : ''}`;
+                    if (status === 'completed') {
+                        newRow.onclick = function() {
+                            window.location.href = `/result/${projectId}/`;
+                        };
+                    }
+                    newRow.innerHTML = `
+                        <td class="px-4 py-3 text-sm text-gray-700">${projectName}</td>
+                        <td class="px-4 py-3 text-sm text-gray-700">
+                            <span class="status-badge inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                                status === 'completed' ? 'bg-green-100 text-green-800' :
+                                status === 'processing' ? 'bg-yellow-100 text-yellow-800' :
+                                status === 'pending' ? 'bg-blue-100 text-blue-800' :
+                                'bg-red-100 text-red-800'
+                            }">${status.charAt(0).toUpperCase() + status.slice(1)}</span>
+                        </td>
+                        <td class="px-4 py-3 text-sm text-gray-700">Unknown</td>
+                        <td class="px-4 py-3 text-sm text-gray-700">Unknown</td>
+                        <td class="px-4 py-3 text-sm text-gray-700">Unknown</td>
+                        <td class="px-4 py-3 text-sm text-gray-700">Unknown</td>
+                        <td class="px-4 py-3 text-sm text-gray-700">Unknown</td>
+                        <td class="px-4 py-3 text-sm text-gray-700">${new Date().toISOString().slice(0, 19).replace('T', ' ')}</td>
+                        <td class="px-4 py-3 text-sm text-gray-700">None</td>
+                    `;
+                    tbody.appendChild(newRow);
+                }
+            };
+
+            socket.onclose = function () {
+                console.error('WebSocket closed unexpectedly');
+            };
+
+            socket.onerror = function (error) {
+                console.error('WebSocket error:', error);
+            };
+        });
+    </script>
 {% endblock %}
