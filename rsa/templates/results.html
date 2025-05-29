@@ -18,10 +18,10 @@
                     </thead>
                     <tbody>
                         {% for project in projects %}
-                            <tr class="border-t border-gray-200">
+                            <tr id="project-row-{{ project.id }}" data-project-id="{{ project.id }}" class="border-t border-gray-200">
                                 <td class="px-4 py-3 text-sm text-gray-700">{{ project.name }}</td>
-                                <td class="px-4 py-3 text-sm text-gray-700">
-                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+                                <td id="status-cell-{{ project.id }}" class="px-4 py-3 text-sm text-gray-700">
+                                    <span id="status-badge-{{ project.id }}" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
                                         {% if project.status == 'completed' %}
                                             bg-green-100 text-green-800
                                         {% elif project.status == 'processing' %}
@@ -45,4 +45,61 @@
             <p class="text-center text-gray-600">No analysis tasks found. Start a new analysis on the <a href="{% url 'home' %}" class="text-emerald-600 hover:text-emerald-700">home page</a>.</p>
         {% endif %}
     </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const projectRows = document.querySelectorAll('[data-project-id]');
+
+    projectRows.forEach(function(row) {
+        const projectId = row.dataset.projectId;
+        const socketProtocol = window.location.protocol === 'https:' ? 'wss://' : 'ws://';
+        const socketHost = window.location.host;
+        const socketURL = `${socketProtocol}${socketHost}/ws/status/${projectId}/`;
+
+        const socket = new WebSocket(socketURL);
+
+        socket.onopen = function(event) {
+            console.log(`WebSocket connection opened for project ${projectId}:`, event);
+        };
+
+        socket.onmessage = function(event) {
+            console.log(`Received data for project ${projectId}:`, event.data);
+            const data = JSON.parse(event.data);
+
+            // According to the prompt, data.project_id should be used from the message.
+            // This ensures we're updating the correct element if the message format is strictly followed.
+            const messageProjectId = data.project_id; 
+            const statusBadgeElement = document.getElementById(`status-badge-${messageProjectId}`);
+            
+            if (statusBadgeElement) {
+                // Update text content
+                statusBadgeElement.textContent = data.status.charAt(0).toUpperCase() + data.status.slice(1);
+
+                // Update badge classes
+                statusBadgeElement.classList.remove('bg-green-100', 'text-green-800', 'bg-yellow-100', 'text-yellow-800', 'bg-blue-100', 'text-blue-800', 'bg-red-100', 'text-red-800');
+
+                if (data.status === 'completed') {
+                    statusBadgeElement.classList.add('bg-green-100', 'text-green-800');
+                } else if (data.status === 'processing') {
+                    statusBadgeElement.classList.add('bg-yellow-100', 'text-yellow-800');
+                } else if (data.status === 'pending') {
+                    statusBadgeElement.classList.add('bg-blue-100', 'text-blue-800');
+                } else { // Default for 'failed' or any other status
+                    statusBadgeElement.classList.add('bg-red-100', 'text-red-800');
+                }
+            } else {
+                console.error(`Status badge element not found for project ${messageProjectId}`);
+            }
+        };
+
+        socket.onclose = function(event) {
+            console.log(`WebSocket connection closed for project ${projectId}:`, event);
+        };
+
+        socket.onerror = function(error) {
+            console.error(`WebSocket error for project ${projectId}:`, error);
+        };
+    });
+});
+</script>
 {% endblock %}
