@@ -11,6 +11,78 @@ from django.conf import settings
 
 logger = logging.getLogger(__name__)
 
+def find_cutpoint(data_txt_paths):
+    """
+    Process FastQC data.txt files to check 'Per base sequence quality' and 'Adapter Content' statuses.
+    Generate Trimmomatic commands for files where either module has 'fail' or 'warn' status.
+    
+    Args:
+        data_txt_paths (list): List of paths to fastqc_data.txt files.
+    
+    Returns:
+        list: List of Trimmomatic commands for files needing trimming.
+    """
+    logger.info(f"find_cutpoint called with data.txt paths: {data_txt_paths}")
+    trimmomatic_commands = []
+
+    for data_txt_path in data_txt_paths:
+        if not os.path.exists(data_txt_path):
+            logger.error(f"fastqc_data.txt not found: {data_txt_path}")
+            continue
+
+        # Initialize flags for module statuses
+        per_base_quality_status = None
+        adapter_content_status = None
+
+        # Parse fastqc_data.txt to find module statuses
+        try:
+            with open(data_txt_path, 'r') as f:
+                for line in f:
+                    if line.startswith('>>Per base sequence quality'):
+                        parts = line.strip().split('\t')
+                        if len(parts) > 1:
+                            per_base_quality_status = parts[1].lower()
+                    elif line.startswith('>>Adapter Content'):
+                        parts = line.strip().split('\t')
+                        if len(parts) > 1:
+                            adapter_content_status = parts[1].lower()
+                    if per_base_quality_status and adapter_content_status:
+                        break  # Exit once both statuses are found
+        except Exception as e:
+            logger.error(f"Error reading {data_txt_path}: {e}")
+            continue
+
+        # Check if trimming is needed
+        if per_base_quality_status in ['fail', 'warn'] or adapter_content_status in ['fail', 'warn']:
+            logger.info(f"Trimming needed for {data_txt_path}: Per base quality={per_base_quality_status}, Adapter content={adapter_content_status}")
+            
+            # Construct input and output paths
+            fastq_dir = os.path.dirname(os.path.dirname(data_txt_path))  # Parent of fastqc_data.txt dir
+            base_name = os.path.basename(data_txt_path).replace('_fastqc/fastqc_data.txt', '')
+            input_fastq = os.path.join(fastq_dir, f"{base_name}.fastq.gz")
+            output_dir = os.path.join(fastq_dir, 'trimmomatic')
+            os.makedirs(output_dir, exist_ok=True)
+            output_fastq = os.path.join(output_dir, f"{base_name}_trimmed.fastq.gz")
+
+            # Construct Trimmomatic command (single-end, basic parameters)
+            trimmomatic_cmd = [
+                'trimmomatic',
+                'SE',
+                '-phred33',
+                input_fastq,
+                output_fastq,
+                'ILLUMINACLIP:adapters.fa:2:30:10',
+                'SLIDINGWINDOW:4:20',
+                'MINLEN:36'
+            ]
+            command_str = ' '.join(trimmomatic_cmd)
+            trimmomatic_commands.append(command_str)
+            logger.debug(f"Generated Trimmomatic command: {command_str}")
+        else:
+            logger.info(f"No trimming needed for {data_txt_path}: Per base quality={per_base_quality_status}, Adapter content={adapter_content_status}")
+
+    return trimmomatic_commands
+
 @shared_task
 def run_rnaseek_pipeline(project_id):
     """
