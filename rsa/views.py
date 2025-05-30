@@ -9,11 +9,17 @@ import uuid
 import logging
 import os
 import csv
+import shutil
 from django.conf import settings
 from django.core.exceptions import PermissionDenied
 
 # Set up logging for debugging
 logger = logging.getLogger(__name__)
+
+# Mock file class to simulate file objects for DeseqMetadataForm
+class MockFile:
+    def __init__(self, name):
+        self.name = name
 
 # Existing home and results views remain unchanged
 def home(request):
@@ -122,6 +128,7 @@ def home(request):
                 else:
                     logger.warning(f"DESeq2 metadata form validation failed: {deseq_form.errors}")
                     messages.error(request, "Please correct the errors in the DESeq2 metadata form.")
+                    return JsonResponse({'error': 'Invalid DESeq2 metadata'}, status=400)
 
             except Exception as e:
                 logger.error(f"Error processing form: {e}")
@@ -152,6 +159,113 @@ def home(request):
     )
 
     return response
+
+def example_analysis(request):
+    if request.method != 'POST':
+        logger.warning("Invalid method for example-analysis endpoint")
+        return JsonResponse({'error': 'Method not allowed'}, status=405)
+
+    session_id = request.COOKIES.get('session_id')
+    if not session_id:
+        logger.error("No session_id provided for example analysis")
+        return JsonResponse({'error': 'Session expired. Please start a new session.'}, status=401)
+
+    try:
+        user = User.objects.get(session_id=session_id)
+        logger.debug(f"Found user: {user.username} for example analysis")
+    except User.DoesNotExist:
+        logger.error("Invalid session_id for example analysis")
+        return JsonResponse({'error': 'Invalid session. Please start a new session.'}, status=401)
+
+    try:
+        # Predefined parameters
+        project_data = {
+            'project_name': 'Example Analysis',
+            'genome_of_interest': 'yeast',
+            'sequencing_type': 'single',
+            'pvalue_cutoff': 0.05,
+            'example_analysis': 'true',  # Added to bypass files validation
+        }
+        deseq_data = {
+            'condition1': 'control',
+            'condition2': 'treatment',
+            'condition_sample1': 'condition1',
+            'condition_sample2': 'condition2',
+        }
+
+        # Validate forms
+        form = RNAseekForm(project_data)
+        # Create mock file objects for DeseqMetadataForm
+        mock_files = [MockFile('sample1.fastq.gz'), MockFile('sample2.fastq.gz')]
+        deseq_form = DeseqMetadataForm(deseq_data, files=mock_files, sequencing_type='single')
+        if not form.is_valid():
+            logger.warning(f"RNAseek form validation failed for example analysis: {form.errors}")
+            return JsonResponse({'error': f"Invalid form data: {form.errors.as_json()}"}, status=400)
+        if not deseq_form.is_valid():
+            logger.warning(f"DESeq2 metadata form validation failed for example analysis: {deseq_form.errors}")
+            return JsonResponse({'error': f"Invalid DESeq2 metadata: {deseq_form.errors.as_json()}"}, status=400)
+
+        # Verify sample files exist
+        sample_files = ['sample1.fastq.gz', 'sample2.fastq.gz']
+        for file_name in sample_files:
+            source_path = os.path.join(settings.STATIC_ROOT, 'example', file_name)
+            if not os.path.exists(source_path):
+                logger.error(f"Sample file not found: {source_path}")
+                return JsonResponse({'error': f"Sample file {file_name} not found"}, status=400)
+
+        # Create project
+        project = Project.objects.create(
+            user=user,
+            session_id=session_id,
+            name=form.cleaned_data['project_name'],
+            status='pending',
+            species=form.cleaned_data['genome_of_interest'],
+            genome_reference='Saccharomyces cerevisiae (R64-1-1)',
+            pipeline_version='1.0.0',
+            sequencing_type=form.cleaned_data['sequencing_type'],
+            pvalue_cutoff=form.cleaned_data['pvalue_cutoff']
+        )
+
+        # Copy sample files from static/example to project directory
+        project_dir = os.path.join(settings.MEDIA_ROOT, 'r_fastq', str(session_id), str(project.id))
+        os.makedirs(project_dir, exist_ok=True)
+        for file_name in sample_files:
+            source_path = os.path.join(settings.STATIC_ROOT, 'example', file_name)
+            dest_path = os.path.join(project_dir, file_name)
+            shutil.copy2(source_path, dest_path)
+            logger.debug(f"Copied {file_name} to {dest_path}")
+
+            ProjectFiles.objects.create(
+                project=project,
+                type='input_fastq',
+                path=dest_path,
+                is_directory=False,
+                file_format='fastq.gz'
+            )
+
+        # Create DESeq2 metadata
+        deseq_dir = os.path.join(settings.MEDIA_ROOT, 'deseq', str(session_id), str(project.id))
+        os.makedirs(deseq_dir, exist_ok=True)
+        metadata_path = os.path.join(deseq_dir, 'metadata.csv')
+        with open(metadata_path, 'w', newline='') as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow(['sample', 'condition'])
+            writer.writerow(['sample1', deseq_data['condition1']])
+            writer.writerow(['sample2', deseq_data['condition2']])
+            logger.debug(f"Created metadata CSV at {metadata_path}")
+
+        # Trigger Celery task
+        run_rnaseek_pipeline.delay(project.id)
+        logger.info(f"Triggered Celery task for example project {project.name} (ID: {project.id})")
+
+        return JsonResponse({
+            'project_id': str(project.id),
+            'message': f"Example Analysis '{project.name}' started successfully!"
+        })
+
+    except Exception as e:
+        logger.error(f"Error in example analysis: {str(e)}")
+        return JsonResponse({'error': f"Error starting example analysis: {str(e)}"}, status=500)
 
 def results(request):
     session_id = request.COOKIES.get('session_id')

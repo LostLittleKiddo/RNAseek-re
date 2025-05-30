@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 @shared_task
 def run_rnaseek_pipeline(project_id):
     """
-    Celery task to run the RNAseek pipeline, starting with FastQC on input files.
+    Celery task to run the RNAseek pipeline, starting with FastQC and conditionally Trimmomatic.
     """
     channel_layer = get_channel_layer()
     try:
@@ -48,8 +48,8 @@ def run_rnaseek_pipeline(project_id):
         update_status('pending')
         time.sleep(1)  # Brief delay to ensure UI updates
 
-
         update_status('processing')
+        data_txt_paths = []  # List to collect all fastqc_data.txt paths
         for input_file in input_files:
             fastq_path = input_file.path
             logger.info(f"Running FastQC on {fastq_path}")
@@ -90,8 +90,11 @@ def run_rnaseek_pipeline(project_id):
                     base_name = os.path.splitext(base_name)[0]  # Remove .gz if present
                 html_output = os.path.join(output_dir, f"{base_name}_fastqc.html")
                 zip_output = os.path.join(output_dir, f"{base_name}_fastqc.zip")
+                fastqc_dir = os.path.join(output_dir, f"{base_name}_fastqc")
+                data_txt = os.path.join(fastqc_dir, "fastqc_data.txt")
 
-                for output_path in [html_output, zip_output]:
+                # Register output files and collect fastqc_data.txt path
+                for output_path in [html_output, zip_output, data_txt]:
                     if os.path.exists(output_path):
                         ProjectFiles.objects.create(
                             project=project,
@@ -101,12 +104,140 @@ def run_rnaseek_pipeline(project_id):
                             file_format=output_path.split('.')[-1]
                         )
                         logger.info(f"Registered FastQC output: {output_path}")
+                        if output_path.endswith("fastqc_data.txt"):
+                            data_txt_paths.append(output_path)
                     else:
                         logger.warning(f"Expected FastQC output not found: {output_path}")
 
             except subprocess.CalledProcessError as e:
                 logger.error(f"FastQC failed for {fastq_path}: {e.stderr}")
                 raise RuntimeError(f"FastQC failed: {e.stderr}")
+
+        # Call find_cutpoint with all fastqc_data.txt paths
+        trimmomatic_commands = find_cutpoint(data_txt_paths)
+        logger.info(f"Generated {len(trimmomatic_commands)} Trimmomatic commands: {trimmomatic_commands}")
+
+        # Handle Trimmomatic execution
+        trimmed = None
+        if trimmomatic_commands:
+            trimmed = True
+            update_status('trimming')
+            trimmomatic_output_dir = os.path.join(settings.MEDIA_ROOT, 'output', str(project.session_id), str(project.id), 'trimmomatic')
+            os.makedirs(trimmomatic_output_dir, exist_ok=True)
+
+            if project.sequencing_type == 'single':
+                # Single-end: Execute each command as-is
+                for cmd in trimmomatic_commands:
+                    logger.debug(f"Executing Trimmomatic command: {cmd}")
+                    try:
+                        result = subprocess.run(
+                            cmd,
+                            shell=True,
+                            capture_output=True,
+                            text=True,
+                            check=True
+                        )
+                        logger.info(f"Trimmomatic completed for command: {cmd}")
+                        logger.debug(f"Trimmomatic stdout: {result.stdout}")
+                        logger.debug(f"Trimmomatic stderr: {result.stderr}")
+
+                        # Register output file
+                        output_path = cmd.split()[-3]  # Extract output_fastq from command
+                        if os.path.exists(output_path):
+                            ProjectFiles.objects.create(
+                                project=project,
+                                type='trimmomatic_output',
+                                path=output_path,
+                                is_directory=False,
+                                file_format='fastq.gz'
+                            )
+                            logger.info(f"Registered Trimmomatic output: {output_path}")
+                        else:
+                            logger.warning(f"Trimmomatic output not found: {output_path}")
+
+                    except subprocess.CalledProcessError as e:
+                        logger.error(f"Trimmomatic failed for command {cmd}: {e.stderr}")
+                        raise RuntimeError(f"Trimmomatic failed: {e.stderr}")
+
+            else:  # Paired-end
+                # Group commands by sample name and find pairs
+                sample_commands = {}
+                for cmd in trimmomatic_commands:
+                    input_path = cmd.split()[3]  # Extract input_fastq
+                    sample_name = os.path.basename(input_path).replace('_R1', '').replace('_R2', '')
+                    sample_name = os.path.splitext(sample_name)[0]  # Remove .fastq.gz
+                    if sample_name not in sample_commands:
+                        sample_commands[sample_name] = []
+                    sample_commands[sample_name].append(cmd)
+
+                for sample_name, cmds in sample_commands.items():
+                    # Expect two commands (R1 and R2)
+                    if len(cmds) != 2:
+                        logger.error(f"Paired-end expects R1 and R2 for {sample_name}, found {len(cmds)} commands")
+                        raise RuntimeError(f"Mismatched paired-end files for {sample_name}")
+
+                    # Identify R1 and R2
+                    r1_cmd = next((c for c in cmds if '_R1' in c), None)
+                    r2_cmd = next((c for c in cmds if '_R2' in c), None)
+                    if not r1_cmd or not r2_cmd:
+                        logger.error(f"Missing R1 or R2 command for {sample_name}")
+                        raise RuntimeError(f"Missing paired-end command for {sample_name}")
+
+                    # Extract input and output paths
+                    r1_input = r1_cmd.split()[3]
+                    r1_output = r1_cmd.split()[4]
+                    r2_input = r2_cmd.split()[3]
+                    r2_output = r2_cmd.split()[4]
+                    unpaired_r1 = os.path.join(trimmomatic_output_dir, f"{sample_name}_unpaired_R1.fastq.gz")
+                    unpaired_r2 = os.path.join(trimmomatic_output_dir, f"{sample_name}_unpaired_R2.fastq.gz")
+
+                    # Construct paired-end Trimmomatic command
+                    paired_cmd = [
+                        'trimmomatic',
+                        'PE',
+                        '-phred33',
+                        r1_input,
+                        r2_input,
+                        r1_output,
+                        unpaired_r1,
+                        r2_output,
+                        unpaired_r2,
+                        'ILLUMINACLIP:adapters.fa:2:30:10',
+                        'SLIDINGWINDOW:4:20',
+                        'MINLEN:36'
+                    ]
+                    command_str = ' '.join(paired_cmd)
+                    logger.debug(f"Executing paired-end Trimmomatic command: {command_str}")
+
+                    try:
+                        result = subprocess.run(
+                            command_str,
+                            shell=True,
+                            capture_output=True,
+                            text=True,
+                            check=True
+                        )
+                        logger.info(f"Trimmomatic completed for {sample_name}")
+                        logger.debug(f"Trimmomatic stdout: {result.stdout}")
+                        logger.debug(f"Trimmomatic stderr: {result.stderr}")
+
+                        # Register output files
+                        for output_path in [r1_output, r2_output, unpaired_r1, unpaired_r2]:
+                            if os.path.exists(output_path):
+                                ProjectFiles.objects.create(
+                                    project=project,
+                                    type='trimmomatic_output',
+                                    path=output_path,
+                                    is_directory=False,
+                                    file_format='fastq.gz'
+                                )
+                                logger.info(f"Registered Trimmomatic output: {output_path}")
+                            else:
+                                logger.warning(f"Trimmomatic output not found: {output_path}")
+
+                    except subprocess.CalledProcessError as e:
+                        logger.error(f"Trimmomatic failed for {sample_name}: {e.stderr}")
+                        raise RuntimeError(f"Trimmomatic failed: {e.stderr}")
 
         # Simulate remaining pipeline (replace with real steps later)
         time.sleep(1)

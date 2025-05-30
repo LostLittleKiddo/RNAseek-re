@@ -66,7 +66,7 @@ class RNAseekForm(forms.Form):
         })
     )
     files = MultipleFileField(
-        required=True,
+        required=False,  # Made optional for example analysis
         label="Upload Files",
         widget=MultipleFileInput(attrs={
             'multiple': True,
@@ -76,8 +76,18 @@ class RNAseekForm(forms.Form):
         })
     )
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Make files field required only if example_analysis is not present
+        if not self.data.get('example_analysis'):
+            self.fields['files'].required = True
+
     def clean_files(self):
         files = self.cleaned_data.get('files', [])
+        # Skip file validation if example_analysis is present
+        if self.data.get('example_analysis'):
+            return files
+
         allowed_extensions = ['fastq', 'fq', 'gz']
         max_size = 70 * 1024 * 1024 * 1024  # 70GB
         sequencing_type = self.cleaned_data.get('sequencing_type')

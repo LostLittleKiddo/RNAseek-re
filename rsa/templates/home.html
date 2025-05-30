@@ -161,7 +161,7 @@
                                 </span>
                             </div>
                         </div>
-                        <input type="text" name="condition1" id="id_condition1" value="control" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm transition-all duration-300" placeholder="e.g., control">
+                        <input type="text" name="condition1" id="id_condition1" value="control" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md text-sm shadow-sm focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-300" placeholder="e.g., control">
                     </div>
                     <div>
                         <div class="flex items-center">
@@ -173,7 +173,7 @@
                                 </span>
                             </div>
                         </div>
-                        <input type="text" name="condition2" id="id_condition2" value="treatment" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm transition-all duration-300" placeholder="e.g., treatment">
+                        <input type="text" name="condition2" id="id_condition2" value="treatment" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md text-sm shadow-sm focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-300" placeholder="e.g., treatment">
                     </div>
                 </div>
                 <!-- Sample Conditions -->
@@ -183,6 +183,12 @@
             <div>
                 <button type="submit" id="submit-button" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-all duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed" disabled>
                     Start Analysis
+                </button>
+            </div>
+            <!-- Example Analysis Button -->
+            <div>
+                <button type="button" id="example-analysis-button" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed">
+                    Run Example Analysis
                 </button>
             </div>
         </form>
@@ -196,6 +202,7 @@
             const filePreview = document.getElementById('file-preview');
             const errorMessages = document.getElementById('error-messages');
             const submitButton = document.getElementById('submit-button');
+            const exampleButton = document.getElementById('example-analysis-button');
             const projectNameInput = document.getElementById('{{ form.project_name.id_for_label }}');
             const genomeSelect = document.getElementById('{{ form.genome_of_interest.id_for_label }}');
             const sequencingTypeInputs = document.getElementsByName('{{ form.sequencing_type.name }}');
@@ -350,7 +357,7 @@
                     div.className = 'flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg shadow-sm';
                     div.innerHTML = `
                         <label for="condition_${sample.id}" class="text-sm text-gray-700 flex-1">Condition for ${sample.name}</label>
-                        <select name="condition_${sample.id}" id="condition_${sample.id}" class="mt-1 block w-1/4 sm:w-1/6 px-4 py-3 sm:px-2 sm:py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-emerald-500 focus:border-emerald-500 sm:text-xs text-sm transition-all duration-300">
+                        <select name="condition_${sample.id}" id="condition_${sample.id}" class="mt-1 block w-1/4 sm:w-1/6 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-emerald-500 focus:border-emerald-500 text-sm transition-all duration-300">
                             <option value="">Select condition</option>
                             <option value="condition1">${condition1}</option>
                             <option value="condition2">${condition2}</option>
@@ -382,10 +389,27 @@
                 const projectName = projectNameInput.value.trim();
                 const genome = genomeSelect.value;
                 const sequencingType = Array.from(sequencingTypeInputs).find(input => input.checked)?.value;
-                const filesValid = validateFiles();
+                const pvalue = pvalueInput.value.trim();
                 const condition1 = condition1Input.value.trim();
                 const condition2 = condition2Input.value.trim();
+                const filesValid = validateFiles();
                 let conditionsValid = true;
+
+                // Check if form is "dirty" (has user input)
+                const isFormDirty = (
+                    projectName !== '' ||
+                    genome !== '' ||
+                    (sequencingType && sequencingType !== 'single') ||
+                    (pvalue && pvalue !== '0.05') ||
+                    condition1 !== 'control' ||
+                    condition2 !== 'treatment' ||
+                    selectedFiles.files.length > 0 ||
+                    (sampleConditions.querySelectorAll('select').length > 0 &&
+                        Array.from(sampleConditions.querySelectorAll('select')).some(s => s.value !== ''))
+                );
+
+                // Disable example button if form is dirty
+                exampleButton.disabled = isFormDirty;
 
                 if (filesValid && selectedFiles.files.length > 0) {
                     const conditionSelects = sampleConditions.querySelectorAll('select');
@@ -398,6 +422,50 @@
 
                 submitButton.disabled = !isFormValid;
             }
+
+            // Handle example analysis button click
+            exampleButton.addEventListener('click', function () {
+                exampleButton.disabled = true;
+                loadingOverlay.classList.remove('hidden');
+
+                const formData = new FormData();
+                formData.append('csrfmiddlewaretoken', document.querySelector('[name=csrfmiddlewaretoken]').value);
+                formData.append('example_analysis', 'true');
+                formData.append('project_name', 'Example Analysis');
+                formData.append('genome_of_interest', 'yeast');
+                formData.append('sequencing_type', 'single');
+                formData.append('pvalue_cutoff', '0.05');
+                formData.append('condition1', 'control');
+                formData.append('condition2', 'treatment');
+                formData.append('condition_sample1', 'condition1');
+                formData.append('condition_sample2', 'condition2');
+
+                fetch('/example-analysis/', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        errorMessages.innerHTML = `<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded-lg mb-2">${data.error}</div>`;
+                        loadingOverlay.classList.add('hidden');
+                        exampleButton.disabled = false;
+                    } else {
+                        setTimeout(() => {
+                            loadingOverlay.classList.add('hidden');
+                            window.location.href = '/results/';
+                        }, 3000);
+                    }
+                })
+                .catch(error => {
+                    errorMessages.innerHTML = `<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded-lg mb-2">Error starting example analysis: ${error.message}</div>`;
+                    loadingOverlay.classList.add('hidden');
+                    exampleButton.disabled = false;
+                });
+            });
 
             // Handle form submission with AJAX
             document.getElementById('rnaseek-form').addEventListener('submit', function (e) {
@@ -420,7 +488,6 @@
                         loadingOverlay.classList.add('hidden');
                         submitButton.disabled = false;
                     } else {
-                        // Simulate 5-second delay before redirect
                         setTimeout(() => {
                             loadingOverlay.classList.add('hidden');
                             window.location.href = '/results/';
@@ -442,6 +509,8 @@
                 validateForm();
             }));
             pvalueInput.addEventListener('input', validateForm);
+            condition1Input.addEventListener('input', validateForm);
+            condition2Input.addEventListener('input', validateForm);
             fileInput.addEventListener('change', () => {
                 const files = fileInput.files;
                 selectedFiles = new DataTransfer();
