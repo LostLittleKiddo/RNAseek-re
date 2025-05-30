@@ -1,7 +1,7 @@
 # rsa/views.py
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from django.http import FileResponse
+from django.http import FileResponse, JsonResponse
 from .models import User, Project, ProjectFiles
 from .forms import RNAseekForm, DeseqMetadataForm
 from .tasks import run_rnaseek_pipeline

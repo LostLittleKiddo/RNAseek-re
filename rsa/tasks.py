@@ -6,6 +6,7 @@ from .models import Project, ProjectFiles
 import time
 import logging
 import os
+import subprocess
 from django.conf import settings
 
 logger = logging.getLogger(__name__)
@@ -13,7 +14,7 @@ logger = logging.getLogger(__name__)
 @shared_task
 def run_rnaseek_pipeline(project_id):
     """
-    Celery task to simulate the RNAseek pipeline with status updates and create a sample output file.
+    Celery task to run the RNAseek pipeline, starting with FastQC on input files.
     """
     channel_layer = get_channel_layer()
     try:
@@ -35,28 +36,80 @@ def run_rnaseek_pipeline(project_id):
                 }
             )
 
-        # Simulate pipeline stages
+        # Set up output directory
+        output_dir = os.path.join(settings.MEDIA_ROOT, 'output', str(project.session_id), str(project.id), 'fastqc')
+        os.makedirs(output_dir, exist_ok=True)
+
+        # Get input FASTQ files
+        input_files = ProjectFiles.objects.filter(project=project, type='input_fastq')
+        if not input_files:
+            raise ValueError("No input FASTQ files found for the project")
+
         update_status('pending')
-        time.sleep(2)
+        time.sleep(1)  # Brief delay to ensure UI updates
+
 
         update_status('processing')
-        time.sleep(2)
+        for input_file in input_files:
+            fastq_path = input_file.path
+            logger.info(f"Running FastQC on {fastq_path}")
 
-        # Simulate creating an output file
-        output_dir = os.path.join(settings.MEDIA_ROOT, 'output', str(project.session_id), str(project.id))
-        os.makedirs(output_dir, exist_ok=True)
-        output_file_path = os.path.join(output_dir, 'sample_output.txt')
-        with open(output_file_path, 'w') as f:
-            f.write(f"Sample output for project {project.name}")
+            # Verify input file exists
+            if not os.path.exists(fastq_path):
+                logger.error(f"Input file not found: {fastq_path}")
+                raise RuntimeError(f"Input file not found: {fastq_path}")
 
-        # Register the output file in ProjectFiles
-        ProjectFiles.objects.create(
-            project=project,
-            type='output',
-            path=output_file_path,
-            is_directory=False,
-            file_format='txt'
-        )
+            # Construct FastQC command
+            fastqc_cmd = [
+                'fastqc',
+                fastq_path,
+                '-o', output_dir,
+                '--extract'  # Keep ZIP file intact
+            ]
+            logger.debug(f"FastQC command: {' '.join(fastqc_cmd)}")
+
+            # Execute FastQC
+            try:
+                result = subprocess.run(
+                    fastqc_cmd,
+                    capture_output=True,
+                    text=True,
+                    check=True
+                )
+                logger.info(f"FastQC completed for {fastq_path}")
+                logger.debug(f"FastQC stdout: {result.stdout}")
+                logger.debug(f"FastQC stderr: {result.stderr}")
+
+                # List output directory contents for debugging
+                output_files = os.listdir(output_dir)
+                logger.debug(f"Output directory contents: {output_files}")
+
+                # Handle potential .gz extension in output naming
+                base_name = os.path.splitext(os.path.basename(fastq_path))[0]
+                if fastq_path.endswith('.gz'):
+                    base_name = os.path.splitext(base_name)[0]  # Remove .gz if present
+                html_output = os.path.join(output_dir, f"{base_name}_fastqc.html")
+                zip_output = os.path.join(output_dir, f"{base_name}_fastqc.zip")
+
+                for output_path in [html_output, zip_output]:
+                    if os.path.exists(output_path):
+                        ProjectFiles.objects.create(
+                            project=project,
+                            type='fastqc_output',
+                            path=output_path,
+                            is_directory=False,
+                            file_format=output_path.split('.')[-1]
+                        )
+                        logger.info(f"Registered FastQC output: {output_path}")
+                    else:
+                        logger.warning(f"Expected FastQC output not found: {output_path}")
+
+            except subprocess.CalledProcessError as e:
+                logger.error(f"FastQC failed for {fastq_path}: {e.stderr}")
+                raise RuntimeError(f"FastQC failed: {e.stderr}")
+
+        # Simulate remaining pipeline (replace with real steps later)
+        time.sleep(1)
 
         update_status('completed')
         logger.info(f"Project {project.name} completed successfully")
@@ -74,16 +127,15 @@ def run_rnaseek_pipeline(project_id):
         )
     except Exception as e:
         logger.error(f"Error in pipeline for project {project_id}: {e}")
-        if project:
-            project.status = 'failed'
-            project.error_message = str(e)
-            project.save()
-            async_to_sync(channel_layer.group_send)(
-                'project_status',
-                {
-                    'type': 'project_status_update',
-                    'project_id': str(project.id),
-                    'status': 'failed',
-                    'project_name': project.name
-                }
-            )
+        project.status = 'failed'
+        project.error_message = str(e)
+        project.save()
+        async_to_sync(channel_layer.group_send)(
+            'project_status',
+            {
+                'type': 'project_status_update',
+                'project_id': str(project.id),
+                'status': 'failed',
+                'project_name': project.name
+            }
+        )
