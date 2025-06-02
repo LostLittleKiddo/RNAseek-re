@@ -80,7 +80,7 @@ def home(request):
                         genome_reference={
                             'yeast': 'Saccharomyces cerevisiae (R64-1-1)',
                             'human': 'Homo sapiens (GRCh38)',
-                            'mouse': 'Mus musculus (GRCm39)'
+                            'mouse': 'Mus musculus (GRCm38)'
                         }.get(form.cleaned_data['genome_of_interest'], 'Unknown'),
                         pipeline_version='1.0.0',
                         sequencing_type=form.cleaned_data['sequencing_type'],
@@ -276,11 +276,18 @@ def results(request):
     try:
         user = User.objects.get(session_id=session_id)
         projects = Project.objects.filter(user=user).order_by('-created_at')
-        return render(request, 'results.html', {'projects': projects})
+        response = render(request, 'results.html', {'projects': projects})
+        
+        # Add cache-control headers to prevent caching
+        response['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
+        response['Pragma'] = 'no-cache'
+        response['Expires'] = '0'
+        
+        return response
     except User.DoesNotExist:
         messages.error(request, "Invalid session. Please start a new session.")
         return redirect('home')
-
+    
 def project_detail(request, project_id):
     session_id = request.COOKIES.get('session_id')
     if not session_id:

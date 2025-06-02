@@ -6,7 +6,6 @@ import time
 import logging
 from django.conf import settings
 from .util.fastqc import run_fastqc
-from .util.find_cutpoint import find_cutpoint
 from .util.trimmomatic import run_trimmomatic
 import os
 
@@ -47,13 +46,9 @@ def run_rnaseek_pipeline(project_id):
         update_status('processing')
         data_txt_paths = run_fastqc(project, input_files, output_dir)
         
-        trimmomatic_commands = find_cutpoint(data_txt_paths)
-        logger.info(f"Generated {len(trimmomatic_commands)} Trimmomatic commands")
-        
-        if trimmomatic_commands:
-            update_status('trimming')
-            trimmomatic_output_dir = os.path.join(settings.MEDIA_ROOT, 'output', str(project.session_id), str(project.id), 'trimmomatic')
-            run_trimmomatic(project, trimmomatic_commands, trimmomatic_output_dir)
+        update_status('trimming')
+        trimmomatic_output_dir = os.path.join(settings.MEDIA_ROOT, 'output', str(project.session_id), str(project.id), 'trimmomatic')
+        run_trimmomatic(project, data_txt_paths, trimmomatic_output_dir)
         
         time.sleep(1)
         update_status('completed')

@@ -1,105 +1,63 @@
 import os
 import subprocess
 import logging
+from django.conf import settings
 from rsa.models import Project, ProjectFiles
 
 logger = logging.getLogger(__name__)
 
-def run_trimmomatic(project, trimmomatic_commands, output_dir):
+def check_fastqc_for_trimmomatic(data_txt_paths):
     """
-    Execute Trimmomatic commands for single-end or paired-end sequencing.
-    
+    Parse fastqc_data.txt files to check 'Per base sequence quality' and 'Adapter Content'.
+    Returns True if Trimmomatic should run (FAIL or WARN in either module), False otherwise.
+
     Args:
-        project: Project instance.
-        trimmomatic_commands: List of Trimmomatic command strings.
-        output_dir: Directory for Trimmomatic output.
-    
+        data_txt_paths (list): List of paths to fastqc_data.txt files from FastQC.
+
     Returns:
-        bool: True if trimming was performed, None otherwise.
+        bool: True if Trimmomatic is needed, False if not.
     """
-    if not trimmomatic_commands:
-        logger.info("No Trimmomatic commands to execute")
-        return None
-    
-    os.makedirs(output_dir, exist_ok=True)
-    
-    if project.sequencing_type == 'single':
-        for cmd in trimmomatic_commands:
-            logger.debug(f"Executing Trimmomatic command: {cmd}")
-            try:
-                result = subprocess.run(cmd, shell=True, capture_output=True, text=True, check=True)
-                logger.info(f"Trimmomatic completed for command: {cmd}")
-                
-                output_path = cmd.split()[-3]
-                if os.path.exists(output_path):
-                    ProjectFiles.objects.create(
-                        project=project,
-                        type='trimmomatic_output',
-                        path=output_path,
-                        is_directory=False,
-                        file_format='fastq.gz'
-                    )
-                    logger.info(f"Registered Trimmomatic output: {output_path}")
-                else:
-                    logger.warning(f"Trimmomatic output not found: {output_path}")
-            except subprocess.CalledProcessError as e:
-                logger.error(f"Trimmomatic failed for command {cmd}: {e.stderr}")
-                raise RuntimeError(f"Trimmomatic failed: {e.stderr}")
-    
-    else:  # Paired-end
-        sample_commands = {}
-        for cmd in trimmomatic_commands:
-            input_path = cmd.split()[3]
-            sample_name = os.path.basename(input_path).replace('_R1', '').replace('_R2', '')
-            sample_name = os.path.splitext(sample_name)[0]
-            if sample_name not in sample_commands:
-                sample_commands[sample_name] = []
-            sample_commands[sample_name].append(cmd)
-        
-        for sample_name, cmds in sample_commands.items():
-            if len(cmds) != 2:
-                logger.error(f"Paired-end expects R1 and R2 for {sample_name}, found {len(cmds)} commands")
-                raise RuntimeError(f"Mismatched paired-end files for {sample_name}")
-            
-            r1_cmd = next((c for c in cmds if '_R1' in c), None)
-            r2_cmd = next((c for c in cmds if '_R2' in c), None)
-            if not r1_cmd or not r2_cmd:
-                logger.error(f"Missing R1 or R2 command for {sample_name}")
-                raise RuntimeError(f"Missing paired-end command for {sample_name}")
-            
-            r1_input = r1_cmd.split()[3]
-            r1_output = r1_cmd.split()[4]
-            r2_input = r2_cmd.split()[3]
-            r2_output = r2_cmd.split()[4]
-            unpaired_r1 = os.path.join(output_dir, f"{sample_name}_unpaired_R1.fastq.gz")
-            unpaired_r2 = os.path.join(output_dir, f"{sample_name}_unpaired_R2.fastq.gz")
-            
-            paired_cmd = [
-                'trimmomatic', 'PE', '-phred33', r1_input, r2_input,
-                r1_output, unpaired_r1, r2_output, unpaired_r2,
-                'ILLUMINACLIP:adapters.fa:2:30:10', 'SLIDINGWINDOW:4:20', 'MINLEN:36'
-            ]
-            command_str = ' '.join(paired_cmd)
-            logger.debug(f"Executing paired-end Trimmomatic command: {command_str}")
-            
-            try:
-                result = subprocess.run(command_str, shell=True, capture_output=True, text=True, check=True)
-                logger.info(f"Trimmomatic completed for {sample_name}")
-                
-                for output_path in [r1_output, r2_output, unpaired_r1, unpaired_r2]:
-                    if os.path.exists(output_path):
-                        ProjectFiles.objects.create(
-                            project=project,
-                            type='trimmomatic_output',
-                            path=output_path,
-                            is_directory=False,
-                            file_format='fastq.gz'
-                        )
-                        logger.info(f"Registered Trimmomatic output: {output_path}")
-                    else:
-                        logger.warning(f"Trimmomatic output not found: {output_path}")
-            except subprocess.CalledProcessError as e:
-                logger.error(f"Trimmomatic failed for {sample_name}: {e.stderr}")
-                raise RuntimeError(f"Trimmomatic failed: {e.stderr}")
-    
-    return True
+    modules_to_check = ["Per base sequence quality", "Adapter Content"]
+    run_trimmomatic = False
+
+    for data_txt_path in data_txt_paths:
+        if not os.path.exists(data_txt_path):
+            logger.error(f"fastqc_data.txt not found: {data_txt_path}")
+            raise RuntimeError(f"fastqc_data.txt not found: {data_txt_path}")
+
+        logger.debug(f"Parsing FastQC data file: {data_txt_path}")
+        try:
+            with open(data_txt_path, 'r') as f:
+                lines = f.readlines()
+                current_module = None
+                for line in lines:
+                    line = line.strip()
+                    if line.startswith(">>"):
+                        parts = line.split("\t")
+                        print(parts)
+                        if len(parts) >= 2 and parts[0] == ">>":
+                            module_name = parts[1]
+                            status = parts[2] if len(parts) > 2 else None
+                            if module_name in modules_to_check and status in ["FAIL", "WARN"]:
+                                logger.info(f"{module_name} status: {status} in {data_txt_path}, Trimmomatic required")
+                                run_trimmomatic = True
+                                break  # No need to check further for this file
+                    if line == ">>END_MODULE":
+                        current_module = None
+                if run_trimmomatic:
+                    break  # No need to check other files if one already requires Trimmomatic
+
+        except Exception as e:
+            logger.error(f"Error parsing {data_txt_path}: {str(e)}")
+            raise RuntimeError(f"Failed to parse {data_txt_path}: {str(e)}")
+
+    logger.info(f"Trimmomatic required: {run_trimmomatic}")
+    return run_trimmomatic
+
+def run_trimmomatic(project, data_txt_paths, output_dir):
+
+    if check_fastqc_for_trimmomatic(data_txt_paths) == False:
+        logger.info("Trimmomatic not required based on FastQC results.")
+        return
+    else:
+        logger.info("Trimmomatic required based on FastQC results. Starting Trimmomatic...")
