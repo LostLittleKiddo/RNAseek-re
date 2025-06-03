@@ -27,6 +27,7 @@ class Project(models.Model):
         return f"{self.name} ({self.status})"
 
 class ProjectFiles(models.Model):
+    id = models.AutoField(primary_key=True)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     type = models.CharField(max_length=50)
     path = models.CharField(max_length=500)

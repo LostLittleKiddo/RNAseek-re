@@ -7,16 +7,14 @@ import time
 import logging
 from django.conf import settings
 from .util.fastqc import run_fastqc
-from .util.trimmomatic import run_trimmomatic
+from .util.trimmomatic import run_trimmomatic, get_trimmomatic_file_ids
 import os
 
 logger = logging.getLogger(__name__)
 
+# In tasks.py, modify run_rnaseek_pipeline
 @shared_task
 def run_rnaseek_pipeline(project_id):
-    """
-    Celery task to run the RNAseek pipeline, starting with FastQC and conditionally Trimmomatic.
-    """
     channel_layer = get_channel_layer()
     try:
         project = Project.objects.get(id=project_id)
@@ -57,24 +55,15 @@ def run_rnaseek_pipeline(project_id):
         trimmomatic_output_dir = os.path.join(settings.MEDIA_ROOT, 'output', str(project.session_id), str(project.id), 'trimmomatic')
         run_trimmomatic(project, data_txt_paths, trimmomatic_output_dir, input_files)
         
+        # Get untrimmed and trimmed file IDs
+        file_ids = get_trimmomatic_file_ids(project, input_files, data_txt_paths)
+        logger.info(f"Trimmomatic results: {file_ids}")
+        
         update_status('completed')
         logger.info(f"Project {project.name} completed successfully")
     
-    except Project.DoesNotExist:
-        error_msg = f"Project with ID {project_id} not found"
-        logger.error(error_msg)
-        async_to_sync(channel_layer.group_send)(
-            'project_status',
-            {
-                'type': 'project_status_update',
-                'project_id': str(project_id),
-                'status': 'failed',
-                'project_name': 'Unknown',
-                'error_message': error_msg
-            }
-        )
-        
     except Exception as e:
+        # Existing exception handling remains unchanged
         error_msg = str(e)
         logger.error(f"Error in pipeline for project {project_id}: {error_msg}")
         project.status = 'failed'
