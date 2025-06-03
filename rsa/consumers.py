@@ -25,10 +25,15 @@ class ProjectStatusConsumer(AsyncWebsocketConsumer):
         project_id = event['project_id']
         status = event['status']
         project_name = event.get('project_name', '')
+        error_message = event.get('error_message', '')
 
-        await self.send(text_data=json.dumps({
+        message = {
             'project_id': project_id,
             'status': status,
             'project_name': project_name
-        }))
-        logger.debug(f"Sent status update: project_id={project_id}, status={status}")
+        }
+        if error_message:
+            message['error_message'] = error_message
+
+        await self.send(text_data=json.dumps(message))
+        logger.debug(f"Sent status update: project_id={project_id}, status={status}, error_message={error_message}")
