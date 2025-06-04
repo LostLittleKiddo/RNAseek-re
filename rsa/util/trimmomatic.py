@@ -218,9 +218,11 @@ def run_trimmomatic(project, data_txt_paths, output_dir, input_files):
         input_files: QuerySet of ProjectFiles (input FASTQ files).
     
     Returns:
-        bool: True if Trimmomatic was executed, False if skipped.
+        dict: {'trimmed': [list of trimmed FASTQ paths], 'untrimmed': [list of untrimmed FASTQ paths]}
     """
     os.makedirs(output_dir, exist_ok=True)
+    trimmed_paths = []
+    untrimmed_paths = []
     
     # Check sequencing type
     sequencing_type = getattr(project, 'sequencing_type', 'single').lower()
@@ -236,7 +238,6 @@ def run_trimmomatic(project, data_txt_paths, output_dir, input_files):
             logger.error("No paired-end files found for paired-end project")
             raise RuntimeError("No paired-end files found for paired-end project")
         
-        any_trimming_executed = False
         for forward_path, reverse_path in paired_files:
             # Find corresponding FastQC data files
             forward_base = os.path.splitext(os.path.basename(forward_path))[0]
@@ -262,6 +263,7 @@ def run_trimmomatic(project, data_txt_paths, output_dir, input_files):
                 reverse_results['adapter_content']['status'] == 'pass'):
                 logger.info(f"Skipping Trimmomatic for pair {forward_path}, {reverse_path}: "
                             "Both FastQC metrics pass")
+                untrimmed_paths.extend([forward_path, reverse_path])
                 continue
             
             logger.info(f"Trimmomatic required for pair {forward_path}, {reverse_path}: "
@@ -302,6 +304,7 @@ def run_trimmomatic(project, data_txt_paths, output_dir, input_files):
                             is_directory=False,
                             file_format='fastq'
                         )
+                        trimmed_paths.append(output_path)
                         logger.info(f"Registered Trimmomatic output: {output_path}")
                     else:
                         logger.warning(f"Trimmomatic output not found: {output_path}")
@@ -317,16 +320,16 @@ def run_trimmomatic(project, data_txt_paths, output_dir, input_files):
                             file_format='fastq'
                         )
                         logger.info(f"Registered Trimmomatic unpaired output: {output_path}")
-                any_trimming_executed = True
             
             except subprocess.CalledProcessError as e:
-                logger.error(f"Trimmomatic failed for paired-end files {forward_path} and {reverse_path}: {e.stderr}")
+                logger.error(f"Trimmomatic failed for paired-end files {forward_path}, {reverse_path}: {e.stderr}")
                 raise RuntimeError(f"Trimmomatic failed: {e.stderr}")
         
-        return any_trimming_executed
+        return {'trimmed': trimmed_paths, 'untrimmed': untrimmed_paths}
     else:
         # Single-end processing
-        any_trimming_executed = False
+        trimmed_paths = []
+        untrimmed_paths = []
         for input_file in input_files:
             fastq_path = input_file.path
             if not os.path.exists(fastq_path):
@@ -348,6 +351,7 @@ def run_trimmomatic(project, data_txt_paths, output_dir, input_files):
             if (fastqc_results['per_base_quality']['status'] == 'pass' and
                 fastqc_results['adapter_content']['status'] == 'pass'):
                 logger.info(f"Skipping Trimmomatic for {fastq_path}: Both FastQC metrics pass")
+                untrimmed_paths.append(fastq_path)
                 continue
             
             logger.info(f"Trimmomatic required for {fastq_path}: "
@@ -378,16 +382,16 @@ def run_trimmomatic(project, data_txt_paths, output_dir, input_files):
                         is_directory=False,
                         file_format='fastq'
                     )
+                    trimmed_paths.append(output_fastq)
                     logger.info(f"Registered Trimmomatic output: {output_fastq}")
                 else:
                     logger.warning(f"Trimmomatic output not found: {output_fastq}")
-                any_trimming_executed = True
             
             except subprocess.CalledProcessError as e:
                 logger.error(f"Trimmomatic failed for {fastq_path}: {e.stderr}")
                 raise RuntimeError(f"Trimmomatic failed: {e.stderr}")
     
-    return any_trimming_executed
+        return {'trimmed': trimmed_paths, 'untrimmed': untrimmed_paths}
 
 def get_trimmomatic_file_ids(project, input_files, data_txt_paths):
     """

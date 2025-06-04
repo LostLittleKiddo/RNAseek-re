@@ -1,4 +1,3 @@
-# rsa/tasks.py
 from celery import shared_task
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
@@ -68,10 +67,20 @@ def run_rnaseek_pipeline(project_id):
 
         update_status('trimming')
         trimmomatic_output_dir = os.path.join(settings.MEDIA_ROOT, 'output', str(project.session_id), str(project.id), 'trimmomatic')
-        run_trimmomatic(project, data_txt_paths, trimmomatic_output_dir, input_files)
+        trimmomatic_results = run_trimmomatic(project, data_txt_paths, trimmomatic_output_dir, input_files)
+        logger.info(f"Trimmomatic results: {trimmomatic_results}")
 
-        file_ids = get_trimmomatic_file_ids(project, input_files, data_txt_paths)
-        logger.info(f"Trimmomatic results: {file_ids}")
+        if trimmomatic_results['trimmed']:
+            update_status('post_trimmomatic_check')
+            post_trimmomatic_fastqc_dir = os.path.join(settings.MEDIA_ROOT, 'output', str(project.session_id), str(project.id), 'post_trimmomatic_fastqc')
+            post_trimmomatic_files = ProjectFiles.objects.filter(
+                project=project,
+                path__in=trimmomatic_results['trimmed']
+            )
+            post_trimmomatic_data_txt_paths = run_fastqc(project, post_trimmomatic_files, post_trimmomatic_fastqc_dir)
+            logger.info(f"Post-Trimmomatic FastQC data files generated: {post_trimmomatic_data_txt_paths}")
+        else:
+            logger.info("No trimmed files to run post-Trimmomatic FastQC on")
 
         update_status('completed')
         logger.info(f"Project {project.name} completed successfully")
