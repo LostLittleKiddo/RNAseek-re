@@ -1,3 +1,4 @@
+# rsa/models.py
 from django.db import models
 import uuid
 
@@ -22,7 +23,7 @@ class Project(models.Model):
     pvalue_cutoff = models.FloatField(default=0.05)
     created_at = models.DateTimeField(auto_now_add=True)
     error_message = models.TextField(null=True, blank=True)
-    is_running = models.BooleanField(default=False)  # New field
+    is_running = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.name} ({self.status})"
@@ -34,6 +35,8 @@ class ProjectFiles(models.Model):
     path = models.CharField(max_length=500)
     is_directory = models.BooleanField(default=False)
     file_format = models.CharField(max_length=50)
+    size = models.BigIntegerField(null=True, blank=True)  # New field for file size in bytes
     created_at = models.DateTimeField(auto_now_add=True)
+
     def __str__(self):
         return f"{self.project.name} - {self.type}"

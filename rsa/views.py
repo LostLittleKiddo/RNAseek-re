@@ -99,13 +99,16 @@ def home(request):
                             for chunk in file.chunks():
                                 destination.write(chunk)
 
+                        file_size = os.path.getsize(file_path) if os.path.isfile(file_path) else None
                         ProjectFiles.objects.create(
                             project=project,
                             type='input_fastq',
                             path=file_path,
                             is_directory=False,
-                            file_format=file_format
+                            file_format=file_format,
+                            size=file_size
                         )
+                        logger.info(f"Registered input FASTQ file: {file_path} with size {file_size} bytes")
 
                     deseq_dir = os.path.join(settings.MEDIA_ROOT, 'deseq', str(session_id), str(project.id))
                     os.makedirs(deseq_dir, exist_ok=True)
@@ -119,6 +122,17 @@ def home(request):
                             condition = deseq_form.cleaned_data['condition1'] if condition_field == 'condition1' else deseq_form.cleaned_data['condition2']
                             writer.writerow([sample_name, condition])
                             logger.debug(f"Metadata entry: sample={sample_name}, condition={condition}")
+
+                    file_size = os.path.getsize(metadata_path) if os.path.isfile(metadata_path) else None
+                    ProjectFiles.objects.create(
+                        project=project,
+                        type='deseq_metadata',
+                        path=metadata_path,
+                        is_directory=False,
+                        file_format='csv',
+                        size=file_size
+                    )
+                    logger.info(f"Registered DESeq2 metadata file: {metadata_path} with size {file_size} bytes")
 
                     run_rnaseek_pipeline.delay(project.id)
                     logger.info(f"Triggered Celery task for project {project.name} (ID: {project.id})")
@@ -239,13 +253,16 @@ def example_analysis(request):
             shutil.copy2(source_path, dest_path)
             logger.debug(f"Copied {file_name} to {dest_path}")
 
+            file_size = os.path.getsize(dest_path) if os.path.isfile(dest_path) else None
             ProjectFiles.objects.create(
                 project=project,
                 type='input_fastq',
                 path=dest_path,
                 is_directory=False,
-                file_format='fastq.gz'
+                file_format='fastq.gz',
+                size=file_size
             )
+            logger.info(f"Registered input FASTQ file: {dest_path} with size {file_size} bytes")
 
         # Create DESeq2 metadata
         deseq_dir = os.path.join(settings.MEDIA_ROOT, 'deseq', str(session_id), str(project.id))
@@ -257,6 +274,17 @@ def example_analysis(request):
             writer.writerow(['sample1', deseq_data['condition1']])
             writer.writerow(['sample2', deseq_data['condition2']])
             logger.debug(f"Created metadata CSV at {metadata_path}")
+
+            file_size = os.path.getsize(metadata_path) if os.path.isfile(metadata_path) else None
+            ProjectFiles.objects.create(
+                project=project,
+                type='deseq_metadata',
+                path=metadata_path,
+                is_directory=False,
+                file_format='csv',
+                size=file_size
+            )
+            logger.info(f"Registered DESeq2 metadata file: {metadata_path} with size {file_size} bytes")
 
         # Trigger Celery task
         run_rnaseek_pipeline.delay(project.id)

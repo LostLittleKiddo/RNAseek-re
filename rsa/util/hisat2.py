@@ -68,6 +68,7 @@ def run_hisat2(project, input_files, output_dir, data_txt_paths):
             try:
                 result = subprocess.run(cmd, capture_output=True, text=True, check=True)
                 logger.info(f"HISAT2 completed for pair {forward_path}, {reverse_path}: {output_sam}")
+                file_size = os.path.getsize(output_sam) if os.path.isfile(output_sam) else None
                 sam_files.append(output_sam)
                 
                 ProjectFiles.objects.create(
@@ -75,9 +76,10 @@ def run_hisat2(project, input_files, output_dir, data_txt_paths):
                     type='hisat2_sam',
                     path=output_sam,
                     is_directory=False,
-                    file_format='sam'
+                    file_format='sam',
+                    size=file_size
                 )
-                logger.info(f"Registered HISAT2 output: {output_sam}")
+                logger.info(f"Registered HISAT2 output: {output_sam} with size {file_size} bytes")
             
             except subprocess.CalledProcessError as e:
                 logger.error(f"HISAT2 failed for pair {forward_path}, {reverse_path}: {e.stderr}")
@@ -99,6 +101,7 @@ def run_hisat2(project, input_files, output_dir, data_txt_paths):
             try:
                 result = subprocess.run(cmd, capture_output=True, text=True, check=True)
                 logger.info(f"HISAT2 completed for {fastq_path}: {output_sam}")
+                file_size = os.path.getsize(output_sam) if os.path.isfile(output_sam) else None
                 sam_files.append(output_sam)
                 
                 ProjectFiles.objects.create(
@@ -106,9 +109,10 @@ def run_hisat2(project, input_files, output_dir, data_txt_paths):
                     type='hisat2_sam',
                     path=output_sam,
                     is_directory=False,
-                    file_format='sam'
+                    file_format='sam',
+                    size=file_size
                 )
-                logger.info(f"Registered HISAT2 output: {output_sam}")
+                logger.info(f"Registered HISAT2 output: {output_sam} with size {file_size} bytes")
             
             except subprocess.CalledProcessError as e:
                 logger.error(f"HISAT2 failed for {fastq_path}: {e.stderr}")

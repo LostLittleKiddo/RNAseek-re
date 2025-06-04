@@ -15,7 +15,6 @@
             </a>
         </div>
 
-
         <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Analysis: {{ project.name }}</h2>
         <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-8 mb-6">
             <h3 class="text-lg font-semibold text-gray-800 mb-4">Analysis Details</h3>
@@ -64,6 +63,7 @@
                             <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">File Name</th>
                             <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">Type</th>
                             <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">Format</th>
+                            <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">Size</th>
                             <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">Created At</th>
                             <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">Action</th>
                         </tr>
@@ -74,6 +74,13 @@
                                 <td class="px-4 py-3 text-sm text-gray-700">{{ file.path|basename }}</td>
                                 <td class="px-4 py-3 text-sm text-gray-700">{{ file.type }}</td>
                                 <td class="px-4 py-3 text-sm text-gray-700">{{ file.file_format }}</td>
+                                <td class="px-4 py-3 text-sm text-gray-700">
+                                    {% if not file.is_directory %}
+                                        {{ file.size|filesizeformat }}
+                                    {% else %}
+                                        <span class="text-gray-500">N/A</span>
+                                    {% endif %}
+                                </td>
                                 <td class="px-4 py-3 text-sm text-gray-700">{{ file.created_at|date:"Y-m-d H:i:s" }}</td>
                                 <td class="px-4 py-3 text-sm">
                                     {% if not file.is_directory %}

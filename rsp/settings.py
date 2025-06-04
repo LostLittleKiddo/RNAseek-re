@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rsa',
-    'channels',  # Add Channels
+    'channels',
 ]
 
 # ASGI application for Channels

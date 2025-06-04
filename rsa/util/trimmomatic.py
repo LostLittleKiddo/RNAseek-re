@@ -114,7 +114,7 @@ def generate_trimmomatic_params(project, data_txt_paths, input_file_path, paired
     
     Args:
         project: Project instance.
-        data_txt_paths: List of paths to FastQC data files (one per FASTQ file).
+        data_txt_paths: List of paths to FastQC data files.
         input_file_path: Path to the input FASTQ file (single-end) or forward read (paired-end).
         paired_file_path: Path to the reverse read FASTQ file (paired-end, optional).
         quality_threshold: Base quality score for trimming (default: 20).
@@ -142,10 +142,10 @@ def generate_trimmomatic_params(project, data_txt_paths, input_file_path, paired
     
     if paired_file_path:
         # Paired-end mode
-        forward_paired = f"{base_name}_tpaired_R1.fastq"
-        forward_unpaired = f"{base_name}_tunpaired_R1.fastq"
-        reverse_paired = f"{base_name.replace('_R1', '_R2')}_tpaired_R2.fastq"
-        reverse_unpaired = f"{base_name.replace('_R1', '_R2')}_tunpaired_R2.fastq"
+        forward_paired = f"{base_name}_tpaired.fastq"
+        forward_unpaired = f"{base_name}_tunpaired.fastq"
+        reverse_paired = f"{base_name.replace('_R1', '_R2')}_tpaired.fastq"
+        reverse_unpaired = f"{base_name.replace('_R1', '_R2')}_tunpaired.fastq"
         output_files = (forward_paired, forward_unpaired, reverse_paired, reverse_unpaired)
         input_files = (input_file_path, paired_file_path)
     else:
@@ -297,29 +297,33 @@ def run_trimmomatic(project, data_txt_paths, output_dir, input_files):
                     (output_reverse_paired, 'trimmomatic_fastq_paired')
                 ]:
                     if os.path.exists(output_path):
+                        file_size = os.path.getsize(output_path) if os.path.isfile(output_path) else None
                         ProjectFiles.objects.create(
                             project=project,
                             type=file_type,
                             path=output_path,
                             is_directory=False,
-                            file_format='fastq'
+                            file_format='fastq',
+                            size=file_size
                         )
                         trimmed_paths.append(output_path)
-                        logger.info(f"Registered Trimmomatic output: {output_path}")
+                        logger.info(f"Registered Trimmomatic output: {output_path} with size {file_size} bytes")
                     else:
                         logger.warning(f"Trimmomatic output not found: {output_path}")
                 
                 # Optionally register unpaired files
                 for output_path in [output_forward_unpaired, output_reverse_unpaired]:
                     if os.path.exists(output_path):
+                        file_size = os.path.getsize(output_path) if os.path.isfile(output_path) else None
                         ProjectFiles.objects.create(
                             project=project,
                             type='trimmomatic_fastq_unpaired',
                             path=output_path,
                             is_directory=False,
-                            file_format='fastq'
+                            file_format='fastq',
+                            size=file_size
                         )
-                        logger.info(f"Registered Trimmomatic unpaired output: {output_path}")
+                        logger.info(f"Registered Trimmomatic unpaired output: {output_path} with size {file_size} bytes")
             
             except subprocess.CalledProcessError as e:
                 logger.error(f"Trimmomatic failed for paired-end files {forward_path}, {reverse_path}: {e.stderr}")
@@ -375,15 +379,17 @@ def run_trimmomatic(project, data_txt_paths, output_dir, input_files):
                 
                 # Register output file
                 if os.path.exists(output_fastq):
+                    file_size = os.path.getsize(output_fastq) if os.path.isfile(output_fastq) else None
                     ProjectFiles.objects.create(
                         project=project,
                         type='trimmomatic_fastq',
                         path=output_fastq,
                         is_directory=False,
-                        file_format='fastq'
+                        file_format='fastq',
+                        size=file_size
                     )
                     trimmed_paths.append(output_fastq)
-                    logger.info(f"Registered Trimmomatic output: {output_fastq}")
+                    logger.info(f"Registered Trimmomatic output: {output_fastq} with size {file_size} bytes")
                 else:
                     logger.warning(f"Trimmomatic output not found: {output_fastq}")
             

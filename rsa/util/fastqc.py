@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 
 def run_fastqc(project, input_files, output_dir):
     """
-    Run FastQC on input FASTQ files and register outputs.
+    Run FastQC on input FASTQ files and register outputs with file sizes.
     
     Args:
         project: Project instance.
@@ -43,14 +43,16 @@ def run_fastqc(project, input_files, output_dir):
             
             for output_path in [html_output, zip_output, data_txt]:
                 if os.path.exists(output_path):
+                    file_size = os.path.getsize(output_path) if os.path.isfile(output_path) else None
                     ProjectFiles.objects.create(
                         project=project,
                         type='fastqc_output',
                         path=output_path,
                         is_directory=False,
-                        file_format=output_path.split('.')[-1]
+                        file_format=output_path.split('.')[-1],
+                        size=file_size
                     )
-                    logger.info(f"Registered FastQC output: {output_path}")
+                    logger.info(f"Registered FastQC output: {output_path} with size {file_size} bytes")
                     if output_path.endswith("fastqc_data.txt"):
                         data_txt_paths.append(output_path)
                 else:

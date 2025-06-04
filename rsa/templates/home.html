@@ -259,6 +259,14 @@
                 const maxSize = 70 * 1024 * 1024 * 1024;
                 let errors = [];
 
+                if (!sequencingType) {
+                    errors.push('Please select a sequencing type.');
+                    errorMessages.innerHTML = errors.map(error => `
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded-lg mb-2">${error}</div>
+                    `).join('');
+                    return false;
+                }
+
                 if (sequencingType === 'single' && files.length < 2) {
                     errors.push('For Single-End sequencing, you must upload at least 2 files.');
                 }
@@ -402,6 +410,13 @@
                 submitButton.disabled = !isFormValid;
             }
 
+            // Add event listener for sequencing type changes
+            sequencingTypeInputs.forEach(input => {
+                input.addEventListener('change', () => {
+                    updateFilePreview();
+                });
+            });
+
             exampleButton.addEventListener('click', function () {
                 exampleButton.disabled = true;
                 loadingOverlay.classList.remove('hidden');
@@ -518,6 +533,10 @@
 
             dropZone.addEventListener('click', () => {
                 fileInput.click();
+            });
+
+            [projectNameInput, genomeSelect, pvalueInput].forEach(input => {
+                input.addEventListener('input', validateForm);
             });
 
             validateForm();
