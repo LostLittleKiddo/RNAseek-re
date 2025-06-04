@@ -23,9 +23,25 @@ def run_hisat2(project, input_files, output_dir, data_txt_paths):
     sam_files = []
     
     sequencing_type = project.sequencing_type.lower()
-    index_base = os.path.join(settings.BASE_DIR, 'rsa', 'references', project.species, project.genome_reference)
-    if not os.path.exists(f"{index_base}.1.ht2"):
-        logger.error(f"HISAT2 index not found at {index_base}")
+    # Map species to index prefix
+    species_to_index_prefix = {
+        'human': 'genome',
+        'mouse': 'genome',
+        'yeast': 'yeast_index'
+    }
+    index_prefix = species_to_index_prefix.get(project.species.lower(), 'genome')
+    index_base = os.path.join(settings.BASE_DIR, 'rsa', 'references', 'hisat2', project.species.lower(), f"{index_prefix}")
+    index_file = f"{index_base}.1.ht2"
+    logger.debug(f"Checking for HISAT2 index at: {index_file}")
+    logger.debug(f"BASE_DIR resolved to: {settings.BASE_DIR}")
+    if not os.path.exists(index_file):
+        logger.error(f"HISAT2 index file does not exist at {index_file}")
+        # Additional debug: List files in the directory
+        index_dir = os.path.dirname(index_file)
+        if os.path.exists(index_dir):
+            logger.debug(f"Files in {index_dir}: {os.listdir(index_dir)}")
+        else:
+            logger.error(f"Index directory does not exist: {index_dir}")
         raise RuntimeError(f"HISAT2 index not found: {index_base}")
     
     if sequencing_type == 'paired':
@@ -36,7 +52,10 @@ def run_hisat2(project, input_files, output_dir, data_txt_paths):
             raise RuntimeError("No paired-end files found for paired-end project")
         
         for forward_path, reverse_path in paired_files:
-            base_name = os.path.splitext(os.path.basename(forward_path))[0].replace('_tpaired_R1', '')
+            # Extract base name by removing _R1 or _R2 (case-insensitive) from forward file
+            base_name = os.path.splitext(os.path.basename(forward_path))[0]
+            base_name = base_name.replace('_tpaired_R1', '').replace('_tpaired_r1', '')
+            base_name = base_name.replace('_R1', '').replace('_r1', '')  # Additional removal for _R1/_r1
             output_sam = os.path.join(output_dir, f"{base_name}.sam")
             
             cmd = [
