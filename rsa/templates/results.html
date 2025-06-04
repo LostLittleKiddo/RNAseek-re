@@ -60,20 +60,55 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Establish WebSocket connection
+            // Get session_id from cookie
+            function getCookie(name) {
+                console.log('All cookies:', document.cookie);
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                console.log(`Cookie value for ${name}:`, cookieValue);
+                return cookieValue;
+            }
+
+            // Use server-provided session_id as fallback
+            const sessionId = getCookie('session_id') || '{{ session_id|escapejs }}';
+            if (!sessionId) {
+                console.error('No session_id found in cookies or template');
+                return;
+            }
+            console.log('Using sessionId:', sessionId);
+
+            // Establish WebSocket connection with session_id
             const wsProtocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
-            const wsUrl = `${wsProtocol}://${window.location.host}/ws/projects/`;
+            const wsUrl = `${wsProtocol}://${window.location.host}/ws/projects/${sessionId}/`;
+            console.log('Attempting WebSocket connection to:', wsUrl);
             const socket = new WebSocket(wsUrl);
 
             socket.onopen = function () {
-                console.log('WebSocket connected');
+                console.log('WebSocket connected for session:', sessionId);
             };
 
             socket.onmessage = function (event) {
+                console.log('Received WebSocket message:', event.data);
                 const data = JSON.parse(event.data);
                 const projectId = data.project_id;
                 const status = data.status;
                 const projectName = data.project_name;
+                const session_id = data.session_id;
+
+                // Verify session_id matches
+                if (session_id !== sessionId) {
+                    console.log('Ignoring update for different session:', session_id, 'Expected:', sessionId);
+                    return;
+                }
 
                 // Find the row for the project
                 const row = document.querySelector(`tr[data-project-id="${projectId}"]`);
@@ -100,7 +135,8 @@
                         }
                     }
                 } else {
-                    // Optionally add a new row if the project is new
+                    // Add new row only if it belongs to this session
+                    console.log('Adding new project row for:', projectName, 'ID:', projectId);
                     const tbody = document.getElementById('projects-table-body');
                     const newRow = document.createElement('tr');
                     newRow.setAttribute('data-project-id', projectId);
@@ -120,13 +156,13 @@
                                 'bg-red-100 text-red-800'
                             }">${status.charAt(0).toUpperCase() + status.slice(1)}</span>
                         </td>
-                        <td class="px-4 py-3 text-sm text-gray-700">Unknown</td>
-                        <td class="px-4 py-3 text-sm text-gray-700">Unknown</td>
-                        <td class="px-4 py-3 text-sm text-gray-700">Unknown</td>
-                        <td class="px-4 py-3 text-sm text-gray-700">Unknown</td>
-                        <td class="px-4 py-3 text-sm text-gray-700">Unknown</td>
+                        <td class="px-4 py-3 text-sm text-gray-700">${data.species || 'Unknown'}</td>
+                        <td class="px-4 py-3 text-sm text-gray-700">${data.genome_reference || 'Unknown'}</td>
+                        <td class="px-4 py-3 text-sm text-gray-700">${data.pipeline_version || 'Unknown'}</td>
+                        <td class="px-4 py-3 text-sm text-gray-700">${data.sequencing_type || 'Unknown'}</td>
+                        <td class="px-4 py-3 text-sm text-gray-700">${data.pvalue_cutoff || 'Unknown'}</td>
                         <td class="px-4 py-3 text-sm text-gray-700">${new Date().toISOString().slice(0, 19).replace('T', ' ')}</td>
-                        <td class="px-4 py-3 text-sm text-gray-700">None</td>
+                        <td class="px-4 py-3 text-sm text-gray-700">${data.error_message || 'None'}</td>
                     `;
                     tbody.appendChild(newRow);
                 }

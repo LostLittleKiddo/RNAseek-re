@@ -461,5 +461,4 @@ def get_trimmomatic_file_ids(project, input_files, data_txt_paths):
         type__in=['trimmomatic_fastq', 'trimmomatic_fastq_paired']
     ).values_list('id', flat=True))
     
-    logger.info(f"Untrimmed file IDs: {untrimmed_ids}, Trimmed file IDs: {trimmed_ids}")
     return {'untrimmed': untrimmed_ids, 'trimmed': trimmed_ids}

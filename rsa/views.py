@@ -213,6 +213,10 @@ def example_analysis(request):
                 logger.error(f"Sample file not found: {source_path}")
                 return JsonResponse({'error': f"Sample file {file_name} not found"}, status=400)
 
+        if Project.objects.filter(user=user, name=form.cleaned_data['project_name'], is_running=True).exists():
+            logger.warning(f"Project {form.cleaned_data['project_name']} is already running")
+            return JsonResponse({'error': 'Project is already running'}, status=400)
+        
         # Create project
         project = Project.objects.create(
             user=user,
@@ -269,14 +273,20 @@ def example_analysis(request):
 
 def results(request):
     session_id = request.COOKIES.get('session_id')
+    logger.debug(f"Results view: session_id from cookie: {session_id}")
     if not session_id:
+        logger.error("No session_id in cookies for results view")
         messages.error(request, "Session expired. Please start a new session.")
         return redirect('home')
 
     try:
         user = User.objects.get(session_id=session_id)
         projects = Project.objects.filter(user=user).order_by('-created_at')
-        response = render(request, 'results.html', {'projects': projects})
+        logger.debug(f"Results view: Found user {user.username} with {projects.count()} projects")
+        response = render(request, 'results.html', {
+            'projects': projects,
+            'session_id': session_id  # Pass session_id to template
+        })
         
         # Add cache-control headers to prevent caching
         response['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
@@ -285,6 +295,7 @@ def results(request):
         
         return response
     except User.DoesNotExist:
+        logger.error("Invalid session_id for results view: {session_id}")
         messages.error(request, "Invalid session. Please start a new session.")
         return redirect('home')
     

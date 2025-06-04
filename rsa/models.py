@@ -20,9 +20,10 @@ class Project(models.Model):
     pipeline_version = models.CharField(max_length=20)
     sequencing_type = models.CharField(max_length=20)
     pvalue_cutoff = models.FloatField(default=0.05)
-    created_at = models.DateTimeField(auto_now_add=True, )
+    created_at = models.DateTimeField(auto_now_add=True)
     error_message = models.TextField(null=True, blank=True)
-    
+    is_running = models.BooleanField(default=False)  # New field
+
     def __str__(self):
         return f"{self.name} ({self.status})"
 
