@@ -29,21 +29,15 @@
                                 <td class="px-4 py-3 text-sm text-gray-700">{{ project.name }}</td>
                                 <td class="px-4 py-3 text-sm text-gray-700">
                                     <span class="status-badge inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
-                                        {% if project.status == 'completed' %}
-                                            bg-green-100 text-green-800
-                                        {% elif project.status == 'processing' %}
-                                            bg-yellow-100 text-yellow-800
-                                        {% elif project.status == 'pending' %}
-                                            bg-blue-100 text-blue-800
-                                        {% elif project.status == 'trimming' %}
-                                            bg-purple-100 text-purple-800
-                                        {% elif project.status == 'post_trimmomatic_check' %}
-                                            bg-cyan-100 text-cyan-800
-                                        {% elif project.status == 'aligning' %}
-                                            bg-orange-100 text-orange-800
-                                        {% else %}
-                                            bg-red-100 text-red-800
-                                        {% endif %}">
+                                        {% if project.status == 'completed' %}bg-green-100 text-green-800
+                                        {% elif project.status == 'processing' %}bg-yellow-100 text-yellow-800
+                                        {% elif project.status == 'pending' %}bg-blue-100 text-blue-800
+                                        {% elif project.status == 'trimming' %}bg-purple-100 text-purple-800
+                                        {% elif project.status == 'post_trimmomatic_check' %}bg-cyan-100 text-cyan-800
+                                        {% elif project.status == 'aligning' %}bg-orange-100 text-orange-800
+                                        {% elif project.status == 'converting_sam_to_bam' %}bg-teal-100 text-teal-800
+                                        {% elif project.status == 'quantifying_reads' %}bg-indigo-100 text-indigo-800
+                                        {% else %}bg-red-100 text-red-800{% endif %}">
                                         {{ project.status|capfirst }}
                                     </span>
                                 </td>
@@ -81,7 +75,7 @@
                 }).replace(',', '');
             });
 
-            // Existing WebSocket code...
+            // WebSocket code for dynamic updates
             function getCookie(name) {
                 console.log('All cookies:', document.cookie);
                 let cookieValue = null;
@@ -140,6 +134,8 @@
                             status === 'trimming' ? 'bg-purple-100 text-purple-800' :
                             status === 'post_trimmomatic_check' ? 'bg-cyan-100 text-cyan-800' :
                             status === 'aligning' ? 'bg-orange-100 text-orange-800' :
+                            status === 'converting_sam_to_bam' ? 'bg-teal-100 text-teal-800' :
+                            status === 'quantifying_reads' ? 'bg-indigo-100 text-indigo-800' :
                             'bg-red-100 text-red-800'
                         }`;
                         if (status === 'completed') {
@@ -182,6 +178,8 @@
                                 status === 'trimming' ? 'bg-purple-100 text-purple-800' :
                                 status === 'post_trimmomatic_check' ? 'bg-cyan-100 text-cyan-800' :
                                 status === 'aligning' ? 'bg-orange-100 text-orange-800' :
+                                status === 'converting_sam_to_bam' ? 'bg-teal-100 text-teal-800' :
+                                status === 'quantifying_reads' ? 'bg-indigo-100 text-indigo-800' :
                                 'bg-red-100 text-red-800'
                             }">${status.charAt(0).toUpperCase() + status.slice(1)}</span>
                         </td>

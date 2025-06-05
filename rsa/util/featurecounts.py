@@ -4,6 +4,7 @@ import subprocess
 import logging
 from django.conf import settings
 from rsa.models import Project, ProjectFiles
+import re
 
 logger = logging.getLogger(__name__)
 
@@ -55,6 +56,7 @@ def run_featurecounts(project, input_files, output_dir):
         raise RuntimeError("No BAM files found for FeatureCounts")
 
     # Build FeatureCounts command
+        # Build FeatureCounts command
     cmd = [
         'featureCounts',
         '-a', gtf_path,  # Annotation file
@@ -77,6 +79,25 @@ def run_featurecounts(project, input_files, output_dir):
         result = subprocess.run(cmd, capture_output=True, text=True, check=True)
         logger.info(f"FeatureCounts completed: {counts_file}")
         
+        # Post-process counts.txt to replace full paths with file names in header
+                # Post-process counts.txt to replace full paths with file names in header
+        if os.path.exists(counts_file):
+            with open(counts_file, 'r') as f:
+                lines = f.readlines()
+            if lines:
+                header = lines[1].strip().split('\t')  # Second line is the header
+                for i, col in enumerate(header):
+                    if i > 0:  # Skip first column (Geneid)
+                        filename = os.path.basename(col)
+                        # Remove .fastq and everything after it
+                        filename = re.sub(r'\.fastq.*$', '', filename)
+                        header[i] = filename
+                lines[1] = '\t'.join(header) + '\n'
+                with open(counts_file, 'w') as f:
+                    f.writelines(lines)
+                logger.info(f"Post-processed counts.txt to use file names in header")
+
+
         # Register counts.txt file
         if os.path.exists(counts_file):
             file_size = os.path.getsize(counts_file) if os.path.isfile(counts_file) else None
@@ -89,23 +110,6 @@ def run_featurecounts(project, input_files, output_dir):
                 size=file_size
             )
             logger.info(f"Registered FeatureCounts output: {counts_file} with size {file_size} bytes")
-        else:
-            logger.error(f"FeatureCounts output not found: {counts_file}")
-            raise RuntimeError(f"FeatureCounts output not found: {counts_file}")
-
-        # Register summary file (featureCounts generates a .summary file)
-        summary_file = f"{counts_file}.summary"
-        if os.path.exists(summary_file):
-            file_size = os.path.getsize(summary_file) if os.path.isfile(summary_file) else None
-            ProjectFiles.objects.create(
-                project=project,
-                type='featurecounts_summary',
-                path=summary_file,
-                is_directory=False,
-                file_format='txt',
-                size=file_size
-            )
-            logger.info(f"Registered FeatureCounts summary: {summary_file} with size {file_size} bytes")
 
         return [counts_file]
     
