@@ -34,7 +34,7 @@ def run_featurecounts(project, input_files, output_dir):
         raise RuntimeError(f"No GTF annotation file defined for species: {project.species}")
 
     # Use the provided annotation directory
-    gtf_path = os.path.join(settings.BASE_DIR, 'rsa', 'util', 'annotation', gtf_file)
+    gtf_path = os.path.join(settings.BASE_DIR, 'rsa', 'references', 'featurecounts', gtf_file)
     logger.debug(f"Checking for GTF annotation at: {gtf_path}")
     if not os.path.exists(gtf_path):
         logger.error(f"GTF annotation file not found: {gtf_path}")

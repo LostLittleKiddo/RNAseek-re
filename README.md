@@ -1,4 +1,4 @@
-cd rsa/util/annotation
+cd rsa/references/hisat2/featurecounts/
 
 wget ftp://ftp.ensembl.org/pub/release-112/fungi/gtf/saccharomyces_cerevisiae/Saccharomyces_cerevisiae.R64-1-1.112.gtf.gz
 gunzip Saccharomyces_cerevisiae.R64-1-1.112.gtf.gz
