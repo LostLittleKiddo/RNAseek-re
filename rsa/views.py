@@ -80,7 +80,7 @@ def home(request):
                         genome_reference={
                             'yeast': 'Saccharomyces cerevisiae (R64-1-1)',
                             'human': 'Homo sapiens (GRCh38)',
-                            'mouse': 'Mus musculus (GRCm38)'
+                            'mouse': 'Mus musculus (GRCm39)'
                         }.get(form.cleaned_data['genome_of_interest'], 'Unknown'),
                         pipeline_version='1.0.0',
                         sequencing_type=form.cleaned_data['sequencing_type'],

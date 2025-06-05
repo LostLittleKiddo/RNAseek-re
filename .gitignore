@@ -89,3 +89,4 @@ secrets.json
 query_database.py
 database_results.txt
 
+rsa/util/annotation/

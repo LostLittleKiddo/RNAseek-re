@@ -141,12 +141,10 @@ def generate_trimmomatic_params(project, data_txt_paths, input_file_path, paired
         base_name = os.path.splitext(base_name)[0]
     
     if paired_file_path:
-        # Paired-end mode
+        # Paired-end mode (only paired outputs)
         forward_paired = f"{base_name}_tpaired.fastq"
-        forward_unpaired = f"{base_name}_tunpaired.fastq"
         reverse_paired = f"{base_name.replace('_R1', '_R2')}_tpaired.fastq"
-        reverse_unpaired = f"{base_name.replace('_R1', '_R2')}_tunpaired.fastq"
-        output_files = (forward_paired, forward_unpaired, reverse_paired, reverse_unpaired)
+        output_files = (forward_paired, reverse_paired)
         input_files = (input_file_path, paired_file_path)
     else:
         # Single-end mode
@@ -274,15 +272,13 @@ def run_trimmomatic(project, data_txt_paths, output_dir, input_files):
 
             cmd_params, input_files, output_files = generate_trimmomatic_params(project, data_txt_paths, forward_path, reverse_path)
             output_forward_paired = os.path.join(output_dir, output_files[0])
-            output_forward_unpaired = os.path.join(output_dir, output_files[1])
-            output_reverse_paired = os.path.join(output_dir, output_files[2])
-            output_reverse_unpaired = os.path.join(output_dir, output_files[3])
+            output_reverse_paired = os.path.join(output_dir, output_files[1])
             
             trimmomatic_cmd = [
                 'trimmomatic', 'PE', '-phred33',
                 input_files[0], input_files[1],
-                output_forward_paired, output_forward_unpaired,
-                output_reverse_paired, output_reverse_unpaired
+                output_forward_paired, '/dev/null',  # Discard forward unpaired output
+                output_reverse_paired, '/dev/null'   # Discard reverse unpaired output
             ] + cmd_params
             
             logger.debug(f"Trimmomatic command: {' '.join(trimmomatic_cmd)}")
@@ -310,20 +306,6 @@ def run_trimmomatic(project, data_txt_paths, output_dir, input_files):
                         logger.info(f"Registered Trimmomatic output: {output_path} with size {file_size} bytes")
                     else:
                         logger.warning(f"Trimmomatic output not found: {output_path}")
-                
-                # Optionally register unpaired files
-                for output_path in [output_forward_unpaired, output_reverse_unpaired]:
-                    if os.path.exists(output_path):
-                        file_size = os.path.getsize(output_path) if os.path.isfile(output_path) else None
-                        ProjectFiles.objects.create(
-                            project=project,
-                            type='trimmomatic_fastq_unpaired',
-                            path=output_path,
-                            is_directory=False,
-                            file_format='fastq',
-                            size=file_size
-                        )
-                        logger.info(f"Registered Trimmomatic unpaired output: {output_path} with size {file_size} bytes")
             
             except subprocess.CalledProcessError as e:
                 logger.error(f"Trimmomatic failed for paired-end files {forward_path}, {reverse_path}: {e.stderr}")

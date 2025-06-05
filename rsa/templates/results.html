@@ -52,7 +52,7 @@
                                 <td class="px-4 py-3 text-sm text-gray-700">{{ project.pipeline_version }}</td>
                                 <td class="px-4 py-3 text-sm text-gray-700">{{ project.sequencing_type }}</td>
                                 <td class="px-4 py-3 text-sm text-gray-700">{{ project.pvalue_cutoff }}</td>
-                                <td class="px-4 py-3 text-sm text-gray-700">{{ project.created_at|date:"Y-m-d H:i:s" }}</td>
+                                <td class="px-4 py-3 text-sm text-gray-700" data-utc-time="{{ project.created_at|date:'c' }}">{{ project.created_at|date:"Y-m-d H:i:s" }}</td>
                                 <td class="px-4 py-3 text-sm text-gray-700">{{ project.error_message|default:"None" }}</td>
                             </tr>
                         {% endfor %}
@@ -66,7 +66,22 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Get session_id from cookie
+            // Convert UTC times to local timezone
+            document.querySelectorAll('[data-utc-time]').forEach(function (element) {
+                const utcTime = element.getAttribute('data-utc-time');
+                const date = new Date(utcTime);
+                element.textContent = date.toLocaleString('en-US', {
+                    year: 'numeric',
+                    month: 'numeric',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false
+                }).replace(',', '');
+            });
+
+            // Existing WebSocket code...
             function getCookie(name) {
                 console.log('All cookies:', document.cookie);
                 let cookieValue = null;
@@ -84,7 +99,6 @@
                 return cookieValue;
             }
 
-            // Use server-provided session_id as fallback
             const sessionId = getCookie('session_id') || '{{ session_id|escapejs }}';
             if (!sessionId) {
                 console.error('No session_id found in cookies or template');
@@ -92,7 +106,6 @@
             }
             console.log('Using sessionId:', sessionId);
 
-            // Establish WebSocket connection with session_id
             const wsProtocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
             const wsUrl = `${wsProtocol}://${window.location.host}/ws/projects/${sessionId}/`;
             console.log('Attempting WebSocket connection to:', wsUrl);
@@ -110,18 +123,15 @@
                 const projectName = data.project_name;
                 const session_id = data.session_id;
 
-                // Verify session_id matches
                 if (session_id !== sessionId) {
                     console.log('Ignoring update for different session:', session_id, 'Expected:', sessionId);
                     return;
                 }
 
-                // Find the row for the project
                 const row = document.querySelector(`tr[data-project-id="${projectId}"]`);
                 if (row) {
                     const statusCell = row.querySelector('.status-badge');
                     if (statusCell) {
-                        // Update status text and classes
                         statusCell.textContent = status.charAt(0).toUpperCase() + status.slice(1);
                         statusCell.className = `status-badge inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                             status === 'completed' ? 'bg-green-100 text-green-800' :
@@ -132,7 +142,6 @@
                             status === 'aligning' ? 'bg-orange-100 text-orange-800' :
                             'bg-red-100 text-red-800'
                         }`;
-                        // Make row clickable if status is completed
                         if (status === 'completed') {
                             row.classList.add('cursor-pointer', 'hover:bg-gray-50');
                             row.onclick = function() {
@@ -144,7 +153,6 @@
                         }
                     }
                 } else {
-                    // Add new row only if it belongs to this session
                     console.log('Adding new project row for:', projectName, 'ID:', projectId);
                     const tbody = document.getElementById('projects-table-body');
                     const newRow = document.createElement('tr');
@@ -155,6 +163,15 @@
                             window.location.href = `/result/${projectId}/`;
                         };
                     }
+                    const createdAt = new Date().toLocaleString('en-US', {
+                        year: 'numeric',
+                        month: 'numeric',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit',
+                        hour12: false
+                    }).replace(',', '');
                     newRow.innerHTML = `
                         <td class="px-4 py-3 text-sm text-gray-700">${projectName}</td>
                         <td class="px-4 py-3 text-sm text-gray-700">
@@ -173,7 +190,7 @@
                         <td class="px-4 py-3 text-sm text-gray-700">${data.pipeline_version || 'Unknown'}</td>
                         <td class="px-4 py-3 text-sm text-gray-700">${data.sequencing_type || 'Unknown'}</td>
                         <td class="px-4 py-3 text-sm text-gray-700">${data.pvalue_cutoff || 'Unknown'}</td>
-                        <td class="px-4 py-3 text-sm text-gray-700">${new Date().toISOString().slice(0, 19).replace('T', ' ')}</td>
+                        <td class="px-4 py-3 text-sm text-gray-700" data-utc-time="${new Date().toISOString()}">${createdAt}</td>
                         <td class="px-4 py-3 text-sm text-gray-700">${data.error_message || 'None'}</td>
                     `;
                     tbody.appendChild(newRow);

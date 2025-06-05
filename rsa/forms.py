@@ -33,7 +33,7 @@ class RNAseekForm(forms.Form):
             ('', 'Select a genome'),
             ('yeast', 'Yeast (Saccharomyces cerevisiae, R64-1-1)'),
             ('human', 'Human (Homo sapiens, GRCh38)'),
-            ('mouse', 'Mouse (Mus musculus, GRCm38)')
+            ('mouse', 'Mouse (Mus musculus, GRCm39)')
         ],
         required=True,
         label="Genome of Interest",

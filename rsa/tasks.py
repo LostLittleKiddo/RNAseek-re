@@ -1,3 +1,4 @@
+# rsa/tasks.py
 from celery import shared_task
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
@@ -8,6 +9,8 @@ from django.conf import settings
 from .util.fastqc import run_fastqc
 from .util.trimmomatic import run_trimmomatic, get_trimmomatic_file_ids
 from .util.hisat2 import run_hisat2
+from .util.samtools import run_samtools
+from .util.featurecounts import run_featurecounts  # New import
 import os
 from django.db import transaction
 from django.core.exceptions import ValidationError
@@ -83,16 +86,29 @@ def run_rnaseek_pipeline(project_id):
         else:
             logger.info("No trimmed files to run post-Trimmomatic FastQC on")
 
-        # HISAT2 Integration (MVP)
+        # HISAT2 Integration
         update_status('aligning')
         hisat2_output_dir = os.path.join(settings.MEDIA_ROOT, 'output', str(project.session_id), str(project.id), 'hisat2')
-        # Combine trimmed and untrimmed file IDs for alignment
         trimmomatic_file_ids = get_trimmomatic_file_ids(project, input_files, data_txt_paths)
         alignment_file_ids = trimmomatic_file_ids['trimmed'] + trimmomatic_file_ids['untrimmed']
         alignment_input_files = ProjectFiles.objects.filter(project=project, id__in=alignment_file_ids)
         logger.info(f"Selected files for HISAT2 alignment: {[f.path for f in alignment_input_files]}")
         sam_files = run_hisat2(project, alignment_input_files, hisat2_output_dir, data_txt_paths)
         logger.info(f"HISAT2 SAM files generated: {sam_files}")
+
+        # SAMtools Integration
+        update_status('converting_sam_to_bam')
+        samtools_output_dir = os.path.join(settings.MEDIA_ROOT, 'output', str(project.session_id), str(project.id), 'samtools')
+        sam_files_queryset = ProjectFiles.objects.filter(project=project, path__in=sam_files)
+        bam_files = run_samtools(project, sam_files_queryset, samtools_output_dir)
+        logger.info(f"SAMtools BAM files generated: {bam_files}")
+
+        # FeatureCounts Integration
+        update_status('quantifying_reads')
+        featurecounts_output_dir = os.path.join(settings.MEDIA_ROOT, 'output', str(project.session_id), str(project.id), 'featurecounts')
+        bam_files_queryset = ProjectFiles.objects.filter(project=project, path__in=bam_files)
+        counts_files = run_featurecounts(project, bam_files_queryset, featurecounts_output_dir)
+        logger.info(f"FeatureCounts files generated: {counts_files}")
 
         update_status('completed')
         logger.info(f"Project {project.name} completed successfully")
@@ -114,7 +130,7 @@ def run_rnaseek_pipeline(project_id):
                 'project_name': project.name,
                 'session_id': project.session_id,
                 'pvalue_cutoff': project.pvalue_cutoff,
-                'species':project.species,
+                'species': project.species,
                 'genome_reference': project.genome_reference,
                 'pipeline_version': project.pipeline_version,
                 'sequencing_type': project.sequencing_type,

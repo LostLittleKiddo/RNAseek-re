@@ -45,7 +45,7 @@
                 </div>
                 <div>
                     <dt class="text-sm font-medium text-gray-600">Created At</dt>
-                    <dd class="text-sm text-gray-700">{{ project.created_at|date:"Y-m-d H:i:s" }}</dd>
+                    <dd class="text-sm text-gray-700" data-utc-time="{{ project.created_at|date:'c' }}">{{ project.created_at|date:"Y-m-d H:i:s" }}</dd>
                 </div>
                 <div>
                     <dt class="text-sm font-medium text-gray-600">Error Message</dt>
@@ -81,7 +81,7 @@
                                         <span class="text-gray-500">N/A</span>
                                     {% endif %}
                                 </td>
-                                <td class="px-4 py-3 text-sm text-gray-700">{{ file.created_at|date:"Y-m-d H:i:s" }}</td>
+                                <td class="px-4 py-3 text-sm text-gray-700" data-utc-time="{{ file.created_at|date:'c' }}">{{ file.created_at|date:"Y-m-d H:i:s" }}</td>
                                 <td class="px-4 py-3 text-sm">
                                     {% if not file.is_directory %}
                                         <a href="{% url 'download_file' file.id %}" class="text-emerald-600 hover:text-emerald-700">Download</a>
@@ -98,4 +98,23 @@
             <p class="text-center text-gray-600">No files associated with this project.</p>
         {% endif %}
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Convert UTC times to local timezone
+            document.querySelectorAll('[data-utc-time]').forEach(function (element) {
+                const utcTime = element.getAttribute('data-utc-time');
+                const date = new Date(utcTime);
+                element.textContent = date.toLocaleString('en-US', {
+                    year: 'numeric',
+                    month: 'numeric',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false
+                }).replace(',', '');
+            });
+        });
+    </script>
 {% endblock %}
