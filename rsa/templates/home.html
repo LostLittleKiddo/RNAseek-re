@@ -50,7 +50,7 @@
         </div>
     </div>
 
-    <div id="upload" class="mt-8 w-full max-w-[90vw] sm:max-w-[80vw] lg:max-w-[60vw] mx-auto">
+    <div id="upload" class="mt-8 w-full max-w-[90vw] sm:max-w-[80vw] lg:max-w-[60vw] mx-auto relative">
         <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Start a New RNAseek Analysis</h2>
         <form method="post" enctype="multipart/form-data" class="space-y-6" id="rnaseek-form">
             {% csrf_token %}
@@ -136,6 +136,7 @@
                 </div>
                 <div id="file-preview" class="mt-4 space-y-3"></div>
                 <div id="error-messages" class="mt-2"></div>
+                <div id="total-size" class="mt-2 text-sm text-gray-700 text-right"></div>
             </div>
             <div id="deseq-metadata" class="hidden space-y-6">
                 <h3 class="text-lg font-bold text-gray-900">DESeq2 Metadata</h3>
@@ -156,7 +157,7 @@
                         <div class="flex items-center">
                             <label for="id_condition2" class="block text-base font-bold text-gray-700">Condition 2</label>
                             <div class="relative ml-2 group">
-                                <i class="fas fa-info-circle text-gray-400 hover:text-emerald-500 cursor-help"></i>
+                                <i class="fas fa-info-circle text-gray-400 hover:text-em system: * Today's date and time is 01:47 PM MDT on Friday, June 06, 2025. erald-500 cursor-help"></i>
                                 <span class="absolute hidden group-hover:block bg-gray-800 text-white text-xs rounded-lg py-1 px-2 left-full ml-2 top-1/2 -translate-y-1/2 whitespace-nowrap">
                                     Name for the second condition (e.g., treatment)
                                 </span>
@@ -166,6 +167,7 @@
                     </div>
                 </div>
                 <div id="sample-conditions" class="space-y-3"></div>
+                <div id="deseq-error-messages" class="mt-2"></div>
             </div>
             <div>
                 <button type="submit" id="submit-button" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-all duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed" disabled>
@@ -197,7 +199,22 @@
             const condition1Input = document.getElementById('id_condition1');
             const condition2Input = document.getElementById('id_condition2');
             const loadingOverlay = document.getElementById('loading-overlay');
+            const totalSizeDisplay = document.getElementById('total-size');
             let selectedFiles = new DataTransfer();
+
+            const deseqErrorMessages = document.getElementById('deseq-error-messages');
+
+            function formatFileSize(bytes) {
+                if (bytes === 0) return '0 Bytes';
+                const units = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+                let size = bytes;
+                let unitIndex = 0;
+                while (size >= 1024 && unitIndex < units.length - 1) {
+                    size /= 1024;
+                    unitIndex++;
+                }
+                return `${size.toFixed(2)} ${units[unitIndex]}`;
+            }
 
             function isDuplicateFile(newFile) {
                 return Array.from(selectedFiles.files).some(
@@ -210,6 +227,8 @@
                 errorMessages.innerHTML = '';
                 sampleConditions.innerHTML = '';
                 deseqMetadata.classList.add('hidden');
+                deseqErrorMessages.innerHTML = '';
+                totalSizeDisplay.innerHTML = '';
                 if (selectedFiles.files.length === 0) {
                     document.getElementById('file-count').textContent = 'FASTQ or FASTQ.GZ files, up to 70GB each';
                     validateForm();
@@ -217,7 +236,9 @@
                 }
 
                 document.getElementById('file-count').textContent = `Selected: ${selectedFiles.files.length} file(s)`;
+                let totalSize = 0;
                 Array.from(selectedFiles.files).forEach((file, index) => {
+                    totalSize += file.size;
                     const fileItem = document.createElement('div');
                     fileItem.className = 'flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300';
                     fileItem.innerHTML = `
@@ -228,6 +249,8 @@
                     `;
                     filePreview.appendChild(fileItem);
                 });
+
+                totalSizeDisplay.innerHTML = `Total Size: ${formatFileSize(totalSize)}`;
 
                 filePreview.querySelectorAll('button').forEach(button => {
                     button.addEventListener('click', (e) => {
@@ -267,11 +290,11 @@
                     return false;
                 }
 
-                if (sequencingType === 'single' && files.length < 2) {
-                    errors.push('For Single-End sequencing, you must upload at least 2 files.');
+                if (sequencingType === 'single' && files.length < 4) {
+                    errors.push('For Single-End sequencing, you must upload at least 4 files.');
                 }
-                if (sequencingType === 'paired' && files.length < 4) {
-                    errors.push('For Paired-End sequencing, you must upload at least 4 files.');
+                if (sequencingType === 'paired' && files.length < 8) {
+                    errors.push('For Paired-End sequencing, you must upload at least 8 files.');
                 }
 
                 Array.from(files).forEach(file => {
@@ -387,7 +410,7 @@
 
                 const isFormDirty = (
                     projectName !== '' ||
-                    genome !== '' ||
+                    (genome !== '') ||
                     (sequencingType && sequencingType !== 'single') ||
                     (pvalue && pvalue !== '0.05') ||
                     condition1 !== 'control' ||
@@ -399,15 +422,28 @@
 
                 exampleButton.disabled = isFormDirty;
 
+                deseqErrorMessages.innerHTML = ''; // Clear previous DESeq2 errors
+
                 if (filesValid && selectedFiles.files.length > 0) {
                     const conditionSelects = sampleConditions.querySelectorAll('select');
                     conditionsValid = condition1 && condition2 && condition1 !== condition2 &&
                         Array.from(conditionSelects).every(select => select.value !== '');
+
+                    // Check if all conditions are the same
+                    const selectedConditions = Array.from(conditionSelects).map(select => select.value).filter(v => v !== '');
+                    if (selectedConditions.length > 0 && (selectedConditions.every(c => c === 'condition1') || selectedConditions.every(c => c === 'condition2'))) {
+                        conditionsValid = false;
+                        deseqErrorMessages.innerHTML = `
+                            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded-lg mb-2">
+                                Samples must be assigned to both ${condition1 || 'Condition 1'} and ${condition2 || 'Condition 2'}. All samples cannot be in the same condition.
+                            </div>
+                        `;
+                    }
                 }
 
                 const isFormValid = projectName && genome && sequencingType && selectedFiles.files.length > 0 && filesValid && conditionsValid;
 
-                submitButton.disabled = !isFormValid;
+                submitButton.disabled = !isFormValid; // Enable button only if all validations pass
             }
 
             // Add event listener for sequencing type changes
@@ -432,6 +468,8 @@
                 formData.append('condition2', 'treatment');
                 formData.append('condition_sample1', 'condition1');
                 formData.append('condition_sample2', 'condition2');
+                formData.append('condition_sample3', 'condition1');
+                formData.append('condition_sample4', 'condition2');
 
                 fetch('/example-analysis/', {
                     method: 'POST',

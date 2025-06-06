@@ -24,6 +24,7 @@ class Project(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     error_message = models.TextField(null=True, blank=True)
     is_running = models.BooleanField(default=False)
+    project_size = models.BigIntegerField(null=True, blank=True)  # Total size of all uploaded files in bytes
 
     def __str__(self):
         return f"{self.name} ({self.status})"
@@ -35,7 +36,7 @@ class ProjectFiles(models.Model):
     path = models.CharField(max_length=500)
     is_directory = models.BooleanField(default=False)
     file_format = models.CharField(max_length=50)
-    size = models.BigIntegerField(null=True, blank=True)  # New field for file size in bytes
+    size = models.BigIntegerField(null=True, blank=True)  # File size in bytes
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

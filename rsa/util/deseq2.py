@@ -2,7 +2,6 @@ import pandas as pd
 import logging
 from pydeseq2.dds import DeseqDataSet
 
-# Configure basic logging
 logging.basicConfig(level=logging.INFO)
 
 def prepare_metadata(meta_data, counts_data):
@@ -23,7 +22,7 @@ counts = pd.read_csv('counts.csv', sep='\t')
 # Set 'Geneid' as the index
 counts = counts.set_index('Geneid')
 
-# Remove unwanted columns
+# Remove unwanted columnsprint(dds.obs)
 columns_to_remove = ['Chr', 'Start', 'End', 'Strand', 'Length']
 counts = counts.drop(columns=columns_to_remove, errors='ignore')
 
@@ -47,12 +46,15 @@ print("Condition column:", metadata['condition'].to_list())
 
 print("Metadata columns:", metadata.columns)
 
+print(f"Counts shape: {counts.shape}")
+print(f"Metadata shape: {metadata.shape}")
+print(f"Unique conditions: {metadata['condition'].unique()}")
+
 dds = DeseqDataSet(
     counts=counts,
     metadata=metadata,
-    design='~1',  # Use intercept-only model to avoid replicate issue
+    design='condition',
 )
 
 dds.deseq2()
 
-print(dds.obs)

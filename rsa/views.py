@@ -90,6 +90,7 @@ def home(request):
                     project_dir = os.path.join(settings.MEDIA_ROOT, 'r_fastq', str(session_id), str(project.id))
                     os.makedirs(project_dir, exist_ok=True)
 
+                    total_size = 0
                     for file in form.cleaned_data['files']:
                         file_extension = os.path.splitext(file.name)[1].lower()
                         file_format = 'fastq.gz' if file_extension == '.gz' else 'fastq'
@@ -99,7 +100,8 @@ def home(request):
                             for chunk in file.chunks():
                                 destination.write(chunk)
 
-                        file_size = os.path.getsize(file_path) if os.path.isfile(file_path) else None
+                        file_size = os.path.getsize(file_path) if os.path.isfile(file_path) else 0
+                        total_size += file_size
                         ProjectFiles.objects.create(
                             project=project,
                             type='input_fastq',
@@ -123,7 +125,8 @@ def home(request):
                             writer.writerow([sample_name, condition])
                             logger.debug(f"Metadata entry: sample={sample_name}, condition={condition}")
 
-                    file_size = os.path.getsize(metadata_path) if os.path.isfile(metadata_path) else None
+                    file_size = os.path.getsize(metadata_path) if os.path.isfile(metadata_path) else 0
+                    total_size += file_size
                     ProjectFiles.objects.create(
                         project=project,
                         type='deseq_metadata',
@@ -133,6 +136,11 @@ def home(request):
                         size=file_size
                     )
                     logger.info(f"Registered DESeq2 metadata file: {metadata_path} with size {file_size} bytes")
+
+                    # Update project_size
+                    project.project_size = total_size
+                    project.save()
+                    logger.info(f"Updated project {project.name} (ID: {project.id}) with total size {total_size} bytes")
 
                     run_rnaseek_pipeline.delay(project.id)
                     logger.info(f"Triggered Celery task for project {project.name} (ID: {project.id})")
@@ -205,12 +213,14 @@ def example_analysis(request):
             'condition2': 'treatment',
             'condition_sample1': 'condition1',
             'condition_sample2': 'condition2',
+            'condition_sample3': 'condition1',
+            'condition_sample4': 'condition2',
         }
 
         # Validate forms
         form = RNAseekForm(project_data)
         # Create mock file objects for DeseqMetadataForm
-        mock_files = [MockFile('sample1.fastq.gz'), MockFile('sample2.fastq.gz')]
+        mock_files = [MockFile('sample1.fastq.gz'), MockFile('sample2.fastq.gz'), MockFile('sample3.fastq.gz'), MockFile('sample4.fastq.gz')]
         deseq_form = DeseqMetadataForm(deseq_data, files=mock_files, sequencing_type='single')
         if not form.is_valid():
             logger.warning(f"RNAseek form validation failed for example analysis: {form.errors}")
@@ -220,7 +230,7 @@ def example_analysis(request):
             return JsonResponse({'error': f"Invalid DESeq2 metadata: {deseq_form.errors.as_json()}"}, status=400)
 
         # Verify sample files exist
-        sample_files = ['sample1.fastq.gz', 'sample2.fastq.gz']
+        sample_files = ['sample1.fastq.gz', 'sample2.fastq.gz', 'sample3.fastq.gz', 'sample4.fastq.gz']
         for file_name in sample_files:
             source_path = os.path.join(settings.STATIC_ROOT, 'example', file_name)
             if not os.path.exists(source_path):
@@ -247,13 +257,15 @@ def example_analysis(request):
         # Copy sample files from static/example to project directory
         project_dir = os.path.join(settings.MEDIA_ROOT, 'r_fastq', str(session_id), str(project.id))
         os.makedirs(project_dir, exist_ok=True)
+        total_size = 0
         for file_name in sample_files:
             source_path = os.path.join(settings.STATIC_ROOT, 'example', file_name)
             dest_path = os.path.join(project_dir, file_name)
             shutil.copy2(source_path, dest_path)
             logger.debug(f"Copied {file_name} to {dest_path}")
 
-            file_size = os.path.getsize(dest_path) if os.path.isfile(dest_path) else None
+            file_size = os.path.getsize(dest_path) if os.path.isfile(dest_path) else 0
+            total_size += file_size
             ProjectFiles.objects.create(
                 project=project,
                 type='input_fastq',
@@ -273,9 +285,12 @@ def example_analysis(request):
             writer.writerow(['sample', 'condition'])
             writer.writerow(['sample1', deseq_data['condition1']])
             writer.writerow(['sample2', deseq_data['condition2']])
+            writer.writerow(['sample3', deseq_data['condition1']])
+            writer.writerow(['sample4', deseq_data['condition2']])
             logger.debug(f"Created metadata CSV at {metadata_path}")
 
-            file_size = os.path.getsize(metadata_path) if os.path.isfile(metadata_path) else None
+            file_size = os.path.getsize(metadata_path) if os.path.isfile(metadata_path) else 0
+            total_size += file_size
             ProjectFiles.objects.create(
                 project=project,
                 type='deseq_metadata',
@@ -285,6 +300,11 @@ def example_analysis(request):
                 size=file_size
             )
             logger.info(f"Registered DESeq2 metadata file: {metadata_path} with size {file_size} bytes")
+
+        # Update project_size
+        project.project_size = total_size
+        project.save()
+        logger.info(f"Updated project {project.name} (ID: {project.id}) with total size {total_size} bytes")
 
         # Trigger Celery task
         run_rnaseek_pipeline.delay(project.id)

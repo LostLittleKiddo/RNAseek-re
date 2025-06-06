@@ -66,7 +66,7 @@ class RNAseekForm(forms.Form):
         })
     )
     files = MultipleFileField(
-        required=False,  # Made optional for example analysis
+        required=False,
         label="Upload Files",
         widget=MultipleFileInput(attrs={
             'multiple': True,
@@ -92,10 +92,10 @@ class RNAseekForm(forms.Form):
         max_size = 70 * 1024 * 1024 * 1024  # 70GB
         sequencing_type = self.cleaned_data.get('sequencing_type')
 
-        if sequencing_type == 'single' and len(files) < 2:
-            raise forms.ValidationError("For Single-End sequencing, you must upload at least 2 files.")
-        if sequencing_type == 'paired' and len(files) < 4:
-            raise forms.ValidationError("For Paired-End sequencing, you must upload at least 4 files.")
+        if sequencing_type == 'single' and len(files) < 4:
+            raise forms.ValidationError("For Single-End sequencing, you must upload at least 4 files.")
+        if sequencing_type == 'paired' and len(files) < 8:
+            raise forms.ValidationError("For Paired-End sequencing, you must upload at least 8 files.")
 
         for file in files:
             ext = file.name.split('.')[-1].lower()
@@ -204,8 +204,15 @@ class DeseqMetadataForm(forms.Form):
             raise forms.ValidationError("Condition 1 and Condition 2 must be different.")
 
         # Ensure all sample conditions are selected
+        condition_selections = []
         for field_name, field in self.fields.items():
             if field_name.startswith('condition_') and not cleaned_data.get(field_name):
                 raise forms.ValidationError(f"Please select a condition for {field.label}.")
+            if field_name.startswith('condition_'):
+                condition_selections.append(cleaned_data.get(field_name))
+
+        # Ensure conditions are not one-sided
+        if condition_selections and (all(c == 'condition1' for c in condition_selections) or all(c == 'condition2' for c in condition_selections)):
+            raise forms.ValidationError("Samples must be assigned to both Condition 1 and Condition 2. All samples cannot be in the same condition.")
 
         return cleaned_data

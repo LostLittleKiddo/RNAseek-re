@@ -4,6 +4,7 @@ import subprocess
 import logging
 from django.conf import settings
 from rsa.models import Project, ProjectFiles
+import re
 
 
 logger = logging.getLogger(__name__)

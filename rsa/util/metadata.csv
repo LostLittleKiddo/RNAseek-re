@@ -1,3 +1,5 @@
 sample,condition
-sample1,control
-sample2,treatment
+1M_SRR9336470_R1_corrupted,control
+1M_SRR9336470_R2_corrupted,treatment
+1M_SRR9336471_R1_corrupted,control
+1M_SRR9336471_R2_corrupted,treatment
