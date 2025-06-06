@@ -11,18 +11,18 @@ logger = logging.getLogger(__name__)
 
 def run_featurecounts(project, input_files, output_dir):
     """
-    Run FeatureCounts to quantify reads from BAM files into a single counts.txt file.
+    Run FeatureCounts to quantify reads from BAM files into a single counts.csv file.
 
     Args:
         project: Project instance (contains species, genome_reference, sequencing_type).
         input_files: QuerySet of ProjectFiles (sorted BAM files from SAMtools).
-        output_dir: Directory for FeatureCounts output (counts.txt).
+        output_dir: Directory for FeatureCounts output (counts.csv).
 
     Returns:
-        list: Path to the generated counts.txt file (single file as a list for consistency).
+        list: Path to the generated counts.csv file (single file as a list for consistency).
     """
     os.makedirs(output_dir, exist_ok=True)
-    counts_file = os.path.join(output_dir, "counts.txt")
+    counts_file = os.path.join(output_dir, "counts.csv")
     
     # Map species to GTF annotation file
     species_to_gtf = {
@@ -57,7 +57,6 @@ def run_featurecounts(project, input_files, output_dir):
         raise RuntimeError("No BAM files found for FeatureCounts")
 
     # Build FeatureCounts command
-        # Build FeatureCounts command
     cmd = [
         'featureCounts',
         '-a', gtf_path,  # Annotation file
@@ -80,12 +79,11 @@ def run_featurecounts(project, input_files, output_dir):
         result = subprocess.run(cmd, capture_output=True, text=True, check=True)
         logger.info(f"FeatureCounts completed: {counts_file}")
         
-        # Post-process counts.txt to replace full paths with file names in header
-                # Post-process counts.txt to replace full paths with file names in header
+        # Post-process counts.csv to remove first row and use second row as header
         if os.path.exists(counts_file):
             with open(counts_file, 'r') as f:
                 lines = f.readlines()
-            if lines:
+            if len(lines) > 1:  # Ensure there are at least two lines
                 header = lines[1].strip().split('\t')  # Second line is the header
                 for i, col in enumerate(header):
                     if i > 0:  # Skip first column (Geneid)
@@ -93,13 +91,13 @@ def run_featurecounts(project, input_files, output_dir):
                         # Remove .fastq and everything after it
                         filename = re.sub(r'\.fastq.*$', '', filename)
                         header[i] = filename
-                lines[1] = '\t'.join(header) + '\n'
+                # Write header (second row) and data rows (third row onward)
                 with open(counts_file, 'w') as f:
-                    f.writelines(lines)
-                logger.info(f"Post-processed counts.txt to use file names in header")
+                    f.write('\t'.join(header) + '\n')  # Write modified header
+                    f.writelines(lines[2:])  # Write data rows
+                logger.info(f"Post-processed counts.csv to use second row as header and removed first row")
 
-
-        # Register counts.txt file
+        # Register counts.csv file
         if os.path.exists(counts_file):
             file_size = os.path.getsize(counts_file) if os.path.isfile(counts_file) else None
             ProjectFiles.objects.create(
@@ -107,7 +105,7 @@ def run_featurecounts(project, input_files, output_dir):
                 type='featurecounts_counts',
                 path=counts_file,
                 is_directory=False,
-                file_format='txt',
+                file_format='csv',
                 size=file_size
             )
             logger.info(f"Registered FeatureCounts output: {counts_file} with size {file_size} bytes")

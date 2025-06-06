@@ -11,7 +11,7 @@ from .util.trimmomatic import run_trimmomatic, get_trimmomatic_file_ids
 from .util.hisat2 import run_hisat2
 from .util.samtools import run_samtools
 from .util.featurecounts import run_featurecounts
-# from .util.deseq2 import run_deseq2 
+from .util.deseq2 import run_deseq2 
 import os
 from django.db import transaction
 from django.core.exceptions import ValidationError
@@ -112,11 +112,11 @@ def run_rnaseek_pipeline(project_id):
         logger.info(f"FeatureCounts files generated: {counts_files}")
 
         # # DESeq2 Integration
-        # update_status('differential_expression')
-        # deseq2_output_dir = os.path.join(settings.MEDIA_ROOT, 'output', str(project.session_id), str(project.id), 'deseq2')
-        # metadata_file = ProjectFiles.objects.get(project=project, type='deseq_metadata').path
-        # deseq2_results = run_deseq2(project, counts_files[0], metadata_file, deseq2_output_dir)
-        # logger.info(f"DESeq2 results generated: {deseq2_results}")
+        update_status('differential_expression')
+        deseq2_output_dir = os.path.join(settings.MEDIA_ROOT, 'output', str(project.session_id), str(project.id), 'deseq2')
+        metadata_file = ProjectFiles.objects.get(project=project, type='deseq_metadata').path
+        deseq2_results = run_deseq2(project, counts_files[0], metadata_file, deseq2_output_dir)
+        logger.info(f"DESeq2 results generated: {deseq2_results}")
 
         update_status('completed')
         logger.info(f"Project {project.name} completed successfully")
