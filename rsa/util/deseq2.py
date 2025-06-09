@@ -7,6 +7,10 @@ from django.conf import settings
 from pydeseq2.dds import DeseqDataSet
 from pydeseq2.ds import DeseqStats
 from rsa.models import Project, ProjectFiles
+import seaborn as sns
+import matplotlib.pyplot as plt
+import numpy as np
+from sklearn.decomposition import PCA
 
 logger = logging.getLogger(__name__)
 
@@ -44,22 +48,81 @@ def prepare_metadata(meta_data, counts_data):
     meta_data = meta_data.loc[shared_samples]
     return meta_data, counts_data
 
+def create_cluster_heatmap(counts, output_path, project):
+    """Generate a clustered heatmap with dendrograms, styled like the provided example."""
+    try:
+        # Subset to top 50 most variable genes for MVP (same as before)
+        counts_var = counts.var(axis=0).sort_values(ascending=False).head(50).index
+        subset_counts = counts[counts_var]
+        
+        # Normalize data to range [-2, 2] to match the example
+        min_val = subset_counts.min().min()
+        max_val = subset_counts.max().max()
+        range_val = max(abs(min_val), abs(max_val))
+        normalized_counts = 2 * (subset_counts - min_val) / (max_val - min_val) - 1 if max_val != min_val else subset_counts
+        
+        # Generate heatmap with clustering
+        plt.figure(figsize=(10, 8))
+        sns.heatmap(normalized_counts, cmap='RdBu_r', vmin=-2, vmax=2, center=0,
+                    xticklabels=True, yticklabels=True, 
+                    cbar_kws={'label': 'Normalized Value'})
+        plt.title(f"Clustered Heatmap - {project.name}")
+        plt.xlabel("Samples")
+        plt.ylabel("Genes")
+        plt.tight_layout()
+        plt.savefig(output_path)
+        plt.close()
+        logger.info(f"Clustered heatmap saved to: {output_path}")
+        return output_path
+    except Exception as e:
+        logger.error(f"Failed to create clustered heatmap: {str(e)}")
+        raise RuntimeError(f"Clustered heatmap failed: {str(e)}")
+
+def create_pca_plot(counts, metadata, output_path, project):
+    """Generate a basic PCA plot of samples based on counts."""
+    try:
+        pca = PCA(n_components=2)
+        pca_result = pca.fit_transform(counts)
+        pca_df = pd.DataFrame({
+            'PC1': pca_result[:, 0],
+            'PC2': pca_result[:, 1],
+            'Condition': metadata['condition']
+        })
+        
+        plt.figure(figsize=(8, 6))
+        sns.scatterplot(data=pca_df, x='PC1', y='PC2', hue='Condition', s=100)
+        plt.title(f"PCA Plot - {project.name}")
+        plt.xlabel(f"PC1 ({pca.explained_variance_ratio_[0]:.2%} variance)")
+        plt.ylabel(f"PC2 ({pca.explained_variance_ratio_[1]:.2%} variance)")
+        plt.tight_layout()
+        plt.savefig(output_path)
+        plt.close()
+        logger.info(f"PCA plot saved to: {output_path}")
+        return output_path
+    except Exception as e:
+        logger.error(f"Failed to create PCA plot: {str(e)}")
+        raise RuntimeError(f"PCA plot failed: {str(e)}")
+
 def run_deseq2(project, counts_file, metadata_file, output_dir):
     """
     Run DESeq2 on counts.csv and metadata.csv, adding gene symbols from GTF.
+    Filter results by project.pvalue_cutoff, log2FoldChange > 1, and baseMean > 10.
+    Generate cluster heatmap, PCA.
 
     Args:
-        project: Project instance (contains species).
+        project: Project instance (contains species and pvalue_cutoff).
         counts_file: Path to counts.csv from FeatureCounts.
         metadata_file: Path to metadata.csv.
-        output_dir: Directory for DESeq2 output (deseq2_results.csv).
+        output_dir: Directory for DESeq2 output (deseq2_results.csv and plots).
 
     Returns:
-        list: Path to deseq2_results.csv (single file as a list for consistency).
+        list: Paths to deseq2_results.csv and visualization PNGs.
     """
     os.makedirs(output_dir, exist_ok=True)
     output_file = os.path.join(output_dir, "deseq2_results.csv")
-    
+    heatmap_output = os.path.join(output_dir, "cluster_heatmap.png")
+    pca_output = os.path.join(output_dir, "pca_plot.png")
+
     # Map species to GTF (reuse from featurecounts.py)
     species_to_gtf = {
         'human': 'Homo_sapiens.GRCh38.gtf',
@@ -89,7 +152,7 @@ def run_deseq2(project, counts_file, metadata_file, output_dir):
         # Run DESeq2
         dds = DeseqDataSet(counts=counts, metadata=metadata, design='condition')
         dds.deseq2()
-        stat_res = DeseqStats(dds, n_cpus=8, contrast=['condition', metadata['condition'].unique()[0], metadata['condition'].unique()[1]])
+        stat_res = DeseqStats(dds, n_cpus=1, contrast=['condition', metadata['condition'].unique()[0], metadata['condition'].unique()[1]])
         stat_res.summary()
         results_df = stat_res.results_df
 
@@ -98,23 +161,41 @@ def run_deseq2(project, counts_file, metadata_file, output_dir):
         results_df['gene_symbol'] = results_df.index.map(gene_mapping)
         results_df['gene_symbol'] = results_df['gene_symbol'].fillna('Na')
         
+        # Filter results based on pvalue_cutoff, log2FoldChange, and baseMean
+        pvalue_cutoff = project.pvalue_cutoff
+        results_df = results_df[
+            (results_df['padj'] < pvalue_cutoff) &
+            (results_df['log2FoldChange'].abs() > 1.0) &
+            (results_df['baseMean'] > 10.0)
+        ]
+        logger.info(f"Filtered DESeq2 results to {len(results_df)} genes with padj < {pvalue_cutoff}, "
+                    f"|log2FoldChange| > 1.0, and baseMean > 10.0")
+        
         # Save results
         results_df.to_csv(output_file)
         logger.info(f"DESeq2 results saved to: {output_file}")
 
-        # Register output file
-        file_size = os.path.getsize(output_file) if os.path.isfile(output_file) else None
-        ProjectFiles.objects.create(
-            project=project,
-            type='deseq2_results',
-            path=output_file,
-            is_directory=False,
-            file_format='csv',
-            size=file_size
-        )
-        logger.info(f"Registered DESeq2 output: {output_file} with size {file_size} bytes")
+        # Generate visualizations
+        output_files = [output_file]
+        create_cluster_heatmap(counts, heatmap_output, project)
+        create_pca_plot(counts, metadata, pca_output, project)
 
-        return [output_file]
+        # Register visualization files
+        for plot_path in [heatmap_output, pca_output]:
+            if os.path.exists(plot_path):
+                file_size = os.path.getsize(plot_path)
+                ProjectFiles.objects.create(
+                    project=project,
+                    type='deseq2_visualization',
+                    path=plot_path,
+                    is_directory=False,
+                    file_format='png',
+                    size=file_size
+                )
+                logger.info(f"Registered DESeq2 visualization: {plot_path} with size {file_size} bytes")
+                output_files.append(plot_path)
+        
+        return output_files
     
     except Exception as e:
         logger.error(f"DESeq2 failed: {str(e)}")

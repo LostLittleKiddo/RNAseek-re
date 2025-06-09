@@ -13,14 +13,14 @@ def run_hisat2(project, input_files, output_dir, data_txt_paths):
     Args:
         project: Project instance (contains species, genome_reference, sequencing_type).
         input_files: QuerySet of ProjectFiles (input FASTQ files, trimmed or untrimmed).
-        output_dir: Directory for HISAT2 output (SAM files).
+        output_dir: Directory for HISAT2 output (BAM files).
         data_txt_paths: List of paths to FastQC data files (for reference, not used directly).
     
     Returns:
-        list: Paths to generated SAM files.
+        list: Paths to generated BAM files.
     """
     os.makedirs(output_dir, exist_ok=True)
-    sam_files = []
+    bam_files = []
     
     sequencing_type = project.sequencing_type.lower()
     # Map species to index prefix
@@ -56,66 +56,82 @@ def run_hisat2(project, input_files, output_dir, data_txt_paths):
             base_name = os.path.splitext(os.path.basename(forward_path))[0]
             base_name = base_name.replace('_tpaired_R1', '').replace('_tpaired_r1', '')
             base_name = base_name.replace('_R1', '').replace('_r1', '')  # Additional removal for _R1/_r1
-            output_sam = os.path.join(output_dir, f"{base_name}.sam")
+            output_bam = os.path.join(output_dir, f"{base_name}.bam")
             
             cmd = [
                 'hisat2', '-x', index_base,
-                '-1', forward_path, '-2', reverse_path,
-                '-S', output_sam
+                '-1', forward_path, '-2', reverse_path
             ]
+            samtools_cmd = ['samtools', 'view', '-b', '-o', output_bam]
             
-            logger.debug(f"HISAT2 command: {' '.join(cmd)}")
+            logger.debug(f"HISAT2 command: {' '.join(cmd)} | {' '.join(samtools_cmd)}")
             try:
-                result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-                logger.info(f"HISAT2 completed for pair {forward_path}, {reverse_path}: {output_sam}")
-                file_size = os.path.getsize(output_sam) if os.path.isfile(output_sam) else None
-                sam_files.append(output_sam)
+                # Pipe HISAT2 output to samtools view to create BAM
+                hisat2_process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+                samtools_process = subprocess.run(samtools_cmd, stdin=hisat2_process.stdout, capture_output=True, text=True, check=True)
+                hisat2_stdout, hisat2_stderr = hisat2_process.communicate()
+                
+                if hisat2_process.returncode != 0:
+                    logger.error(f"HISAT2 failed for pair {forward_path}, {reverse_path}: {hisat2_stderr}")
+                    raise RuntimeError(f"HISAT2 failed: {hisat2_stderr}")
+                
+                logger.info(f"HISAT2 and samtools completed for pair {forward_path}, {reverse_path}: {output_bam}")
+                file_size = os.path.getsize(output_bam) if os.path.isfile(output_bam) else None
+                bam_files.append(output_bam)
                 
                 ProjectFiles.objects.create(
                     project=project,
-                    type='hisat2_sam',
-                    path=output_sam,
+                    type='hisat2_bam',
+                    path=output_bam,
                     is_directory=False,
-                    file_format='sam',
+                    file_format='bam',
                     size=file_size
                 )
-                logger.info(f"Registered HISAT2 output: {output_sam} with size {file_size} bytes")
+                logger.info(f"Registered HISAT2 output: {output_bam} with size {file_size} bytes")
             
             except subprocess.CalledProcessError as e:
-                logger.error(f"HISAT2 failed for pair {forward_path}, {reverse_path}: {e.stderr}")
-                raise RuntimeError(f"HISAT2 failed: {e.stderr}")
+                logger.error(f"HISAT2 or samtools failed for pair {forward_path}, {reverse_path}: {e.stderr}")
+                raise RuntimeError(f"HISAT2 or samtools failed: {e.stderr}")
     
     else:
         for input_file in input_files:
             fastq_path = input_file.path
             base_name = os.path.splitext(os.path.basename(fastq_path))[0].replace('_trimmed', '')
-            output_sam = os.path.join(output_dir, f"{base_name}.sam")
+            output_bam = os.path.join(output_dir, f"{base_name}.bam")
             
             cmd = [
                 'hisat2', '-x', index_base,
-                '-U', fastq_path,
-                '-S', output_sam
+                '-U', fastq_path
             ]
+            samtools_cmd = ['samtools', 'view', '-b', '-o', output_bam]
             
-            logger.debug(f"HISAT2 command: {' '.join(cmd)}")
+            logger.debug(f"HISAT2 command: {' '.join(cmd)} | {' '.join(samtools_cmd)}")
             try:
-                result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-                logger.info(f"HISAT2 completed for {fastq_path}: {output_sam}")
-                file_size = os.path.getsize(output_sam) if os.path.isfile(output_sam) else None
-                sam_files.append(output_sam)
+                # Pipe HISAT2 output to samtools view to create BAM
+                hisat2_process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+                samtools_process = subprocess.run(samtools_cmd, stdin=hisat2_process.stdout, capture_output=True, text=True, check=True)
+                hisat2_stdout, hisat2_stderr = hisat2_process.communicate()
+                
+                if hisat2_process.returncode != 0:
+                    logger.error(f"HISAT2 failed for {fastq_path}: {hisat2_stderr}")
+                    raise RuntimeError(f"HISAT2 failed: {hisat2_stderr}")
+                
+                logger.info(f"HISAT2 and samtools completed for {fastq_path}: {output_bam}")
+                file_size = os.path.getsize(output_bam) if os.path.isfile(output_bam) else None
+                bam_files.append(output_bam)
                 
                 ProjectFiles.objects.create(
                     project=project,
-                    type='hisat2_sam',
-                    path=output_sam,
+                    type='hisat2_bam',
+                    path=output_bam,
                     is_directory=False,
-                    file_format='sam',
+                    file_format='bam',
                     size=file_size
                 )
-                logger.info(f"Registered HISAT2 output: {output_sam} with size {file_size} bytes")
+                logger.info(f"Registered HISAT2 output: {output_bam} with size {file_size} bytes")
             
             except subprocess.CalledProcessError as e:
-                logger.error(f"HISAT2 failed for {fastq_path}: {e.stderr}")
-                raise RuntimeError(f"HISAT2 failed: {e.stderr}")
+                logger.error(f"HISAT2 or samtools failed for {fastq_path}: {e.stderr}")
+                raise RuntimeError(f"HISAT2 or samtools failed: {e.stderr}")
     
-    return sam_files
+    return bam_files

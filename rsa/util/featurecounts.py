@@ -90,6 +90,7 @@ def run_featurecounts(project, input_files, output_dir):
                         filename = os.path.basename(col)
                         # Remove .fastq and everything after it
                         filename = re.sub(r'\.fastq.*$', '', filename)
+                        filename = re.sub(r'\.sorted.*$', '', filename)
                         header[i] = filename
                 # Write header (second row) and data rows (third row onward)
                 with open(counts_file, 'w') as f:
