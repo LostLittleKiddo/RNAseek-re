@@ -112,18 +112,34 @@ def home(request):
                         )
                         logger.info(f"Registered input FASTQ file: {file_path} with size {file_size} bytes")
 
+                    # In the home view, replace the metadata CSV writing section
                     deseq_dir = os.path.join(settings.MEDIA_ROOT, 'deseq', str(session_id), str(project.id))
                     os.makedirs(deseq_dir, exist_ok=True)
                     metadata_path = os.path.join(deseq_dir, 'metadata.csv')
 
+                    # Collect sample-condition pairs
+                    sample_conditions = []
+                    for sample_name in deseq_form.sample_names:
+                        condition_field = deseq_form.cleaned_data[f'condition_{sample_name}']
+                        condition = deseq_form.cleaned_data['condition1'] if condition_field == 'condition1' else deseq_form.cleaned_data['condition2']
+                        sample_conditions.append((sample_name, condition))
+                        logger.debug(f"Metadata entry: sample={sample_name}, condition={condition}")
+
+                    # Group by condition
+                    grouped_samples = {}
+                    for sample_name, condition in sample_conditions:
+                        if condition not in grouped_samples:
+                            grouped_samples[condition] = []
+                        grouped_samples[condition].append(sample_name)
+
+                    # Write CSV with grouped samples
                     with open(metadata_path, 'w', newline='') as csvfile:
                         writer = csv.writer(csvfile)
                         writer.writerow(['sample', 'condition'])
-                        for sample_name in deseq_form.sample_names:
-                            condition_field = deseq_form.cleaned_data[f'condition_{sample_name}']
-                            condition = deseq_form.cleaned_data['condition1'] if condition_field == 'condition1' else deseq_form.cleaned_data['condition2']
-                            writer.writerow([sample_name, condition])
-                            logger.debug(f"Metadata entry: sample={sample_name}, condition={condition}")
+                        for condition in sorted(grouped_samples.keys()):  # Sort conditions for consistency
+                            for sample_name in sorted(grouped_samples[condition]):  # Sort samples within condition
+                                writer.writerow([sample_name, condition])
+                                logger.debug(f"Writing grouped metadata: sample={sample_name}, condition={condition}")
 
                     file_size = os.path.getsize(metadata_path) if os.path.isfile(metadata_path) else 0
                     total_size += file_size

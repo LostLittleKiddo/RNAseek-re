@@ -92,9 +92,9 @@ class RNAseekForm(forms.Form):
         max_size = 70 * 1024 * 1024 * 1024  # 70GB
         sequencing_type = self.cleaned_data.get('sequencing_type')
 
-        if sequencing_type == 'single' and len(files) < 4:
+        if sequencing_type == 'single' and len(files) < 6:
             raise forms.ValidationError("For Single-End sequencing, you must upload at least 4 files.")
-        if sequencing_type == 'paired' and len(files) < 8:
+        if sequencing_type == 'paired' and len(files) < 12:
             raise forms.ValidationError("For Paired-End sequencing, you must upload at least 8 files.")
 
         for file in files:

@@ -170,7 +170,7 @@
                 <div id="deseq-error-messages" class="mt-2"></div>
             </div>
             <div>
-                <button type="submit" id="submit-button" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-all duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed" disabled>
+                <button type="submit" id="submit-button" title="Please fill in form" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-all duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed" disabled>
                     Start Analysis
                 </button>
             </div>
@@ -290,11 +290,11 @@
                     return false;
                 }
 
-                if (sequencingType === 'single' && files.length < 4) {
-                    errors.push('For Single-End sequencing, you must upload at least 4 files.');
+                if (sequencingType === 'single' && files.length < 6) {
+                    errors.push('For Single-End sequencing, you must upload at least 6 files.');
                 }
-                if (sequencingType === 'paired' && files.length < 8) {
-                    errors.push('For Paired-End sequencing, you must upload at least 8 files.');
+                if (sequencingType === 'paired' && files.length < 12) {
+                    errors.push('For Paired-End sequencing, you must upload at least 12 files.');
                 }
 
                 Array.from(files).forEach(file => {
@@ -439,6 +439,27 @@
                             </div>
                         `;
                     }
+
+                    // Check if each condition has at least 3 samples
+                    const condition1Count = Array.from(conditionSelects).filter(select => select.value === 'condition1').length;
+                    const condition2Count = Array.from(conditionSelects).filter(select => select.value === 'condition2').length;
+                    if (condition1Count > 0 && condition1Count < 3) {
+                        conditionsValid = false;
+                        deseqErrorMessages.innerHTML += `
+                            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded-lg mb-2">
+                                ${condition1 || 'Condition 1'} must have at least 3 samples. Currently: ${condition1Count}.
+                            </div>
+                        `;
+                    }
+                    if (condition2Count > 0 && condition2Count < 3) {
+                        conditionsValid = false;
+                        deseqErrorMessages.innerHTML += `
+                            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded-lg mb-2">
+                                ${condition2 || 'Condition 2'} must have at least 3 samples. Currently: ${condition2Count}.
+                            </div>
+                        `;
+                    }
+
                 }
 
                 const isFormValid = projectName && genome && sequencingType && selectedFiles.files.length > 0 && filesValid && conditionsValid;

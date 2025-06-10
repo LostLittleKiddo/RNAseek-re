@@ -90,3 +90,4 @@ query_database.py
 database_results.txt
 
 rsa/references/gtf
+test/

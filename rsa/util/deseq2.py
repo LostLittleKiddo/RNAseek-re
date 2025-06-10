@@ -196,24 +196,6 @@ def run_deseq2(project, counts_file, metadata_file, output_dir):
         results_df.to_csv(output_file)
         logger.info(f"DESeq2 results saved to: {output_file}")
 
-        # species_to_gene_set = {
-        # 'human': 'Homo_sapiens.GRCh38.gtf',
-        # 'mouse': 'Mus_musculus.GRCm39.gtf',
-        # 'yeast': 'Saccharomyces_cerevisiae.R64-1-1.gtf'
-        # }
-        # ranking = results_df['gene_symbol', 'stat'].dropna().sort_values('stat', ascending=False)
-        # ranking = ranking.drop_duplicates('gene_symbol')
-
-        # pre_res = gp.prerank(
-        #     rnk=ranking,
-        #     gene_sets='KEGG_2016',
-        #     processes=1,
-        #     permutation_num=100,
-        #     outdir=output_dir,
-        #     format='png',
-        #     no_plot=True
-        # )
-
         # Generate visualizations
         output_files = [output_file]
         create_pca_plot(counts, metadata, pca_output, project)
