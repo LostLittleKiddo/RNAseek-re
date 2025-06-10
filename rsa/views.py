@@ -211,16 +211,19 @@ def example_analysis(request):
         deseq_data = {
             'condition1': 'control',
             'condition2': 'treatment',
-            'condition_sample1': 'condition1',
-            'condition_sample2': 'condition2',
-            'condition_sample3': 'condition1',
-            'condition_sample4': 'condition2',
+            'condition_sample1_control': 'condition1',
+            'condition_sample2_control': 'condition1',
+            'condition_sample3_control': 'condition1',
+            'condition_sample4_treatment': 'condition2',
+            'condition_sample5_treatment': 'condition2',
+            'condition_sample6_treatment': 'condition2',
+            'condition_sample7_treatment': 'condition2',
         }
 
         # Validate forms
         form = RNAseekForm(project_data)
         # Create mock file objects for DeseqMetadataForm
-        mock_files = [MockFile('sample1.fastq.gz'), MockFile('sample2.fastq.gz'), MockFile('sample3.fastq.gz'), MockFile('sample4.fastq.gz')]
+        mock_files = [MockFile('sample1_control.fastq.gz'), MockFile('sample2_control.fastq.gz'), MockFile('sample3_control.fastq.gz'), MockFile('sample4_treatment.fastq.gz'), MockFile('sample5_treatment.fastq.gz'), MockFile('sample6_treatment.fastq.gz'), MockFile('sample7_treatment.fastq.gz')]
         deseq_form = DeseqMetadataForm(deseq_data, files=mock_files, sequencing_type='single')
         if not form.is_valid():
             logger.warning(f"RNAseek form validation failed for example analysis: {form.errors}")
@@ -230,9 +233,9 @@ def example_analysis(request):
             return JsonResponse({'error': f"Invalid DESeq2 metadata: {deseq_form.errors.as_json()}"}, status=400)
 
         # Verify sample files exist
-        sample_files = ['sample1.fastq.gz', 'sample2.fastq.gz', 'sample3.fastq.gz', 'sample4.fastq.gz']
+        sample_files = ['sample1_control.fastq.gz', 'sample2_control.fastq.gz', 'sample3_control.fastq.gz', 'sample4_treatment.fastq.gz', 'sample5_treatment.fastq.gz', 'sample6_treatment.fastq.gz', 'sample7_treatment.fastq.gz']
         for file_name in sample_files:
-            source_path = os.path.join(settings.STATIC_ROOT, 'example', file_name)
+            source_path = os.path.join(settings.BASE_DIR, 'rsa', 'references', 'example' , file_name)
             if not os.path.exists(source_path):
                 logger.error(f"Sample file not found: {source_path}")
                 return JsonResponse({'error': f"Sample file {file_name} not found"}, status=400)
@@ -254,12 +257,11 @@ def example_analysis(request):
             pvalue_cutoff=form.cleaned_data['pvalue_cutoff']
         )
 
-        # Copy sample files from static/example to project directory
         project_dir = os.path.join(settings.MEDIA_ROOT, 'r_fastq', str(session_id), str(project.id))
         os.makedirs(project_dir, exist_ok=True)
         total_size = 0
         for file_name in sample_files:
-            source_path = os.path.join(settings.STATIC_ROOT, 'example', file_name)
+            source_path = os.path.join(settings.BASE_DIR, 'rsa', 'references', 'example' , file_name)
             dest_path = os.path.join(project_dir, file_name)
             shutil.copy2(source_path, dest_path)
             logger.debug(f"Copied {file_name} to {dest_path}")
@@ -283,10 +285,13 @@ def example_analysis(request):
         with open(metadata_path, 'w', newline='') as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow(['sample', 'condition'])
-            writer.writerow(['sample1', deseq_data['condition1']])
-            writer.writerow(['sample2', deseq_data['condition2']])
-            writer.writerow(['sample3', deseq_data['condition1']])
-            writer.writerow(['sample4', deseq_data['condition2']])
+            writer.writerow(['sample1_control', deseq_data['condition1']])
+            writer.writerow(['sample2_control', deseq_data['condition1']])
+            writer.writerow(['sample3_control', deseq_data['condition1']])
+            writer.writerow(['sample4_treatment', deseq_data['condition2']])
+            writer.writerow(['sample5_treatment', deseq_data['condition2']])
+            writer.writerow(['sample6_treatment', deseq_data['condition2']])
+            writer.writerow(['sample7_treatment', deseq_data['condition2']])
             logger.debug(f"Created metadata CSV at {metadata_path}")
 
             file_size = os.path.getsize(metadata_path) if os.path.isfile(metadata_path) else 0

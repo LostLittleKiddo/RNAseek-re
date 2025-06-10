@@ -89,4 +89,4 @@ secrets.json
 query_database.py
 database_results.txt
 
-rsa/references/featurecounts/
+rsa/references/gtf

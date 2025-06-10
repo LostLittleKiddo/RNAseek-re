@@ -116,6 +116,7 @@
                 const status = data.status;
                 const projectName = data.project_name;
                 const session_id = data.session_id;
+                const errorMessage = data.error_message || 'None';
 
                 if (session_id !== sessionId) {
                     console.log('Ignoring update for different session:', session_id, 'Expected:', sessionId);
@@ -130,7 +131,7 @@
                         statusCell.className = `status-badge inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                             status === 'completed' ? 'bg-green-100 text-green-800' :
                             status === 'processing' ? 'bg-yellow-100 text-yellow-800' :
-                            status === 'pending' ? 'bg-blue-100 text-blue-800' :
+                            status === 'pending' ? 'bg-blue-100 text-blue-600' :
                             status === 'trimming' ? 'bg-purple-100 text-purple-800' :
                             status === 'post_trimmomatic_check' ? 'bg-cyan-100 text-cyan-800' :
                             status === 'aligning' ? 'bg-orange-100 text-orange-800' :
@@ -147,6 +148,10 @@
                             row.classList.remove('cursor-pointer', 'hover:bg-gray-50');
                             row.onclick = null;
                         }
+                    }
+                    const errorCell = row.cells[row.cells.length - 1];
+                    if (errorCell) {
+                        errorCell.textContent = errorMessage;
                     }
                 } else {
                     console.log('Adding new project row for:', projectName, 'ID:', projectId);
@@ -189,7 +194,7 @@
                         <td class="px-4 py-3 text-sm text-gray-700">${data.sequencing_type || 'Unknown'}</td>
                         <td class="px-4 py-3 text-sm text-gray-700">${data.pvalue_cutoff || 'Unknown'}</td>
                         <td class="px-4 py-3 text-sm text-gray-700" data-utc-time="${new Date().toISOString()}">${createdAt}</td>
-                        <td class="px-4 py-3 text-sm text-gray-700">${data.error_message || 'None'}</td>
+                        <td class="px-4 py-3 text-sm text-gray-700">${errorMessage}</td>
                     `;
                     tbody.appendChild(newRow);
                 }

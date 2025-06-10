@@ -124,7 +124,7 @@ def generate_trimmomatic_params(project, data_txt_paths, input_file_path, paired
         tuple: (List of Trimmomatic parameters, input FASTQ path(s), output FASTQ file name(s)).
     """
     cmd = []
-    adapters_path = os.path.join(os.path.dirname(__file__), "adapters.fa")
+    adapters_path = os.path.join(settings.BASE_DIR, 'rsa', 'references', 'adapters.fa')
     
     # Validate input file path(s)
     if not os.path.exists(input_file_path):

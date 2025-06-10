@@ -11,8 +11,12 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.decomposition import PCA
+import gseapy as gp
+from gseapy.plot import gseaplot
 
 logger = logging.getLogger(__name__)
+
+
 
 def parse_gtf_for_symbols(gtf_path):
     """Parse GTF file to extract gene_id to gene_name mapping."""
@@ -37,7 +41,7 @@ def parse_gtf_for_symbols(gtf_path):
         raise RuntimeError(f"Failed to parse GTF file: {str(e)}")
 
 def prepare_metadata(meta_data, counts_data):
-    """Prepare metadata and align it with counts data (from deseq2.py)."""
+    """Prepare metadata and align it with counts data."""
     meta_index = meta_data.columns[0]
     meta_data = meta_data.set_index(meta_index)
     shared_samples = counts_data.index.intersection(meta_data.index)
@@ -48,27 +52,43 @@ def prepare_metadata(meta_data, counts_data):
     meta_data = meta_data.loc[shared_samples]
     return meta_data, counts_data
 
-def create_cluster_heatmap(counts, output_path, project):
-    """Generate a clustered heatmap with dendrograms, styled like the provided example."""
+def create_cluster_heatmap(dds, results_df, output_path, project):
+    """Generate a clustered heatmap with dendrograms for significant genes."""
     try:
-        # Subset to top 50 most variable genes for MVP (same as before)
-        counts_var = counts.var(axis=0).sort_values(ascending=False).head(50).index
-        subset_counts = counts[counts_var]
-        
-        # Normalize data to range [-2, 2] to match the example
-        min_val = subset_counts.min().min()
-        max_val = subset_counts.max().max()
-        range_val = max(abs(min_val), abs(max_val))
-        normalized_counts = 2 * (subset_counts - min_val) / (max_val - min_val) - 1 if max_val != min_val else subset_counts
-        
-        # Generate heatmap with clustering
-        plt.figure(figsize=(10, 8))
-        sns.heatmap(normalized_counts, cmap='RdBu_r', vmin=-2, vmax=2, center=0,
-                    xticklabels=True, yticklabels=True, 
-                    cbar_kws={'label': 'Normalized Value'})
+        # Filter significant genes based on DESeq2 results
+        sigs = results_df[
+            (results_df['padj'] < project.pvalue_cutoff) &
+            (results_df['log2FoldChange'].abs() > 1.0) &
+            (results_df['baseMean'] > 10.0)
+        ]
+        if sigs.empty:
+            logger.warning("No significant genes found for heatmap")
+            raise ValueError("No significant genes to plot in heatmap")
+
+        # Subset dds to significant genes
+        dds_sigs = dds[:, sigs.index]
+        logger.info(f"Subset dds to {len(sigs.index)} significant genes")
+
+        # Use normalized counts and apply log1p transformation
+        norm_counts = dds_sigs.layers['normed_counts']
+        log1p_counts = np.log1p(norm_counts)  # Compute log1p transformation manually
+        grapher = pd.DataFrame(
+            log1p_counts.T,
+            index=dds_sigs.var_names,
+            columns=dds_sigs.obs_names
+        )
+
+        # Generate clustered heatmap
+        sns.clustermap(
+            grapher,
+            z_score=0,  # Normalize by row (genes)
+            cmap='RdYlBu_r',
+            figsize=(10, 8),
+            xticklabels=True,
+            yticklabels=True,
+            cbar_kws={'label': 'Z-score'}
+        )
         plt.title(f"Clustered Heatmap - {project.name}")
-        plt.xlabel("Samples")
-        plt.ylabel("Genes")
         plt.tight_layout()
         plt.savefig(output_path)
         plt.close()
@@ -77,6 +97,7 @@ def create_cluster_heatmap(counts, output_path, project):
     except Exception as e:
         logger.error(f"Failed to create clustered heatmap: {str(e)}")
         raise RuntimeError(f"Clustered heatmap failed: {str(e)}")
+
 
 def create_pca_plot(counts, metadata, output_path, project):
     """Generate a basic PCA plot of samples based on counts."""
@@ -103,27 +124,28 @@ def create_pca_plot(counts, metadata, output_path, project):
         logger.error(f"Failed to create PCA plot: {str(e)}")
         raise RuntimeError(f"PCA plot failed: {str(e)}")
 
+
 def run_deseq2(project, counts_file, metadata_file, output_dir):
     """
     Run DESeq2 on counts.csv and metadata.csv, adding gene symbols from GTF.
     Filter results by project.pvalue_cutoff, log2FoldChange > 1, and baseMean > 10.
-    Generate cluster heatmap, PCA.
+    Generate cluster heatmap, PCA, and GSEA analysis.
 
     Args:
         project: Project instance (contains species and pvalue_cutoff).
         counts_file: Path to counts.csv from FeatureCounts.
         metadata_file: Path to metadata.csv.
-        output_dir: Directory for DESeq2 output (deseq2_results.csv and plots).
+        output_dir: Directory for DESeq2 and GSEA output (deseq2_results.csv, gsea_results.csv, and plots).
 
     Returns:
-        list: Paths to deseq2_results.csv and visualization PNGs.
+        list: Paths to deseq2_results.csv, gsea_results.csv, and visualization PNGs.
     """
     os.makedirs(output_dir, exist_ok=True)
     output_file = os.path.join(output_dir, "deseq2_results.csv")
     heatmap_output = os.path.join(output_dir, "cluster_heatmap.png")
     pca_output = os.path.join(output_dir, "pca_plot.png")
 
-    # Map species to GTF (reuse from featurecounts.py)
+    # Map species to GTF
     species_to_gtf = {
         'human': 'Homo_sapiens.GRCh38.gtf',
         'mouse': 'Mus_musculus.GRCm39.gtf',
@@ -132,7 +154,7 @@ def run_deseq2(project, counts_file, metadata_file, output_dir):
     gtf_file = species_to_gtf.get(project.species.lower(), None)
     if not gtf_file:
         raise RuntimeError(f"No GTF file defined for species: {project.species}")
-    gtf_path = os.path.join(settings.BASE_DIR, 'rsa', 'references', 'featurecounts', gtf_file)
+    gtf_path = os.path.join(settings.BASE_DIR, 'rsa', 'references', 'gtf', gtf_file)
     if not os.path.exists(gtf_path):
         raise RuntimeError(f"GTF file not found: {gtf_path}")
 
@@ -159,7 +181,6 @@ def run_deseq2(project, counts_file, metadata_file, output_dir):
         # Add gene symbols
         gene_mapping = parse_gtf_for_symbols(gtf_path)
         results_df['gene_symbol'] = results_df.index.map(gene_mapping)
-        results_df['gene_symbol'] = results_df['gene_symbol'].fillna('Na')
         
         # Filter results based on pvalue_cutoff, log2FoldChange, and baseMean
         pvalue_cutoff = project.pvalue_cutoff
@@ -171,14 +192,32 @@ def run_deseq2(project, counts_file, metadata_file, output_dir):
         logger.info(f"Filtered DESeq2 results to {len(results_df)} genes with padj < {pvalue_cutoff}, "
                     f"|log2FoldChange| > 1.0, and baseMean > 10.0")
         
-        # Save results
+        # Save DESeq2 results
         results_df.to_csv(output_file)
         logger.info(f"DESeq2 results saved to: {output_file}")
 
+        # species_to_gene_set = {
+        # 'human': 'Homo_sapiens.GRCh38.gtf',
+        # 'mouse': 'Mus_musculus.GRCm39.gtf',
+        # 'yeast': 'Saccharomyces_cerevisiae.R64-1-1.gtf'
+        # }
+        # ranking = results_df['gene_symbol', 'stat'].dropna().sort_values('stat', ascending=False)
+        # ranking = ranking.drop_duplicates('gene_symbol')
+
+        # pre_res = gp.prerank(
+        #     rnk=ranking,
+        #     gene_sets='KEGG_2016',
+        #     processes=1,
+        #     permutation_num=100,
+        #     outdir=output_dir,
+        #     format='png',
+        #     no_plot=True
+        # )
+
         # Generate visualizations
         output_files = [output_file]
-        create_cluster_heatmap(counts, heatmap_output, project)
         create_pca_plot(counts, metadata, pca_output, project)
+        create_cluster_heatmap(dds, results_df, heatmap_output, project)
 
         # Register visualization files
         for plot_path in [heatmap_output, pca_output]:

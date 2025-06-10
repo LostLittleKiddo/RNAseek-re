@@ -30,7 +30,7 @@ def run_hisat2(project, input_files, output_dir, data_txt_paths):
         'yeast': 'yeast_index'
     }
     index_prefix = species_to_index_prefix.get(project.species.lower(), 'genome')
-    index_base = os.path.join(settings.BASE_DIR, 'rsa', 'references', 'hisat2', project.species.lower(), f"{index_prefix}")
+    index_base = os.path.join(settings.BASE_DIR, 'rsa', 'references', 'index', project.species.lower(), f"{index_prefix}")
     index_file = f"{index_base}.1.ht2"
     logger.debug(f"Checking for HISAT2 index at: {index_file}")
     logger.debug(f"BASE_DIR resolved to: {settings.BASE_DIR}")

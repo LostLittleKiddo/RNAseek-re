@@ -466,10 +466,13 @@
                 formData.append('pvalue_cutoff', '0.05');
                 formData.append('condition1', 'control');
                 formData.append('condition2', 'treatment');
-                formData.append('condition_sample1', 'condition1');
-                formData.append('condition_sample2', 'condition2');
-                formData.append('condition_sample3', 'condition1');
-                formData.append('condition_sample4', 'condition2');
+                formData.append('condition_sample1_control', 'condition1');
+                formData.append('condition_sample2_control', 'condition1');
+                formData.append('condition_sample3_control', 'condition1');
+                formData.append('condition_sample4_treatment', 'condition2');
+                formData.append('condition_sample5_treatment', 'condition2');
+                formData.append('condition_sample6_treatment', 'condition2');
+                formData.append('condition_sample7_treatment', 'condition2');
 
                 fetch('/example-analysis/', {
                     method: 'POST',

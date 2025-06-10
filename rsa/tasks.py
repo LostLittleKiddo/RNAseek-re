@@ -11,7 +11,7 @@ from .util.trimmomatic import run_trimmomatic, get_trimmomatic_file_ids
 from .util.hisat2 import run_hisat2
 from .util.samtools import run_samtools
 from .util.featurecounts import run_featurecounts
-from .util.deseq2 import run_deseq2 
+from .util.deseq2 import run_deseq2
 import os
 from django.db import transaction
 from django.core.exceptions import ValidationError
@@ -87,7 +87,6 @@ def run_rnaseek_pipeline(project_id):
         else:
             logger.info("No trimmed files to run post-Trimmomatic FastQC on")
 
-        # HISAT2 Integration
         update_status('aligning')
         hisat2_output_dir = os.path.join(settings.MEDIA_ROOT, 'output', str(project.session_id), str(project.id), 'hisat2')
         trimmomatic_file_ids = get_trimmomatic_file_ids(project, input_files, data_txt_paths)
@@ -97,27 +96,24 @@ def run_rnaseek_pipeline(project_id):
         sam_files = run_hisat2(project, alignment_input_files, hisat2_output_dir, data_txt_paths)
         logger.info(f"HISAT2 SAM files generated: {sam_files}")
 
-        # SAMtools Integration
         update_status('converting_sam_to_bam')
         samtools_output_dir = os.path.join(settings.MEDIA_ROOT, 'output', str(project.session_id), str(project.id), 'samtools')
         sam_files_queryset = ProjectFiles.objects.filter(project=project, path__in=sam_files)
         bam_files = run_samtools(project, sam_files_queryset, samtools_output_dir)
         logger.info(f"SAMtools BAM files generated: {bam_files}")
 
-        # FeatureCounts Integration
         update_status('quantifying_reads')
         featurecounts_output_dir = os.path.join(settings.MEDIA_ROOT, 'output', str(project.session_id), str(project.id), 'featurecounts')
         bam_files_queryset = ProjectFiles.objects.filter(project=project, path__in=bam_files)
         counts_files = run_featurecounts(project, bam_files_queryset, featurecounts_output_dir)
         logger.info(f"FeatureCounts files generated: {counts_files}")
 
-        # # DESeq2 Integration
         update_status('differential_expression')
         deseq2_output_dir = os.path.join(settings.MEDIA_ROOT, 'output', str(project.session_id), str(project.id), 'deseq2')
         metadata_file = ProjectFiles.objects.get(project=project, type='deseq_metadata').path
         deseq2_results = run_deseq2(project, counts_files[0], metadata_file, deseq2_output_dir)
         logger.info(f"DESeq2 results generated: {deseq2_results}")
-
+        
         update_status('completed')
         logger.info(f"Project {project.name} completed successfully")
 
