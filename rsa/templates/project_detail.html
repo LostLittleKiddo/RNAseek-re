@@ -54,6 +54,98 @@
             </dl>
         </div>
 
+        <!-- Metadata Preview -->
+        {% if metadata_content %}
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Metadata Preview</h3>
+                <p class="text-sm text-gray-600 mb-3">Preview of the metadata.csv file used for DESeq2 analysis.</p>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                {% for header in metadata_content.0 %}
+                                    <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">{{ header }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in metadata_content|slice:"1:" %}
+                                <tr class="border-t border-gray-200">
+                                    {% for value in row %}
+                                        <td class="px-4 py-3 text-sm text-gray-700">{{ value }}</td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        {% endif %}
+        
+        <!-- DESeq2 Output Preview -->
+        {% if deseq_output_content %}
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">DESeq2 Results Preview</h3>
+                <p class="text-sm text-gray-600 mb-3">Preview of the first 5 rows of the DESeq2 output (deseq2_results.csv).</p>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                {% for header in deseq_output_content.0 %}
+                                    <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">{{ header }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in deseq_output_content|slice:"1:" %}
+                                <tr class="border-t border-gray-200">
+                                    {% for value in row %}
+                                        <td class="px-4 py-3 text-sm text-gray-700">
+                                            {% if value|is_number %}
+                                                {{ value|to_significant_digits:4 }}
+                                            {% else %}
+                                                {{ value }}
+                                            {% endif %}
+                                        </td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        {% endif %}
+
+        <!-- Visualizations Section -->
+        <h3 class="text-lg font-semibold text-gray-800 mb-4">Visualizations</h3>
+        {% with visualizations=files|filter_by_type:'deseq2_visualization'|filter_by_format:'png' %}
+            {% if visualizations %}
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    {% for viz in visualizations %}
+                        <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-4 flex flex-col items-center">
+                            <h4 class="text-md font-semibold text-gray-700 mb-2 text-center">
+                                {% if 'heatmap' in viz.path|basename %}
+                                    Clustered Heatmap
+                                {% elif 'pca' in viz.path|basename %}
+                                    PCA Plot
+                                {% else %}
+                                    {{ viz.path|basename }}
+                                {% endif %}
+                            </h4>
+                            <div class="w-full h-0 pb-[100%] relative">
+                                <img src="{% url 'download_file' viz.id %}" alt="{{ viz.path|basename }}" class="absolute top-0 left-0 w-full h-full object-contain">
+                            </div>
+                            <p class="text-sm text-gray-600 mt-2 text-center">
+                                Size: {{ viz.size|filesizeformat }} | Created: <span data-utc-time="{{ viz.created_at|date:'c' }}">{{ viz.created_at|date:"Y-m-d H:i:s" }}</span>
+                            </p>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="text-center text-gray-600 mb-6">No visualizations available for this project.</p>
+            {% endif %}
+        {% endwith %}
+
         <h3 class="text-lg font-semibold text-gray-800 mb-4">Associated Files</h3>
         {% if files %}
             {% regroup files by type as grouped_files %}
@@ -85,6 +177,10 @@
                             Plot visualizing differential gene expression (e.g., volcano plot, MA plot).
                         {% elif group.grouper == 'heatmap' %}
                             Heatmap visualizing gene expression patterns.
+                        {% elif group.grouper == 'deseq2_visualization' %}
+                            Visualization outputs from DESeq2 analysis (e.g., heatmaps, PCA plots).
+                        {% elif group.grouper == 'deseq_output' %}
+                            DESeq2 differential expression analysis results (CSV format).
                         {% else %}
                             Files related to {{ group.grouper }}.
                         {% endif %}
@@ -114,7 +210,9 @@
                                         </td>
                                         <td class="px-4 py-3 text-sm text-gray-700" data-utc-time="{{ file.created_at|date:'c' }}">{{ file.created_at|date:"Y-m-d H:i:s" }}</td>
                                         <td class="px-4 py-3 text-sm">
-                                            {% if not file.is_directory %}
+                                            {% if not file.is_directory and group.grouper == 'qc_report_fastqc' %}
+                                                <a href="{% url 'download_pdf' file.id %}" class="text-emerald-600 hover:text-emerald-700">Download PDF</a>
+                                            {% elif not file.is_directory %}
                                                 <a href="{% url 'download_file' file.id %}" class="text-emerald-600 hover:text-emerald-700">Download</a>
                                             {% else %}
                                                 <span class="text-gray-500">Directory</span>

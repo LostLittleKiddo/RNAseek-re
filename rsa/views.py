@@ -12,6 +12,8 @@ import csv
 import shutil
 from django.conf import settings
 from django.core.exceptions import PermissionDenied
+from django.db.models import Q
+import csv
 
 # Set up logging for debugging
 logger = logging.getLogger(__name__)
@@ -112,48 +114,33 @@ def home(request):
                         )
                         logger.info(f"Registered input FASTQ file: {file_path} with size {file_size} bytes")
 
-                    # In the home view, replace the metadata CSV writing section
-                    deseq_dir = os.path.join(settings.MEDIA_ROOT, 'deseq', str(session_id), str(project.id))
-                    os.makedirs(deseq_dir, exist_ok=True)
-                    metadata_path = os.path.join(deseq_dir, 'metadata.csv')
+                        deseq_dir = os.path.join(settings.MEDIA_ROOT, 'deseq', str(session_id), str(project.id))
+                        os.makedirs(deseq_dir, exist_ok=True)
+                        metadata_path = os.path.join(deseq_dir, 'metadata.csv')
+                        with open(metadata_path, 'w', newline='') as csvfile:
+                            writer = csv.writer(csvfile)
+                            writer.writerow(['sample', 'condition'])
+                            for condition in sorted(grouped_samples.keys()):
+                                for sample_name in sorted(grouped_samples[condition]):
+                                    writer.writerow([sample_name, condition])
+                                    logger.debug(f"Writing grouped metadata: sample={sample_name}, condition={condition}")
+                            csvfile.flush()  # Ensure file is written
+                            os.fsync(csvfile.fileno())  # Force to disk
+                        if not os.path.isfile(metadata_path):
+                            logger.error(f"Metadata file not created: {metadata_path}")
+                            raise RuntimeError(f"Metadata file not created: {metadata_path}")
+                        file_size = os.path.getsize(metadata_path)
+                        total_size += file_size
+                        ProjectFiles.objects.create(
+                            project=project,
+                            type='deseq_metadata',
+                            path=metadata_path,
+                            is_directory=False,
+                            file_format='csv',
+                            size=file_size
+                        )
+                        logger.info(f"Registered DESeq2 metadata file: {metadata_path} with size {file_size} bytes")
 
-                    # Collect sample-condition pairs
-                    sample_conditions = []
-                    for sample_name in deseq_form.sample_names:
-                        condition_field = deseq_form.cleaned_data[f'condition_{sample_name}']
-                        condition = deseq_form.cleaned_data['condition1'] if condition_field == 'condition1' else deseq_form.cleaned_data['condition2']
-                        sample_conditions.append((sample_name, condition))
-                        logger.debug(f"Metadata entry: sample={sample_name}, condition={condition}")
-
-                    # Group by condition
-                    grouped_samples = {}
-                    for sample_name, condition in sample_conditions:
-                        if condition not in grouped_samples:
-                            grouped_samples[condition] = []
-                        grouped_samples[condition].append(sample_name)
-
-                    # Write CSV with grouped samples
-                    with open(metadata_path, 'w', newline='') as csvfile:
-                        writer = csv.writer(csvfile)
-                        writer.writerow(['sample', 'condition'])
-                        for condition in sorted(grouped_samples.keys()):  # Sort conditions for consistency
-                            for sample_name in sorted(grouped_samples[condition]):  # Sort samples within condition
-                                writer.writerow([sample_name, condition])
-                                logger.debug(f"Writing grouped metadata: sample={sample_name}, condition={condition}")
-
-                    file_size = os.path.getsize(metadata_path) if os.path.isfile(metadata_path) else 0
-                    total_size += file_size
-                    ProjectFiles.objects.create(
-                        project=project,
-                        type='deseq_metadata',
-                        path=metadata_path,
-                        is_directory=False,
-                        file_format='csv',
-                        size=file_size
-                    )
-                    logger.info(f"Registered DESeq2 metadata file: {metadata_path} with size {file_size} bytes")
-
-                    # Update project_size
                     project.project_size = total_size
                     project.save()
                     logger.info(f"Updated project {project.name} (ID: {project.id}) with total size {total_size} bytes")
@@ -309,19 +296,22 @@ def example_analysis(request):
             writer.writerow(['sample6_treatment', deseq_data['condition2']])
             writer.writerow(['sample7_treatment', deseq_data['condition2']])
             logger.debug(f"Created metadata CSV at {metadata_path}")
-
-            file_size = os.path.getsize(metadata_path) if os.path.isfile(metadata_path) else 0
-            total_size += file_size
-            ProjectFiles.objects.create(
-                project=project,
-                type='deseq_metadata',
-                path=metadata_path,
-                is_directory=False,
-                file_format='csv',
-                size=file_size
-            )
-            logger.info(f"Registered DESeq2 metadata file: {metadata_path} with size {file_size} bytes")
-
+            csvfile.flush()  # Ensure file is written
+            os.fsync(csvfile.fileno())  # Force to disk
+        if not os.path.isfile(metadata_path):
+            logger.error(f"Metadata file not created: {metadata_path}")
+            raise RuntimeError(f"Metadata file not created: {metadata_path}")
+        file_size = os.path.getsize(metadata_path)
+        total_size += file_size
+        ProjectFiles.objects.create(
+            project=project,
+            type='deseq_metadata',
+            path=metadata_path,
+            is_directory=False,
+            file_format='csv',
+            size=file_size
+        )
+        logger.info(f"Registered DESeq2 metadata file: {metadata_path} with size {file_size} bytes")
         # Update project_size
         project.project_size = total_size
         project.save()
@@ -373,23 +363,57 @@ def project_detail(request, project_id):
     if not session_id:
         messages.error(request, "Session expired. Please start a new session.")
         return redirect('home')
-
     try:
         user = User.objects.get(session_id=session_id)
         project = get_object_or_404(Project, id=project_id, user=user)
         if project.status != 'completed':
             messages.warning(request, "Project analysis is not yet completed.")
             return redirect('results')
+        files = ProjectFiles.objects.filter(project=project).exclude(
+            Q(type__in=['samtools_bam', 'samtools_bai']) |
+            Q(type='fastqc_output', file_format__in=['txt', 'html'])
+        ).order_by('created_at')
+        
+        # Read metadata.csv
+        metadata_content = None
+        try:
+            metadata_file = ProjectFiles.objects.get(project=project, type='deseq_metadata')
+            with open(metadata_file.path, 'r') as csvfile:
+                reader = csv.reader(csvfile)
+                metadata_content = list(reader)  # List of rows, each row is a list of values
+                logger.debug(f"Read metadata.csv for project {project.id}: {metadata_content}")
+        except ProjectFiles.DoesNotExist:
+            logger.warning(f"No metadata.csv found for project {project.id}")
+            metadata_content = []
+        except Exception as e:
+            logger.error(f"Error reading metadata.csv for project {project.id}: {str(e)}")
+            metadata_content = []
 
-        files = ProjectFiles.objects.filter(project=project).exclude(type__in=['samtools_bam', 'samtools_bai']).order_by('created_at')
+        # Read deseq_output.csv
+        deseq_output_content = None
+        try:
+            deseq_output_file = ProjectFiles.objects.get(project=project, type='deseq_output')
+            with open(deseq_output_file.path, 'r') as csvfile:
+                reader = csv.reader(csvfile)
+                deseq_output_content = list(reader)[:6]  # Limit to first 5 rows + header for preview
+                logger.debug(f"Read deseq_output.csv for project {project.id}: {deseq_output_content}")
+        except ProjectFiles.DoesNotExist:
+            logger.warning(f"No deseq_output.csv found for project {project.id}")
+            deseq_output_content = []
+        except Exception as e:
+            logger.error(f"Error reading deseq_output.csv for project {project.id}: {str(e)}")
+            deseq_output_content = []
+
         return render(request, 'project_detail.html', {
             'project': project,
-            'files': files
+            'files': files,
+            'metadata_content': metadata_content,
+            'deseq_output_content': deseq_output_content
         })
     except User.DoesNotExist:
         messages.error(request, "Invalid session. Please start a new session.")
         return redirect('home')
-
+    
 def download_file(request, file_id):
     session_id = request.COOKIES.get('session_id')
     if not session_id:

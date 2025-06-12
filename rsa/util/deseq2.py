@@ -16,8 +16,6 @@ from gseapy.plot import gseaplot
 
 logger = logging.getLogger(__name__)
 
-
-
 def parse_gtf_for_symbols(gtf_path):
     """Parse GTF file to extract gene_id to gene_name mapping."""
     try:
@@ -98,7 +96,6 @@ def create_cluster_heatmap(dds, results_df, output_path, project):
         logger.error(f"Failed to create clustered heatmap: {str(e)}")
         raise RuntimeError(f"Clustered heatmap failed: {str(e)}")
 
-
 def create_pca_plot(counts, metadata, output_path, project):
     """Generate a basic PCA plot of samples based on counts."""
     try:
@@ -123,7 +120,6 @@ def create_pca_plot(counts, metadata, output_path, project):
     except Exception as e:
         logger.error(f"Failed to create PCA plot: {str(e)}")
         raise RuntimeError(f"PCA plot failed: {str(e)}")
-
 
 def run_deseq2(project, counts_file, metadata_file, output_dir):
     """
@@ -193,6 +189,19 @@ def run_deseq2(project, counts_file, metadata_file, output_dir):
         # Save DESeq2 results
         results_df.to_csv(output_file)
         logger.info(f"DESeq2 results saved to: {output_file}")
+
+        # Register DESeq2 output CSV in ProjectFiles
+        if os.path.exists(output_file):
+            file_size = os.path.getsize(output_file)
+            ProjectFiles.objects.create(
+                project=project,
+                type='deseq_output',
+                path=output_file,
+                is_directory=False,
+                file_format='csv',
+                size=file_size
+            )
+            logger.info(f"Registered DESeq2 output CSV: {output_file} with size {file_size} bytes")
 
         # Generate visualizations
         output_files = [output_file]

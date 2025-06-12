@@ -3,12 +3,13 @@ import subprocess
 import logging
 from django.conf import settings
 from rsa.models import Project, ProjectFiles
+from weasyprint import HTML
 
 logger = logging.getLogger(__name__)
 
 def run_fastqc(project, input_files, output_dir):
     """
-    Run FastQC on input FASTQ files and register outputs with file sizes.
+    Run FastQC on input FASTQ files, register outputs with file sizes, and convert HTML to PDF.
     
     Args:
         project: Project instance.
@@ -38,9 +39,11 @@ def run_fastqc(project, input_files, output_dir):
             if fastq_path.endswith('.gz'):
                 base_name = os.path.splitext(base_name)[0]
             html_output = os.path.join(output_dir, f"{base_name}_fastqc.html")
+            pdf_output = os.path.join(output_dir, f"{base_name}_fastqc.pdf")
             zip_output = os.path.join(output_dir, f"{base_name}_fastqc.zip")
             data_txt = os.path.join(output_dir, f"{base_name}_fastqc", "fastqc_data.txt")
             
+            # Register FastQC outputs (HTML, ZIP, data_txt)
             for output_path in [html_output, zip_output, data_txt]:
                 if os.path.exists(output_path):
                     file_size = os.path.getsize(output_path) if os.path.isfile(output_path) else None
@@ -57,6 +60,29 @@ def run_fastqc(project, input_files, output_dir):
                         data_txt_paths.append(output_path)
                 else:
                     logger.warning(f"FastQC output not found: {output_path}")
+            
+            # Convert HTML to PDF using weasyprint
+            if os.path.exists(html_output):
+                try:
+                    HTML(html_output).write_pdf(pdf_output)
+                    if os.path.exists(pdf_output):
+                        file_size = os.path.getsize(pdf_output)
+                        ProjectFiles.objects.create(
+                            project=project,
+                            type='fastqc_output',
+                            path=pdf_output,
+                            is_directory=False,
+                            file_format='pdf',
+                            size=file_size
+                        )
+                        logger.info(f"Registered FastQC PDF output: {pdf_output} with size {file_size} bytes")
+                    else:
+                        logger.warning(f"PDF output not created: {pdf_output}")
+                except Exception as e:
+                    logger.error(f"Failed to convert HTML to PDF for {html_output}: {str(e)}")
+                    # Continue pipeline even if PDF conversion fails
+            else:
+                logger.warning(f"HTML file not found for PDF conversion: {html_output}")
         
         except subprocess.CalledProcessError as e:
             logger.error(f"FastQC failed for {fastq_path}: {e.stderr}")
