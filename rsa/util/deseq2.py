@@ -185,9 +185,7 @@ def run_deseq2(project, counts_file, metadata_file, output_dir):
         # Filter results based on pvalue_cutoff, log2FoldChange, and baseMean
         pvalue_cutoff = project.pvalue_cutoff
         results_df = results_df[
-            (results_df['padj'] < pvalue_cutoff) &
-            (results_df['log2FoldChange'].abs() > 1.0) &
-            (results_df['baseMean'] > 10.0)
+            (results_df['padj'] < pvalue_cutoff)
         ]
         logger.info(f"Filtered DESeq2 results to {len(results_df)} genes with padj < {pvalue_cutoff}, "
                     f"|log2FoldChange| > 1.0, and baseMean > 10.0")

@@ -381,7 +381,7 @@ def project_detail(request, project_id):
             messages.warning(request, "Project analysis is not yet completed.")
             return redirect('results')
 
-        files = ProjectFiles.objects.filter(project=project).order_by('created_at')
+        files = ProjectFiles.objects.filter(project=project).exclude(type__in=['samtools_bam', 'samtools_bai']).order_by('created_at')
         return render(request, 'project_detail.html', {
             'project': project,
             'files': files

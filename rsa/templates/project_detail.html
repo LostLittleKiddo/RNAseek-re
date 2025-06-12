@@ -56,44 +56,77 @@
 
         <h3 class="text-lg font-semibold text-gray-800 mb-4">Associated Files</h3>
         {% if files %}
-            <div class="overflow-x-auto">
-                <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm">
-                    <thead>
-                        <tr class="bg-gray-100">
-                            <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">File Name</th>
-                            <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">Type</th>
-                            <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">Format</th>
-                            <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">Size</th>
-                            <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">Created At</th>
-                            <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for file in files %}
-                            <tr class="border-t border-gray-200">
-                                <td class="px-4 py-3 text-sm text-gray-700">{{ file.path|basename }}</td>
-                                <td class="px-4 py-3 text-sm text-gray-700">{{ file.type }}</td>
-                                <td class="px-4 py-3 text-sm text-gray-700">{{ file.file_format }}</td>
-                                <td class="px-4 py-3 text-sm text-gray-700">
-                                    {% if not file.is_directory %}
-                                        {{ file.size|filesizeformat }}
-                                    {% else %}
-                                        <span class="text-gray-500">N/A</span>
-                                    {% endif %}
-                                </td>
-                                <td class="px-4 py-3 text-sm text-gray-700" data-utc-time="{{ file.created_at|date:'c' }}">{{ file.created_at|date:"Y-m-d H:i:s" }}</td>
-                                <td class="px-4 py-3 text-sm">
-                                    {% if not file.is_directory %}
-                                        <a href="{% url 'download_file' file.id %}" class="text-emerald-600 hover:text-emerald-700">Download</a>
-                                    {% else %}
-                                        <span class="text-gray-500">Directory</span>
-                                    {% endif %}
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
+            {% regroup files by type as grouped_files %}
+            {% for group in grouped_files %}
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">{{ group.grouper|capfirst }}</h3>
+                    <p class="text-sm text-gray-600 mb-3">
+                        {% if group.grouper == 'input_fastq' %}
+                            Raw sequencing data files (FASTQ format).
+                        {% elif group.grouper == 'deseq_metadata' %}
+                            Metadata file for DESeq2 analysis, typically describing samples and conditions.
+                        {% elif group.grouper == 'alignment_bam' %}
+                            Aligned sequencing reads (BAM format).
+                        {% elif group.grouper == 'featurecounts_matrix' %}
+                            Gene expression count matrix from featureCounts.
+                        {% elif group.grouper == 'deseq_results_table' %}
+                            Differential gene expression results from DESeq2.
+                        {% elif group.grouper == 'qc_report_fastqc' %}
+                            Quality control report from FastQC.
+                        {% elif group.grouper == 'qc_report_multiqc' %}
+                            Aggregated quality control report from MultiQC.
+                        {% elif group.grouper == 'normalized_counts' %}
+                            Normalized gene expression counts.
+                        {% elif group.grouper == 'r_script' %}
+                            R script used for analysis.
+                        {% elif group.grouper == 'log_file' %}
+                            Log file containing details of the analysis pipeline execution.
+                        {% elif group.grouper == 'differential_expression_plot' %}
+                            Plot visualizing differential gene expression (e.g., volcano plot, MA plot).
+                        {% elif group.grouper == 'heatmap' %}
+                            Heatmap visualizing gene expression patterns.
+                        {% else %}
+                            Files related to {{ group.grouper }}.
+                        {% endif %}
+                    </p>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm">
+                            <thead>
+                                <tr class="bg-gray-100">
+                                    <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">File Name</th>
+                                    <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">Format</th>
+                                    <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">Size</th>
+                                    <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">Created At</th>
+                                    <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for file in group.list %}
+                                    <tr class="border-t border-gray-200">
+                                        <td class="px-4 py-3 text-sm text-gray-700">{{ file.path|basename }}</td>
+                                        <td class="px-4 py-3 text-sm text-gray-700">{{ file.file_format }}</td>
+                                        <td class="px-4 py-3 text-sm text-gray-700">
+                                            {% if not file.is_directory %}
+                                                {{ file.size|filesizeformat }}
+                                            {% else %}
+                                                <span class="text-gray-500">N/A</span>
+                                            {% endif %}
+                                        </td>
+                                        <td class="px-4 py-3 text-sm text-gray-700" data-utc-time="{{ file.created_at|date:'c' }}">{{ file.created_at|date:"Y-m-d H:i:s" }}</td>
+                                        <td class="px-4 py-3 text-sm">
+                                            {% if not file.is_directory %}
+                                                <a href="{% url 'download_file' file.id %}" class="text-emerald-600 hover:text-emerald-700">Download</a>
+                                            {% else %}
+                                                <span class="text-gray-500">Directory</span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            {% endfor %}
         {% else %}
             <p class="text-center text-gray-600">No files associated with this project.</p>
         {% endif %}

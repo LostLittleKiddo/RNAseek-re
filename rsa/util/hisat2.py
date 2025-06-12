@@ -27,7 +27,7 @@ def run_hisat2(project, input_files, output_dir, data_txt_paths):
     species_to_index_prefix = {
         'human': 'genome',
         'mouse': 'genome',
-        'yeast': 'yeast_index'
+        'yeast': 'scerevisiae_cdna_index'
     }
     index_prefix = species_to_index_prefix.get(project.species.lower(), 'genome')
     index_base = os.path.join(settings.BASE_DIR, 'rsa', 'references', 'index', project.species.lower(), f"{index_prefix}")
