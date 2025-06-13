@@ -1,6 +1,7 @@
 # rsa/templatetags/file_tags.py
 from django import template
 import os
+import math
 
 register = template.Library()
 
@@ -25,15 +26,21 @@ def filter_by_format(queryset, format_name):
 @register.filter
 def to_significant_digits(value, digits=4):
     try:
-        # Convert to float and handle scientific notation
         num = float(value)
         if num == 0:
             return "0.000"
-        # Use format specifier for significant digits
-        return f"{num:.{digits}g}"
+        # Calculate the exponent and adjust for significant digits
+        abs_num = abs(num)
+        if abs_num == 0:
+            return "0.000"
+        exponent = math.floor(math.log10(abs_num))
+        factor = 10 ** (digits - 1 - exponent)
+        rounded = round(num * factor) / factor
+        # Format to avoid scientific notation for small numbers
+        return f"{rounded:.{digits-1}f}" if exponent < -4 else f"{rounded:.{digits}g}"
     except (ValueError, TypeError):
-        return value  # Return original value if not a number
-    
+        return value
+
 @register.filter
 def is_number(value):
     try:

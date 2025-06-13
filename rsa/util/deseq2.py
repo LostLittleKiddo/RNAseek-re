@@ -138,7 +138,7 @@ def run_deseq2(project, counts_file, metadata_file, output_dir):
     """
     os.makedirs(output_dir, exist_ok=True)
     output_file = os.path.join(output_dir, "deseq2_results.csv")
-    heatmap_output = os.path.join(output_dir, "cluster_heatmap.png")
+    heatmap_output = os.path.join(output_dir, "heatmap.png")
     pca_output = os.path.join(output_dir, "pca_plot.png")
 
     # Map species to GTF
