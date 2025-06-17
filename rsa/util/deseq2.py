@@ -121,6 +121,20 @@ def create_pca_plot(counts, metadata, output_path, project):
         logger.error(f"Failed to create PCA plot: {str(e)}")
         raise RuntimeError(f"PCA plot failed: {str(e)}")
 
+def inspect_deseq2_output(output_file):
+    """Inspect DESeq2 results CSV to verify format for GSEA."""
+    try:
+        df = pd.read_csv(output_file)
+        logger.info(f"DESeq2 results shape: {df.shape}")
+        logger.info(f"Columns: {df.columns.tolist()}")
+        logger.info(f"First few gene IDs: {df.index[:5].tolist()}")
+        logger.info(f"Gene symbol column exists: {'gene_symbol' in df.columns}")
+        logger.info(f"Number of non-null log2FoldChange: {df['log2FoldChange'].notnull().sum()}")
+        logger.info(f"Number of non-null padj: {df['padj'].notnull().sum()}")
+    except Exception as e:
+        logger.error(f"Failed to inspect DESeq2 output: {str(e)}")
+        raise RuntimeError(f"Inspection failed: {str(e)}")
+    
 def run_deseq2(project, counts_file, metadata_file, output_dir):
     """
     Run DESeq2 on counts.csv and metadata.csv, adding gene symbols from GTF.
@@ -223,6 +237,8 @@ def run_deseq2(project, counts_file, metadata_file, output_dir):
                 logger.info(f"Registered DESeq2 visualization: {plot_path} with size {file_size} bytes")
                 output_files.append(plot_path)
         
+        # Inspect DESeq2 output for GSEA compatibility
+        inspect_deseq2_output(output_file)
         return output_files
     
     except Exception as e:
