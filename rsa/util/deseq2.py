@@ -1,4 +1,4 @@
-# rsa/util/deseq2.py
+# rsa/util/deseq2.py (updated)
 import pandas as pd
 import logging
 import re
@@ -134,7 +134,23 @@ def inspect_deseq2_output(output_file):
     except Exception as e:
         logger.error(f"Failed to inspect DESeq2 output: {str(e)}")
         raise RuntimeError(f"Inspection failed: {str(e)}")
-    
+
+def check_gmt_file(gmt_path):
+    """Verify the GMT file format."""
+    try:
+        with open(gmt_path, 'r') as f:
+            lines = f.readlines()
+            for line in lines[:5]:
+                fields = line.strip().split('\t')
+                logger.info(f"GMT line sample: {fields[:3]}")  # Log first few fields
+                if len(fields) < 2:
+                    logger.error(f"Invalid GMT format in {gmt_path}")
+                    raise RuntimeError(f"Invalid GMT file: {gmt_path}")
+        logger.info(f"GMT file appears valid: {gmt_path}")
+    except Exception as e:
+        logger.error(f"Failed to check GMT file {gmt_path}: {str(e)}")
+        raise
+
 def run_deseq2(project, counts_file, metadata_file, output_dir):
     """
     Run DESeq2 on counts.csv and metadata.csv, adding gene symbols from GTF.
@@ -152,6 +168,7 @@ def run_deseq2(project, counts_file, metadata_file, output_dir):
     """
     os.makedirs(output_dir, exist_ok=True)
     output_file = os.path.join(output_dir, "deseq2_results.csv")
+    full_output_file = os.path.join(output_dir, "deseq2_full_results.csv")  # New full results file
     heatmap_output = os.path.join(output_dir, "heatmap.png")
     pca_output = os.path.join(output_dir, "pca_plot.png")
 
@@ -192,15 +209,32 @@ def run_deseq2(project, counts_file, metadata_file, output_dir):
         gene_mapping = parse_gtf_for_symbols(gtf_path)
         results_df['gene_symbol'] = results_df.index.map(gene_mapping)
         
+        # Save full DESeq2 results before filtering
+        results_df.to_csv(full_output_file)
+        logger.info(f"Full DESeq2 results saved to: {full_output_file}")
+        if os.path.exists(full_output_file):
+            file_size = os.path.getsize(full_output_file)
+            ProjectFiles.objects.create(
+                project=project,
+                type='deseq2_full_output',
+                path=full_output_file,
+                is_directory=False,
+                file_format='csv',
+                size=file_size
+            )
+            logger.info(f"Registered full DESeq2 output CSV: {full_output_file} with size {file_size} bytes")
+
         # Filter results based on pvalue_cutoff, log2FoldChange, and baseMean
         pvalue_cutoff = project.pvalue_cutoff
         results_df = results_df[
-            (results_df['padj'] < pvalue_cutoff)
+            (results_df['padj'] < pvalue_cutoff) &
+            (results_df['log2FoldChange'].abs() > 1.0) &
+            (results_df['baseMean'] > 10.0)
         ]
         logger.info(f"Filtered DESeq2 results to {len(results_df)} genes with padj < {pvalue_cutoff}, "
                     f"|log2FoldChange| > 1.0, and baseMean > 10.0")
         
-        # Save DESeq2 results
+        # Save filtered DESeq2 results
         results_df.to_csv(output_file)
         logger.info(f"DESeq2 results saved to: {output_file}")
 
@@ -239,6 +273,23 @@ def run_deseq2(project, counts_file, metadata_file, output_dir):
         
         # Inspect DESeq2 output for GSEA compatibility
         inspect_deseq2_output(output_file)
+
+        # Check GMT file for the project species
+        species_to_gmt = {
+            'human': 'c5.go.v2023.1.Hs.symbols.gmt',
+            'mouse': 'm2.all.v2023.1.Mm.symbols.gmt',
+            'yeast': 'c5.go.bp.v2023.1.Sc.symbols.gmt'
+        }
+        gmt_file = species_to_gmt.get(project.species.lower())
+        if gmt_file:
+            gmt_path = os.path.join(settings.BASE_DIR, 'rsa', 'references', 'gsea', gmt_file)
+            if os.path.exists(gmt_path):
+                check_gmt_file(gmt_path)
+            else:
+                logger.warning(f"GMT file not found: {gmt_path}")
+        else:
+            logger.warning(f"No GMT file defined for species: {project.species}")
+
         return output_files
     
     except Exception as e:
