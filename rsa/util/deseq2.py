@@ -1,4 +1,4 @@
-# rsa/util/deseq2.py (updated)
+# rsa/util/deseq2.py (updated with GSEA and filtering)
 import pandas as pd
 import logging
 import re
@@ -10,8 +10,8 @@ from rsa.models import Project, ProjectFiles
 import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
-from sklearn.decomposition import PCA
 import gseapy as gp
+from sklearn.decomposition import PCA
 from gseapy.plot import gseaplot
 
 logger = logging.getLogger(__name__)
@@ -19,19 +19,15 @@ logger = logging.getLogger(__name__)
 def parse_gtf_for_symbols(gtf_path):
     """Parse GTF file to extract gene_id to gene_name mapping."""
     try:
-        # Read GTF, focusing on 'gene' features
         gtf_cols = ['seqname', 'source', 'feature', 'start', 'end', 'score', 'strand', 'frame', 'attributes']
         gtf_df = pd.read_csv(gtf_path, sep='\t', comment='#', names=gtf_cols, low_memory=False)
         gtf_df = gtf_df[gtf_df['feature'] == 'gene']
-        
-        # Extract gene_id and gene_name from attributes
         gene_mapping = {}
         for attr in gtf_df['attributes']:
             gene_id_match = re.search(r'gene_id "([^"]+)"', attr)
             gene_name_match = re.search(r'gene_name "([^"]+)"', attr)
             if gene_id_match and gene_name_match:
                 gene_mapping[gene_id_match.group(1)] = gene_name_match.group(1)
-        
         logger.info(f"Parsed {len(gene_mapping)} gene symbols from GTF")
         return gene_mapping
     except Exception as e:
@@ -53,7 +49,6 @@ def prepare_metadata(meta_data, counts_data):
 def create_cluster_heatmap(dds, results_df, output_path, project):
     """Generate a clustered heatmap with dendrograms for significant genes."""
     try:
-        # Filter significant genes based on DESeq2 results
         sigs = results_df[
             (results_df['padj'] < project.pvalue_cutoff) &
             (results_df['log2FoldChange'].abs() > 1.0) &
@@ -62,24 +57,18 @@ def create_cluster_heatmap(dds, results_df, output_path, project):
         if sigs.empty:
             logger.warning("No significant genes found for heatmap")
             raise ValueError("No significant genes to plot in heatmap")
-
-        # Subset dds to significant genes
         dds_sigs = dds[:, sigs.index]
         logger.info(f"Subset dds to {len(sigs.index)} significant genes")
-
-        # Use normalized counts and apply log1p transformation
         norm_counts = dds_sigs.layers['normed_counts']
-        log1p_counts = np.log1p(norm_counts)  # Compute log1p transformation manually
+        log1p_counts = np.log1p(norm_counts)
         grapher = pd.DataFrame(
             log1p_counts.T,
             index=dds_sigs.var_names,
             columns=dds_sigs.obs_names
         )
-
-        # Generate clustered heatmap
         sns.clustermap(
             grapher,
-            z_score=0,  # Normalize by row (genes)
+            z_score=0,
             cmap='RdYlBu_r',
             figsize=(10, 8),
             xticklabels=True,
@@ -106,7 +95,6 @@ def create_pca_plot(counts, metadata, output_path, project):
             'PC2': pca_result[:, 1],
             'Condition': metadata['condition']
         })
-        
         plt.figure(figsize=(8, 6))
         sns.scatterplot(data=pca_df, x='PC1', y='PC2', hue='Condition', s=100)
         plt.title(f"PCA Plot - {project.name}")
@@ -142,7 +130,7 @@ def check_gmt_file(gmt_path):
             lines = f.readlines()
             for line in lines[:5]:
                 fields = line.strip().split('\t')
-                logger.info(f"GMT line sample: {fields[:3]}")  # Log first few fields
+                logger.info(f"GMT line sample: {fields[:3]}")
                 if len(fields) < 2:
                     logger.error(f"Invalid GMT format in {gmt_path}")
                     raise RuntimeError(f"Invalid GMT file: {gmt_path}")
@@ -150,6 +138,92 @@ def check_gmt_file(gmt_path):
     except Exception as e:
         logger.error(f"Failed to check GMT file {gmt_path}: {str(e)}")
         raise
+
+def run_gsea(project, deseq2_output_file, gmt_path, output_dir):
+    """Run GSEA prerank analysis on DESeq2 results and save filtered outputs."""
+    try:
+        # Read DESeq2 full results
+        deseq2_df = pd.read_csv(deseq2_output_file)
+        if 'gene_symbol' not in deseq2_df.columns or 'log2FoldChange' not in deseq2_df.columns:
+            logger.error("DESeq2 results missing required columns: gene_symbol or log2FoldChange")
+            raise RuntimeError("Invalid DESeq2 results format for GSEA")
+        
+        # Prepare ranked list: gene_symbol and log2FoldChange, convert to uppercase
+        ranked_list = deseq2_df[['gene_symbol', 'log2FoldChange']].dropna()
+        ranked_list['gene_symbol'] = ranked_list['gene_symbol'].str.upper()  # Convert to uppercase
+        ranked_list = ranked_list.set_index('gene_symbol')['log2FoldChange']
+        logger.info(f"Prepared ranked list for GSEA with {len(ranked_list)} genes")
+        logger.info(f"Sample gene symbols: {ranked_list.index[:5].tolist()}")
+
+        # Run GSEA prerank with adjusted min_size and max_size
+        gsea_results = gp.prerank(
+            rnk=ranked_list,
+            gene_sets=gmt_path,
+            outdir=output_dir,
+            permutation_num=100,  # Minimal for MVP
+            min_size=5,  # Lowered from default 15
+            max_size=1000,  # Increased from default 500
+            seed=42,
+            threads=1
+        )
+        logger.info(f"GSEA prerank completed. Results saved in: {output_dir}")
+
+        # Filter GSEA results based on specified criteria
+        filtered_results = gsea_results.res2d[
+            (gsea_results.res2d['NES'].abs() > 1.5) &
+            (gsea_results.res2d['FDR q-val'] < 0.25) &
+            (gsea_results.res2d['NOM p-val'] < 0.05)
+        ]
+        logger.info(f"Filtered GSEA results to {len(filtered_results)} gene sets with "
+                    f"|NES| > 1.5, FDR < 0.25, NOM p-val < 0.05")
+
+        # Drop 'Name' column and save filtered GSEA results to CSV without index
+        filtered_results = filtered_results.drop(columns=['Name'], errors='ignore')
+        gsea_output_file = os.path.join(output_dir, "gsea_results.csv")
+        filtered_results.to_csv(gsea_output_file, index=False)
+        logger.info(f"Filtered GSEA results CSV saved to: {gsea_output_file}")
+
+        # Generate one enrichment plot for the top gene set (if any remain after filtering)
+        top_term = filtered_results.index[0] if not filtered_results.empty else None
+        if top_term:
+            enrichment_plot = os.path.join(output_dir, f"gsea_enrichment_{top_term}.png")
+            gseaplot(
+                rank_metric=gsea_results.ranking,
+                term=top_term,
+                **gsea_results.results[top_term],
+                ofname=enrichment_plot
+            )
+            logger.info(f"GSEA enrichment plot saved to: {enrichment_plot}")
+        else:
+            logger.warning("No GSEA results passed filtering criteria to plot")
+            enrichment_plot = None
+
+        # Register GSEA outputs in ProjectFiles
+        output_files = [gsea_output_file]
+        if enrichment_plot and os.path.exists(enrichment_plot):
+            output_files.append(enrichment_plot)
+        
+        for file_path in output_files:
+            if os.path.exists(file_path):
+                file_size = os.path.getsize(file_path)
+                file_type = 'gsea_output' if file_path.endswith('.csv') else 'gsea_visualization'
+                file_format = 'csv' if file_path.endswith('.csv') else 'png'
+                ProjectFiles.objects.create(
+                    project=project,
+                    type=file_type,
+                    path=file_path,
+                    is_directory=False,
+                    file_format=file_format,
+                    size=file_size
+                )
+                logger.info(f"Registered GSEA file: {file_path} with size {file_size} bytes")
+
+        return output_files
+
+    except Exception as e:
+        logger.error(f"GSEA failed: {str(e)}")
+        # Return empty list to allow DESeq2 to complete
+        return []
 
 def run_deseq2(project, counts_file, metadata_file, output_dir):
     """
@@ -168,11 +242,10 @@ def run_deseq2(project, counts_file, metadata_file, output_dir):
     """
     os.makedirs(output_dir, exist_ok=True)
     output_file = os.path.join(output_dir, "deseq2_results.csv")
-    full_output_file = os.path.join(output_dir, "deseq2_full_results.csv")  # New full results file
+    full_output_file = os.path.join(output_dir, "deseq2_full_results.csv")
     heatmap_output = os.path.join(output_dir, "heatmap.png")
     pca_output = os.path.join(output_dir, "pca_plot.png")
 
-    # Map species to GTF
     species_to_gtf = {
         'human': 'Homo_sapiens.GRCh38.gtf',
         'mouse': 'Mus_musculus.GRCm39.gtf',
@@ -185,7 +258,6 @@ def run_deseq2(project, counts_file, metadata_file, output_dir):
     if not os.path.exists(gtf_path):
         raise RuntimeError(f"GTF file not found: {gtf_path}")
 
-    # Read counts and metadata
     try:
         counts = pd.read_csv(counts_file, sep='\t')
         counts = counts.set_index('Geneid')
@@ -193,23 +265,20 @@ def run_deseq2(project, counts_file, metadata_file, output_dir):
         counts = counts.drop(columns=columns_to_remove, errors='ignore')
         numeric_counts = counts.select_dtypes(include=['int64', 'float64'])
         counts = counts[numeric_counts.sum(axis=1) > 0]
-        counts = counts.T  # Samples as rows, genes as columns
+        counts = counts.T
 
         metadata = pd.read_csv(metadata_file)
         metadata, counts = prepare_metadata(metadata, counts)
         
-        # Run DESeq2
         dds = DeseqDataSet(counts=counts, metadata=metadata, design='condition')
         dds.deseq2()
         stat_res = DeseqStats(dds, n_cpus=1, contrast=['condition', metadata['condition'].unique()[0], metadata['condition'].unique()[1]])
         stat_res.summary()
         results_df = stat_res.results_df
 
-        # Add gene symbols
         gene_mapping = parse_gtf_for_symbols(gtf_path)
         results_df['gene_symbol'] = results_df.index.map(gene_mapping)
         
-        # Save full DESeq2 results before filtering
         results_df.to_csv(full_output_file)
         logger.info(f"Full DESeq2 results saved to: {full_output_file}")
         if os.path.exists(full_output_file):
@@ -224,7 +293,6 @@ def run_deseq2(project, counts_file, metadata_file, output_dir):
             )
             logger.info(f"Registered full DESeq2 output CSV: {full_output_file} with size {file_size} bytes")
 
-        # Filter results based on pvalue_cutoff, log2FoldChange, and baseMean
         pvalue_cutoff = project.pvalue_cutoff
         results_df = results_df[
             (results_df['padj'] < pvalue_cutoff) &
@@ -234,11 +302,9 @@ def run_deseq2(project, counts_file, metadata_file, output_dir):
         logger.info(f"Filtered DESeq2 results to {len(results_df)} genes with padj < {pvalue_cutoff}, "
                     f"|log2FoldChange| > 1.0, and baseMean > 10.0")
         
-        # Save filtered DESeq2 results
         results_df.to_csv(output_file)
         logger.info(f"DESeq2 results saved to: {output_file}")
 
-        # Register DESeq2 output CSV in ProjectFiles
         if os.path.exists(output_file):
             file_size = os.path.getsize(output_file)
             ProjectFiles.objects.create(
@@ -251,12 +317,10 @@ def run_deseq2(project, counts_file, metadata_file, output_dir):
             )
             logger.info(f"Registered DESeq2 output CSV: {output_file} with size {file_size} bytes")
 
-        # Generate visualizations
         output_files = [output_file]
         create_pca_plot(counts, metadata, pca_output, project)
         create_cluster_heatmap(dds, results_df, heatmap_output, project)
 
-        # Register visualization files
         for plot_path in [heatmap_output, pca_output]:
             if os.path.exists(plot_path):
                 file_size = os.path.getsize(plot_path)
@@ -271,10 +335,8 @@ def run_deseq2(project, counts_file, metadata_file, output_dir):
                 logger.info(f"Registered DESeq2 visualization: {plot_path} with size {file_size} bytes")
                 output_files.append(plot_path)
         
-        # Inspect DESeq2 output for GSEA compatibility
         inspect_deseq2_output(output_file)
 
-        # Check GMT file for the project species
         species_to_gmt = {
             'human': 'c5.go.v2023.1.Hs.symbols.gmt',
             'mouse': 'm2.all.v2023.1.Mm.symbols.gmt',
@@ -285,6 +347,9 @@ def run_deseq2(project, counts_file, metadata_file, output_dir):
             gmt_path = os.path.join(settings.BASE_DIR, 'rsa', 'references', 'gsea', gmt_file)
             if os.path.exists(gmt_path):
                 check_gmt_file(gmt_path)
+                # Use full DESeq2 results for GSEA
+                gsea_output_files = run_gsea(project, full_output_file, gmt_path, output_dir)
+                output_files.extend(gsea_output_files)
             else:
                 logger.warning(f"GMT file not found: {gmt_path}")
         else:

@@ -404,11 +404,27 @@ def project_detail(request, project_id):
             logger.error(f"Error reading deseq_output.csv for project {project.id}: {str(e)}")
             deseq_output_content = []
 
+        # Read gsea_results.csv
+        gsea_output_content = None
+        try:
+            gsea_output_file = ProjectFiles.objects.get(project=project, type='gsea_output')
+            with open(gsea_output_file.path, 'r') as csvfile:
+                reader = csv.reader(csvfile)
+                gsea_output_content = list(reader)[:6]  # Limit to first 5 rows + header for preview
+                logger.debug(f"Read gsea_results.csv for project {project.id}: {gsea_output_content}")
+        except ProjectFiles.DoesNotExist:
+            logger.warning(f"No gsea_results.csv found for project {project.id}")
+            gsea_output_content = []
+        except Exception as e:
+            logger.error(f"Error reading gsea_results.csv for project {project.id}: {str(e)}")
+            gsea_output_content = []
+
         return render(request, 'project_detail.html', {
             'project': project,
             'files': files,
             'metadata_content': metadata_content,
-            'deseq_output_content': deseq_output_content
+            'deseq_output_content': deseq_output_content,
+            'gsea_output_content': gsea_output_content
         })
     except User.DoesNotExist:
         messages.error(request, "Invalid session. Please start a new session.")

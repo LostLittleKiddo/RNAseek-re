@@ -115,6 +115,40 @@
                 </div>
             </div>
         {% endif %}
+        
+        {% if gsea_output_content %}
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">GSEA Results Preview</h3>
+                <p class="text-sm text-gray-600 mb-3">Preview of the first 5 rows of the GSEA output (gsea_results.csv).</p>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                {% for header in gsea_output_content.0 %}
+                                    <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">{{ header }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in gsea_output_content|slice:"1:" %}
+                                <tr class="border-t border-gray-200">
+                                    {% for value in row %}
+                                        <td class="px-4 py-3 text-sm text-gray-700">
+                                            {% if value|is_number %}
+                                                {{ value|to_significant_digits:4 }}
+                                            {% else %}
+                                                {{ value }}
+                                            {% endif %}
+                                        </td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        {% endif %}
+
         <!-- Visualizations Section -->
         <h3 class="text-lg font-semibold text-gray-800 mb-4">Visualizations</h3>
         {% with visualizations=files|filter_by_type:'deseq2_visualization'|filter_by_format:'png' %}
@@ -185,38 +219,43 @@
                         {% endif %}
                     </p>
                     <div class="overflow-x-auto">
-                        <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm">
+                        <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd; font-family: Arial, sans-serif;">
                             <thead>
-                                <tr class="bg-gray-100">
-                                    <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">File Name</th>
-                                    <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">Format</th>
-                                    <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">Size</th>
-                                    <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">Created At</th>
-                                    <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">Action</th>
+                                <tr style="background-color: #f4f4f4;">
+                                    <th style="text-align: left; width: 30%; padding: 10px; border: 1px solid #ddd;">File Name</th>
+                                    <th style="text-align: left; width: 15%; padding: 10px; border: 1px solid #ddd;">Format</th>
+                                    <th style="text-align: left; width: 15%; padding: 10px; border: 1px solid #ddd;">Size</th>
+                                    <th style="text-align: left; width: 20%; padding: 10px; border: 1px solid #ddd;">Created At</th>
+                                    <th style="text-align: left; width: 20%; padding: 10px; border: 1px solid #ddd;">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {% for file in group.list %}
-                                    <tr class="border-t border-gray-200">
-                                        <td class="px-4 py-3 text-sm text-gray-700">{{ file.path|basename }}</td>
-                                        <td class="px-4 py-3 text-sm text-gray-700">{{ file.file_format }}</td>
-                                        <td class="px-4 py-3 text-sm text-gray-700">
-                                            {% if not file.is_directory %}
-                                                {{ file.size|filesizeformat }}
-                                            {% else %}
-                                                <span class="text-gray-500">N/A</span>
-                                            {% endif %}
-                                        </td>
-                                        <td class="px-4 py-3 text-sm text-gray-700" data-utc-time="{{ file.created_at|date:'c' }}">{{ file.created_at|date:"Y-m-d H:i:s" }}</td>
-                                        <td class="px-4 py-3 text-sm">
-                                            {% if not file.is_directory and group.grouper == 'qc_report_fastqc' %}
-                                                <a href="{% url 'download_pdf' file.id %}" class="text-emerald-600 hover:text-emerald-700">Download PDF</a>
-                                            {% elif not file.is_directory %}
-                                                <a href="{% url 'download_file' file.id %}" class="text-emerald-600 hover:text-emerald-700">Download</a>
-                                            {% else %}
-                                                <span class="text-gray-500">Directory</span>
-                                            {% endif %}
-                                        </td>
+                                    <tr 
+                                    class="{% cycle 'bg-white' 'bg-gray-50' %}" 
+                                    data-original-bg="{% cycle 'bg-white' 'bg-gray-50' %}"
+                                    onmouseover="this.classList.remove('bg-white', 'bg-gray-50'); this.classList.add('bg-gray-100')" 
+                                    onmouseout="this.classList.remove('bg-gray-100'); this.classList.add(this.getAttribute('data-original-bg'))"
+                                    >
+                                    <td class="text-left p-2.5 border border-gray-300">{{ file.path|basename }}</td>
+                                    <td class="text-left p-2.5 border border-gray-300">{{ file.file_format }}</td>
+                                    <td class="text-left p-2.5 border border-gray-300">
+                                        {% if not file.is_directory %}
+                                        {{ file.size|filesizeformat }}
+                                        {% else %}
+                                        N/A
+                                        {% endif %}
+                                    </td>
+                                    <td class="text-left p-2.5 border border-gray-300">{{ file.created_at|date:"Y-m-d H:i:s" }}</td>
+                                    <td class="text-left p-2.5 border border-gray-300">
+                                        {% if not file.is_directory and group.grouper == 'qc_report_fastqc' %}
+                                        <a href="{% url 'download_file' file.id %}" class="text-blue-600 underline">Download PDF</a>
+                                        {% elif not file.is_directory %}
+                                        <a href="{% url 'download_file' file.id %}" class="text-blue-600 underline">Download</a>
+                                        {% else %}
+                                        Directory
+                                        {% endif %}
+                                    </td>
                                     </tr>
                                 {% endfor %}
                             </tbody>
@@ -247,4 +286,5 @@
             });
         });
     </script>
+    
 {% endblock %}
