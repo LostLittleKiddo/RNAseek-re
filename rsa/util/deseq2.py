@@ -1,4 +1,4 @@
-# rsa/util/deseq2.py (updated with GSEA and filtering)
+# rsa/util/deseq2.py (updated with GSEA, filtering, and PDF merging)
 import pandas as pd
 import logging
 import re
@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import gseapy as gp
 from sklearn.decomposition import PCA
-from gseapy.plot import gseaplot
+from PyPDF2 import PdfMerger
 
 logger = logging.getLogger(__name__)
 
@@ -140,7 +140,7 @@ def check_gmt_file(gmt_path):
         raise
 
 def run_gsea(project, deseq2_output_file, gmt_path, output_dir):
-    """Run GSEA prerank analysis on DESeq2 results and save filtered outputs."""
+    """Run GSEA prerank analysis on DESeq2 results, save filtered outputs, and combine PDFs."""
     try:
         # Read DESeq2 full results
         deseq2_df = pd.read_csv(deseq2_output_file)
@@ -183,31 +183,53 @@ def run_gsea(project, deseq2_output_file, gmt_path, output_dir):
         filtered_results.to_csv(gsea_output_file, index=False)
         logger.info(f"Filtered GSEA results CSV saved to: {gsea_output_file}")
 
-        # Generate one enrichment plot for the top gene set (if any remain after filtering)
-        top_term = filtered_results.index[0] if not filtered_results.empty else None
-        if top_term:
-            enrichment_plot = os.path.join(output_dir, f"gsea_enrichment_{top_term}.png")
-            gseaplot(
-                rank_metric=gsea_results.ranking,
-                term=top_term,
-                **gsea_results.results[top_term],
-                ofname=enrichment_plot
-            )
-            logger.info(f"GSEA enrichment plot saved to: {enrichment_plot}")
+        # Combine PDFs in output_dir/prerank into gsea_plot.pdf
+        prerank_dir = os.path.join(output_dir, "prerank")
+        combined_pdf_path = os.path.join(output_dir, "gsea_plot.pdf")
+        merger = PdfMerger()
+        pdf_files = [f for f in os.listdir(prerank_dir) if f.endswith('.pdf')] if os.path.exists(prerank_dir) else []
+        
+        if pdf_files:
+            for pdf_file in sorted(pdf_files):  # Sort for consistent order
+                pdf_path = os.path.join(prerank_dir, pdf_file)
+                try:
+                    merger.append(pdf_path)
+                    logger.info(f"Added {pdf_path} to combined PDF")
+                except Exception as e:
+                    logger.warning(f"Failed to append {pdf_path}: {str(e)}")
+            try:
+                merger.write(combined_pdf_path)
+                logger.info(f"Combined GSEA PDFs saved to: {combined_pdf_path}")
+            except Exception as e:
+                logger.error(f"Failed to save combined PDF: {str(e)}")
+                combined_pdf_path = None
+            finally:
+                merger.close()
         else:
-            logger.warning("No GSEA results passed filtering criteria to plot")
-            enrichment_plot = None
+            logger.warning(f"No PDF files found in {prerank_dir}")
+            combined_pdf_path = None
 
         # Register GSEA outputs in ProjectFiles
         output_files = [gsea_output_file]
-        if enrichment_plot and os.path.exists(enrichment_plot):
-            output_files.append(enrichment_plot)
         
-        for file_path in output_files:
+        if combined_pdf_path and os.path.exists(combined_pdf_path):
+            file_size = os.path.getsize(combined_pdf_path)
+            ProjectFiles.objects.create(
+                project=project,
+                type='gsea_visualization',
+                path=combined_pdf_path,
+                is_directory=False,
+                file_format='pdf',
+                size=file_size
+            )
+            logger.info(f"Registered combined GSEA PDF: {combined_pdf_path} with size {file_size} bytes")
+            output_files.append(combined_pdf_path)
+
+        for file_path in [gsea_output_file]:
             if os.path.exists(file_path):
                 file_size = os.path.getsize(file_path)
-                file_type = 'gsea_output' if file_path.endswith('.csv') else 'gsea_visualization'
-                file_format = 'csv' if file_path.endswith('.csv') else 'png'
+                file_type = 'gsea_output'
+                file_format = 'csv'
                 ProjectFiles.objects.create(
                     project=project,
                     type=file_type,
@@ -238,7 +260,7 @@ def run_deseq2(project, counts_file, metadata_file, output_dir):
         output_dir: Directory for DESeq2 and GSEA output (deseq2_results.csv, gsea_results.csv, and plots).
 
     Returns:
-        list: Paths to deseq2_results.csv, gsea_results.csv, and visualization PNGs.
+        list: Paths to deseq2_results.csv, gsea_results.csv, and visualization PNGs/PDFs.
     """
     os.makedirs(output_dir, exist_ok=True)
     output_file = os.path.join(output_dir, "deseq2_results.csv")
