@@ -160,9 +160,9 @@ def run_gsea(project, deseq2_output_file, gmt_path, output_dir):
             rnk=ranked_list,
             gene_sets=gmt_path,
             outdir=output_dir,
-            permutation_num=100,  # Minimal for MVP
-            min_size=5,  # Lowered from default 15
-            max_size=1000,  # Increased from default 500
+            permutation_num=100,  
+            min_size=15,  
+            max_size=500, 
             seed=42,
             threads=1
         )
