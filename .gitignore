@@ -90,4 +90,5 @@ query_database.py
 database_results.txt
 
 rsa/references/gtf
+rsa/references/index
 test/

@@ -24,23 +24,23 @@ def run_featurecounts(project, input_files, output_dir):
     os.makedirs(output_dir, exist_ok=True)
     counts_file = os.path.join(output_dir, "counts.csv")
     
-    # Map species to GTF annotation file
-    species_to_gtf = {
-        'human': 'Homo_sapiens.GRCh38.gtf',
-        'mouse': 'Mus_musculus.GRCm39.gtf',
-        'yeast': 'Saccharomyces_cerevisiae.R64-1-1.gtf'
+    # Map species to GFF3 annotation file
+    species_to_gff3 = {
+        'human': 'Homo_sapiens.GRCh38.gff3',
+        'mouse': 'Mus_musculus.GRCm39.gff3',
+        'yeast': 'Saccharomyces_cerevisiae.R64-1-1.gff3'
     }
-    gtf_file = species_to_gtf.get(project.species.lower(), None)
-    if not gtf_file:
-        logger.error(f"No GTF annotation file defined for species: {project.species}")
-        raise RuntimeError(f"No GTF annotation file defined for species: {project.species}")
+    gff3_file = species_to_gff3.get(project.species.lower(), None)
+    if not gff3_file:
+        logger.error(f"No GFF3 annotation file defined for species: {project.species}")
+        raise RuntimeError(f"No GFF3 annotation file defined for species: {project.species}")
 
     # Use the provided annotation directory
-    gtf_path = os.path.join(settings.BASE_DIR, 'rsa', 'references', 'gtf', gtf_file)
-    logger.debug(f"Checking for GTF annotation at: {gtf_path}")
-    if not os.path.exists(gtf_path):
-        logger.error(f"GTF annotation file not found: {gtf_path}")
-        raise RuntimeError(f"GTF annotation file not found: {gtf_path}")
+    gff3_path = os.path.join(settings.BASE_DIR, 'rsa', 'references', 'gff3', gff3_file)
+    logger.debug(f"Checking for GFF3 annotation at: {gff3_path}")
+    if not os.path.exists(gff3_path):
+        logger.error(f"GFF3 annotation file not found: {gff3_path}")
+        raise RuntimeError(f"GFF3 annotation file not found: {gff3_path}")
 
     # Verify FeatureCounts is installed
     try:
@@ -59,10 +59,11 @@ def run_featurecounts(project, input_files, output_dir):
     # Build FeatureCounts command
     cmd = [
         'featureCounts',
-        '-a', gtf_path,  # Annotation file
+        '-F', 'GFF',  # Specify GFF format for annotation
+        '-a', gff3_path,  # Annotation file
         '-o', counts_file,  # Output counts file
         '-g', 'gene_id',  # Count reads per gene ID
-        '-t', 'exon',  # Feature type to count
+        '-t', 'gene',  # Feature type to count
     ]
 
     # Adjust parameters based on sequencing type

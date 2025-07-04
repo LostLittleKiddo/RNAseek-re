@@ -1,4 +1,4 @@
-# rsa/util/deseq2.py (updated with GSEA, filtering, and PDF merging)
+# rsa/util/deseq2.py (updated with GSEA, filtering, PDF merging, GFF3 parsing, and 4 significant digits for DESeq2 results)
 import pandas as pd
 import logging
 import re
@@ -16,23 +16,25 @@ from PyPDF2 import PdfMerger
 
 logger = logging.getLogger(__name__)
 
-def parse_gtf_for_symbols(gtf_path):
-    """Parse GTF file to extract gene_id to gene_name mapping."""
+def parse_gff3_for_symbols(gff3_path):
+    """Parse GFF3 file to extract gene_id to gene_name mapping."""
     try:
-        gtf_cols = ['seqname', 'source', 'feature', 'start', 'end', 'score', 'strand', 'frame', 'attributes']
-        gtf_df = pd.read_csv(gtf_path, sep='\t', comment='#', names=gtf_cols, low_memory=False)
-        gtf_df = gtf_df[gtf_df['feature'] == 'gene']
+        gff3_cols = ['seqname', 'source', 'feature', 'start', 'end', 'score', 'strand', 'frame', 'attributes']
+        gff3_df = pd.read_csv(gff3_path, sep='\t', comment='#', names=gff3_cols, low_memory=False)
+        gff3_df = gff3_df[gff3_df['feature'] == 'gene']
         gene_mapping = {}
-        for attr in gtf_df['attributes']:
-            gene_id_match = re.search(r'gene_id "([^"]+)"', attr)
-            gene_name_match = re.search(r'gene_name "([^"]+)"', attr)
-            if gene_id_match and gene_name_match:
-                gene_mapping[gene_id_match.group(1)] = gene_name_match.group(1)
-        logger.info(f"Parsed {len(gene_mapping)} gene symbols from GTF")
+        for attr in gff3_df['attributes']:
+            gene_id_match = re.search(r'gene_id=([^;]+)', attr)
+            name_match = re.search(r'Name=([^;]+)', attr)
+            if gene_id_match:
+                gene_id = gene_id_match.group(1)
+                gene_name = name_match.group(1) if name_match else gene_id
+                gene_mapping[gene_id] = gene_name
+        logger.info(f"Parsed {len(gene_mapping)} gene symbols from GFF3")
         return gene_mapping
     except Exception as e:
-        logger.error(f"Failed to parse GTF file {gtf_path}: {str(e)}")
-        raise RuntimeError(f"Failed to parse GTF file: {str(e)}")
+        logger.error(f"Failed to parse GFF3 file {gff3_path}: {str(e)}")
+        raise RuntimeError(f"Failed to parse GFF3 file: {str(e)}")
 
 def prepare_metadata(meta_data, counts_data):
     """Prepare metadata and align it with counts data."""
@@ -249,7 +251,7 @@ def run_gsea(project, deseq2_output_file, gmt_path, output_dir):
 
 def run_deseq2(project, counts_file, metadata_file, output_dir):
     """
-    Run DESeq2 on counts.csv and metadata.csv, adding gene symbols from GTF.
+    Run DESeq2 on counts.csv and metadata.csv, adding gene symbols from GFF3.
     Filter results by project.pvalue_cutoff, log2FoldChange > 1, and baseMean > 10.
     Generate cluster heatmap, PCA, and GSEA analysis.
 
@@ -268,17 +270,17 @@ def run_deseq2(project, counts_file, metadata_file, output_dir):
     heatmap_output = os.path.join(output_dir, "heatmap.png")
     pca_output = os.path.join(output_dir, "pca_plot.png")
 
-    species_to_gtf = {
-        'human': 'Homo_sapiens.GRCh38.gtf',
-        'mouse': 'Mus_musculus.GRCm39.gtf',
-        'yeast': 'Saccharomyces_cerevisiae.R64-1-1.gtf'
+    species_to_gff3 = {
+        'human': 'Homo_sapiens.GRCh38.gff3',
+        'mouse': 'Mus_musculus.GRCm39.gff3',
+        'yeast': 'Saccharomyces_cerevisiae.R64-1-1.gff3'
     }
-    gtf_file = species_to_gtf.get(project.species.lower(), None)
-    if not gtf_file:
-        raise RuntimeError(f"No GTF file defined for species: {project.species}")
-    gtf_path = os.path.join(settings.BASE_DIR, 'rsa', 'references', 'gtf', gtf_file)
-    if not os.path.exists(gtf_path):
-        raise RuntimeError(f"GTF file not found: {gtf_path}")
+    gff3_file = species_to_gff3.get(project.species.lower(), None)
+    if not gff3_file:
+        raise RuntimeError(f"No GFF3 file defined for species: {project.species}")
+    gff3_path = os.path.join(settings.BASE_DIR, 'rsa', 'references', 'gff3', gff3_file)
+    if not os.path.exists(gff3_path):
+        raise RuntimeError(f"GFF3 file not found: {gff3_path}")
 
     try:
         counts = pd.read_csv(counts_file, sep='\t')
@@ -298,9 +300,12 @@ def run_deseq2(project, counts_file, metadata_file, output_dir):
         stat_res.summary()
         results_df = stat_res.results_df
 
-        gene_mapping = parse_gtf_for_symbols(gtf_path)
+        gene_mapping = parse_gff3_for_symbols(gff3_path)
         results_df['gene_symbol'] = results_df.index.map(gene_mapping)
         
+        # Round numerical columns to 4 significant digits for full results
+        numeric_cols = results_df.select_dtypes(include=['float64', 'int64']).columns
+        results_df[numeric_cols] = results_df[numeric_cols].round(4)
         results_df.to_csv(full_output_file)
         logger.info(f"Full DESeq2 results saved to: {full_output_file}")
         if os.path.exists(full_output_file):
@@ -324,6 +329,9 @@ def run_deseq2(project, counts_file, metadata_file, output_dir):
         logger.info(f"Filtered DESeq2 results to {len(results_df)} genes with padj < {pvalue_cutoff}, "
                     f"|log2FoldChange| > 1.0, and baseMean > 10.0")
         
+        # Round numerical columns to 4 significant digits for filtered results
+        numeric_cols = results_df.select_dtypes(include=['float64', 'int64']).columns
+        results_df[numeric_cols] = results_df[numeric_cols].round(4)
         results_df.to_csv(output_file)
         logger.info(f"DESeq2 results saved to: {output_file}")
 
@@ -359,23 +367,23 @@ def run_deseq2(project, counts_file, metadata_file, output_dir):
         
         inspect_deseq2_output(output_file)
 
-        species_to_gmt = {
-            'human': 'c5.go.v2023.1.Hs.symbols.gmt',
-            'mouse': 'm2.all.v2023.1.Mm.symbols.gmt',
-            'yeast': 'c5.go.bp.v2023.1.Sc.symbols.gmt'
-        }
-        gmt_file = species_to_gmt.get(project.species.lower())
-        if gmt_file:
-            gmt_path = os.path.join(settings.BASE_DIR, 'rsa', 'references', 'gsea', gmt_file)
-            if os.path.exists(gmt_path):
-                check_gmt_file(gmt_path)
-                # Use full DESeq2 results for GSEA
-                gsea_output_files = run_gsea(project, full_output_file, gmt_path, output_dir)
-                output_files.extend(gsea_output_files)
-            else:
-                logger.warning(f"GMT file not found: {gmt_path}")
-        else:
-            logger.warning(f"No GMT file defined for species: {project.species}")
+        # species_to_gmt = {
+        #     'human': 'c5.go.v2023.1.Hs.symbols.gmt',
+        #     'mouse': 'm2.all.v2023.1.Mm.symbols.gmt',
+        #     'yeast': 'c5.go.bp.v2023.1.Sc.symbols.gmt'
+        # }
+        # gmt_file = species_to_gmt.get(project.species.lower())
+        # if gmt_file:
+        #     gmt_path = os.path.join(settings.BASE_DIR, 'rsa', 'references', 'gsea', gmt_file)
+        #     if os.path.exists(gmt_path):
+        #         check_gmt_file(gmt_path)
+        #         # Use full DESeq2 results for GSEA
+        #         gsea_output_files = run_gsea(project, full_output_file, gmt_path, output_dir)
+        #         output_files.extend(gsea_output_files)
+        #     else:
+        #         logger.warning(f"GMT file not found: {gmt_path}")
+        # else:
+        #     logger.warning(f"No GMT file defined for species: {project.species}")
 
         return output_files
     
