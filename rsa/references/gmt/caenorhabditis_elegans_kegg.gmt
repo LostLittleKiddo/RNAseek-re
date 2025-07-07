@@ -1,0 +1,801 @@
+KEGG_ABC_TRANSPORTERS	hsa02010	abt-2	abt-1	abt-2	abt-2	abt-2	abt-4	abt-2	abt-4	abt-1	abt-1	abt-2	abt-4	abt-1	abt-1	pgp-1	haf-1	pgp-1	pgp-1	pgp-1	pgp-9	hmt-1	abtm-1	haf-6	haf-4	mrp-2	mrp-5	mrp-5	mrp-1	mrp-7	mrp-6	mrp-5	mrp-2	pmp-4	pmp-4	pmp-1	pmp-2	pmp-3	wht-1	wht-3	wht-4	haf-7	haf-8	haf-7	haf-8
+KEGG_ACUTE_MYELOID_LEUKEMIA	hsa05221	akt-1	akt-1	akt-1	akt-2	lin-45	lin-45	cya-1	cyd-1	sem-5	let-60	hmp-2	let-60	pop-1	mek-2	mek-2	mpk-1	mpk-1	let-363	let-60	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	prk-2	prk-1	prk-2	nhr-2	sex-1	lin-45	rsks-1	rsks-1	sos-1	sos-1	sta-1	sta-1	sta-1	pop-1	pop-1	pop-1
+KEGG_ADHERENS_JUNCTION	hsa04520	Y94H6A.7	act-2	act-4	act-1	act-2	act-4	atn-1	atn-1	atn-1	atn-1	afd-1	cdc-42	cbp-1	kin-3	kin-3	kin-10	hmp-1	hmp-1	hmp-1	hmp-2	jac-1	let-23	cbp-1	let-23	frm-3	T21G5.1	frk-1	kin-14	src-1	daf-2	daf-2	pes-7	pop-1	Y105C5A.24	mpk-1	mpk-1	F11E6.8	lit-1	par-3	ptp-2	ptp-3	rac-2	ced-10	rac-2	rac-2	rho-1	sma-2	sma-4	snai-1	sorb-1	pop-1	pop-1	pop-1	zoo-1	deb-1	wve-1	wve-1	src-1
+KEGG_ADIPOCYTOKINE_SIGNALING_PATHWAY	hsa04920	pod-2	acs-13	acs-15	acs-18	acs-5	acs-4	acs-4	acs-13	paqr-1	paqr-1	akt-1	akt-1	akt-1	akt-2	ckk-1	ckk-1	scav-1	scav-2	cpt-1	cpt-1	cpt-1	jnk-1	jnk-1	jnk-1	let-363	pck-1	pck-1	pck-2	nhr-2	sex-1	aak-2	aak-2	aakb-1	aakb-2	aakb-2	aakg-1	aakg-2	aakg-3	aakg-1	aakg-2	aakg-3	aakg-3	tpa-1	ptp-2	fgt-1	fgt-1	sta-1	par-4
+KEGG_ALANINE_ASPARTATE_AND_GLUTAMATE_METABOLISM	hsa00250	gta-1	adsl-1	adss-1	adss-1	agxt-1	T09B4.8	alh-6	alh-7	asns-1	pyr-1	pyr-1	daao-1	unc-25	unc-25	gfat-2	gfat-2	glna-3	glna-2	glna-3	gdh-1	gdh-1	gln-3	got-1.2	got-2.2	C32F10.8	C32F10.8	ppat-1
+KEGG_ALDOSTERONE_REGULATED_SODIUM_REABSORPTION	hsa04960	eat-6	eat-6	eat-6	eat-6	nkb-3	nkb-1	nkb-1	nkb-1	daf-2	irk-3	let-60	mpk-1	mpk-1	Y92H12A.2	nrfl-1	pdk-1	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	pkc-2	pkc-2	pkc-2	asic-2	mec-10	mec-4	mec-10	mec-4	mec-4	ftt-2	par-5	sgk-1
+KEGG_ALPHA_LINOLENIC_ACID_METABOLISM	hsa00592	acox-1.5	acox-3	fat-4	C31H1.5	F44B9.10	C31H1.5	F44B9.10	C07E3.9	ipla-2	ipla-3	ipla-7
+KEGG_ALZHEIMERS_DISEASE	hsa05010	sup-17	adm-4	feh-1	aph-1	apl-1	atf-6	sca-1	sca-1	sca-1	atp-1	atp-2	Y69A2AR.18	F58F12.1	R05D3.6	hpo-18	Y82E9BR.3	Y82E9BR.3	Y82E9BR.3	asb-1	atp-5	atp-3	egl-19	egl-19	egl-19	egl-19	cmd-1	cal-1	cal-3	cmd-1	cmd-1	cal-1	cal-3	clp-1	clp-7	clp-1	cdk-5	cdka-1	chpf-1	chpf-1	chpf-2	cox-4	cox-4	cox-5A	cox-5B	cox-6A	cox-6A	cox-6B	cox-6B	cox-7C	cyc-1	cyc-2.2	pek-1	ire-1	gpd-1	gpd-4	egl-30	nmr-1	nmr-2	nmr-2	nmr-2	nmr-2	gsk-3	ard-1	C02G6.2	C28F5.4	Y70C5C.1	itr-1	itr-1	itr-1	lrp-2	mpk-1	mpk-1	ptl-1	nep-2	ctc-1	ctc-2	ctc-3	ctb-1	ula-1	aph-2	nuo-4	Y63D3A.7	C33A12.1	nuo-3	F45H10.3	Y54F10AM.5	nduf-9	Y56A3A.19	F59C6.5	F44G4.2	C18E9.4	nuo-6	C25H3.9	D2030.4	Y51H1A.3	C16A3.5	Y71H2AM.4	nuo-5	gas-1	nuo-2	lpd-5	nduf-5	nduf-6	nduf-7	T20H4.5	nuo-1	F53F4.10	egl-8	tax-6	tax-6	tax-6	cnb-1	cnb-1	sel-12	sel-12	pen-2	unc-68	sdha-2	sdhb-1	mev-1	sdhd-1	T02H6.11	ucr-1	ucr-2.1	ucr-2.2	isp-1	T27E9.2	T27E9.2	F45H10.2	R07E4.3
+KEGG_AMINOACYL_TRNA_BIOSYNTHESIS	hsa00970	aars-2	aars-1	aars-2	cars-1	dars-1	dars-2	ears-2	ears-1	fars-2	fars-1	fars-3	gars-1	hars-1	hars-1	iars-1	iars-2	kars-1	lars-1	lars-2	mars-1	Y105E8A.20	nars-1	nars-2	pars-2	pstk-1	qars-1	rars-1	rars-2	sars-1	sars-2	secs-1	tars-1	tars-1	tars-1	glp-4	glp-4	wars-1	prx-10	yars-1	yars-2
+KEGG_AMINO_SUGAR_AND_NUCLEOTIDE_SUGAR_METABOLISM	hsa00520	F59B2.3	cht-1	cht-1	T05H4.4	hpo-19	T05H4.4	hpo-19	C26D10.4	K03H1.13	gale-1	tag-96	ZK1058.3	hxk-1	hxk-2	hxk-3	gfat-2	gfat-2	ger-1	gmd-2	Y47D9A.1	tag-335	T03F6.3	T03F6.3	gna-1	gpi-1	hex-1	hex-1	hxk-1	hxk-3	hxk-1	hxk-1	ZK632.4	W06B4.2	R05F9.6	Y43F4B.5	F21D5.1	F52B11.2	F52B11.2	C36A4.4	sqv-4	rml-1	sqv-1
+KEGG_AMYOTROPHIC_LATERAL_SCLEROSIS_ALS	hsa05014	ced-9	ctl-1	chpf-1	chpf-1	chpf-2	cyc-2.2	cup-2	gpx-3	gpx-5	glr-1	glr-1	nmr-1	nmr-2	nmr-2	nmr-2	nmr-2	sek-1	sek-1	nsy-1	pmk-1	pmk-1	pmk-2	pmk-1	pmk-2	pmk-1	tax-6	tax-6	tax-6	cnb-1	cnb-1	rab-5	rac-2	glt-1	sod-5	tomm-40	tomm-40
+KEGG_ANTIGEN_PROCESSING_AND_PRESENTATION	hsa04612	crt-1	cnx-1	crh-1	cpr-5	hsp-90	hsp-90	F44E5.5	hsp-1	hsp-70	F44E5.5	hsp-70	F44E5.5	hsp-70	hsp-1	hsp-110	hsp-4	F44E5.5	hsp-70	hsp-1	F37H8.5	lgmn-1	nfya-1	nfya-2	nfyb-1	nfyc-1	pdi-3	psme-3	psme-3	psme-3	haf-7	haf-8	haf-7	haf-8
+KEGG_APOPTOSIS	hsa04210	wah-1	akt-1	akt-1	akt-1	akt-2	ced-9	clp-1	clp-7	clp-1	chpf-1	chpf-1	chpf-2	cyc-2.2	cps-6	pik-1	pik-1	pik-1	pik-1	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	tax-6	tax-6	tax-6	cnb-1	cnb-1	kin-1	kin-1	kin-1	kin-2	kin-2	F47F2.1
+KEGG_ARACHIDONIC_ACID_METABOLISM	hsa00590	cyp-33C4	cyp-33D1	cyp-33E1	cyp-33E2	cyp-33C4	cyp-33D1	cyp-33E1	cyp-33E2	cyp-23A1	cyp-33A1	cyp-33C7	cyp-33E1	cyp-33E2	C53D5.5	Y7A9A.1	gpx-3	gpx-5	gpx-2	gpx-3	gpx-5	gpx-3	gpx-6	gpx-3	gpx-3	gst-11	ltah-1.1	ltah-1.2	C31H1.5	F44B9.10	C31H1.5	F44B9.10	C07E3.9	ipla-2	ipla-3	ipla-7	pges-2
+KEGG_ARGININE_AND_PROLINE_METABOLISM	hsa00330	C06A6.4	C10C5.3	C10C5.4	C10C5.5	alh-13	alh-2	alh-2	alh-5	alh-6	alh-9	alh-11	smd-1	argn-1	odc-1	F32B5.1	F46H5.3	W10C8.5	ZC434.8	argk-1	F32B5.1	F46H5.3	W10C8.5	ZC434.8	argk-1	ZC434.8	F32B5.1	F46H5.3	W10C8.5	ZC434.8	argk-1	F32B5.1	F46H5.3	W10C8.5	ZC434.8	argk-1	pyr-1	daao-1	glna-3	glna-2	glna-3	gdh-1	gdh-1	gln-3	got-1.2	got-2.2	oatr-1	odc-1	dpy-18	phy-2	dpy-18	prdh-1	pycr-1	pycr-1	D2023.4	D2023.4	spds-1
+KEGG_ARRHYTHMOGENIC_RIGHT_VENTRICULAR_CARDIOMYOPATHY_ARVC	hsa05412	act-2	act-4	act-1	act-2	act-4	atn-1	atn-1	atn-1	atn-1	sca-1	egl-19	egl-19	egl-19	egl-19	unc-36	unc-36	unc-36	ccb-1	ccb-1	ccb-1	ccb-2	ccb-1	stg-1	hmp-1	hmp-1	hmp-1	hmp-2	dgn-1	dys-1	pat-2	ina-1	pat-2	ina-1	ina-1	pat-2	pat-2	pat-3	pat-3	pat-3	pat-3	pat-3	pat-3	pat-3	hmp-2	lam-3	pop-1	lmn-1	mua-6	jac-1	unc-68	sgca-1	sgcb-1	sgn-1	sgn-1	ncx-1	pop-1	pop-1	pop-1
+KEGG_ASCORBATE_AND_ALDARATE_METABOLISM	hsa00053	alh-2	alh-2	alh-5	alh-9	alh-11	C54E4.5	sqv-4	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-61	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62	ugt-10	ugt-18	ugt-19	ugt-20	ugt-21	ugt-22	ugt-26	ugt-29	ugt-61	ugt-62	ugt-66	ugt-7	ugt-8	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62
+KEGG_ASTHMA	hsa05310	pxn-1	pxn-2	skpo-2
+KEGG_AUTOIMMUNE_THYROID_DISEASE	hsa05320	fshr-1
+KEGG_AXON_GUIDANCE	hsa04360	abl-1	unc-115	unc-115	rhgf-1	cdc-42	cdk-5	unc-60	F53E2.2	unc-60	chpf-1	chpf-1	chpf-2	unc-40	dhp-1	dhp-2	dhp-1	dhp-2	efn-4	vab-2	efn-2	efn-4	efn-2	efn-4	vab-1	vab-1	vab-1	vab-1	vab-1	vab-1	vab-1	vab-1	vab-1	vab-1	vab-1	vab-1	ZK622.1	src-1	gpa-16	gpa-4	gpa-16	gsk-3	let-60	pat-3	let-60	lad-2	mpk-1	mpk-1	F11E6.8	nck-1	nck-1	let-60	unc-6	unc-6	pak-1	pak-1	pak-1	pak-2	pak-2	plx-1	plx-1	plx-1	plx-1	plx-1	plx-1	tax-6	tax-6	tax-6	cnb-1	cnb-1	kin-32	rac-2	ced-10	rac-2	rac-2	rho-1	sax-3	sax-3	sax-3	let-502	let-502	smp-1	smp-1	slt-1	slt-1	slt-1	srgp-1	srgp-1	srgp-1	unc-5	unc-5	unc-5	unc-5
+KEGG_BASAL_CELL_CARCINOMA	hsa05217	dbl-1	hmp-2	dsh-2	mig-5	dsh-2	dsh-2	mig-5	mom-5	mom-5	mom-5	cfz-2	mom-5	mom-5	cfz-2	gsk-3	pop-1	ptc-1	ptc-1	grd-11	grd-2	wrt-4	pop-1	pop-1	pop-1	egl-20	cwn-1	cwn-2	cwn-2	cwn-1
+KEGG_BASAL_TRANSCRIPTION_FACTORS	hsa03022	pqn-51	pqn-51	gtf-2A2	ttb-1	gtf-2E1	gtf-2E2	gtf-2F1	gtf-2F2	gtf-2H1	gtf-2H2C	gtf-2H3	gtf-2H4	taf-1	taf-10	taf-11.2	taf-12	taf-13	taf-1	taf-2	taf-4	taf-4	taf-5	taf-6.1	taf-7.2	taf-7.1	taf-7.2	taf-9	taf-9	tbp-1	tlf-1	tbp-1
+KEGG_BASE_EXCISION_REPAIR	hsa03410	exo-3	crn-1	hmg-1.2	lig-1	nth-1	parp-1	parp-2	pcn-1	F10C2.4	F12F6.7	pole-1	pole-2	T26A5.8	pole-4	ung-1
+KEGG_BETA_ALANINE_METABOLISM	hsa00410	gta-1	acdh-7	alh-2	alh-2	alh-5	alh-9	alh-11	Y71H2AM.11	dpyd-1	dhp-1	dhp-2	ech-6	ech-9	unc-25	unc-25	ech-1.1	hach-1	mlcd-1	spds-1	upb-1
+KEGG_BIOSYNTHESIS_OF_UNSATURATED_FATTY_ACIDS	hsa01040	K05B2.4	T05E7.1	W03D8.8	K05B2.4	T05E7.1	W03D8.8	T05E7.1	acox-1.5	acox-3	W03D8.8	elo-3	fat-4	fat-4	hpo-8	hpo-8	ech-1.1	stdh-4	fat-5	fat-5	art-1
+KEGG_BLADDER_CANCER	hsa05219	lin-45	lin-45	cyd-1	cdk-4	dapk-1	dapk-1	dapk-1	let-23	let-23	egl-15	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45	rsf-1	lin-35	rskn-2
+KEGG_BUTANOATE_METABOLISM	hsa00650	sur-5	gta-1	kat-1	C07D8.6	Y39G8B.1	Y39G8B.2	alh-2	alh-2	alh-5	alh-7	alh-9	alh-11	ech-6	ech-9	unc-25	unc-25	B0272.3	F54C8.1	ech-1.1	Y71G12B.10	hmgs-1	hmgs-1	Y45G12B.3	C05C10.3	C05C10.3	pdha-1	pdha-1	pdhb-1
+KEGG_B_CELL_RECEPTOR_SIGNALING_PATHWAY	hsa04662	akt-1	akt-1	akt-1	akt-2	tsp-9	chpf-1	chpf-1	chpf-2	sem-5	gsk-3	let-60	let-60	malt-1	mek-2	mek-2	mpk-1	mpk-1	let-60	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	plc-3	tax-6	tax-6	tax-6	cnb-1	cnb-1	pkc-2	ptp-2	rac-2	ced-10	rac-2	rac-2	lin-45	rgef-1	sos-1	sos-1	vav-1	vav-1	vav-1
+KEGG_CALCIUM_SIGNALING_PATHWAY	hsa04020	acy-2	acy-4	acy-2	acy-1	ador-1	dop-4	sca-1	sca-1	sca-1	mca-2	mca-3	mca-2	mca-2	mca-2	mca-3	ntr-1	ntr-2	ntr-2	unc-2	unc-2	egl-19	egl-19	unc-2	egl-19	cca-1	egl-19	cmd-1	cal-1	cal-3	cmd-1	cmd-1	cal-1	cal-3	unc-43	unc-43	unc-43	unc-43	ckr-1	chpf-1	chpf-1	chpf-2	gar-3	gar-3	gar-3	gar-3	acr-11	acr-16	let-23	let-23	let-23	let-23	egl-30	gsa-1	egl-30	gsa-1	nmr-1	nmr-2	nmr-2	nmr-2	mgl-2	mgl-2	ser-7	lfe-2	itr-1	itr-1	itr-1	fshr-1	ntr-2	pde-1	pde-1	pde-1	C14B9.8	C14B9.8	Y67D8A.2	Y50D7A.3	egl-8	plc-4	plc-4	plc-4	plc-1	plc-3	plc-3	tax-6	tax-6	tax-6	cnb-1	cnb-1	kin-1	kin-1	kin-1	pkc-2	pkc-2	pkc-2	F47F2.1	kin-32	unc-68	unc-68	unc-68	ant-1.2	ant-1.2	ant-1.1	ant-1.2	ncx-1	ncx-2	ncx-2	sphk-1	sphk-1	tkr-1	tkr-2	tkr-1	trhr-1	trp-2	vdac-1	vdac-1	vdac-1
+KEGG_CARDIAC_MUSCLE_CONTRACTION	hsa04260	act-5	eat-6	eat-6	eat-6	eat-6	nkb-3	nkb-1	nkb-1	nkb-1	sca-1	egl-19	egl-19	egl-19	egl-19	unc-36	unc-36	unc-36	ccb-1	ccb-1	ccb-1	ccb-2	ccb-1	stg-1	cox-4	cox-4	cox-5A	cox-5B	cox-6A	cox-6A	cox-6B	cox-6B	cox-7C	cyc-1	ctc-1	ctc-2	ctc-3	ctb-1	myo-1	myo-2	myo-3	myo-1	myo-2	myo-3	mlc-1	mlc-2	mlc-5	mlc-6	unc-68	ncx-1	nhx-1	nhx-3	nhx-5	tni-1	tni-4	unc-27	mup-2	tnt-2	lev-11	lev-11	lev-11	lev-11	T02H6.11	ucr-1	ucr-2.1	ucr-2.2	isp-1	T27E9.2	T27E9.2	F45H10.2	R07E4.3
+KEGG_CELL_ADHESION_MOLECULES_CAMS	hsa04514	nlr-1	nlr-1	F14E5.2	ina-1	pat-2	pat-2	pat-3	pat-3	pat-3	pat-3	lad-2	ncam-1	unc-40	nlg-1	nlg-1	nlg-1	nlg-1	lad-2	sax-7	nrx-1	nrx-1	nrx-1	ptp-3	sdn-1	sdn-1	sdn-1	sdn-1
+KEGG_CELL_CYCLE	hsa04110	abl-1	apc-1	Y48G1C.12	apc-11	apc-2	emb-30	gfi-3	such-1	bub-1	bub-3	cya-1	cya-1	cyb-1	cyb-1	cyb-3	cyd-1	cyd-1	cyd-1	cye-1	cye-1	cyh-1	cdc-14	cdc-14	emb-27	mat-3	cdc-25.2	cdc-25.3	cdc-25.2	cdc-25.3	cdc-25.3	mat-1	evl-18	cdc-6	cdc-7	cdk-1	cdk-4	cdk-4	cdk-7	chk-1	chk-2	cbp-1	cul-1	efl-1	efl-1	cbp-1	ZK430.5	fzr-1	gsk-3	hda-1	hda-3	hda-1	mdf-1	mdf-2	mcm-2	mcm-3	mcm-4	mcm-5	mcm-6	mcm-7	orc-1	orc-2	orc-5	pcn-1	wee-1.1	wee-1.3	plk-2	scc-1	lin-35	lin-35	lin-35	rbx-1	ftt-2	par-5	skr-2	skpt-1	sma-2	sma-4	him-1	him-1	smc-3	scc-3	scc-3	dpl-1	dpl-1	par-5	ftt-2	par-5	ftt-2	par-5	ftt-2	par-5	par-5
+KEGG_CHEMOKINE_SIGNALING_PATHWAY	hsa04062	acy-2	acy-4	acy-2	acy-4	acy-4	acy-1	akt-1	akt-1	akt-1	akt-2	arr-1	arr-1	lin-45	cdc-42	ced-2	ced-2	csk-1	ced-5	ced-12	src-1	gpa-16	gpa-4	gpa-16	gpb-1	gpb-1	gpb-1	gpb-1	gpb-2	gpc-1	gpc-1	gpc-1	gpc-2	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	sem-5	grk-1	grk-2	grk-2	grk-1	grk-1	grk-1	gsk-3	gsk-3	let-60	let-60	mek-2	mpk-1	mpk-1	let-60	pak-1	par-3	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	egl-8	kin-1	kin-1	kin-1	pkc-2	tpa-1	pkc-3	F47F2.1	kin-32	kin-32	pxl-1	rac-2	ced-10	rac-2	lin-45	rap-1	rap-1	rgef-1	rho-1	let-502	let-502	shc-1	shc-1	sos-1	sos-1	sta-1	sta-1	sta-1	sta-1	vav-1	vav-1	vav-1
+KEGG_CHRONIC_MYELOID_LEUKEMIA	hsa05220	abl-1	akt-1	akt-1	akt-1	akt-2	lin-45	lin-45	sli-1	cyd-1	cdk-4	cdk-4	ced-2	ced-2	ctbp-1	ctbp-1	sem-5	hda-1	hda-3	hda-1	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	ptp-2	lin-45	lin-35	shc-1	shc-1	sma-4	sos-1	sos-1	sta-1	sta-1
+KEGG_CIRCADIAN_RHYTHM_MAMMAL	hsa04710	kin-20	kin-20	nhr-2	sex-1
+KEGG_CITRATE_CYCLE_TCA_CYCLE	hsa00020	acly-1	aco-1	aco-2	cts-1	dlat-1	dld-1	dlst-1	fum-1	idh-1	idh-2	idha-1	idhb-1	idhg-1	mdh-1	mdh-2	ogdh-1	ogdh-1	pyc-1	pck-1	pck-1	pck-2	pdha-1	pdha-1	pdhb-1	sdha-2	sdhb-1	mev-1	sdhd-1	suca-1	sucl-1	sucg-1
+KEGG_COLORECTAL_CANCER	hsa05210	akt-1	akt-1	akt-1	akt-2	lin-45	ced-9	bir-1	lin-45	cyd-1	hmp-2	cyc-2.2	unc-40	gsk-3	let-60	pop-1	mek-2	mpk-1	jnk-1	mpk-1	jnk-1	jnk-1	mlh-1	msh-2	msh-6	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	rac-2	ced-10	rac-2	rac-2	lin-45	rho-1	sma-2	sma-4	pop-1	pop-1	pop-1
+KEGG_COMPLEMENT_AND_COAGULATION_CASCADES	hsa04610	tep-1	tep-1	tep-1	tep-1	srp-3
+KEGG_CYSTEINE_AND_METHIONINE_METABOLISM	hsa00270	F42F12.4	T01D1.4	ahcy-1	smd-1	ZC373.5	cbs-2	cdo-1	cth-2	F58H1.3	got-1.2	got-2.2	ldh-1	ldh-1	ldh-1	ldh-1	ldh-1	sams-1	sams-5	sams-1	sams-5	mpst-1	B0228.7	metr-1	spds-1	tatn-1
+KEGG_CYTOKINE_CYTOKINE_RECEPTOR_INTERACTION	hsa04060	daf-1	daf-4	daf-4	dbl-1	sma-6	sma-6	let-23	F25D1.3	F11E6.8	pvf-1	pvf-1
+KEGG_CYTOSOLIC_DNA_SENSING_PATHWAY	hsa04623	adr-2	rpac-40	rpac-19	rpc-1	rpc-2	let-611	W09C3.4	Y47G6A.9	Y47G6A.9	rpc-25	rpc-11	drh-1	W02F12.4
+KEGG_DILATED_CARDIOMYOPATHY	hsa05414	act-2	act-4	act-5	act-1	act-2	act-4	acy-2	acy-4	acy-2	acy-4	acy-4	acy-1	sca-1	egl-19	egl-19	egl-19	egl-19	unc-36	unc-36	unc-36	ccb-1	ccb-1	ccb-1	ccb-2	ccb-1	stg-1	dgn-1	dys-1	gsa-1	pat-2	ina-1	pat-2	ina-1	ina-1	pat-2	pat-2	pat-3	pat-3	pat-3	pat-3	pat-3	pat-3	pat-3	lam-3	lmn-1	mua-6	myo-1	myo-2	myo-3	myo-1	myo-2	myo-3	mlc-1	mlc-2	mlc-5	mlc-6	kin-1	kin-1	kin-1	F47F2.1	unc-68	sgca-1	sgcb-1	sgn-1	sgn-1	ncx-1	tni-1	tni-4	unc-27	mup-2	tnt-2	lev-11	lev-11	lev-11	lev-11	unc-22
+KEGG_DNA_REPLICATION	hsa03030	dna-2	crn-1	lig-1	mcm-2	mcm-3	mcm-4	mcm-5	mcm-6	mcm-7	pcn-1	pola-1	div-1	F10C2.4	F12F6.7	pole-1	pole-2	T26A5.8	pole-4	pri-1	pri-2	rfc-1	rfc-2	rfc-3	rfc-4	F44B9.8	rnh-1.0	rnh-2	F21D5.6	rpa-1	rpa-2	mtss-1
+KEGG_DORSO_VENTRAL_AXIS_FORMATION	hsa04320	cpb-3	let-23	sem-5	let-60	mek-2	mpk-1	mpk-1	glp-1	lin-12	glp-1	lin-12	glp-1	lin-12	lin-12	prg-1	prg-1	prg-1	prg-1	sos-1	sos-1
+KEGG_DRUG_METABOLISM_CYTOCHROME_P450	hsa00982	adh-5	adh-5	adh-5	adh-5	adh-5	adh-5	alh-1	alh-2	alh-5	alh-5	alh-4	alh-5	F15E6.6	gad-3	xdh-1	cyp-33C4	cyp-33D1	cyp-33E1	cyp-33E2	cyp-33C4	cyp-33D1	cyp-33E1	cyp-33E2	cyp-25A1	cyp-25A2	cyp-25A3	cyp-25A4	cyp-25A6	cyp-13B1	fmo-1	fmo-2	fmo-3	fmo-5	fmo-1	fmo-3	fmo-5	fmo-1	fmo-3	fmo-5	fmo-1	fmo-3	fmo-5	fmo-3	gstk-1	gsto-2	gsto-2	gst-10	gst-42	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-61	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62	ugt-10	ugt-18	ugt-19	ugt-20	ugt-21	ugt-22	ugt-26	ugt-29	ugt-61	ugt-62	ugt-66	ugt-7	ugt-8	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62
+KEGG_DRUG_METABOLISM_OTHER_ENZYMES	hsa00983	cdd-2	cest-19	cest-2.1	cyp-25A1	cyp-25A2	cyp-25A3	cyp-25A4	cyp-25A6	cyp-13B1	dpyd-1	dhp-1	dhp-2	gmps-1	Y105E8B.9	hprt-1	T22D1.3	T22D1.3	hap-1	thk-1	B0001.4	B0001.4	F19B6.1	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-61	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62	ugt-10	ugt-18	ugt-19	ugt-20	ugt-21	ugt-22	ugt-26	ugt-29	ugt-61	ugt-62	ugt-66	ugt-7	ugt-8	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62	umps-1	upb-1	upp-1	upp-1	xdh-1
+KEGG_ECM_RECEPTOR_INTERACTION	hsa04512	agr-1	scav-1	scav-2	emb-9	emb-9	emb-9	dgn-1	unc-52	pat-2	ina-1	pat-2	ina-1	ina-1	pat-2	pat-2	pat-3	pat-3	pat-3	pat-3	pat-3	pat-3	pat-3	lam-3	lam-3	epi-1	epi-1	epi-1	lam-1	lam-1	lam-1	lam-2	lam-2	sdn-1	sdn-1	sdn-1	sdn-1
+KEGG_ENDOCYTOSIS	hsa04144	cnt-1	cnt-1	cnt-1	cnt-2	cnt-2	apa-2	apa-2	apb-1	dpy-23	aps-2	arf-6	K02B12.7	F07F6.4	F07F6.4	arr-1	arr-1	sli-1	cdc-42	did-2	vps-2	C01A2.4	vps-24	vps-32.1	vps-32.1	vps-32.1	vps-60	vps-20	clic-1	clic-1	chc-1	chc-1	dab-1	dyn-1	drp-1	dyn-1	dyn-1	eea-1	let-23	rme-1	rme-1	rme-1	rme-1	epn-1	epn-1	epn-1	ehs-1	let-23	let-23	egl-15	egl-15	git-1	git-1	grk-1	grk-2	grk-2	grk-1	grk-1	grk-1	hgrs-1	let-60	F44E5.5	hsp-1	hsp-70	F44E5.5	hsp-70	F44E5.5	hsp-70	hsp-1	F44E5.5	hsp-70	hsp-1	daf-2	bris-1	wwp-1	T13C2.6	F11E6.8	mvb-12	mvb-12	Y92H12A.2	Y92H12A.2	par-3	par-6	par-6	par-6	alx-1	ppk-3	ppk-2	ppk-1	ppk-1	ppk-1	pld-1	pld-1	pkc-3	pkc-3	efa-6	rab-11.1	rab-11.1	rfip-1	rfip-1	rab-5	rab-5	rab-5	rabn-5	rabs-5	unc-57	unc-57	F35A5.8	F35A5.8	cdap-2	W09D10.1	W09D10.1	vps-22	stam-1	stam-1	gcp-2.1	gcp-2.2	tsg-101	usp-50	vps-25	vps-28	vps-36	vps-37	vps-37	vps-37	vps-45	vps-4	vps-4	wwp-1
+KEGG_ENDOMETRIAL_CANCER	hsa05213	akt-1	akt-1	akt-1	akt-2	lin-45	lin-45	cyd-1	hmp-1	hmp-1	hmp-1	hmp-2	let-23	let-23	sem-5	gsk-3	let-60	pat-4	let-60	pop-1	mek-2	mek-2	mpk-1	mpk-1	mlh-1	let-60	pdk-1	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	daf-18	lin-45	sos-1	sos-1	pop-1	pop-1	pop-1
+KEGG_EPITHELIAL_CELL_SIGNALING_IN_HELICOBACTER_PYLORI_INFECTION	hsa05120	sup-17	adm-4	vha-19	unc-32	unc-32	unc-32	vha-4	vha-1	vha-3	vha-16	vha-16	vha-17	vha-17	vha-13	vha-12	spe-5	vha-12	vha-11	vha-11	vha-14	vha-8	vha-8	vha-9	vha-10	vha-10	vha-10	vha-15	cdc-42	csk-1	let-23	git-1	mkk-4	jnk-1	pmk-1	pmk-1	pmk-2	pmk-1	pmk-2	pmk-1	jnk-1	jnk-1	F11E6.8	pak-1	plc-3	plc-3	ptp-2	rac-2	unc-32	zoo-1
+KEGG_ERBB_SIGNALING_PATHWAY	hsa04012	abl-1	akt-1	akt-1	akt-1	akt-2	lin-45	lin-45	unc-43	unc-43	unc-43	unc-43	sli-1	ced-2	ced-2	let-23	let-23	let-23	let-23	sem-5	gsk-3	let-60	let-60	mek-2	mek-2	mkk-4	mek-1	mpk-1	jnk-1	mpk-1	jnk-1	jnk-1	let-363	nck-1	nck-1	let-60	pak-1	pak-1	pak-1	pak-2	pak-2	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	plc-3	plc-3	pkc-2	pkc-2	pkc-2	kin-32	lin-45	rsks-1	rsks-1	shc-1	shc-1	sos-1	sos-1	sta-1	sta-1
+KEGG_ETHER_LIPID_METABOLISM	hsa00565	ads-1	cept-2	C27A7.3	T03G6.3	lis-1	paf-1	C31H1.5	F44B9.10	C31H1.5	F44B9.10	C07E3.9	ipla-2	ipla-3	ipla-7	paf-1	pld-1	pld-1	plpp-1.1	plpp-1.1	plpp-1.1
+KEGG_FATTY_ACID_METABOLISM	hsa00071	acaa-2	acdh-7	acdh-1	acdh-12	kat-1	acox-1.5	acox-3	acs-13	acs-15	acs-18	acs-5	acs-4	acs-4	acs-13	adh-5	adh-5	adh-5	adh-5	adh-5	adh-5	alh-2	alh-2	alh-5	alh-9	alh-11	cpt-1	cpt-1	cpt-1	cpt-2	ech-6	ech-4	ech-9	F54D5.7	B0272.3	F54C8.1	ech-1.1	B0303.3
+KEGG_FC_EPSILON_RI_SIGNALING_PATHWAY	hsa04664	akt-1	akt-1	akt-1	akt-2	src-1	sem-5	let-60	let-60	mek-2	mek-2	sek-1	mkk-4	sek-1	mek-1	mpk-1	jnk-1	pmk-1	pmk-1	pmk-2	pmk-1	pmk-2	pmk-1	mpk-1	jnk-1	jnk-1	let-60	pdk-1	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	C31H1.5	F44B9.10	C31H1.5	F44B9.10	C07E3.9	ipla-2	ipla-3	ipla-7	plc-3	plc-3	pkc-2	pkc-2	tpa-1	pkc-1	rac-2	ced-10	rac-2	rac-2	lin-45	sos-1	sos-1	vav-1	vav-1	vav-1
+KEGG_FC_GAMMA_R_MEDIATED_PHAGOCYTOSIS	hsa04666	akt-1	akt-1	akt-1	akt-2	amph-1	arf-6	arx-3	arx-3	arx-4	arx-5	arx-6	C46H11.3	arx-7	C46H11.3	arx-7	cdc-42	unc-60	F53E2.2	unc-60	ced-2	ced-2	dyn-1	drp-1	dyn-1	dyn-1	ced-5	gsnl-1	mek-2	mpk-1	mpk-1	pak-1	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	ppk-3	ppk-2	ppk-1	ppk-1	ppk-1	ipla-2	ipla-3	ipla-7	plc-3	plc-3	pld-1	pld-1	plpp-1.1	plpp-1.1	plpp-1.1	pkc-2	pkc-2	tpa-1	pkc-1	pkc-2	rac-2	ced-10	rac-2	lin-45	rsks-1	rsks-1	gsnl-1	sphk-1	sphk-1	unc-34	vav-1	vav-1	vav-1	wve-1	wve-1
+KEGG_FOCAL_ADHESION	hsa04510	act-2	act-4	act-1	act-2	act-4	atn-1	atn-1	atn-1	atn-1	akt-1	akt-1	akt-1	akt-2	rga-5	rga-5	lin-45	clp-1	cav-1	cav-1	cyd-1	cyd-1	cyd-1	cdc-42	emb-9	emb-9	emb-9	ced-2	ced-2	hmp-2	cyk-1	ced-5	let-23	let-23	fln-1	fln-1	src-1	sem-5	gsk-3	let-60	daf-2	pat-4	pat-2	ina-1	pat-2	ina-1	ina-1	pat-2	pat-2	pat-3	pat-3	pat-3	pat-3	pat-3	pat-3	pat-3	lam-3	lam-3	epi-1	epi-1	epi-1	lam-1	lam-1	lam-1	lam-2	lam-2	mek-2	mpk-1	jnk-1	mpk-1	jnk-1	jnk-1	F11E6.8	mlc-1	mlc-2	mlc-1	mlc-2	mlc-4	mlc-4	mlc-1	mlc-2	mlc-1	mlc-2	mlc-1	mlc-2	mlc-4	pak-1	pak-1	pak-1	pak-2	pak-2	pat-6	pat-6	pat-6	pvf-1	pvf-1	pdk-1	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	ppk-1	gsp-2	gsp-1	gsp-2	pkc-2	pkc-2	pkc-2	daf-18	kin-32	pxl-1	rac-2	ced-10	rac-2	rac-2	lin-45	rap-1	rap-1	rho-1	let-502	let-502	shc-1	shc-1	sos-1	sos-1	tln-1	tln-1	unc-34	vav-1	vav-1	vav-1	deb-1
+KEGG_FOLATE_BIOSYNTHESIS	hsa00790	dhfr-1	F25B5.6	cat-4	ptps-1	qdpr-1
+KEGG_FRUCTOSE_AND_MANNOSE_METABOLISM	hsa00051	Y39G8B.1	Y39G8B.2	C07D8.6	Y39G8B.1	Y39G8B.2	aldo-1	aldo-2	aldo-1	aldo-1	fbp-1	fbp-1	C26D10.4	K03H1.13	ger-1	gmd-2	Y47D9A.1	tag-335	hxk-1	hxk-3	hxk-1	hxk-1	ZK632.4	mtm-1	mtm-1	mtm-6	mtm-6	pfkb-1.2	pfkb-1.2	pfkb-1.1	pfkb-1.2	pfkb-1.2	pfk-1.1	pfk-1.1	pfk-1.1	phip-1	F52B11.2	F52B11.2	R04B5.5	R04B5.6	tpi-1
+KEGG_GALACTOSE_METABOLISM	hsa00052	Y39G8B.1	Y39G8B.2	bre-4	bre-4	aagr-2	gale-1	tag-96	ZK1058.3	aagr-4	hxk-1	hxk-2	hxk-3	gana-1	bgal-1	hxk-1	hxk-3	hxk-1	hxk-1	klo-1	klo-2	aagr-2	pfk-1.1	pfk-1.1	pfk-1.1	R05F9.6	Y43F4B.5	rml-1
+KEGG_GAP_JUNCTION	hsa04540	acy-2	acy-4	acy-2	acy-4	acy-4	acy-1	cdk-1	kin-20	dop-3	let-23	egl-30	gpa-16	gpa-4	gpa-16	egl-30	gsa-1	sem-5	mgl-2	mgl-2	gcy-32	gcy-34	gcy-35	gcy-36	let-60	itr-1	itr-1	itr-1	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	pvf-1	pvf-1	egl-8	kin-1	kin-1	kin-1	pkc-2	pkc-2	pkc-2	egl-4	egl-4	F47F2.1	lin-45	sos-1	sos-1	zoo-1	mec-12	tba-5	mec-12	tba-9	mec-12	tba-1	tba-2	tba-4	tba-8	mec-12	mec-12	mec-12	mec-12	tba-2	tba-4	tba-7	tba-9	tba-8	ben-1	tbb-1	tbb-2	ben-1	mec-7	tbb-1	tbb-2	tbb-4	tbb-6	mec-7	tbb-4	mec-7	ben-1	tbb-1	tbb-2	tbb-4	ben-1	tbb-1	tbb-2	mec-7
+KEGG_GLIOMA	hsa05214	akt-1	akt-1	akt-1	akt-2	lin-45	lin-45	cmd-1	cal-1	cal-3	cmd-1	cmd-1	cal-1	cal-3	unc-43	unc-43	unc-43	unc-43	cyd-1	cdk-4	cdk-4	let-23	sem-5	let-60	daf-2	let-60	mek-2	mek-2	mpk-1	mpk-1	let-363	let-60	pvf-1	pvf-1	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	plc-3	plc-3	pkc-2	pkc-2	pkc-2	daf-18	lin-45	lin-35	shc-1	shc-1	sos-1	sos-1
+KEGG_GLUTATHIONE_METABOLISM	hsa00480	anp-1	gspd-1	gcs-1	E01A2.1	C44B7.7	C53D5.5	Y7A9A.1	gpx-3	gpx-5	gpx-2	gpx-3	gpx-5	gpx-3	gpx-6	gpx-3	gpx-3	gsr-1	gss-1	gstk-1	gsto-2	gsto-2	gst-10	gst-42	idh-1	idh-2	odc-1	Y38F2AR.12	T25B9.9	rnr-1	rnr-2	rnr-2	spds-1	txdc-12.1
+KEGG_GLYCEROLIPID_METABOLISM	hsa00561	F52C9.3	acl-2	acl-2	Y39G8B.1	Y39G8B.2	Y39G8B.1	Y39G8B.2	alh-2	alh-2	alh-5	alh-9	alh-11	Y53G8B.2	dgat-2	dgtr-1	mboa-2	dgat-2	dgk-3	dgk-3	dgk-4	dgk-2	dgk-3	dgk-4	dgk-5	dgk-1	dgk-5	R11F4.1	R11F4.1	gana-1	C13B9.2	acl-6	acl-6	acl-4	acl-5	acl-5	acl-9	lipl-1	lipl-2	lipl-3	lipl-5	mboa-3	mboa-3	mboa-4	plpp-1.1	plpp-1.1	plpp-1.1	atgl-1	W02H5.8
+KEGG_GLYCEROPHOSPHOLIPID_METABOLISM	hsa00564	ace-1	acl-2	acl-2	pisy-1	cdgs-1	cdgs-1	cha-1	cka-2	ckb-1	ckb-2	ckb-3	cka-1	ckb-1	ckb-2	ckb-3	ckb-4	cept-2	crls-1	dgk-3	dgk-3	dgk-4	dgk-2	dgk-3	dgk-4	dgk-5	dgk-1	dgk-5	ckc-1	ckc-1	acl-7	acl-6	acl-6	acl-4	acl-5	acl-5	gpdh-2	gpdh-2	gpdh-3	plag-15	acl-9	mboa-6	acl-14	ath-1	ath-1	mboa-3	mboa-3	mboa-4	mboa-7	pcyt-1	Y18H1A.11	pcyt-1	pcyt-2.1	pgs-1	psd-1	C31H1.5	F44B9.10	C31H1.5	F44B9.10	plag-15	C07E3.9	ipla-2	ipla-3	ipla-7	pld-1	pld-1	plpp-1.1	plpp-1.1	plpp-1.1	pssy-1	acl-3
+KEGG_GLYCINE_SERINE_AND_THREONINE_METABOLISM	hsa00260	agxt-1	T09B4.8	gcst-1	cbs-2	chdh-1	cth-2	daao-1	dld-1	Y37E3.17	T25B9.1	gldc-1	C13B9.2	C31C9.2	C15B12.8	F26H9.5	Y62E10A.13	mel-32	mel-32	serr-1
+KEGG_GLYCOLYSIS_GLUCONEOGENESIS	hsa00010	acs-19	adh-5	adh-5	adh-5	adh-5	adh-5	adh-5	Y39G8B.1	Y39G8B.2	alh-1	alh-2	alh-2	alh-2	alh-5	alh-5	alh-5	alh-4	alh-5	alh-9	alh-11	aldo-1	aldo-2	aldo-1	aldo-1	dlat-1	dld-1	enol-1	enol-1	enol-1	fbp-1	fbp-1	C01B4.6	Y19D10A.16	gpd-1	gpd-4	hxk-1	hxk-2	hxk-3	gpi-1	hxk-1	hxk-3	hxk-1	hxk-1	ldh-1	ldh-1	ldh-1	ldh-1	ldh-1	pck-1	pck-1	pck-2	pdha-1	pdha-1	pdhb-1	pfk-1.1	pfk-1.1	pfk-1.1	pgk-1	pgk-1	R05F9.6	Y43F4B.5	pyk-1	pyk-1	pyk-2	tpi-1
+KEGG_GLYCOSAMINOGLYCAN_BIOSYNTHESIS_CHONDROITIN_SULFATE	hsa00532	sqv-2	sqv-8	sqv-8	sqv-8	sqv-3	mig-22	mig-22	sqv-5	sqv-5	sqv-6	sqv-6
+KEGG_GLYCOSAMINOGLYCAN_BIOSYNTHESIS_HEPARAN_SULFATE	hsa00534	sqv-2	sqv-8	sqv-8	sqv-8	sqv-3	rib-1	rib-1	rib-2	hse-5	hst-2	hst-3.1	hst-3.2	hst-3.2	hst-3.2	hst-3.1	hst-6	hst-6	hst-6	hst-1	hst-1	hst-1	hst-1	sqv-6	sqv-6
+KEGG_GLYCOSAMINOGLYCAN_BIOSYNTHESIS_KERATAN_SULFATE	hsa00533	bre-5	bre-5	bre-4	bre-4	bre-4	bre-4	bgnt-1.1	bgnt-1.2	bgnt-1.3	bgnt-1.5	bgnt-1.8	fut-8
+KEGG_GLYCOSAMINOGLYCAN_DEGRADATION	hsa00531	bgal-1	Y105E8B.9	hex-1	hex-1	hst-3.2	hst-3.2	chhy-1	chhy-1	chhy-1	chhy-1	K09E4.4	chhy-1
+KEGG_GLYCOSPHINGOLIPID_BIOSYNTHESIS_GANGLIO_SERIES	hsa00604	B0024.15	bgal-1	hex-1	hex-1	T26C5.3
+KEGG_GLYCOSPHINGOLIPID_BIOSYNTHESIS_GLOBO_SERIES	hsa00603	bre-5	B0205.4	B0205.4	fut-1	gana-1	hex-1	hex-1	gana-1
+KEGG_GLYCOSPHINGOLIPID_BIOSYNTHESIS_LACTO_AND_NEOLACTO_SERIES	hsa00601	B0024.15	bre-5	bre-5	bre-5	bre-4	bre-4	bre-4	bre-4	bgnt-1.1	bgnt-1.2	bgnt-1.3	bgnt-1.5	bgnt-1.8	B0205.4	B0205.4	fut-1	fut-4	fut-1	fut-4	fut-5	fut-6	fut-1	fut-4	fut-5	fut-5	fut-1	gly-19
+KEGG_GLYCOSYLPHOSPHATIDYLINOSITOL_GPI_ANCHOR_BIOSYNTHESIS	hsa00563	gpaa-1	pgap-1	piga-1	pigb-1	pigc-1	pigg-1	pigk-1	pigl-1	pigm-1	pign-1	pigo-1	pigq-1	pigs-1	pigt-1	pigu-1	pigv-1	pigw-1
+KEGG_GLYOXYLATE_AND_DICARBOXYLATE_METABOLISM	hsa00630	aco-1	aco-2	afmd-1	afmd-2	cts-1	C13B9.2	F41E6.5	F41E6.5	C05D11.5	mdh-1	mdh-2	K07E3.4	dao-3	dao-3	pgph-1
+KEGG_GNRH_SIGNALING_PATHWAY	hsa04912	acy-2	acy-4	acy-2	acy-4	acy-4	acy-1	egl-19	egl-19	egl-19	egl-19	cmd-1	cal-1	cal-3	cmd-1	cmd-1	cal-1	cal-3	unc-43	unc-43	unc-43	unc-43	cdc-42	let-23	egl-30	egl-30	gsa-1	gnrr-1	sem-5	let-60	itr-1	itr-1	itr-1	let-60	mek-2	mek-2	sek-1	mkk-4	sek-1	mek-1	mpk-1	jnk-1	pmk-1	pmk-1	pmk-2	pmk-1	pmk-2	pmk-1	mpk-1	jnk-1	jnk-1	zmp-5	let-60	C31H1.5	F44B9.10	C31H1.5	F44B9.10	C07E3.9	ipla-2	ipla-3	ipla-7	egl-8	pld-1	pld-1	kin-1	kin-1	kin-1	pkc-2	pkc-2	tpa-1	F47F2.1	kin-32	lin-45	sos-1	sos-1
+KEGG_HEDGEHOG_SIGNALING_PATHWAY	hsa04340	dbl-1	lin-23	kin-19	kin-19	kin-20	kin-20	csnk-1	csnk-1	csnk-1	lin-23	gsk-3	grd-11	grd-2	lrp-1	kin-1	kin-1	kin-1	F47F2.1	ptc-1	ptc-1	grd-11	grd-2	wrt-4	egl-20	cwn-1	cwn-2	cwn-2	cwn-1
+KEGG_HEMATOPOIETIC_CELL_LINEAGE	hsa04640	anp-1	scav-1	scav-2	tsp-9	pat-2	ina-1	pat-2	ina-1	pat-3	nep-2	gcp-2.1	gcp-2.2
+KEGG_HISTIDINE_METABOLISM	hsa00340	alh-1	alh-2	alh-2	alh-2	alh-5	alh-5	alh-5	alh-4	alh-5	alh-9	alh-11	amdh-1	C27F2.4	Y71H2AM.11	basl-1	haly-1	lcmt-1	metl-2	metl-6	Y71F9AL.1	uroc-1
+KEGG_HOMOLOGOUS_RECOMBINATION	hsa03440	him-6	mre-11	mus-81	F10C2.4	F12F6.7	rad-50	rad-51	rad-54.L	rpa-1	rpa-2	mtss-1	top-3	Y48C3A.14
+KEGG_HUNTINGTONS_DISEASE	hsa05016	apa-2	apa-2	apb-1	dpy-23	aps-2	atp-1	atp-2	Y69A2AR.18	F58F12.1	R05D3.6	hpo-18	Y82E9BR.3	Y82E9BR.3	Y82E9BR.3	asb-1	atp-5	atp-3	ced-9	clic-1	clic-1	chc-1	chc-1	cox-4	cox-4	cox-5A	cox-5B	cox-6A	cox-6A	cox-6B	cox-6B	cox-7C	crh-1	let-607	cbp-1	cyc-1	cyc-2.2	dnc-1	dnc-2	dnc-4	dlg-1	dyla-1	cbp-1	egl-30	gpx-3	gpx-5	nmr-1	nmr-2	mgl-2	hda-1	hda-3	hda-1	hipr-1	che-13	itr-1	ctc-1	ctc-2	ctc-3	ctb-1	nuo-4	Y63D3A.7	C33A12.1	nuo-3	F45H10.3	Y54F10AM.5	nduf-9	Y56A3A.19	F59C6.5	F44G4.2	C18E9.4	nuo-6	C25H3.9	D2030.4	Y51H1A.3	C16A3.5	Y71H2AM.4	nuo-5	gas-1	nuo-2	lpd-5	nduf-5	nduf-6	nduf-7	T20H4.5	nuo-1	F53F4.10	egl-8	ama-1	rpb-2	rpb-3	rpb-4	rpb-5	rpb-6	rpb-7	rpb-8	rpb-9	rpb-11	rpb-11	rpb-12	rpb-10	sex-1	rcor-1	spr-1	sdha-2	sdhb-1	mev-1	sdhd-1	sin-3	ant-1.2	ant-1.2	ant-1.1	ant-1.2	sod-5	taf-4	taf-4	tbp-1	tlf-1	tbp-1	hmg-5	T02H6.11	ucr-1	ucr-2.1	ucr-2.2	isp-1	T27E9.2	T27E9.2	F45H10.2	R07E4.3	vdac-1	vdac-1	vdac-1
+KEGG_HYPERTROPHIC_CARDIOMYOPATHY_HCM	hsa05410	act-2	act-4	act-5	act-1	act-2	act-4	sca-1	egl-19	egl-19	egl-19	egl-19	unc-36	unc-36	unc-36	ccb-1	ccb-1	ccb-1	ccb-2	ccb-1	stg-1	dgn-1	dys-1	pat-2	ina-1	pat-2	ina-1	ina-1	pat-2	pat-2	pat-3	pat-3	pat-3	pat-3	pat-3	pat-3	pat-3	lam-3	lmn-1	mua-6	myo-1	myo-2	myo-3	myo-1	myo-2	myo-3	mlc-1	mlc-2	mlc-5	mlc-6	aak-2	aak-2	aakb-1	aakb-2	aakb-2	aakg-1	aakg-2	aakg-3	aakg-1	aakg-2	aakg-3	aakg-3	unc-68	sgca-1	sgcb-1	sgn-1	sgn-1	ncx-1	tni-1	tni-4	unc-27	mup-2	tnt-2	lev-11	lev-11	lev-11	lev-11	unc-22
+KEGG_INOSITOL_PHOSPHATE_METABOLISM	hsa00562	alh-8	pisy-1	ttx-7	ttx-7	R01H10.7	R01H10.7	ipp-5	ocrl-1	cil-1	cil-1	ipmk-1	ippk-1	inos-1	lfe-2	C54E4.5	ocrl-1	Y75B8A.24	pifk-1	piki-1	piki-1	piki-1	vps-34	age-1	age-1	age-1	age-1	ppk-3	ppk-2	ppk-2	ppk-2	ppk-1	ppk-1	ppk-1	egl-8	plc-4	plc-4	plc-4	plc-1	plc-3	plc-3	daf-18	unc-26	unc-26	tpi-1
+KEGG_INSULIN_SIGNALING_PATHWAY	hsa04910	pod-2	pod-2	akt-1	akt-1	akt-1	akt-2	lin-45	lin-45	cmd-1	cal-1	cal-3	cmd-1	cmd-1	cal-1	cal-3	sli-1	ced-2	ced-2	ife-5	ife-3	ife-5	ife-4	exoc-7	fasn-1	fbp-1	fbp-1	hxk-1	hxk-2	hxk-3	sem-5	gsk-3	gsy-1	gsy-1	hxk-1	hxk-3	hxk-1	hxk-1	let-60	cil-1	daf-2	let-60	hosl-1	mek-2	mek-2	mpk-1	jnk-1	mpk-1	jnk-1	jnk-1	mnk-1	let-363	let-60	pck-1	pck-1	pck-2	pdk-1	C14B9.8	C14B9.8	Y67D8A.2	Y50D7A.3	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	pyk-1	gsp-2	gsp-1	gsp-2	H18N23.2	aak-2	aak-2	aakb-1	aakb-2	aakb-2	kin-1	kin-1	kin-1	aakg-1	aakg-2	aakg-3	aakg-1	aakg-2	aakg-3	aakg-3	kin-2	kin-2	pkc-3	pkc-3	F47F2.1	ptp-3	pygl-1	pygl-1	pygl-1	lin-45	rheb-1	rps-6	rsks-1	rsks-1	daf-15	shc-1	shc-1	fgt-1	sorb-1	sos-1	sos-1	sbp-1	toca-1
+KEGG_INTESTINAL_IMMUNE_NETWORK_FOR_IGA_PRODUCTION	hsa04672	pat-3
+KEGG_JAK_STAT_SIGNALING_PATHWAY	hsa04630	akt-1	akt-1	akt-1	akt-2	sli-1	cyd-1	cyd-1	cyd-1	cbp-1	cbp-1	sem-5	gei-17	gei-17	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	prk-2	ptp-2	ptp-2	F39B2.5	sos-1	sos-1	stam-1	stam-1	sta-1	sta-1	sta-1	sta-1	sta-1	sta-1	sta-2
+KEGG_LEISHMANIA_INFECTION	hsa05140	pik-1	pik-1	pat-3	pat-3	Y105C5A.24	mpk-1	pmk-1	pmk-1	pmk-2	pmk-1	pmk-2	pmk-1	mpk-1	pkc-2	ptp-2	sta-1	tap-1
+KEGG_LEUKOCYTE_TRANSENDOTHELIAL_MIGRATION	hsa04670	act-2	act-4	act-1	act-2	act-4	atn-1	atn-1	atn-1	atn-1	afd-1	rga-5	rga-5	cdc-42	hmp-1	hmp-1	hmp-1	hmp-2	jac-1	erm-1	gpa-16	gpa-4	gpa-16	pat-3	pat-3	pmk-1	pmk-1	pmk-2	pmk-1	pmk-2	pmk-1	erm-1	mlc-1	mlc-2	mlc-1	mlc-2	mlc-4	mlc-4	mlc-1	mlc-2	mlc-1	mlc-2	mlc-1	mlc-2	mlc-4	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	plc-3	plc-3	pkc-2	pkc-2	pkc-2	kin-32	kin-32	ptp-2	pxl-1	rac-2	ced-10	rac-2	rap-1	rap-1	epac-1	epac-1	rsf-1	rho-1	let-502	let-502	sipa-1	unc-34	vav-1	vav-1	vav-1	deb-1
+KEGG_LIMONENE_AND_PINENE_DEGRADATION	hsa00903	alh-2	alh-2	alh-5	alh-9	alh-11	ech-6	ech-9	ech-1.1	C56G2.15
+KEGG_LINOLEIC_ACID_METABOLISM	hsa00591	C07D8.6	Y39G8B.1	Y39G8B.2	cyp-33C4	cyp-33D1	cyp-33E1	cyp-33E2	cyp-33C4	cyp-33D1	cyp-33E1	cyp-33E2	cyp-23A1	cyp-33A1	cyp-33C7	cyp-33E1	cyp-33E2	cyp-25A1	cyp-25A2	cyp-25A3	cyp-25A4	cyp-25A6	cyp-13B1	C31H1.5	F44B9.10	C31H1.5	F44B9.10	C07E3.9	ipla-2	ipla-3	ipla-7
+KEGG_LONG_TERM_DEPRESSION	hsa04730	lin-45	lin-45	unc-2	seb-3	egl-30	gpa-12	gpa-12	gpa-16	gpa-4	gpa-16	goa-1	egl-30	gsa-1	gpa-16	gpa-4	glr-1	glr-1	glr-1	mgl-2	mgl-2	gcy-32	gcy-34	gcy-35	gcy-36	let-60	daf-2	itr-1	itr-1	itr-1	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	C31H1.5	F44B9.10	C31H1.5	F44B9.10	C07E3.9	ipla-2	ipla-3	ipla-7	egl-8	let-92	let-92	paa-1	paa-1	pkc-2	pkc-2	pkc-2	egl-4	egl-4	lin-45	unc-68
+KEGG_LONG_TERM_POTENTIATION	hsa04720	lin-45	lin-45	egl-19	cmd-1	cal-1	cal-3	cmd-1	cmd-1	cal-1	cal-3	unc-43	unc-43	unc-43	unc-43	chpf-1	chpf-1	chpf-2	cbp-1	cbp-1	egl-30	glr-1	glr-1	nmr-1	nmr-2	nmr-2	nmr-2	nmr-2	mgl-2	mgl-2	let-60	itr-1	itr-1	itr-1	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	egl-8	gsp-2	gsp-1	gsp-2	tax-6	tax-6	tax-6	cnb-1	cnb-1	kin-1	kin-1	kin-1	pkc-2	pkc-2	pkc-2	F47F2.1	lin-45	rap-1	rap-1	epac-1	rskn-1	rskn-1	rskn-1	rskn-1
+KEGG_LYSINE_DEGRADATION	hsa00310	W09D6.1	T28H10.1	aass-1	kat-1	alh-2	alh-2	alh-5	alh-9	alh-11	gbh-1	dlst-1	dot-1.1	dot-1.5	ech-6	ech-9	set-11	F54D5.7	B0272.3	F54C8.1	ech-1.1	set-1	set-4	ogdh-1	ogdh-1	C15B12.8	let-268	let-268	let-268	set-2	set-2	met-2	met-2	gbh-2
+KEGG_LYSOSOME	hsa04142	abt-2	haf-4	pho-5	F02E9.7	R04B3.2	apb-1	apg-1	unc-101	apm-1	unc-101	aps-1	aps-1	aps-1	apb-3	apb-3	apd-3	apm-3	apm-3	aps-3	aps-3	sul-2	asah-1	vha-19	unc-32	unc-32	unc-32	vha-4	vha-1	vha-3	vha-16	vha-16	vha-15	tsp-7	lmp-2	cln-3.2	cln-3.2	clic-1	clic-1	chc-1	chc-1	ctns-1	ctsa-1.1	cpr-5	asp-4	asp-1	asp-15	asp-16	asp-17	asp-7	asp-8	tag-196	cpl-1	R09F10.1	Y71H2AM.25	Y71H2AR.2	cpz-1	crn-7	crn-6	mig-23	ntp-1	W03G11.3	aagr-2	C29E4.10	gba-4	apt-9	apt-9	gana-1	bgal-1	Y105E8B.9	hex-1	hex-1	chhy-1	lmp-2	lmp-2	lgmn-1	lipl-1	lipl-2	lipl-3	lipl-5	aman-1	C33G3.4	cup-5	F27D9.2	ZK550.2	mfsd-8	gana-1	K09E4.4	asp-3	ncr-2	heh-1	plag-15	ppt-1	spp-10	spp-10	spp-8	scav-1	scav-2	scav-3	scav-6	smf-1	smf-3	smf-3	slc-17.2	asm-2	unc-32
+KEGG_MAPK_SIGNALING_PATHWAY	hsa04010	akt-1	akt-1	akt-1	akt-2	arr-1	arr-1	lin-45	unc-2	unc-2	egl-19	egl-19	unc-2	egl-19	cca-1	egl-19	unc-36	unc-36	unc-36	ccb-1	ccb-1	ccb-1	ccb-2	ccb-1	stg-1	cdc-25.2	cdc-25.3	cdc-42	chpf-1	chpf-1	chpf-2	ced-2	ced-2	C04F12.8	vhp-1	lip-1	lip-1	vhp-1	lip-1	Y17G9B.5	let-23	let-756	let-756	let-756	egl-15	egl-15	fln-1	fln-1	gpa-12	gpc-1	sem-5	let-60	F44E5.5	hsp-1	hsp-70	F44E5.5	hsp-70	F44E5.5	hsp-70	hsp-1	F44E5.5	hsp-70	hsp-1	F08H9.4	hsp-12.1	hsp-12.2	hsp-16.1	hsp-16.2	hsp-16.41	hsp-16.48	hsp-25	let-60	mek-2	mek-2	sek-1	mkk-4	sek-1	mek-1	dlk-1	zak-1	nsy-1	nsy-1	Y105C5A.24	gck-2	gck-2	gck-2	mig-15	mpk-1	jnk-1	pmk-1	pmk-1	pmk-2	pmk-1	pmk-2	pmk-1	mpk-1	jnk-1	unc-16	jnk-1	mak-1	mak-2	mak-2	ptl-1	mxl-3	mnk-1	ras-2	lit-1	nhr-6	let-60	pak-1	pak-1	pvf-1	pvf-1	C31H1.5	F44B9.10	C31H1.5	F44B9.10	C07E3.9	ipla-2	ipla-3	ipla-7	ppm-1.A	ppm-1.A	tax-6	tax-6	tax-6	cnb-1	cnb-1	pph-5	kin-1	kin-1	kin-1	pkc-2	pkc-2	pkc-2	F47F2.1	rac-2	ced-10	rac-2	rac-2	lin-45	rap-1	rap-1	pxf-1	gap-1	rgef-1	rgef-1	rgef-1	rgef-1	rskn-1	rskn-1	rskn-1	rskn-2	rskn-2	rskn-1	ras-1	ras-1	sos-1	sos-1	unc-120	cst-1	cst-1	cst-2	tap-1	kin-18	kin-18	kin-18
+KEGG_MATURITY_ONSET_DIABETES_OF_THE_YOUNG	hsa04950	hxk-1	hxk-2	hxk-3	nhr-69	nhr-64	nhr-69	maf-1	cnd-1	ngn-1	nhr-25	ceh-21	ceh-39	ceh-48	vab-3	pyk-1	R09B5.11	fgt-1
+KEGG_MEDICUS_ENV_FACTOR_ARSENIC_TO_ELECTRON_TRANSFER_IN_COMPLEX_IV	N01394	cox-4	cox-4	cox-5A	cox-5B	cox-6A	cox-6A	cox-6B	cox-6B	cox-7C	gsto-2	ctc-1	ctc-2	ctc-3
+KEGG_MEDICUS_ENV_FACTOR_BENZO_A_PYRENRE_TO_CYP_MEDIATED_METABOLISM	N01401	Y39G8B.1	Y39G8B.2	W01A11.1	ceeh-2	ceeh-1
+KEGG_MEDICUS_ENV_FACTOR_DCE_TO_DNA_ADDUCTS	N01386	gsto-2	gsto-2	gst-10
+KEGG_MEDICUS_ENV_FACTOR_E2_TO_NUCLEAR_INITIATED_ESTROGEN_SIGNALING_PATHWAY	N01364	let-756
+KEGG_MEDICUS_ENV_FACTOR_E2_TO_RAS_ERK_SIGNALING_PATHWAY	N01353	lin-45	lin-45	acr-21	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45
+KEGG_MEDICUS_ENV_FACTOR_IRON_TO_ANTEROGRADE_AXONAL_TRANSPORT	N01414	cdk-5	ptl-1	mec-12	tba-5	mec-12	tba-9	mec-12	tba-1	tba-2	tba-4	tba-8	mec-12	mec-12	mec-12	mec-12	tba-2	tba-4	tba-7	tba-9	ben-1	tbb-1	tbb-2	ben-1	mec-7	tbb-1	tbb-2	tbb-4	tbb-6	mec-7	tbb-4	mec-7	ben-1	tbb-1	tbb-2	tbb-4	ben-1	tbb-1	tbb-2	mec-7
+KEGG_MEDICUS_ENV_FACTOR_METALS_TO_JNK_SIGNALING_PATHWAY	N01407	mkk-4	mek-1	nsy-1	jnk-1	jnk-1	jnk-1
+KEGG_MEDICUS_ENV_FACTOR_METALS_TO_KEAP1_NRF2_SIGNALIG_PATHWAY	N01413	Y39G8B.1	Y39G8B.2
+KEGG_MEDICUS_ENV_FACTOR_METALS_TO_NFKB_SIGNALING_PATHWAY	N01411	abl-1	Y94H6A.7	dkf-2	dkf-2	dkf-2	ptp-2
+KEGG_MEDICUS_ENV_FACTOR_METALS_TO_RAS_ERK_SIGNALING_PATHWAY	N01408	lin-45	lin-45	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45
+KEGG_MEDICUS_ENV_FACTOR_NICOTINE_NNK_TO_PI3K_SIGNALING_PATHWAY	N01348	akt-1	akt-1	akt-1	akt-2	gpa-16	gpa-4	gpa-16	age-1	age-1	age-1
+KEGG_MEDICUS_ENV_FACTOR_NICOTINE_TO_JAK_STAT_SIGNALING_PATHWAY	N01342	cyd-1	unc-38	unc-63	acr-12	acr-2	acr-3	acr-6	acr-8	lev-8	unc-29	unc-38	unc-63	sta-1
+KEGG_MEDICUS_ENV_FACTOR_NNK_NNN_TO_CHRNA7_E2F_SIGNALING_PATHWAY	N01337	arr-1	bir-1	cdc-25.2	cdc-25.3	cdc-6	acr-11	acr-16	lin-45	lin-35
+KEGG_MEDICUS_ENV_FACTOR_NNK_NNN_TO_PI3K_SIGNALING_PATHWAY_N01339	N01339	akt-1	akt-1	akt-1	akt-2	bir-1	acr-11	acr-16	let-363	age-1	age-1	age-1
+KEGG_MEDICUS_ENV_FACTOR_NNK_NNN_TO_PI3K_SIGNALING_PATHWAY_N01350	N01350	akt-1	akt-1	akt-1	akt-2	cyd-1	acr-21	age-1	age-1	age-1
+KEGG_MEDICUS_ENV_FACTOR_NNK_NNN_TO_RAS_ERK_SIGNALING_PATHWAY	N01344	lin-45	lin-45	unc-63	unc-38	unc-63	acr-11	acr-16	acr-12	acr-2	acr-3	acr-6	acr-8	lev-8	unc-29	unc-38	unc-63	acr-12	acr-2	acr-3	acr-6	acr-8	lev-8	unc-29	unc-38	unc-63	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45
+KEGG_MEDICUS_ENV_FACTOR_PARAQUAT_TO_FAS_JNK_SIGNALING_PATHWAY	N01417	nsy-1	jnk-1	jnk-1	jnk-1	trx-4
+KEGG_MEDICUS_ENV_FACTOR_TCDD_TO_AHR_SIGNALING_PATHWAY	N01365	ahr-1	aha-1	gsto-2	gsto-2	gst-10
+KEGG_MEDICUS_ENV_FACTOR_ZN_TO_ANTEROGRADE_AXONAL_TRANSPORT	N01403	gsk-3	ptl-1	mec-12	tba-5	mec-12	tba-9	mec-12	tba-1	tba-2	tba-4	tba-8	mec-12	mec-12	mec-12	mec-12	tba-2	tba-4	tba-7	tba-9	ben-1	tbb-1	tbb-2	ben-1	mec-7	tbb-1	tbb-2	tbb-4	tbb-6	mec-7	tbb-4	mec-7	ben-1	tbb-1	tbb-2	tbb-4	ben-1	tbb-1	tbb-2	mec-7
+KEGG_MEDICUS_PATHOGEN_ARSENIC_TO_ELECTRON_TRANSFER_IN_COMPLEX_II	N01392	gsto-2	sdha-2	sdhb-1	mev-1	sdhd-1
+KEGG_MEDICUS_PATHOGEN_EBV_BARF1_TO_INTRINSIC_APOPTOTIC_PATHWAY	N00478	ced-9	cyc-2.2
+KEGG_MEDICUS_PATHOGEN_EBV_EBNA1_TO_P53_MEDIATED_TRANSCRIPTION	N00223	ced-9	polk-1	math-33
+KEGG_MEDICUS_PATHOGEN_EBV_EBNA2_TO_RBP_JK_MEDIATED_TRANSCRIPTION	N00225	lag-1	rnt-1	skp-1
+KEGG_MEDICUS_PATHOGEN_EBV_EBNA3C_TO_CELL_CYCLE_G1_S_N00483	N00483	cyd-1	cyd-1	cyd-1	cdk-4	cdk-4	lin-35
+KEGG_MEDICUS_PATHOGEN_EBV_EBNA3C_TO_CELL_CYCLE_G1_S_N00484	N00484	lin-35	skpt-1
+KEGG_MEDICUS_PATHOGEN_EBV_EBNA3C_TO_P27_CELL_CYCLE_G1_S_N00264	N00264	cya-1	cya-1	cye-1	cye-1	lin-35	skpt-1
+KEGG_MEDICUS_PATHOGEN_EBV_EBNA3C_TO_P27_CELL_CYCLE_G1_S_N00482	N00482	cya-1	cya-1	cye-1	cye-1	lin-35
+KEGG_MEDICUS_PATHOGEN_EBV_EBNA3C_TO_P53_MEDIATED_TRANSCRIPTION	N00263	ced-9	polk-1
+KEGG_MEDICUS_PATHOGEN_EBV_LMP1_TO_NFKB_SIGNALING_PATHWAY	N00265	Y105C5A.24	tap-1
+KEGG_MEDICUS_PATHOGEN_EBV_LMP1_TO_PI3K_SIGNALING_PATHWAY	N00485	age-1	age-1	age-1	trf-1
+KEGG_MEDICUS_PATHOGEN_EBV_LMP2A_TO_PI3K_SIGNALING_PATHWAY	N00266	age-1	age-1	age-1
+KEGG_MEDICUS_PATHOGEN_ESCHERICHIA_EAE_TIR_TCCP_TO_ACTIN_SIGNALING_PATHWAY	N01094	act-2	act-4	act-1	act-2	act-4	arx-2	arx-1	arx-3	arx-3	arx-4	arx-5	arx-6	C46H11.3	arx-7	C46H11.3	arx-7
+KEGG_MEDICUS_PATHOGEN_ESCHERICHIA_EAE_TIR_TO_ACTIN_SIGNALING_PATHWAY	N01092	act-2	act-4	act-1	act-2	act-4	arx-2	arx-1	arx-3	arx-3	arx-4	arx-5	arx-6	C46H11.3	arx-7	C46H11.3	arx-7	nck-1	nck-1
+KEGG_MEDICUS_PATHOGEN_ESCHERICHIA_ESPG_TO_MICROTUBULE_RHOA_SIGNALING_PATHWAY	N01286	mec-12	tba-5	mec-12	tba-9	mec-12	tba-1	tba-2	tba-4	tba-8	mec-12	mec-12	mec-12	mec-12	tba-2	tba-4	tba-7	tba-9	ben-1	tbb-1	tbb-2	ben-1	mec-7	tbb-1	tbb-2	tbb-4	tbb-6	mec-7	tbb-4	mec-7	ben-1	tbb-1	tbb-2	tbb-4	ben-1	tbb-1	tbb-2	mec-7
+KEGG_MEDICUS_PATHOGEN_ESCHERICHIA_ESPT_TO_RAC_SIGNALING_PATHWAY	N01086	abi-1	act-2	act-4	act-1	act-2	act-4	arx-2	arx-1	arx-3	arx-3	arx-4	arx-5	arx-6	C46H11.3	arx-7	C46H11.3	arx-7	rac-2	wve-1
+KEGG_MEDICUS_PATHOGEN_ESCHERICHIA_MAP_TO_CDC42_SIGNALING_PATHWAY	N01096	act-2	act-4	act-1	act-2	act-4	arx-2	arx-1	arx-3	arx-3	arx-4	arx-5	arx-6	C46H11.3	arx-7	C46H11.3	arx-7	cdc-42
+KEGG_MEDICUS_PATHOGEN_ESCHERICHIA_MAP_TO_LPA_GNA12_13_RHOA_SIGNALING_PATHWAY	N01095	erm-1	nrfl-1	rho-1	let-502	let-502
+KEGG_MEDICUS_PATHOGEN_ESCHERICHIA_TIR_TO_TLR2_4_MAPK_SIGNALING_PATHWAY	N00926	Y105C5A.24	ptp-2	ptp-2
+KEGG_MEDICUS_PATHOGEN_HBV_HBX_TO_CREB_MEDIATED_TRANSCRIPTION	N00544	atf-6	crh-1	let-607	cbp-1	pcn-1
+KEGG_MEDICUS_PATHOGEN_HBV_HBX_TO_ERK_SIGNALING_PATHWAY	N00545	mpk-1	mpk-1
+KEGG_MEDICUS_PATHOGEN_HBV_HBX_TO_RAS_ERK_SIGNALING_PATHWAY	N00540	lin-45	lin-45	sem-5	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45	sos-1	sos-1
+KEGG_MEDICUS_PATHOGEN_HBV_LHBS_TO_PKC_ERK_SIGNALING_PATHWAY	N00547	lin-45	lin-45	mek-2	mek-2	mpk-1	mpk-1	pkc-2	pkc-2	pkc-2	lin-45
+KEGG_MEDICUS_PATHOGEN_HCMV_GB_TO_PDGFR_RAS_ERK_SIGNALING_PATHWAY	N00386	lin-45	lin-45	sem-5	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45	sos-1	sos-1
+KEGG_MEDICUS_PATHOGEN_HCMV_GH_TO_ITGA_B_RHOA_SIGNALING_PATHWAY	N00394	pat-2	pat-3	rac-2	ced-10	rac-2	rac-2	rho-1
+KEGG_MEDICUS_PATHOGEN_HCMV_UL33_TO_GNAI_AC_PKA_SIGNALING_PATHWAY	N00412	acy-2	acy-4	acy-2	acy-4	acy-4	acy-1	atf-6	crh-1	let-607	gpa-16	gpa-4	gpa-16	goa-1	kin-1	kin-1	kin-1
+KEGG_MEDICUS_PATHOGEN_HCMV_UL33_TO_GNAQ_PLCB_G_CALCINEURIN_SIGNALING_PATHWAY	N00407	egl-30	egl-30	egl-8
+KEGG_MEDICUS_PATHOGEN_HCMV_UL33_TO_GNB_G_RHO_SIGNALING_PATHWAY	N00409	atf-6	crh-1	let-607	gpb-1	gpb-1	gpb-1	gpb-1	gpb-2	gpc-1	gpc-1	gpc-1	gpc-2	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	sek-1	pmk-1	pmk-1	pmk-2	pmk-1	pmk-2	pmk-1	rho-1
+KEGG_MEDICUS_PATHOGEN_HCMV_US27_TO_CXCR4_GNB_G_PLCB_PKC_SIGNALING_PATHWAY	N00414	ced-2	pkc-2	pkc-2	pkc-2	kin-32	kin-32	pxl-1
+KEGG_MEDICUS_PATHOGEN_HCMV_US28_TO_GNA12_13_RHO_SIGNALING_PATHWAY	N00406	rhgf-1	rhgf-1	hmp-2	gpa-12	gpa-12	rho-1	let-502	let-502
+KEGG_MEDICUS_PATHOGEN_HCMV_US28_TO_GNAQ_PLCB_G_CALCINEURIN_SIGNALING_PATHWAY	N00402	cmd-1	cal-1	cal-3	cmd-1	cmd-1	egl-30	egl-8	tax-6	tax-6	tax-6	cnb-1	cnb-1
+KEGG_MEDICUS_PATHOGEN_HCMV_US28_TO_GNB_G_PI3K_NFKB_SIGNALING_PATHWAY	N00400	akt-1	akt-1	akt-1	akt-2	gpb-1	gpb-1	gpb-1	gpb-1	gpb-2	gpc-1	gpc-1	gpc-1	gpc-2	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	age-1	age-1	age-1
+KEGG_MEDICUS_PATHOGEN_HCV_CORE_TO_ERK_SIGNALING_PATHWAY	N00518	lin-45	lin-45	mek-2	mek-2	mpk-1	mpk-1	lin-45	par-5	ftt-2	par-5	ftt-2	par-5	ftt-2	par-5	par-5
+KEGG_MEDICUS_PATHOGEN_HCV_CORE_TO_RXRA_LXRA_MEDIATED_TRANSCRIPTION	N00530	cyd-1	cdk-4	nhr-118	psme-3
+KEGG_MEDICUS_PATHOGEN_HCV_CORE_TO_RXRA_PPARA_MEDIATED_TRANSCRIPTION	N00529	cyd-1	cdk-4	nhr-2	sex-1
+KEGG_MEDICUS_PATHOGEN_HIV_GP120_TO_CXCR4_GNAI_PI3K_BAD_SIGNALING_PATHWAY	N00431	akt-1	akt-1	akt-1	akt-2	gpa-16	gpa-4	gpa-16	age-1	age-1	age-1
+KEGG_MEDICUS_PATHOGEN_HIV_GP120_TO_CXCR4_GNAQ_PLCB_G_CALCINEURIN	N00432	cmd-1	cal-1	cal-3	cmd-1	cmd-1	egl-30	plc-3	plc-3	tax-6	tax-6	tax-6	cnb-1	cnb-1
+KEGG_MEDICUS_PATHOGEN_HIV_GP120_TO_CXCR4_GNB_G_RAC_SIGNALING_PATHWAY	N00434	unc-60	F53E2.2	unc-60	gpb-1	gpb-1	gpb-1	gpb-1	gpb-2	gpc-1	gpc-1	gpc-1	gpc-2	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	pak-1	rac-2	ced-10	rac-2	rac-2
+KEGG_MEDICUS_PATHOGEN_HIV_GP120_TO_TNF_NFKB_SIGNALING_PATHWAY	N00441	Y105C5A.24	tap-1	trf-1
+KEGG_MEDICUS_PATHOGEN_HIV_NEF_TO_TNF_NFKB_SIGNALING_PATHWAY	N00442	Y105C5A.24	tap-1	trf-1
+KEGG_MEDICUS_PATHOGEN_HIV_TAT_NEF_TO_CROSSTALK_BETWEEN_EXTRINSIC_AND_INTRINSIC_APOPTOTIC_PATHWAYS	N00449	ced-9	cyc-2.2
+KEGG_MEDICUS_PATHOGEN_HIV_VPR_TAT_TO_TNF_JNK_SIGNALING_PATHWAY	N00447	jnk-1	jnk-1	jnk-1
+KEGG_MEDICUS_PATHOGEN_HIV_VPR_TO_CDC25_CELL_CYCLE_G2M	N00456	cyb-1	cyb-1	cyb-3	cdc-25.3	cdk-1	chk-1	cul-4	cul-4	dcaf-1	ddb-1
+KEGG_MEDICUS_PATHOGEN_HIV_VPR_TO_WEE1_CELL_CYCLE_G2M	N00460	cyb-1	cyb-1	cyb-3	cdk-1
+KEGG_MEDICUS_PATHOGEN_HPV_E5_TO_ANTIGEN_PROCESSING_AND_PRESENTATION_BY_MHC_CLASS_I_MOLECULES	N00364	Y54G2A.18
+KEGG_MEDICUS_PATHOGEN_HPV_E5_TO_EGFR_RAS_ERK_SIGNALING_PATHWAY	N00367	lin-45	vha-1	vha-3	lin-45	let-23	sem-5	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45	sos-1	sos-1
+KEGG_MEDICUS_PATHOGEN_HPV_E6_TO_NOTCH_SIGNALING_PATHWAY_N00380	N00380	glp-1	lin-12	glp-1	lin-12	glp-1	lin-12	lin-12	lag-1	lag-1
+KEGG_MEDICUS_PATHOGEN_HPV_E6_TO_NOTCH_SIGNALING_PATHWAY_N00381	N00381	glp-1	lin-12	glp-1	lin-12	glp-1	lin-12	lin-12	lag-1	lag-1
+KEGG_MEDICUS_PATHOGEN_HPV_E6_TO_NOTCH_SIGNALING_PATHWAY_N00382	N00382	nfx-1	glp-1	lin-12	glp-1	lin-12	glp-1	lin-12	lin-12	sel-12	lag-1	lag-1
+KEGG_MEDICUS_PATHOGEN_HPV_E7_TO_CELL_CYCLE_G1_S	N00361	lin-35	lin-35	lin-35
+KEGG_MEDICUS_PATHOGEN_HPV_E7_TO_P27_CELL_CYCLE_G1_S	N00360	cye-1	cye-1	lin-35
+KEGG_MEDICUS_PATHOGEN_HSV_GD_TO_HVEM_NFKB_SIGNALING_PATHWAY	N00560	trf-1
+KEGG_MEDICUS_PATHOGEN_HTLV_1_P12_TO_JAK_STAT_SIGNALING_PATHWAY	N00491	sta-1	sta-1
+KEGG_MEDICUS_PATHOGEN_HTLV_1_TAX_TO_E47_MEDIATED_TRANSCRIPTION	N00511	ced-9
+KEGG_MEDICUS_PATHOGEN_HTLV_1_TAX_TO_NFY_MEDIATED_TRANSCRIPTION	N00508	nfyb-1
+KEGG_MEDICUS_PATHOGEN_HTLV_1_TAX_TO_P21_CELL_CYCLE_G1_S_N00497	N00497	cye-1	cye-1	lin-35
+KEGG_MEDICUS_PATHOGEN_HTLV_1_TAX_TO_P21_CELL_CYCLE_G1_S_N00498	N00498	cye-1	cye-1	lin-35
+KEGG_MEDICUS_PATHOGEN_HTLV_1_TAX_TO_SPINDLE_ASSEMBLY_CHECKPOINT_SIGNALING	N00221	apc-1	Y48G1C.12	apc-11	apc-2	emb-30	gfi-3	such-1	emb-27	mat-3	mat-1	ZK430.5
+KEGG_MEDICUS_PATHOGEN_HTLV_1_TAX_TO_SRF_MEDIATED_TRANSCRIPTION	N00509	unc-120
+KEGG_MEDICUS_PATHOGEN_HTLV_1_TAX_TO_TNF_JNK_SIGNALING_PATHWAY	N00503	jnk-1	jnk-1	jnk-1
+KEGG_MEDICUS_PATHOGEN_KSHV_K15_TO_TNF_NFKB_SIGNALING_PATHWAY	N00173	Y105C5A.24
+KEGG_MEDICUS_PATHOGEN_KSHV_LANA_TO_WNT_SIGNALING_PATHWAY	N00175	cyd-1	hmp-2	gsk-3	pop-1	pop-1	pop-1	pop-1
+KEGG_MEDICUS_PATHOGEN_KSHV_VCYCLIN_TO_CELL_CYCLE_G1_S	N00168	cdk-4	cdk-4	lin-35
+KEGG_MEDICUS_PATHOGEN_KSHV_VGPCR_TO_GNB_G_ERK_SIGNALING_PATHWAY	N00157	gpb-1	gpb-1	gpb-1	gpb-1	gpb-2	gpc-1	gpc-1	gpc-1	gpc-2	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	pvf-1	lin-45
+KEGG_MEDICUS_PATHOGEN_KSHV_VGPCR_TO_GNB_G_PI3K_AKT_SIGNALING_PATHWAY	N00158	akt-1	akt-1	akt-1	akt-2	gpb-1	gpb-1	gpb-1	gpb-1	gpb-2	gpc-1	gpc-1	gpc-1	gpc-2	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	let-363	age-1
+KEGG_MEDICUS_PATHOGEN_KSHV_VGPCR_TO_GNB_G_PI3K_JNK_SIGNALING_PATHWAY	N00178	gpb-1	gpb-1	gpb-1	gpb-1	gpb-2	gpc-1	gpc-1	gpc-1	gpc-2	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	jnk-1	jnk-1	jnk-1	age-1	rac-2
+KEGG_MEDICUS_PATHOGEN_SALMONELLA_AVRA_TO_BETA_CATENIN_SIGNALING_PATHWAY	N01124	hmp-2	pop-1	pop-1	pop-1	pop-1
+KEGG_MEDICUS_PATHOGEN_SALMONELLA_SIFA_TO_MICROTUBULE_PLUS_END_DIRECTED_TRANSPORT	N01298	unc-116	unc-116	unc-116	klc-2	klc-2	klc-1	klc-2	klc-2	mec-12	tba-5	mec-12	tba-9	mec-12	tba-1	tba-2	tba-4	tba-8	mec-12	mec-12	mec-12	mec-12	tba-2	tba-4	tba-7	tba-9	ben-1	tbb-1	tbb-2	ben-1	mec-7	tbb-1	tbb-2	tbb-4	tbb-6	mec-7	tbb-4	mec-7	ben-1	tbb-1	tbb-2	tbb-4	ben-1	tbb-1	tbb-2	mec-7
+KEGG_MEDICUS_PATHOGEN_SALMONELLA_SIFA_TO_TETHERING_OF_LATE_ENDOSOMES_AND_LYSOSOMES	N01301	rab-7	vps-11	vps-16	vps-18	vps-33.1	vps-39	vps-41
+KEGG_MEDICUS_PATHOGEN_SALMONELLA_SOPB_TO_ARNO_ARF_ACTB_G_SIGNALING_PATHWAY	N01129	abi-1	act-2	act-4	act-1	act-2	act-4	arx-2	arx-1	arf-1	arf-6	arx-3	arx-3	arx-4	arx-5	arx-6	C46H11.3	arx-7	C46H11.3	arx-7	gex-2	gex-2	grp-1	grp-1	grp-1	grp-1	gex-3	piki-1	age-1	age-1	age-1	age-1	wve-1	wve-1
+KEGG_MEDICUS_PATHOGEN_SALMONELLA_SOPB_TO_RHOA_SIGNALING_PATHWAY	N01130	mlc-1	mlc-2	mlc-1	mlc-2	mlc-4	mlc-4	mlc-1	mlc-2	mlc-1	mlc-2	mlc-1	mlc-2	mlc-4	rho-1	let-502
+KEGG_MEDICUS_PATHOGEN_SALMONELLA_SOPB_TO_RHOG_SIGNALING_PATHWAY	N01133	ced-12	ced-12	ced-12	mig-2
+KEGG_MEDICUS_PATHOGEN_SALMONELLA_SOPE_E2_TO_NOD_NFKB_SIGNALING_PATHWAY	N01112	cdc-42
+KEGG_MEDICUS_PATHOGEN_SALMONELLA_SOPE_TO_RAC_SIGNALING_PATHWAY	N01128	abi-1	act-2	act-4	act-1	act-2	act-4	arx-2	arx-1	arx-3	arx-3	arx-4	arx-5	arx-6	C46H11.3	arx-7	C46H11.3	arx-7	gex-2	gex-2	gex-3	rac-2	wve-1	wve-1
+KEGG_MEDICUS_PATHOGEN_SALMONELLA_SPVD_TO_TNF_NFKB_SIGNALING_PATHWAY	N01118	xpo-2	ima-3
+KEGG_MEDICUS_PATHOGEN_SARS_COV_2_S_TO_ANGII_AT1R_NOX2_SIGNALING_PATHWAY	N01307	acn-1
+KEGG_MEDICUS_PATHOGEN_SHIGELLA_FIMA_TO_CROSSTALK_BETWEEN_EXTRINSIC_AND_INTRINSIC_APOPTOTIC_PATHWAYS	N00950	ced-9	hxk-1	hxk-3	hxk-1	hxk-1	hxk-1	vdac-1
+KEGG_MEDICUS_PATHOGEN_SHIGELLA_IPAA_TO_ITGA_B_RHOGEF_RHOA_SIGNALING_PATHWAY	N01074	mlc-1	mlc-2	mlc-1	mlc-2	mlc-4	mlc-4	mlc-1	mlc-2	mlc-1	mlc-2	mlc-1	mlc-2	mlc-4	rho-1	let-502	let-502
+KEGG_MEDICUS_PATHOGEN_SHIGELLA_IPAB_C_D_TO_ITGA_B_TALIN_VINCULIN_SIGNALING_PATHWAY	N01081	act-2	act-4	act-1	act-2	act-4	pat-2	pat-3	kin-32	pxl-1	tln-1	tln-1	deb-1
+KEGG_MEDICUS_PATHOGEN_SHIGELLA_IPAC_TO_ACTIN_SIGNALING_PATHWAY	N01079	act-2	act-4	act-1	act-2	act-4	arx-2	arx-1	arx-3	arx-3	arx-4	arx-5	arx-6	C46H11.3	arx-7	C46H11.3	arx-7
+KEGG_MEDICUS_PATHOGEN_SHIGELLA_IPGB1_TO_ITGA_B_RHOG_RAC_SIGNALING_PATHWAY	N00952	ced-5	ced-12	ced-12	ced-12	rac-2
+KEGG_MEDICUS_PATHOGEN_SHIGELLA_IPGD_TO_ARNO_ARF_ACTB_G_SIGNALING_PATHWAY	N01067	abi-1	act-2	act-4	act-1	act-2	act-4	arx-2	arx-1	arf-1	arf-6	arx-3	arx-3	arx-4	arx-5	arx-6	C46H11.3	arx-7	C46H11.3	arx-7	gex-2	gex-2	grp-1	grp-1	grp-1	grp-1	gex-3	gex-3	age-1	age-1	age-1	wve-1	wve-1
+KEGG_MEDICUS_PATHOGEN_SHIGELLA_OSPF_TO_TLR2_4_MAPK_SIGNALING_PATHWAY	N01283	mpk-1	pmk-1	pmk-1	pmk-2	pmk-1	pmk-2	pmk-1	mpk-1
+KEGG_MEDICUS_PATHOGEN_SHIGELLA_OSPG_TO_TNF_NFKB_SIGNALING_PATHWAY	N00942	lin-23	cul-1	lin-23	rbx-1	skr-2	let-70
+KEGG_MEDICUS_PATHOGEN_YERSINIA_YOPH_TO_TCR_NFAT_SIGNALING_PATHWAY	N01108	vav-1	vav-1	vav-1
+KEGG_MEDICUS_PATHOGEN_YERSINIA_YOPP_J_TO_TLR2_4_MAPK_SIGNALING_PATHWAY	N00862	mek-2	mek-2	sek-1	mkk-4	sek-1	mek-1
+KEGG_MEDICUS_REFERENCE_26S_PROTEASOME_MEDIATED_PROTEIN_DEGRADATION	N01029	rpn-13	pas-6	pas-2	pas-7	pas-3	pas-5	pas-1	pas-4	pas-4	pbs-6	pbs-4	pbs-3	pbs-7	pbs-5	pbs-1	pbs-2	rpt-2	rpt-1	rpt-5	rpt-3	rpt-6	rpt-4	rpn-2	rpn-6.1	rpn-5	rpn-9	rpn-11	rpn-1	rpn-3	rpn-10	rpn-7	rpn-8	rpn-12	psmd-9	ubl-1	ubq-2	ubq-1
+KEGG_MEDICUS_REFERENCE_ACH_CHRN_PI3K_SIGNALING_PATHWAY	N01338	akt-1	akt-1	akt-1	akt-2	acr-11	acr-16	age-1	age-1	age-1
+KEGG_MEDICUS_REFERENCE_ACH_CHRN_RAS_ERK_SIGNALING_PATHWAY	N01343	lin-45	atf-6	lin-45	acr-11	acr-16	crh-1	let-607	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45
+KEGG_MEDICUS_REFERENCE_ACTH_CORTISOL_SIGNALING_PATHWAY	N00297	acy-2	acy-4	acy-2	acy-4	acy-4	acy-1	atf-6	crh-1	let-607	gsa-1	nhr-6	nhr-25	ceh-20	kin-1	kin-1	kin-1	strl-1	tag-340
+KEGG_MEDICUS_REFERENCE_ACTIVATION_OF_PRC2.2_BY_UBIQUITINATION_OF_H2AK119	N01586	mes-6	mes-2	mes-2	lin-53	lin-53	tag-294	skr-2	math-33
+KEGG_MEDICUS_REFERENCE_ACTIVATION_OF_PRC2.2_BY_UBIQUITINATION_OF_H2AK119_IN_GERMLINE_GENES	N01614	hpl-1	mes-6	set-11	mes-2	mes-2	hda-1	hda-3	hda-1	mbtr-1	mxl-3	lin-53	lin-53	tag-294	dpl-1	wdr-5.1
+KEGG_MEDICUS_REFERENCE_ACTIVIN_SIGNALING_PATHWAY	N01456	daf-1	daf-1	daf-4	daf-4	sma-2	sma-4
+KEGG_MEDICUS_REFERENCE_ADRB3_UCP1_SIGNALING_PATHWAY	N01688	act-2	act-4	act-1	act-2	act-4	swsn-6	swsn-6	acy-2	acy-4	acy-2	acy-4	acy-4	acy-1	let-526	dpff-1	dpff-1	gsa-1	sex-1	kin-1	kin-1	kin-1	swsn-4	swsn-4	snfc-5	swsn-1	swsn-1	ham-3	swsn-2.2	ham-3	swsn-2.2	ham-3	swsn-2.2	swsn-3
+KEGG_MEDICUS_REFERENCE_AGE_RAGE_SIGNALING_PATHWAY	N00994	lin-45	lin-45	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45
+KEGG_MEDICUS_REFERENCE_AHR_SIGNALING_PATHWAY	N00317	ahr-1	aha-1
+KEGG_MEDICUS_REFERENCE_AMH_SIGNALING_PATHWAY	N01454	sma-6	sma-6	sma-2	sma-4	sma-2	sma-2
+KEGG_MEDICUS_REFERENCE_ANGIOTENSIN_ALDOSTERONE_SIGNALING_PATHWAY	N00301	atf-6	cmd-1	cal-1	cal-3	cmd-1	cmd-1	cmk-1	cmk-1	cmk-1	unc-43	unc-43	unc-43	unc-43	crh-1	let-607	egl-30	egl-8
+KEGG_MEDICUS_REFERENCE_ANTEROGRADE_AXONAL_TRANSPORT	N00978	unc-116	unc-116	unc-116	klc-2	klc-2	klc-1	klc-2	klc-2	mec-12	tba-5	mec-12	tba-9	mec-12	tba-1	tba-2	tba-4	tba-8	mec-12	mec-12	mec-12	mec-12	tba-2	tba-4	tba-7	tba-9	ben-1	tbb-1	tbb-2	ben-1	mec-7	tbb-1	tbb-2	tbb-4	tbb-6	mec-7	tbb-4	mec-7	ben-1	tbb-1	tbb-2	tbb-4	ben-1	tbb-1	tbb-2	mec-7
+KEGG_MEDICUS_REFERENCE_ANTIGEN_PROCESSING_AND_PRESENTATION_BY_MHC_CLASS_I_MOLECULES	N00363	crt-1	pdi-3	haf-7	haf-8	haf-7	haf-8
+KEGG_MEDICUS_REFERENCE_ANXA2_S100A10_REGULATED_ACTIN_CYTOSKELETON	N01304	act-2	act-4	act-1	act-2	act-4
+KEGG_MEDICUS_REFERENCE_AREG_EGFR_PI3K_SIGNALING_PATHWAY	N00284	akt-1	akt-1	akt-1	akt-2	let-23	let-363	age-1	age-1	age-1	rsks-1	rsks-1
+KEGG_MEDICUS_REFERENCE_AREG_EGFR_RAS_ERK_SIGNALING_PATHWAY	N00279	lin-45	lin-45	let-23	sem-5	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45	sos-1	sos-1
+KEGG_MEDICUS_REFERENCE_ARL8_REGULATED_MICROTUBULE_PLUS_END_DIRECTED_TRANSPORT	N01297	arl-8	arl-8	blos-1	blos-2	sam-4	blos-7	blos-8	blos-9	unc-116	unc-116	unc-116	klc-2	klc-2	klc-1	klc-2	klc-2	kxd-1	snpn-1	mec-12	tba-5	mec-12	tba-9	mec-12	tba-1	tba-2	tba-4	tba-8	mec-12	mec-12	mec-12	mec-12	tba-2	tba-4	tba-7	tba-9	ben-1	tbb-1	tbb-2	ben-1	mec-7	tbb-1	tbb-2	tbb-4	tbb-6	mec-7	tbb-4	mec-7	ben-1	tbb-1	tbb-2	tbb-4	ben-1	tbb-1	tbb-2	mec-7
+KEGG_MEDICUS_REFERENCE_ARNO_ARF_ACTB_G_SIGNALING_PATHWAY	N01066	abi-1	act-2	act-4	act-1	act-2	act-4	arx-2	arx-1	arf-1	arf-6	arx-3	arx-3	arx-4	arx-5	arx-6	C46H11.3	arx-7	C46H11.3	arx-7	gex-2	gex-2	grp-1	grp-1	grp-1	grp-1	gex-3	wve-1	wve-1
+KEGG_MEDICUS_REFERENCE_ASSEMBLY_AND_TRAFFICKING_OF_TELOMERASE	N01476	cct-2	cct-3	cct-4	cct-5	cct-6	cct-6	cct-7	cct-8	dkc-1	garr-1	F25H8.2	Y48A6B.3	nola-3	ruvb-1	ruvb-2	cct-1	tcab-1
+KEGG_MEDICUS_REFERENCE_ATR_P21_CELL_CYCLE_G2_M	N00499	cyb-1	cyb-1	cyb-3	cdk-1	chk-1
+KEGG_MEDICUS_REFERENCE_ATR_SIGNALING	N01451	chk-1	hus-1	mrt-2	hpr-17	hpr-9	rpa-1	rpa-2	mus-101
+KEGG_MEDICUS_REFERENCE_AUTOPHAGOSOME_AND_LYSOSOME_FUSION_TETHERING_FACTOR	N01721	ubc-17	epg-5	lgg-2	lgg-2	lgg-2	rab-7	vps-11	vps-16	vps-18	vps-33.1	vps-39	vps-41
+KEGG_MEDICUS_REFERENCE_AUTOPHAGOSOME_AND_LYSOSOME_FUSION_TETHERING_FACTOR_GRASP55	N01722	Y42H9AR.1	lmp-2	lgg-2	lgg-2	lgg-2
+KEGG_MEDICUS_REFERENCE_AUTOPHAGOSOME_AND_LYSOSOME_FUSION_TRANS_SNARE	N01720	snap-29	syx-17	syx-7	vamp-8	ykt-6
+KEGG_MEDICUS_REFERENCE_AUTOPHAGY_VESICLE_NUCLEATION_ELONGATION_MATURATION_E3_UBIQUITIN_LIGASE_MALIN	N01719	bec-1	vps-34	vps-15
+KEGG_MEDICUS_REFERENCE_AUTOPHAGY_VESICLE_NUCLEATION_ELONGATION_MATURATION_LC3_II_FORMATION	N00156	lgg-3	atg-16.2	atg-3	atg-4.1	atg-4.1	atg-4.2	atg-4.2	atg-5	atg-7	lgg-2	lgg-2	lgg-2
+KEGG_MEDICUS_REFERENCE_AUTOPHAGY_VESICLE_NUCLEATION_ELONGATION_MATURATION_MTORC1_PI3KC3_C1	N00155	epg-9	atg-13	bec-1	mlst-8	let-363	vps-34	vps-15	epg-7	daf-15	clk-2	R10H10.7	unc-51
+KEGG_MEDICUS_REFERENCE_AUTOPHAGY_VESICLE_NUCLEATION_ELONGATION_MATURATION_PACER_RUBCN_PI3KC3_C2	N01718	bec-1	vps-34	vps-15
+KEGG_MEDICUS_REFERENCE_AUTOPHAGY_VESICLE_NUCLEATION_ELONGATION_MATURATION_PI3P_SYNTHESIS_BY_PI3KC3_C1	N01715	bec-1	vps-34	vps-15	epg-6	atg-18	atg-18
+KEGG_MEDICUS_REFERENCE_AUTOPHAGY_VESICLE_NUCLEATION_ELONGATION_MATURATION_SEQUESTOSOME_1_LIKE_RECEPTOR	N01716	lgg-2	lgg-2	lgg-2	ubl-1	C06G3.6	sqst-2	ubq-2	ubq-1	wdfy-3
+KEGG_MEDICUS_REFERENCE_AVP_V2R_PKA_SIGNALING_PATHWAY	N00915	acy-4	acy-1	ntr-2	gsa-1	kin-1	kin-1	kin-1
+KEGG_MEDICUS_REFERENCE_BASE_EXCISION_AND_STRAND_CLEAVAGE_BY_BIFUNCTIONAL_GLYCOSYLASE	N01434	exo-3	nth-1	parg-2	parp-1	parp-2
+KEGG_MEDICUS_REFERENCE_BASE_EXCISION_AND_STRAND_CLEAVAGE_BY_MONOFUNCTIONAL_GLYCOSYLASE	N01433	exo-3	ung-1
+KEGG_MEDICUS_REFERENCE_BASE_EXCISION_AND_STRAND_CLEAVAGE_BY_NEIL_GLYCOSYLASE	N01435	parp-1	parp-2	F21D5.5	tdpo-1
+KEGG_MEDICUS_REFERENCE_BCR_BCAP_CD19_PI3K_SIGNALING_PATHWAY	N01695	akt-1	akt-1	akt-1	akt-2	tsp-9	age-1	aap-1	aap-1	aap-1
+KEGG_MEDICUS_REFERENCE_BCR_PLCG_CALCINEURIN_SIGNALING_PATHWAY	N00487	cmd-1	cal-1	cal-3	cmd-1	cmd-1	plc-3	tax-6	tax-6	tax-6	cnb-1	cnb-1
+KEGG_MEDICUS_REFERENCE_BCR_PLCG_ITPR_SIGNALING_PATHWAY	N01463	itr-1	itr-1	itr-1	plc-3
+KEGG_MEDICUS_REFERENCE_BETA_OXIDATION	N00804	acaa-2	acdh-7	acdh-1	acdh-12	kat-1	ech-6	B0272.3	F54C8.1	ech-1.1	B0303.3
+KEGG_MEDICUS_REFERENCE_BETA_OXIDATION_ACYL_COA_SYNTHESIS	N00765	acs-13	acs-15	acs-18	acs-5	acs-4	acs-4	acs-13	cpt-1	cpt-1	cpt-1	cpt-2
+KEGG_MEDICUS_REFERENCE_BETA_OXIDATION_PEROXISOME_VLCFA	N00776	acox-1.5	acox-3	dhs-28	daf-22
+KEGG_MEDICUS_REFERENCE_BILE_ACID_BIOSYNTHESIS	N00805	C37H5.13	F25E2.3	acox-1.1	acox-1.2	acox-1.3	acox-1.4	acox-1.6	Y39G8B.1	Y39G8B.2	ZK892.4	dhs-28	daf-22
+KEGG_MEDICUS_REFERENCE_BLOCKING_UBIQUITINATION_OF_H2AK119_BY_CK2	N01620	kin-3	kin-3	kin-10	swan-2	mig-32	tag-294
+KEGG_MEDICUS_REFERENCE_BLOOD_GROUP_H_O_ANTIGEN_TYPE_1_BIOSYNTHESIS	N01651	B0024.15	B0205.4
+KEGG_MEDICUS_REFERENCE_BLOOD_GROUP_H_O_ANTIGEN_TYPE_2_BIOSYNTHESIS	N01666	bre-4	bre-4	bre-4	bre-4	B0205.4
+KEGG_MEDICUS_REFERENCE_BMP15_SIGNALING_PATHWAY	N01455	sma-6	sma-2	sma-4	sma-2	sma-2
+KEGG_MEDICUS_REFERENCE_BMP9_10_SIGNALING_PATHWAY	N01426	daf-4	dbl-1	sma-2	sma-4	sma-2	sma-2
+KEGG_MEDICUS_REFERENCE_BMP_HAMP_SIGNALING_PATHWAY	N01458	daf-4	dbl-1	sma-6	sma-2	sma-4	sma-2	sma-2
+KEGG_MEDICUS_REFERENCE_BMP_HAMP_SIGNALING_PATHWAY_AUXILIARY_FACTOR	N01461	daf-4	sma-6	drag-1	gcp-2.1	gcp-2.2
+KEGG_MEDICUS_REFERENCE_BMP_SIGNALING_PATHWAY	N01453	daf-4	daf-4	dbl-1	sma-6	sma-6	sma-2	sma-4	sma-2	sma-2
+KEGG_MEDICUS_REFERENCE_BMP_SIGNALING_PATHWAY_BMP_ANTAGONIST	N01428	dbl-1	F35B12.10
+KEGG_MEDICUS_REFERENCE_BRANCHING_MICROTUBULE_NUCLEATION	N01549	mec-12	tba-5	mec-12	tba-9	mec-12	tba-1	tba-2	tba-4	tba-8	mec-12	mec-12	mec-12	mec-12	tba-2	tba-4	tba-7	tba-9	ben-1	tbb-1	tbb-2	ben-1	mec-7	tbb-1	tbb-2	tbb-4	tbb-6	mec-7	tbb-4	mec-7	ben-1	tbb-1	tbb-2	tbb-4	ben-1	tbb-1	tbb-2	mec-7
+KEGG_MEDICUS_REFERENCE_BREAK_INDUCED_REPLICATION	N01450	mcm-2	mcm-3	mcm-4	mcm-5	mcm-6	mcm-7	pif-1
+KEGG_MEDICUS_REFERENCE_C9ORF72_MEDIATED_AUTOPHAGY_INITIATION	N01142	epg-9	atg-13	alfa-1	rab-1	epg-7	smcr-8	unc-51
+KEGG_MEDICUS_REFERENCE_CA2_CAM_CAMK_SIGNALING_PATHWAY	N01648	cmd-1	cal-1	cal-3	cmd-1	cmd-1	cmk-1	cmk-1	cmk-1	unc-43	unc-43	unc-43	unc-43	ckk-1	ckk-1	Y50D7A.3
+KEGG_MEDICUS_REFERENCE_CA2_CAM_CN_SIGNALING_PATHWAY	N01647	cmd-1	cal-1	cal-3	cmd-1	cmd-1	tax-6	tax-6	tax-6	cnb-1	cnb-1
+KEGG_MEDICUS_REFERENCE_CA2_CAM_VGCC_RYR_SIGNALING_PATHWAY	N01649	unc-2	unc-2	egl-19	unc-2	egl-19	cmd-1	cal-1	cal-3	cmd-1	cmd-1	unc-68	unc-68	unc-68
+KEGG_MEDICUS_REFERENCE_CA2_ENTRY_LIGAND_GATED_CA2_CHANNEL	N01642	acr-11	acr-16	nmr-1	nmr-2	nmr-2	nmr-2
+KEGG_MEDICUS_REFERENCE_CA2_ENTRY_STORE_OPERATED_CA2_CHANNEL	N01643	orai-1	orai-1	orai-1	stim-1	stim-1
+KEGG_MEDICUS_REFERENCE_CA2_ENTRY_VOLTAGE_GATED_CA2_CHANNEL	N01637	unc-2	unc-2	egl-19	egl-19	unc-2	egl-19	cca-1	egl-19	unc-36	unc-36	unc-36	ccb-1	ccb-1	ccb-1	ccb-2	ccb-1	stg-1
+KEGG_MEDICUS_REFERENCE_CA2_PLCD_ITPR_SIGNALING_PATHWAY	N01655	itr-1	itr-1	itr-1	plc-4	plc-4	plc-4
+KEGG_MEDICUS_REFERENCE_CA2_PYK2_RAS_ERK_SIGNALING_PATHWAY	N00538	lin-45	lin-45	sem-5	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	kin-32	lin-45	sos-1	sos-1
+KEGG_MEDICUS_REFERENCE_CARDIAC_TYPE_VGCC_RYR_SIGNALING	N01639	K09A9.6	egl-19	unc-36	unc-36	unc-36	ccb-1	ccb-1	ccb-1	ccb-2	ccb-1	stg-1	csq-1	csq-1	unc-68
+KEGG_MEDICUS_REFERENCE_CASR_PTH_SIGNALING_PATHWAY	N00291	egl-30	egl-8
+KEGG_MEDICUS_REFERENCE_CCR2_GNB_G_PI3K_NFKB_SIGNALING_PATHWAY	N00399	akt-1	akt-1	akt-1	akt-2	gpb-1	gpb-1	gpb-1	gpb-1	gpb-2	gpc-1	gpc-1	gpc-1	gpc-2	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	age-1	age-1	age-1
+KEGG_MEDICUS_REFERENCE_CCR5_GNB_G_PLCB_G_PKC_SIGNALING_PATHWAY	N00428	gpb-1	gpb-1	gpb-1	gpb-1	gpb-2	gpc-1	gpc-1	gpc-1	gpc-2	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	egl-8	pkc-2	pkc-2	pkc-2
+KEGG_MEDICUS_REFERENCE_CCR_CXCR_GNB_G_PI3K_RAC_SIGNALING_PATHWAY	N00153	gpb-1	gpb-1	gpb-1	gpb-1	gpb-2	gpc-1	gpc-1	gpc-1	gpc-2	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	age-1	rac-2
+KEGG_MEDICUS_REFERENCE_CD80_CD86_CD28_PI3K_SIGNALING_PATHWAY	N00683	akt-1	akt-1	akt-1	akt-2	gsk-3	age-1	age-1	age-1
+KEGG_MEDICUS_REFERENCE_CD80_CD86_CTLA4_PP2A_SIGNALING_PATHWAY	N01579	akt-1	akt-1	akt-1	akt-2	let-92	let-92	paa-1	paa-1	sur-6	sur-6	sur-6	sur-6	pptr-1	pptr-1	pptr-2	pptr-2	pptr-1
+KEGG_MEDICUS_REFERENCE_CDC25_CELL_CYCLE_G2_M	N00455	cyb-1	cyb-1	cyb-3	cdc-25.2	cdc-25.3	cdc-25.3	cdk-1	chk-1	chk-2
+KEGG_MEDICUS_REFERENCE_CENPE_INTERACTION_WITH_NDC80_COMPLEX	N01531	air-2	air-2	ndc-80	gsp-2	gsp-1	gsp-2
+KEGG_MEDICUS_REFERENCE_CHOLESTEROL_BIOSYNTHESIS	N01624	dhcr-24	dhcr-7	dhcr-7	hsd-3	dhcr-7
+KEGG_MEDICUS_REFERENCE_CHONDROITIN_SULFATE_BIOSYNTHESIS	N01580	mig-22	mig-22	sqv-5	sqv-5
+KEGG_MEDICUS_REFERENCE_CHRNA7_E2F_SIGNALING_PATHWAY	N01336	arr-1	acr-11	acr-16	lin-45	lin-35
+KEGG_MEDICUS_REFERENCE_CITRATE_CYCLE_FIRST_CARBON_OXIDATION	N01604	acly-1	aco-1	aco-2	cts-1	idh-1	idh-2	idha-1	idhb-1	idhg-1
+KEGG_MEDICUS_REFERENCE_CITRATE_CYCLE_SECOND_CARBON_OXIDATION_2	N01617	fum-1	mdh-1	mdh-2	sdha-2	sdhb-1	mev-1	sdhd-1	suca-1	sucl-1	sucg-1
+KEGG_MEDICUS_REFERENCE_CLASSICAL_PATHWAY_OF_COMPLEMENT_CASCADE_C4_C2_TO_C3_CONVERTASE_FORMATION	N01487	tep-1	tep-1
+KEGG_MEDICUS_REFERENCE_COHESIN_ACETYLATION	N01483	F08F8.4	F08F8.4	smc-3
+KEGG_MEDICUS_REFERENCE_COHESIN_DISSOCIATION_IN_ANAPHASE	N01486	apc-1	Y48G1C.12	apc-11	apc-2	emb-30	gfi-3	such-1	emb-27	mat-3	mat-1	ZK430.5	scc-1
+KEGG_MEDICUS_REFERENCE_COHESIN_DISSOCIATION_IN_PROPHASE	N01485	air-2	cdk-1	plk-2	let-92	let-92	paa-1	paa-1	pptr-1	pptr-1	pptr-2	pptr-2	pptr-1	scc-3	scc-3
+KEGG_MEDICUS_REFERENCE_COHESIN_LOADING	N01482	xnp-1	chl-1	mau-2	scc-2	scc-1	him-1	smc-3	scc-3	scc-3
+KEGG_MEDICUS_REFERENCE_COMMON_PATHWAY_OF_COMPLEMENT_CASCADE_MAC_FORMATION	N01490	tep-1
+KEGG_MEDICUS_REFERENCE_CONDENSIN_LOADING	N01497	klp-19	dpy-28	hcp-6	capg-2	kle-2	let-92	let-92	paa-1	paa-1	pptr-1	pptr-1	pptr-2	pptr-2	pptr-1	mix-1	dpy-27	smc-4	top-2
+KEGG_MEDICUS_REFERENCE_COPII_VESICLE_FORMATION	N01289	sec-12	sar-1	sar-1	npp-20	sec-23	sec-23	sec-24.2	sec-24.2	sec-24.1	sec-24.1	sec-31	sec-31
+KEGG_MEDICUS_REFERENCE_COPI_VESICLE_FORMATION	N01293	copd-1	arf-1	copa-1	copb-1	copb-2	cope-1	copg-1	copg-1	copz-1	copz-1	gbf-1	erd-2.1	erd-2.1	erd-2.1	erd-2.2	tmed-1	tmed-10	sel-9	tmed-3	tmed-4	tmed-1	tmed-3	tmed-4
+KEGG_MEDICUS_REFERENCE_CORE_NER_REACTION	N01431	ercc-1	xpd-1	xpb-1	xpf-1	xpg-1	gtf-2H1	gtf-2H2C	gtf-2H3	gtf-2H4	gtf-2H5	lig-1	pcn-1	F10C2.4	F12F6.7	pole-1	pole-2	T26A5.8	pole-4	polh-1	polk-1	rpa-1	rpa-2	xpa-1
+KEGG_MEDICUS_REFERENCE_CREATINE_PATHWAY	N01612	F32B5.1	F46H5.3	W10C8.5	ZC434.8	argk-1	F32B5.1	F46H5.3	W10C8.5	ZC434.8	argk-1	ZC434.8	F32B5.1	F46H5.3	W10C8.5	ZC434.8	argk-1	F32B5.1	F46H5.3	W10C8.5	ZC434.8	argk-1
+KEGG_MEDICUS_REFERENCE_CRHR_PKA_ACTH_SIGNALING_PATHWAY	N00324	acy-2	acy-4	acy-2	acy-4	acy-4	acy-1	atf-6	crh-1	let-607	seb-3	gsa-1	kin-1	kin-1	kin-1
+KEGG_MEDICUS_REFERENCE_CROSSTALK_BETWEEN_EXTRINSIC_AND_INTRINSIC_APOPTOTIC_PATHWAYS	N00146	ced-9	cyc-2.2
+KEGG_MEDICUS_REFERENCE_CX3CR1_GNAI_AC_PKA_SIGNALING_PATHWAY	N00403	acy-2	acy-4	acy-2	acy-4	acy-4	acy-1	gpa-16	gpa-4	gpa-16	kin-1	kin-1	kin-1
+KEGG_MEDICUS_REFERENCE_CXCL12_CXCR4_PKC_ERK_SIGNALING_PATHAWAY	N00546	lin-45	lin-45	egl-30	mek-2	mek-2	mpk-1	mpk-1	egl-8	plc-3	plc-3	pkc-2	pkc-2	pkc-2	lin-45
+KEGG_MEDICUS_REFERENCE_CXCR4_GNA12_13_RHO_SIGNALING_PATHWAY	N00405	rhgf-1	rhgf-1	gpa-12	gpa-12	rho-1	let-502	let-502
+KEGG_MEDICUS_REFERENCE_CXCR4_GNAI_PI3K_BAD_SIGNALING_PATHWAY	N00430	akt-1	akt-1	akt-1	akt-2	gpa-16	gpa-4	gpa-16	age-1	age-1	age-1
+KEGG_MEDICUS_REFERENCE_CXCR4_GNAQ_PLCB_G_CALCINEURIN_SIGNALING_PATHWAY	N00401	cmd-1	cal-1	cal-3	cmd-1	cmd-1	egl-30	egl-8	plc-3	plc-3	tax-6	tax-6	tax-6	cnb-1	cnb-1
+KEGG_MEDICUS_REFERENCE_CXCR4_GNB_G_PLCB_PKC_SIGNALING_PATHWAY	N00413	ced-2	gpb-1	gpb-1	gpb-1	gpb-1	gpb-2	gpc-1	gpc-1	gpc-1	gpc-2	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	egl-8	pkc-2	pkc-2	pkc-2	kin-32	kin-32	pxl-1
+KEGG_MEDICUS_REFERENCE_CXCR4_GNB_G_RAC_SIGNALING_PATHWAY	N00433	unc-60	F53E2.2	unc-60	gpb-1	gpb-1	gpb-1	gpb-1	gpb-2	gpc-1	gpc-1	gpc-1	gpc-2	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	pak-1	rac-2	ced-10	rac-2	rac-2
+KEGG_MEDICUS_REFERENCE_CXCR_GNB_G_ERK_SIGNALING_PATHWAY	N00152	gpb-1	gpb-1	gpb-1	gpb-1	gpb-2	gpc-1	gpc-1	gpc-1	gpc-2	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45
+KEGG_MEDICUS_REFERENCE_CXCR_GNB_G_PI3K_AKT_SIGNALING_PATHWAY	N00154	akt-1	akt-1	akt-1	akt-2	gpb-1	gpb-1	gpb-1	gpb-1	gpb-2	gpc-1	gpc-1	gpc-1	gpc-2	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	let-363	age-1
+KEGG_MEDICUS_REFERENCE_CYTOKINE_JAK_STAT_SIGNALING_PATHWAY	N00053	prk-2	sta-1	sta-1	sta-1	sta-1	sta-1	sta-1	sta-2
+KEGG_MEDICUS_REFERENCE_DEPHOSPHORYLATION_OF_KINETOCHORE	N01536	air-2	ndc-80	gsp-2	gsp-1	gsp-2	ska-1
+KEGG_MEDICUS_REFERENCE_DERMATAN_SULFATE_DEGRADATION	N00610	chhy-1	chhy-1	chhy-1	chhy-1	chhy-1
+KEGG_MEDICUS_REFERENCE_DEUBIQUITINATION_OF_H2AK119	N01585	hcf-1	ogt-1
+KEGG_MEDICUS_REFERENCE_DISASSEMBLY_OF_MCC	N01533	apc-1	Y48G1C.12	apc-11	apc-2	emb-30	gfi-3	such-1	bub-3	emb-27	mat-3	mat-1	mdf-2	pch-2
+KEGG_MEDICUS_REFERENCE_DNA_DEGRADATION_BY_EXTRACELLULAR_ENDOLYSOSOMAL_DNASE	N01571	crn-7	crn-6	W02F12.4
+KEGG_MEDICUS_REFERENCE_DNA_END_RESECTION_AND_RPA_LOADING	N01446	brd-1	him-6	dna-2	mre-11	rad-50	rpa-1	rpa-2	wrn-1
+KEGG_MEDICUS_REFERENCE_DNA_REPLICATION_LICENSING	N01468	cya-1	cya-1	cye-1	cye-1	evl-18	cdc-6	cdc-7	cdt-1	mcm-2	mcm-3	mcm-4	mcm-5	mcm-6	mcm-7	orc-1	orc-2	orc-5
+KEGG_MEDICUS_REFERENCE_DNA_REPLICATION_TERMINATION	N01473	evl-18	cul-2	elb-1	elc-1	psf-1	psf-2	psf-3	sld-5	mcm-2	mcm-3	mcm-4	mcm-5	mcm-6	mcm-7	npl-4.1	pif-1	rbx-1	ufd-1	cdc-48.1	cdc-48.2
+KEGG_MEDICUS_REFERENCE_DOUBLE_HOLLIDAY_JUNCTION_RESOLUTION	N01448	mus-81	slx-1	slx-1
+KEGG_MEDICUS_REFERENCE_DOUBLE_STRAND_BREAK_SIGNALING	N01439	his-35	mbtr-1	mre-11	gei-17	rad-50	ubc-13	uev-1
+KEGG_MEDICUS_REFERENCE_DRD1_GNAS_AC_PKA_SIGNALING_PATHWAY	N00410	acy-4	atf-6	crh-1	let-607	gsa-1	kin-1	kin-1	kin-1
+KEGG_MEDICUS_REFERENCE_DYNEIN_RECRUITMENT_TO_THE_KINETOCHORE	N01534	arp-11	arp-1	bub-1	dnc-1	dnc-2	dnc-4	dnc-5	dnc-6	dhc-1	dyci-1	dyci-1	dli-1	dli-1	che-3	xbx-1	dlc-1	dlc-1	dyrb-1	dyrb-1	dylt-1	dylt-1	rod-1	lis-1	czw-1	zwl-1
+KEGG_MEDICUS_REFERENCE_E2_ER_RAS_ERK_SIGNALING_PATHWAY	N01351	lin-45	atf-6	lin-45	crh-1	let-607	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45
+KEGG_MEDICUS_REFERENCE_EARLY_ENDOSOMAL_FUSION	N01302	eea-1	vps-34	vps-15	rab-5	rab-5	rab-5	rabn-5	rabx-5
+KEGG_MEDICUS_REFERENCE_EGF_EGFR_ACTIN_SIGNALING_PATHWAY	N01078	act-2	act-4	act-1	act-2	act-4	arx-2	arx-1	arx-3	arx-3	arx-4	arx-5	arx-6	C46H11.3	arx-7	C46H11.3	arx-7	let-23	nck-1	nck-1
+KEGG_MEDICUS_REFERENCE_EGF_EGFR_PI3K_NFKB_SIGNALING_PATHWAY	N00390	akt-1	akt-1	akt-1	akt-2	let-23	age-1	age-1	age-1
+KEGG_MEDICUS_REFERENCE_EGF_EGFR_PI3K_SIGNALING_PATHWAY	N00033	akt-1	akt-1	akt-1	akt-2	let-23	age-1	age-1	age-1
+KEGG_MEDICUS_REFERENCE_EGF_EGFR_PLCG_CALCINEURIN_SIGNALING_PATHWAY	N00147	cmd-1	cal-1	cal-3	cmd-1	cmd-1	let-23	plc-3	plc-3	tax-6	tax-6	tax-6	cnb-1	cnb-1
+KEGG_MEDICUS_REFERENCE_EGF_EGFR_PLCG_CAMK_SIGNALING_PATHWAY	N00026	cmd-1	cal-1	cal-3	cmd-1	cmd-1	cmk-1	cmk-1	cmk-1	unc-43	unc-43	unc-43	unc-43	let-23	plc-3	plc-3
+KEGG_MEDICUS_REFERENCE_EGF_EGFR_PLCG_ERK_SIGNALING_PATHWAY	N00023	lin-45	lin-45	cyd-1	let-23	mek-2	mek-2	mpk-1	mpk-1	plc-3	plc-3	pkc-2	pkc-2	pkc-2	lin-45
+KEGG_MEDICUS_REFERENCE_EGF_EGFR_RAS_ERK_SIGNALING_PATHWAY	N00001	lin-45	lin-45	cyd-1	let-23	sem-5	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45	sos-1	sos-1
+KEGG_MEDICUS_REFERENCE_EGF_EGFR_RAS_JNK_SIGNALING_PATHWAY	N00542	let-23	sem-5	let-60	let-60	mkk-4	jnk-1	jnk-1	jnk-1	let-60	sos-1	sos-1
+KEGG_MEDICUS_REFERENCE_EGF_EGFR_RAS_PI3K_SIGNALING_PATHWAY	N00030	akt-1	akt-1	akt-1	akt-2	let-23	sem-5	let-60	let-60	let-60	age-1	age-1	age-1	sos-1	sos-1
+KEGG_MEDICUS_REFERENCE_EGF_EGFR_RAS_RALGDS_SIGNALING_PATHWAY	N00103	let-23	sem-5	let-60	let-60	let-60	ral-1	ral-1	sos-1	sos-1
+KEGG_MEDICUS_REFERENCE_EGF_EGFR_RAS_RASSF1_SIGNALING_PATHWAY	N00096	let-23	sem-5	let-60	let-60	let-60	rsf-1	rsf-1	sos-1	sos-1	cst-1	cst-2
+KEGG_MEDICUS_REFERENCE_EGF_ERBB2_RAS_ERK_SIGNALING_PATHWAY	N00021	lin-45	lin-45	let-23	let-23	sem-5	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45	sos-1	sos-1
+KEGG_MEDICUS_REFERENCE_EGF_JAK_STAT_SIGNALING_PATHWAY	N00094	let-23	sta-1	sta-1	sta-1	sta-1
+KEGG_MEDICUS_REFERENCE_ELECTRON_TRANSFER_IN_COMPLEX_I	N00995	nduo-1	nduo-4	nduo-5	nuo-4	Y94H6A.8	C34B2.8	Y63D3A.7	C33A12.1	nuo-3	F45H10.3	Y54F10AM.5	nduf-9	Y56A3A.19	F59C6.5	F42G8.10	F44G4.2	C18E9.4	nuo-6	C25H3.9	D2030.4	Y51H1A.3	C16A3.5	Y71H2AM.4	nuo-5	gas-1	nuo-2	lpd-5	nduf-5	nduf-6	nduf-7	T20H4.5	nuo-1	F53F4.10
+KEGG_MEDICUS_REFERENCE_ELECTRON_TRANSFER_IN_COMPLEX_III	N00990	cyc-1	ctb-1	T02H6.11	ucr-1	ucr-2.1	ucr-2.2	isp-1	T27E9.2	T27E9.2	F45H10.2	R07E4.3
+KEGG_MEDICUS_REFERENCE_ELECTRON_TRANSFER_IN_COMPLEX_IV	N00998	cox-4	cox-4	cox-5A	cox-5B	cox-6A	cox-6A	cox-6B	cox-6B	cox-7C	ctc-1	ctc-2	ctc-3
+KEGG_MEDICUS_REFERENCE_EP_NE_ADRB_CAMP_SIGNALING_PATHWAY	N01345	acy-2	acy-4	acy-2	acy-4	acy-4	acy-1	gsa-1	kin-1	kin-1	kin-1
+KEGG_MEDICUS_REFERENCE_EREG_EGFR_PI3K_SIGNALING_PATHWAY	N00282	akt-1	akt-1	akt-1	akt-2	let-23	let-363	age-1	age-1	age-1	rsks-1	rsks-1
+KEGG_MEDICUS_REFERENCE_EREG_EGFR_RAS_ERK_SIGNALING_PATHWAY	N00277	lin-45	lin-45	let-23	sem-5	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45	sos-1	sos-1
+KEGG_MEDICUS_REFERENCE_ERK_RSK_SIGNALING	N01601	mpk-1	mpk-1	rskn-1	rskn-1	rskn-1	rskn-1
+KEGG_MEDICUS_REFERENCE_ESTABLISHMENT_OF_COHESION	N01484	evl-14	evl-14	scc-3	scc-3	wapl-1
+KEGG_MEDICUS_REFERENCE_EXTRINSIC_APOPTOTIC_PATHWAY	N00145	trf-1
+KEGG_MEDICUS_REFERENCE_FANCONI_ANEMIA_PATHWAY	N01464	fcd-2	mus-101
+KEGG_MEDICUS_REFERENCE_FAS_JNK_SIGNALING_PATHWAY	N01056	nsy-1	jnk-1	jnk-1	jnk-1
+KEGG_MEDICUS_REFERENCE_FE3_FERRITIN_TRANSPORT	N01588	atg-5	atg-7	ftn-2	ftn-1	ftn-2
+KEGG_MEDICUS_REFERENCE_FE_TF_TRANSPORT	N01587	smf-3	zipt-15	zipt-15	gcp-2.1	gcp-2.2
+KEGG_MEDICUS_REFERENCE_FGF_FGFR_PI3K_SIGNALING_PATHWAY	N00037	akt-1	akt-1	akt-1	akt-2	let-756	let-756	let-756	egl-15	egl-15	let-363	age-1	age-1	age-1	rsks-1	rsks-1
+KEGG_MEDICUS_REFERENCE_FGF_FGFR_RAS_ERK_SIGNALING_PATHWAY	N00019	lin-45	lin-45	let-756	let-756	let-756	egl-15	egl-15	sem-5	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45	sos-1	sos-1
+KEGG_MEDICUS_REFERENCE_FLCN_MTORC1_SIGNALING_PATHWAY	N01584	flcn-1	mlst-8	let-363	daf-15	raga-1	raga-1	ragc-1	ragc-1	aat-1	clk-2	R10H10.7
+KEGG_MEDICUS_REFERENCE_FLT3LG_FLT3_RAS_ERK_SIGNALING_PATHWAY	N00217	lin-45	lin-45	sem-5	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45	sos-1	sos-1
+KEGG_MEDICUS_REFERENCE_FLT3LG_FLT3_RAS_PI3K_SIGNALING_PATHWAY	N00218	akt-1	akt-1	akt-1	akt-2	sem-5	let-60	let-60	let-363	let-60	age-1	age-1	age-1	sos-1	sos-1
+KEGG_MEDICUS_REFERENCE_FSHR_GNAS_PKA_SIGNALING_PATHWAY	N00922	acy-2	acy-4	acy-2	acy-4	acy-4	acy-1	fshr-1	gsa-1	kin-1	kin-1	kin-1
+KEGG_MEDICUS_REFERENCE_GATOR1_MTORC1_SIGNALING_PATHWAY	N01578	T08A11.1	mlst-8	let-363	nprl-2	nprl-3	daf-15	raga-1	raga-1	ragc-1	ragc-1	clk-2	R10H10.7
+KEGG_MEDICUS_REFERENCE_GENE_SILENCING_BY_METHYLATION_OF_H3K27_AND_UBIQUITINATION_OF_H2AK119	N01577	ctbp-1	ctbp-1	mes-6	elb-1	elc-1	mes-2	mes-2	his-71	his-13	his-40	his-13	mbr-1	mbr-1	lin-53	lin-53
+KEGG_MEDICUS_REFERENCE_GF_RTK_PI3K_SIGNALING_PATHWAY	N01656	akt-1	akt-1	akt-1	akt-2	let-23	vab-1	let-23	let-23	let-23	let-756	let-756	let-756	egl-15	egl-15	daf-2	daf-2	F11E6.8	pvf-1	pvf-1	age-1	age-1	age-1	aap-1	aap-1	aap-1
+KEGG_MEDICUS_REFERENCE_GF_RTK_RAS_ERK_SIGNALING_PATHWAY	N01592	lin-45	lin-45	let-23	vab-1	let-23	let-23	let-23	let-756	let-756	let-756	egl-15	egl-15	sem-5	let-60	daf-2	daf-2	let-60	mek-2	mek-2	mpk-1	mpk-1	F11E6.8	let-60	pvf-1	pvf-1	lin-45	sos-1	sos-1
+KEGG_MEDICUS_REFERENCE_GF_RTK_RAS_PI3K_SIGNALING_PATHWAY	N01658	akt-1	akt-1	akt-1	akt-2	let-23	vab-1	let-23	let-23	let-23	let-756	let-756	let-756	egl-15	egl-15	sem-5	let-60	daf-2	daf-2	let-60	F11E6.8	let-60	pvf-1	pvf-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	sos-1	sos-1
+KEGG_MEDICUS_REFERENCE_GHRHR_PKA_GH_SIGNALING_PATHWAY	N00910	acy-2	acy-4	acy-2	acy-4	acy-4	acy-1	atf-6	crh-1	let-607	gsa-1	kin-1	kin-1	kin-1
+KEGG_MEDICUS_REFERENCE_GH_JAK_STAT_SIGNALING_PATHWAY	N00907	sta-1	sta-1
+KEGG_MEDICUS_REFERENCE_GLOBAL_GENOME_NER	N01425	cyh-1	cdk-7	cul-4	ddb-1	xpd-1	xpb-1	gtf-2H1	gtf-2H2C	gtf-2H3	gtf-2H4	gtf-2H5	mnat-1	rad-23	rad-23	rbx-1	xpc-1
+KEGG_MEDICUS_REFERENCE_GLUCONEOGENESIS	N01605	mdh-1	mdh-2	pyc-1	pck-1	pck-1	pck-2
+KEGG_MEDICUS_REFERENCE_GLUTATHIONE_BIOSYNTHESIS	N01589	gcs-1	E01A2.1	gpx-3	gpx-5	gpx-2	gpx-3	gpx-5	gpx-3	gpx-6	gpx-3	gpx-3	gss-1
+KEGG_MEDICUS_REFERENCE_GLYCOGEN_BIOSYNTHESIS	N00713	T04A8.7	gyg-1	gyg-2	gyg-2	gsy-1	gsy-1	rml-1
+KEGG_MEDICUS_REFERENCE_GLYCOGEN_DEGRADATION	N00718	agl-1	R05F9.6	Y43F4B.5	pygl-1	pygl-1	pygl-1
+KEGG_MEDICUS_REFERENCE_GLYCOGEN_DEGRADATION_AMYLASE_	N00720	C50B6.7	C50B6.7	C50B6.7	C50B6.7	C50B6.7	aagr-2	aagr-4	aagr-2	aagr-2
+KEGG_MEDICUS_REFERENCE_GLYCOLYSIS	N00731	aldo-1	aldo-2	aldo-1	aldo-1	enol-1	enol-1	enol-1	gpd-1	gpd-4	gpi-1	ldh-1	ldh-1	ldh-1	ldh-1	ldh-1	pfk-1.1	pfk-1.1	pfk-1.1	pgk-1	pgk-1	pyk-1	pyk-1	pyk-2
+KEGG_MEDICUS_REFERENCE_GLYCOSAMINOGLYCAN_BIOSYNTHESIS_LINKAGE_TETRASACCHARIDE	N01574	sqv-2	sqv-8	sqv-3	sqv-6	sqv-6
+KEGG_MEDICUS_REFERENCE_GNRH_GNRHR_PLCB_PKC_SIGNALING_PATHWAY	N00873	egl-30	egl-30	gnrr-1	mek-2	mek-2	mpk-1	mpk-1	egl-8	pkc-2	pkc-2	pkc-2	lin-45
+KEGG_MEDICUS_REFERENCE_GPCR_PI3K_SIGNALING_PATHWAY	N01657	akt-1	akt-1	akt-1	akt-2	gar-3	gar-3	gpb-1	gpb-1	gpb-1	gpb-1	gpb-2	gpc-1	gpc-1	gpc-1	gpc-2	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	age-1
+KEGG_MEDICUS_REFERENCE_GPCR_PLCB_ITPR_SIGNALING_PATHWAY	N01640	dop-4	ntr-1	ntr-2	ntr-2	ckr-1	gar-3	gar-3	gar-3	egl-30	egl-30	mgl-2	mgl-2	itr-1	itr-1	itr-1	fshr-1	ntr-2	egl-8	tkr-1	tkr-2	tkr-1	trhr-1
+KEGG_MEDICUS_REFERENCE_GPI_ANCHOR_BIOSYNTHESIS	N00748	gpaa-1	mppe-1	pgap-1	piga-1	pigb-1	pigc-1	pigg-1	pigk-1	pigl-1	pigm-1	pign-1	pigo-1	pigq-1	pigs-1	pigt-1	pigu-1	pigv-1	pigw-1
+KEGG_MEDICUS_REFERENCE_HEDGEHOG_SIGNALING_PATHWAY	N00062	grd-11	grd-2	ptc-1	ptc-1	grd-11	grd-2	wrt-4
+KEGG_MEDICUS_REFERENCE_HEDGEHOG_SIGNALING_PATHWAY_HH_LIGAND_SECRETION	N01537	che-14	ptd-2	hhat-1	grd-11	grd-2	grd-11	grd-2	wrt-4
+KEGG_MEDICUS_REFERENCE_HEDGEHOG_SIGNALING_PATHWAY_PTCH_CORECEPTOR	N01538	grd-11	grd-2	lrp-1	ptc-1	ptc-1	grd-11	grd-2	wrt-4
+KEGG_MEDICUS_REFERENCE_HEPARAN_SULFATE_BIOSYNTHESIS	N01582	rib-1	rib-1	rib-2	hse-5	hst-6	hst-1	hst-1	hst-1	hst-1
+KEGG_MEDICUS_REFERENCE_HEPARAN_SULFATE_DEGRADATION	N00615	Y105E8B.9	K09E4.4
+KEGG_MEDICUS_REFERENCE_HGF_MET_PI3K_SIGNALING_PATHWAY	N00043	akt-1	akt-1	akt-1	akt-2	F11E6.8	age-1	age-1	age-1
+KEGG_MEDICUS_REFERENCE_HGF_MET_RAS_ERK_SIGNALING_PATHWAY	N00216	lin-45	lin-45	sem-5	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	F11E6.8	let-60	lin-45	sos-1	sos-1
+KEGG_MEDICUS_REFERENCE_HIF_1_SIGNALING_PATHWAY	N00079	aha-1	pvf-1	fgt-1
+KEGG_MEDICUS_REFERENCE_HOMOLOGOUS_RECOMBINATION	N01452	brd-1	pcn-1	F10C2.4	F12F6.7	pole-1	pole-2	T26A5.8	pole-4	polh-1	polk-1	rad-51	rad-54.L	rfc-1	rfc-2	rfc-3	rfc-4	F44B9.8	rpa-1	rpa-2
+KEGG_MEDICUS_REFERENCE_HOMOLOGOUS_RECOMBINATION_IN_ICLR	N01466	brd-1	dog-1	fcd-2	rpa-1	rpa-2
+KEGG_MEDICUS_REFERENCE_HORMONE_LIKE_CYTOKINE_TO_JAK_STAT_SIGNALING_PATHWAY	N01555	sta-1	sta-1	sta-1
+KEGG_MEDICUS_REFERENCE_HYDROLYSIS_OF_SPHINGOMYELIN	N00649	W02F12.2	W02F12.2	asah-1	asm-2	T27F6.6	R05D11.9
+KEGG_MEDICUS_REFERENCE_ICOSLG_ICOS_PI3K_SIGNALING_PATHWAY	N01696	akt-1	akt-1	akt-1	akt-2	age-1	aap-1	aap-1	aap-1
+KEGG_MEDICUS_REFERENCE_IFN_RIPK1_3_SIGNALING_PATHWAY	N01662	sta-1	sta-1	sta-1	sta-1	sta-1	sta-2
+KEGG_MEDICUS_REFERENCE_IGF2_IGF1R_PI3K_SIGNALING_PATHWAY	N00234	akt-1	akt-1	akt-1	akt-2	daf-2	let-363	age-1	age-1	age-1	rsks-1	rsks-1
+KEGG_MEDICUS_REFERENCE_IGF_IGF1R_PI3K_SIGNALING_PATHWAY	N00582	akt-1	akt-1	akt-1	akt-2	daf-2	let-363	age-1	age-1	age-1	rheb-1
+KEGG_MEDICUS_REFERENCE_IGF_IGF1R_RAS_ERK_SIGNALING_PATHWAY	N00233	lin-45	lin-45	sem-5	let-60	daf-2	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45	sos-1	sos-1
+KEGG_MEDICUS_REFERENCE_IGF_IGFR_PI3K_NFKB_SIGNALING_PATHWAY	N00182	akt-1	akt-1	akt-1	akt-2	daf-2	age-1	age-1	age-1
+KEGG_MEDICUS_REFERENCE_IGG_FCGR_RAC_SIGNALING_PATHWAY	N01090	ced-2	ced-5	rac-2	ced-10	rac-2	rac-2
+KEGG_MEDICUS_REFERENCE_II_BLOOD_GROUP_ANTIGEN_BIOSYNTHESIS	N01678	bre-5	bre-5	bre-5	bre-4	bre-4	bre-4	gly-19
+KEGG_MEDICUS_REFERENCE_IL10_FAMILY_TO_JAK_STAT_SIGNALING_PATHWAY	N00415	sta-1
+KEGG_MEDICUS_REFERENCE_IL12_23_TO_JAK_STAT_SIGNALING_PATHWAY	N01557	sta-1	sta-1
+KEGG_MEDICUS_REFERENCE_IL1_IL1R_JNK_SIGNALING_PATHWAY	N00188	pik-1	pik-1	mkk-4	mek-1	Y105C5A.24	jnk-1	jnk-1	jnk-1	tap-1
+KEGG_MEDICUS_REFERENCE_IL1_IL1R_P38_SIGNALING_PATHWAY	N00186	pik-1	pik-1	sek-1	sek-1	Y105C5A.24	pmk-1	mak-1	mak-2	tap-1	ccch-1
+KEGG_MEDICUS_REFERENCE_IL2_FAMILY_TO_JAK_STAT_SIGNALING_PATHWAY	N01554	sta-1	sta-1	sta-1	sta-1	sta-2
+KEGG_MEDICUS_REFERENCE_IL6_FAMILY_TO_JAK_STAT_SIGNALING_PATHWAY	N01556	sta-1	sta-1	sta-2
+KEGG_MEDICUS_REFERENCE_INACTIVATION_OF_CONDENSIN_I	N01501	kin-3	kin-3	dpy-28	dpy-27	smc-4
+KEGG_MEDICUS_REFERENCE_INTRINSIC_APOPTOTIC_PATHWAY	N00098	ced-9	cyc-2.2
+KEGG_MEDICUS_REFERENCE_IRE1A_JNK_SIGNALING_PATHWAY	N01013	ire-1	mek-1	nsy-1	jnk-1	jnk-1	jnk-1
+KEGG_MEDICUS_REFERENCE_ISOLEUCINE_DEGRADATION	N00856	acaa-2	acdh-7	acdh-1	ech-6	B0272.3	F54C8.1	ech-1.1	B0303.3	ard-1
+KEGG_MEDICUS_REFERENCE_ITGA_B_FAK_CDC42_SIGNALING_PATHWAY	N01070	pix-1	cdc-42	git-1	pat-2	ina-1	pat-2	ina-1	pat-2	pat-2	pat-3	pat-3	pat-3	pat-3	pat-3	pat-3	pat-3	kin-32	pxl-1
+KEGG_MEDICUS_REFERENCE_ITGA_B_FAK_RAC_SIGNALING_PATHWAY	N01068	ced-2	ced-5	ced-12	pat-2	ina-1	pat-2	ina-1	pat-2	pat-2	pat-3	pat-3	pat-3	pat-3	pat-3	pat-3	pat-3	kin-32	pxl-1	rac-2	ced-10	rac-2	rac-2
+KEGG_MEDICUS_REFERENCE_ITGA_B_RHOGAP_RHOA_SIGNALING_PATHWAY	N00393	rga-5	pat-2	ina-1	pat-2	ina-1	pat-2	pat-2	pat-3	pat-3	pat-3	pat-3	pat-3	pat-3	pat-3	rho-1
+KEGG_MEDICUS_REFERENCE_ITGA_B_RHOGEF_RHOA_SIGNALING_PATHWAY	N01072	pat-2	ina-1	pat-2	ina-1	pat-2	pat-2	pat-3	pat-3	pat-3	pat-3	pat-3	pat-3	pat-3	kin-32	rho-1
+KEGG_MEDICUS_REFERENCE_ITGA_B_RHOG_RAC_SIGNALING_PATHWAY	N00951	ced-5	ced-12	ced-12	ced-12	pat-2	ina-1	pat-2	ina-1	pat-2	pat-2	pat-3	pat-3	pat-3	pat-3	pat-3	pat-3	pat-3	rac-2	ced-10	rac-2	rac-2	mig-2
+KEGG_MEDICUS_REFERENCE_ITGA_B_TALIN_VINCULIN_SIGNALING_PATHWAY	N01080	act-2	act-4	act-1	act-2	act-4	atn-1	atn-1	pat-4	pat-2	ina-1	pat-2	ina-1	pat-2	pat-2	pat-3	pat-3	pat-3	pat-3	pat-3	pat-3	pat-3	kin-32	pxl-1	tln-1	tln-1	deb-1
+KEGG_MEDICUS_REFERENCE_KEAP1_NRF2_SIGNALING_PATHWAY	N00243	gsto-2	gsto-2	gst-10	trxr-1
+KEGG_MEDICUS_REFERENCE_KERATAN_SULFATE_DEGRADATION	N00623	bgal-1	hex-1	hex-1
+KEGG_MEDICUS_REFERENCE_KINETOCHORE_FIBER_ORGANIZATION	N01547	air-2	zyg-9	clic-1	clic-1	chc-1	mec-12	tba-5	mec-12	tba-9	mec-12	tba-1	tba-2	tba-4	tba-8	mec-12	mec-12	mec-12	mec-12	tba-2	tba-4	tba-7	tba-9	ben-1	tbb-1	tbb-2	ben-1	mec-7	tbb-1	tbb-2	tbb-4	tbb-6	mec-7	tbb-4	mec-7	ben-1	tbb-1	tbb-2	tbb-4	ben-1	tbb-1	tbb-2	mec-7
+KEGG_MEDICUS_REFERENCE_KINETOCHORE_MICROTUBULE_ATTACHMENT	N01535	mec-12	tba-5	mec-12	tba-9	mec-12	tba-1	tba-2	tba-4	tba-8	mec-12	mec-12	mec-12	mec-12	tba-2	tba-4	tba-7	tba-9	ben-1	tbb-1	tbb-2	ben-1	mec-7	tbb-1	tbb-2	tbb-4	tbb-6	mec-7	tbb-4	mec-7	ben-1	tbb-1	tbb-2	tbb-4	ben-1	tbb-1	tbb-2	mec-7
+KEGG_MEDICUS_REFERENCE_KISS1_KISS1R_PLCB_PKC_SIGNALING_PATHWAY	N00869	egl-30	egl-30	npr-9	egl-8	pkc-2	pkc-2	pkc-2
+KEGG_MEDICUS_REFERENCE_KITLG_KIT_PI3K_SIGNALING_PATHWAY	N00045	akt-1	akt-1	akt-1	akt-2	let-363	age-1	age-1	age-1	rsks-1	rsks-1
+KEGG_MEDICUS_REFERENCE_KITLG_KIT_RAS_ERK_SIGNALING_PATHWAY	N00215	lin-45	lin-45	sem-5	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45	sos-1	sos-1
+KEGG_MEDICUS_REFERENCE_LECTIN_PATHWAY_OF_COMPLEMENT_CASCADE_C4_C2_TO_C3_CONVERTASE_FORMATION	N01491	tep-1	tep-1
+KEGG_MEDICUS_REFERENCE_LESION_BYPASS_BY_TLS_AND_DSB_FORMATION	N01465	ercc-1	xpf-1	fan-1	fcd-2	mus-81	rev-1	rev-3	slx-1	slx-1
+KEGG_MEDICUS_REFERENCE_LEUCINE_DEGRADATION	N00851	acdh-7	ech-5	Y71G12B.10	Y71G12B.10	ivd-1	mccc-1	mccc-2
+KEGG_MEDICUS_REFERENCE_LEWIS_X_ANTIGEN_BIOSYNTHESIS	N01672	fut-1	fut-4	fut-1	fut-4	fut-5	fut-6	fut-1	fut-4	fut-5	fut-1
+KEGG_MEDICUS_REFERENCE_LHCGR_GNAS_PKA_SIGNALING_PATHWAY	N00885	acy-2	acy-4	acy-2	acy-4	acy-4	acy-1	gsa-1	fshr-1	kin-1	kin-1	kin-1
+KEGG_MEDICUS_REFERENCE_LIGHT_HVEM_NFKB_SIGNALING_PATHWAY	N00559	trf-1
+KEGG_MEDICUS_REFERENCE_LOADING_OF_THE_SMC5_SMC6_COMPLEX	N01636	T27A3.7	smc-5	smc-6
+KEGG_MEDICUS_REFERENCE_LONG_PATCH_BER	N01436	crn-1	lig-1	pcn-1	F10C2.4	F12F6.7	pole-1	pole-2	T26A5.8	pole-4	rfc-1	rfc-2	rfc-3	rfc-4	F44B9.8
+KEGG_MEDICUS_REFERENCE_LPAR_GNB_G_RHO_SIGNALING_PATHWAY	N00408	gpb-1	gpb-1	gpb-1	gpb-1	gpb-2	gpc-1	gpc-1	gpc-1	gpc-2	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	gpc-1	rho-1
+KEGG_MEDICUS_REFERENCE_LPA_GNA12_13_RHOA_SIGNALING_PATHWAY	N01097	rhgf-1	rhgf-1	rhgf-1	gpa-12	gpa-12	rho-1	let-502	let-502
+KEGG_MEDICUS_REFERENCE_LPA_GNAQ_11_RHOA_SIGNALING_PATHWAY	N01104	rhgf-1	egl-30	egl-30	rho-1
+KEGG_MEDICUS_REFERENCE_LYSOSOMAL_CA2_RELEASE	N01644	cmd-1	cal-1	cal-3	cmd-1	cmd-1	cup-5	tax-6	tax-6	tax-6	cnb-1	cnb-1	hlh-30
+KEGG_MEDICUS_REFERENCE_MACHR_CA2_APOPTOTIC_PATHWAY	N01000	gar-3	gar-3	gar-3	cyc-2.2	egl-30	itr-1	itr-1	itr-1	mcu-1	egl-8	ant-1.2	ant-1.2	ant-1.1	ant-1.2	vdac-1	vdac-1	vdac-1
+KEGG_MEDICUS_REFERENCE_MAGI_PTEN_SIGNALING_PATHWAY	N00342	akt-1	akt-1	akt-1	akt-2	magi-1	magi-1	daf-18
+KEGG_MEDICUS_REFERENCE_MANNOSE_TYPE_O_GLYCAN_BIOSYNTHESIS_FKTN_TO_LARGE	N00699	bgnt-1.1	bgnt-1.2	bgnt-1.3	bgnt-1.5	bgnt-1.8	W02B3.4	lge-1	lge-1
+KEGG_MEDICUS_REFERENCE_MDA5_IRF7_3_SIGNALING_PATHWAY	N01308	drh-1
+KEGG_MEDICUS_REFERENCE_MDM2_P21_CELL_CYCLE_G1_S_N00066	N00066	cyd-1	cyd-1	cyd-1	cdk-4	cdk-4	lin-35
+KEGG_MEDICUS_REFERENCE_MDM2_P21_CELL_CYCLE_G1_S_N00536	N00536	cye-1	cye-1	lin-35
+KEGG_MEDICUS_REFERENCE_MEMBRANE_INITIATED_PROGESTERONE_SIGNALING_PATHWAY	N01356	akt-1	akt-1	akt-1	akt-2	K11C4.2	K11C4.2	age-1	age-1	age-1
+KEGG_MEDICUS_REFERENCE_METHIONINE_DEGRADATION	N01607	ahcy-1	sams-1	sams-5	sams-1	sams-5
+KEGG_MEDICUS_REFERENCE_MEVALONATE_PATHWAY	N01635	kat-1	fdps-1	hmgr-1	hmgs-1	hmgs-1	idi-1	idi-1	Y48B6A.13	mvk-1	F32D8.13
+KEGG_MEDICUS_REFERENCE_MGLUR1_TRPC3_SIGNALING_PATHWAY	N00953	egl-30	mgl-2	itr-1	itr-1	itr-1	egl-8	pkc-2	pkc-2	pkc-2
+KEGG_MEDICUS_REFERENCE_MGLUR5_CA2_APOPTOTIC_PATHWAY	N00984	cyc-2.2	egl-30	mgl-2	itr-1	itr-1	itr-1	mcu-1	egl-8	ant-1.2	ant-1.2	ant-1.1	ant-1.2	vdac-1	vdac-1	vdac-1
+KEGG_MEDICUS_REFERENCE_MICROTUBULE_DEPOLYMERIZATION	N01561	air-2	air-2	klp-7	ebp-1	ebp-1	mec-12	tba-5	mec-12	tba-9	mec-12	tba-1	tba-2	tba-4	tba-8	mec-12	mec-12	mec-12	mec-12	tba-2	tba-4	tba-7	tba-9	ben-1	tbb-1	tbb-2	ben-1	mec-7	tbb-1	tbb-2	tbb-4	tbb-6	mec-7	tbb-4	mec-7	ben-1	tbb-1	tbb-2	tbb-4	ben-1	tbb-1	tbb-2	mec-7
+KEGG_MEDICUS_REFERENCE_MICROTUBULE_DEPOLYMERIZATION_AT_THE_MINUS_ENDS	N01562	plk-2	mec-12	tba-5	mec-12	tba-9	mec-12	tba-1	tba-2	tba-4	tba-8	mec-12	mec-12	mec-12	mec-12	tba-2	tba-4	tba-7	tba-9	ben-1	tbb-1	tbb-2	ben-1	mec-7	tbb-1	tbb-2	tbb-4	tbb-6	mec-7	tbb-4	mec-7	ben-1	tbb-1	tbb-2	tbb-4	ben-1	tbb-1	tbb-2	mec-7
+KEGG_MEDICUS_REFERENCE_MICROTUBULE_NUCLEATION	N01544	zyg-9	mec-12	tba-5	mec-12	tba-9	mec-12	tba-1	tba-2	tba-4	tba-8	mec-12	mec-12	mec-12	mec-12	tba-2	tba-4	tba-7	tba-9	ben-1	tbb-1	tbb-2	ben-1	mec-7	tbb-1	tbb-2	tbb-4	tbb-6	mec-7	tbb-4	mec-7	ben-1	tbb-1	tbb-2	tbb-4	ben-1	tbb-1	tbb-2	mec-7
+KEGG_MEDICUS_REFERENCE_MICROTUBULE_RHOA_SIGNALING_PATHWAY	N01285	rho-1	let-502	let-502	mec-12	tba-5	mec-12	tba-9	mec-12	tba-1	tba-2	tba-4	tba-8	mec-12	mec-12	mec-12	mec-12	tba-2	tba-4	tba-7	tba-9	ben-1	tbb-1	tbb-2	ben-1	mec-7	tbb-1	tbb-2	tbb-4	tbb-6	mec-7	tbb-4	mec-7	ben-1	tbb-1	tbb-2	tbb-4	ben-1	tbb-1	tbb-2	mec-7
+KEGG_MEDICUS_REFERENCE_MISMATCH_REPAIR	N01432	exo-1	lig-1	mlh-1	msh-2	msh-6	pcn-1	pms-2	F10C2.4	F12F6.7	pole-1	pole-2	T26A5.8	pole-4	rfc-1	rfc-2	rfc-3	rfc-4	F44B9.8	rpa-1	rpa-2
+KEGG_MEDICUS_REFERENCE_MITOCHONDRIAL_COMPLEX_UCP1_IN_THERMOGENESIS	N01691	atp-1	F58F12.1	R05D3.6	hpo-18	atp-3	coa-3	coa-5	cox-10	cox-11	cox-15	cox-4	cox-5A	cox-6A	cox-6B	cyc-1	nuo-4	Y94H6A.8	C34B2.8	Y63D3A.7	nuo-3	Y54F10AM.5	nduf-9	nuaf-1	Y116A8C.30	nuaf-3	K09E4.3	B0334.5	F59C6.5	F42G8.10	C18E9.4	D2030.4	Y51H1A.3	C16A3.5	Y71H2AM.4	nuo-5	gas-1	nuo-2	lpd-5	nduf-6	nduf-7	T20H4.5	nuo-1	F53F4.10	sdha-2	sdhb-1	mev-1	sdhd-1	T02H6.11	ucr-2.1	ucr-2.2	isp-1	F45H10.2	R07E4.3
+KEGG_MEDICUS_REFERENCE_MLK_JNK_SIGNALING_PATHWAY	N01594	mkk-4	mek-1	dlk-1	zak-1	jnk-1	jnk-1	jnk-1
+KEGG_MEDICUS_REFERENCE_MODIFYING_OF_CONDENSIN_II_SUBUNITS	N01499	air-2	cdk-1	hcp-6	capg-2	kle-2	plk-2
+KEGG_MEDICUS_REFERENCE_MODIFYING_OF_CONDENSIN_I_SUBUNITS	N01500	air-2	cdk-1	dpy-28
+KEGG_MEDICUS_REFERENCE_MYOSTATIN_SIGNALING_PATHWAY	N01457	daf-1	daf-4	daf-7	sma-2	sma-4	sma-2	sma-2
+KEGG_MEDICUS_REFERENCE_NAD_BIOSYNTHESIS	N01723	afmd-1	afmd-2	haao-1	kmo-1	kynu-1	qns-1	nmat-1	nmat-2	nmat-1	nmat-2	tdo-2
+KEGG_MEDICUS_REFERENCE_NODAL_SIGNALING_PATHWAY	N01459	daf-1	daf-1	daf-4	daf-4	sma-2	sma-4
+KEGG_MEDICUS_REFERENCE_NON_HOMOLOGOUS_END_JOINING	N01445	lig-4	pis-1	rif-1.2	hsr-9	cku-80	cku-70
+KEGG_MEDICUS_REFERENCE_NOTCH_LIGAND_UBIQUITYLATION	N01479	mib-1	F10D7.5
+KEGG_MEDICUS_REFERENCE_NOTCH_MESP2_SIGNALING	N01481	vab-1	lag-1
+KEGG_MEDICUS_REFERENCE_NOTCH_PROTEOLYTIC_ACTIVATION	N01478	adm-4	aph-1	aph-1	aph-2	glp-1	lin-12	glp-1	lin-12	glp-1	lin-12	lin-12	sel-12	sel-12	pen-2
+KEGG_MEDICUS_REFERENCE_NOTCH_SIGNALING_PATHWAY	N00086	glp-1	lin-12	glp-1	lin-12	glp-1	lin-12	lin-12	lag-1	lag-1
+KEGG_MEDICUS_REFERENCE_NRG_ERBB4_PI3K_SIGNALING_PATHWAY	N01163	akt-1	akt-1	akt-1	akt-2	let-23	age-1	age-1	age-1
+KEGG_MEDICUS_REFERENCE_NUCLEAR_EXPORT_OF_MRNA	N01152	aly-2	aly-3	ddx-19	ncbp-1	npp-22	npp-15	npp-8	npp-6	npp-3	npp-12	npp-14	npp-19	npp-23	npp-1	npp-2	npp-13	nxf-2	nxt-1	nxt-1	npp-18	rsp-6	rsp-6
+KEGG_MEDICUS_REFERENCE_NUCLEAR_INITIATED_ESTROGEN_SIGNALING_PATHWAY	N00286	asp-4
+KEGG_MEDICUS_REFERENCE_NUCLEAR_INITIATED_PROGESTERONE_SIGNALING_PATHWAY	N01362	cyd-1	cwn-1
+KEGG_MEDICUS_REFERENCE_N_GLYCAN_BIOSYNTHESIS	N00820	bre-4	bre-4	bre-4	fut-8	aagr-4	mans-1	mans-2	mans-4	mans-1	aman-2	aman-2	gly-13	gly-20	mogs-1
+KEGG_MEDICUS_REFERENCE_N_GLYCAN_PRECURSOR_BIOSYNTHESIS_ALG6_TO_OST	N00681	algn-10	algn-10	algn-6	algn-8	dad-1	ostb-1	ribo-1	ostd-1	stt-3	stt-3	ZK686.3
+KEGG_MEDICUS_REFERENCE_N_GLYCAN_PRECURSOR_BIOSYNTHESIS_ALG7_TO_ALG11	N00653	algn-1	algn-11	algn-13	algn-14	algn-2	algn-7
+KEGG_MEDICUS_REFERENCE_N_GLYCAN_PRECURSOR_BIOSYNTHESIS_GLC_6P_TO_MAN_P_DOL	N00667	dpm-1	dpm-3	Y47D9A.1	tag-335	gpi-1	ZK632.4	F52B11.2	F52B11.2
+KEGG_MEDICUS_REFERENCE_OKAZAKI_FRAGMENT_MATURATION	N01472	dna-2	crn-1	lig-1	pcn-1	F10C2.4	F12F6.7	rnh-2	F21D5.6
+KEGG_MEDICUS_REFERENCE_ORGANIZATION_OF_THE_INNER_KINETOCHORE	N01525	cpar-1	hcp-3
+KEGG_MEDICUS_REFERENCE_ORGANIZATION_OF_THE_OUTER_KINETOCHORE	N01526	air-2	bir-1	icp-1	ndc-80
+KEGG_MEDICUS_REFERENCE_ORIGIN_UNWINDING_AND_ELONGATION	N01471	evl-18	psf-1	psf-2	psf-3	sld-5	mcm-10	mcm-2	mcm-3	mcm-4	mcm-5	mcm-6	mcm-7	pcn-1	pola-1	div-1	pole-1	pole-2	T26A5.8	pole-4	pri-1	pri-2	rfc-1	rfc-2	rfc-3	rfc-4	F44B9.8	rpa-1	rpa-2	ctf-4
+KEGG_MEDICUS_REFERENCE_P15_CELL_CYCLE_G1_S	N00090	cyd-1	cyd-1	cyd-1	cdk-4	cdk-4	mxl-3	lin-35
+KEGG_MEDICUS_REFERENCE_P16_CELL_CYCLE_G1_S	N00069	cyd-1	cyd-1	cyd-1	cdk-4	cdk-4	lin-35
+KEGG_MEDICUS_REFERENCE_P27_CELL_CYCLE_G1_S	N00091	cya-1	cya-1	cye-1	cye-1	cul-1	lin-35	rbx-1	skr-2	skpt-1
+KEGG_MEDICUS_REFERENCE_P300_P21_CELL_CYCLE_G1_S	N00347	cyd-1	cyd-1	cyd-1	cdk-4	cdk-4	cbp-1	lin-35
+KEGG_MEDICUS_REFERENCE_P4_PR_PI3K_SIGNALING_PATHWAY	N01358	akt-1	akt-1	akt-1	akt-2	age-1	age-1	age-1
+KEGG_MEDICUS_REFERENCE_P4_PR_RAS_ERK_SIGNALING_PATHWAY	N01360	lin-45	lin-45	cyd-1	sem-5	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45	sos-1	sos-1
+KEGG_MEDICUS_REFERENCE_PDGF_PDGFR_PI3K_SIGNALING_PATHWAY	N00039	akt-1	akt-1	akt-1	akt-2	let-363	pvf-1	pvf-1	age-1	age-1	age-1	rsks-1	rsks-1
+KEGG_MEDICUS_REFERENCE_PDGF_PDGFR_PLCG_CAMK_SIGNALING_PATHWAY	N00028	cmd-1	cal-1	cal-3	cmd-1	cmd-1	cmk-1	cmk-1	cmk-1	unc-43	unc-43	unc-43	unc-43	pvf-1	pvf-1	plc-3	plc-3
+KEGG_MEDICUS_REFERENCE_PDGF_PDGFR_RAS_ERK_SIGNALING_PATHWAY	N00015	lin-45	lin-45	sem-5	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	pvf-1	pvf-1	lin-45	sos-1	sos-1
+KEGG_MEDICUS_REFERENCE_PDL_PD1_SHP_PI3K_SIGNALING_PATHWAY	N01165	age-1	aap-1	aap-1	aap-1	ptp-2	ptp-2
+KEGG_MEDICUS_REFERENCE_PINK_PARKIN_MEDIATED_AUTOPHAGOSOME_FORMATION	N01137	cisd-1	cisd-1	H40L08.1	hxk-1	hxk-3	lgg-2	lgg-2	lgg-2	pink-1	pdr-1	C06G3.6	sqst-2
+KEGG_MEDICUS_REFERENCE_PKA_HOLOENZYME	N01542	kin-1	kin-1	kin-1	kin-2	kin-2
+KEGG_MEDICUS_REFERENCE_PKR_EIF2ALPHA_SIGNALING_PATHWAY	N00571	Y38E10A.8	eif-2Balpha	eif-2Bbeta	eif-2Bgamma	eif-2Bdelta	eif-2Bepsilon	eif-2alpha
+KEGG_MEDICUS_REFERENCE_PP2A_AKT_SIGNALING_PATHWAY	N00355	akt-1	akt-1	akt-1	akt-2	let-92	let-92	paa-1	paa-1	sur-6	sur-6	sur-6	sur-6	pptr-1	pptr-1	pptr-2	pptr-2	pptr-1
+KEGG_MEDICUS_REFERENCE_PRE_IC_FORMATION	N01470	evl-18	cdc-6	cdt-1	psf-1	psf-2	psf-3	sld-5	mcm-2	mcm-3	mcm-4	mcm-5	mcm-6	mcm-7	orc-1	orc-2	orc-5	pole-1	pole-2	T26A5.8	pole-4	mus-101
+KEGG_MEDICUS_REFERENCE_PRL_JAK_STAT_SIGNALING_PATHWAY	N00920	sta-1	sta-1
+KEGG_MEDICUS_REFERENCE_PRNP_PI3K_NOX2_SIGNALING_PATHWAY	N01204	atf-6	cav-1	cav-1	crh-1	let-607	src-1	mpk-1	mpk-1	age-1	age-1	age-1	tpa-1	rac-2	ced-10	rac-2
+KEGG_MEDICUS_REFERENCE_PROK_PRKR_GI_ERK_SIGNALING_PATHWAY	N00879	gpa-16	gpa-4	gpa-16	mpk-1	mpk-1
+KEGG_MEDICUS_REFERENCE_PROMOTION_OF_MICROTUBULE_GROWTH	N01553	cls-2	cls-3	cls-2	cls-3	ebp-1	mec-12	tba-5	mec-12	tba-9	mec-12	tba-1	tba-2	tba-4	tba-8	mec-12	mec-12	mec-12	mec-12	tba-2	tba-4	tba-7	tba-9	ben-1	tbb-1	tbb-2	ben-1	mec-7	tbb-1	tbb-2	tbb-4	tbb-6	mec-7	tbb-4	mec-7	ben-1	tbb-1	tbb-2	tbb-4	ben-1	tbb-1	tbb-2	mec-7
+KEGG_MEDICUS_REFERENCE_PTH_PTH1R_PKA_SIGNALING_PATHWAY	N00288	acy-2	acy-4	acy-2	acy-4	acy-4	acy-1	gsa-1	kin-1	kin-1	kin-1
+KEGG_MEDICUS_REFERENCE_PURINE_SALVAGE_PATHWAY_ADENINE_TO_AMP	N01418	T19B4.3	Y71H10B.1	pnp-1
+KEGG_MEDICUS_REFERENCE_PURINE_SALVAGE_PATHWAY_HYPOXANTHINE_GUANINE_TO_IMP_GMP	N01421	hprt-1	Y71H10B.1	pnp-1
+KEGG_MEDICUS_REFERENCE_RAB7_REGULATED_MICROTUBULE_MINUS_END_DIRECTED_TRANSPORT	N01295	arp-11	arp-1	arp-1	dnc-1	dnc-2	dnc-4	dnc-5	dnc-6	dhc-1	dyci-1	dyci-1	dli-1	dli-1	che-3	xbx-1	dlc-1	dlc-1	dyrb-1	dyrb-1	dylt-1	dylt-1	obr-2	rab-7	rilp-1	mec-12	tba-5	mec-12	tba-9	mec-12	tba-1	tba-2	tba-4	tba-8	mec-12	mec-12	mec-12	mec-12	tba-2	tba-4	tba-7	tba-9	ben-1	tbb-1	tbb-2	ben-1	mec-7	tbb-1	tbb-2	tbb-4	tbb-6	mec-7	tbb-4	mec-7	ben-1	tbb-1	tbb-2	tbb-4	ben-1	tbb-1	tbb-2	mec-7
+KEGG_MEDICUS_REFERENCE_RAC_CDC42_PAK_ERK_SIGNALING_PATHWAY	N01119	lin-45	lin-45	cdc-42	mek-2	mek-2	mpk-1	mpk-1	pak-1	rac-2	lin-45
+KEGG_MEDICUS_REFERENCE_RAD51_DSDNA_DESTABILIZATION	N01539	helq-1	rad-51	rpa-1	rpa-2
+KEGG_MEDICUS_REFERENCE_RECRUITMENT_AND_FORMATION_OF_THE_MCC	N01529	air-2	bub-1	bub-3	mdf-1	mdf-2	ndc-80
+KEGG_MEDICUS_REFERENCE_REGULATION_OF_FIBRINOLYTIC_SYSTEM_PAI	N01524	srp-3
+KEGG_MEDICUS_REFERENCE_REGULATION_OF_GF_RTK_RAS_ERK_SIGNALING_MRAS_SHOC2_PP1_HOLOPHOSPHATASE	N01598	lin-45	lin-45	ras-2	gsp-2	gsp-1	gsp-2	lin-45	soc-2
+KEGG_MEDICUS_REFERENCE_REGULATION_OF_GF_RTK_RAS_ERK_SIGNALING_PATHWAY_ADAPTOR_PROTEINS	N01595	sem-5	ptp-2	shc-1	shc-1	sos-1	sos-1
+KEGG_MEDICUS_REFERENCE_REGULATION_OF_GF_RTK_RAS_ERK_SIGNALING_PTP	N01593	vhp-1	lip-1	lip-1	vhp-1	lip-1	mpk-1	jnk-1	pmk-1	mpk-1	jnk-1	jnk-1
+KEGG_MEDICUS_REFERENCE_REGULATION_OF_GF_RTK_RAS_ERK_SIGNALING_RASGAP	N01600	let-60	let-60	let-60	gap-1	gap-1	gap-1	gap-1
+KEGG_MEDICUS_REFERENCE_REGULATION_OF_GF_RTK_RAS_ERK_SIGNALING_RAS_UBIQUITINATION_BY_CUL3_COMPLEX	N01596	cul-3	let-60	let-60	let-60
+KEGG_MEDICUS_REFERENCE_REGULATION_OF_GF_RTK_RAS_ERK_SIGNALING_SPRED_AND_NF1	N01597	let-60	let-60	let-60
+KEGG_MEDICUS_REFERENCE_REGULATION_OF_GF_RTK_RAS_ERK_SIGNALING_UBIQUITINATION_OF_RTK_BY_CBL	N01599	let-23	vab-1	let-23	let-23	let-23	egl-15	egl-15	daf-2	daf-2	F11E6.8
+KEGG_MEDICUS_REFERENCE_REGULATION_OF_SERCA	N01646	sca-1	sca-1	sca-1
+KEGG_MEDICUS_REFERENCE_RELN_VLDLR_PI3K_SIGNALING_PATHWAY	N00963	akt-1	akt-1	akt-1	akt-2	let-363	age-1	age-1	age-1	rheb-1	rsks-1	rsks-1	T13C2.6
+KEGG_MEDICUS_REFERENCE_RETROGRADE_AXONAL_TRANSPORT	N00976	arp-11	arp-1	arp-1	dnc-1	dnc-2	dnc-4	dnc-5	dnc-6	dyla-1	mec-12	tba-5	mec-12	tba-9	mec-12	tba-1	tba-2	tba-4	tba-8	mec-12	mec-12	mec-12	mec-12	tba-2	tba-4	tba-7	tba-9	ben-1	tbb-1	tbb-2	ben-1	mec-7	tbb-1	tbb-2	tbb-4	tbb-6	mec-7	tbb-4	mec-7	ben-1	tbb-1	tbb-2	tbb-4	ben-1	tbb-1	tbb-2	mec-7
+KEGG_MEDICUS_REFERENCE_RIG_I_IRF7_3_SIGNALING_PATHWAY	N00469	drh-1
+KEGG_MEDICUS_REFERENCE_RIG_I_NFKB_SIGNALING_PATHWAY	N00688	drh-1
+KEGG_MEDICUS_REFERENCE_RORA_MEDIATED_TRANSCRIPTION	N00965	mgl-2	itr-1	mys-1	nhr-23	glt-4
+KEGG_MEDICUS_REFERENCE_RTK_PLCG_ITPR_SIGNALING_PATHWAY	N01641	let-23	let-23	let-23	let-23	let-756	let-756	let-756	egl-15	egl-15	itr-1	itr-1	itr-1	F11E6.8	F11E6.8	pvf-1	pvf-1	plc-3	plc-3
+KEGG_MEDICUS_REFERENCE_SEROTONIN_METABOLISM	N01551	basl-1	tph-1	tph-1
+KEGG_MEDICUS_REFERENCE_SIALYL_LEWIS_X_ANTIGEN_BIOSYNTHESIS	N01674	fut-1	fut-4	fut-1	fut-4	fut-5	fut-6	fut-1	fut-4	fut-5	fut-5
+KEGG_MEDICUS_REFERENCE_SKELETAL_TYPE_VGCC_RYR_SIGNALING	N01638	K09A9.6	egl-19	unc-36	unc-36	unc-36	ccb-1	ccb-1	ccb-1	ccb-2	ccb-1	stg-1	csq-1	csq-1	unc-68
+KEGG_MEDICUS_REFERENCE_SPINDLE_ASSEMBLY_CHECKPOINT_SIGNALING	N00493	apc-1	Y48G1C.12	apc-11	apc-2	emb-30	gfi-3	such-1	bub-3	emb-27	mat-3	mat-1	ZK430.5	mdf-1	mdf-2
+KEGG_MEDICUS_REFERENCE_STRAD_STK11_TSC_SIGNALING_PATHWAY	N01576	aak-2	aak-2	par-4	strd-1
+KEGG_MEDICUS_REFERENCE_TAC3_TACR3_PLC_PKC_SIGNALING_PATHWAY	N00882	egl-30	egl-8	pkc-2	pkc-2	pkc-2	tkr-1
+KEGG_MEDICUS_REFERENCE_TBK1_MEDIATED_AUTOPHAGOSOME_FORMATION	N01140	lgg-2	lgg-2	lgg-2	C06G3.6	sqst-2
+KEGG_MEDICUS_REFERENCE_TCR_PLCG_ITPR_SIGNALING_PATHWAY	N01106	src-1	sem-5	itr-1	itr-1	itr-1	plc-3	plc-3	vav-1	vav-1	vav-1
+KEGG_MEDICUS_REFERENCE_TELOMERASE_RNA_MATURATION	N01475	parn-1	gld-4	tgs-1	ZK632.11
+KEGG_MEDICUS_REFERENCE_TELOMERE_ELONGATION	N01477	dkc-1	garr-1	Y48A6B.3	nola-3	rtel-1	ruvb-1	ruvb-2	tcab-1
+KEGG_MEDICUS_REFERENCE_TESTOSTERONE_BIOSYNTHESIS	N01541	dhs-5	stdh-1	stdh-2	stdh-3	dhs-16	dhs-25	F19H6.4	F42F12.3	ZK1251.3	B0024.13
+KEGG_MEDICUS_REFERENCE_TETHERING_OF_LATE_ENDOSOMES_AND_LYSOSOMES	N01300	arl-8	rab-7	vps-11	vps-16	vps-18	vps-33.1	vps-39	vps-41
+KEGG_MEDICUS_REFERENCE_TGFA_EGFR_PI3K_SIGNALING_PATHWAY	N00231	akt-1	akt-1	akt-1	akt-2	let-23	let-363	age-1	age-1	age-1
+KEGG_MEDICUS_REFERENCE_TGFA_EGFR_PLCG_PKC_SIGNALING_PATHWAY	N00227	let-23	plc-3	plc-3	pkc-2	pkc-2	pkc-2
+KEGG_MEDICUS_REFERENCE_TGFA_EGFR_RAS_ERK_SIGNALING_PATHWAY	N00229	lin-45	lin-45	let-23	sem-5	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45	sos-1	sos-1
+KEGG_MEDICUS_REFERENCE_TGF_BETA_SIGNALING_PATHWAY	N00063	sma-2	sma-4
+KEGG_MEDICUS_REFERENCE_THYROID_HORMONE_SIGNALING_PATHWAY	N00798	sca-1	myo-1	myo-2	myo-3
+KEGG_MEDICUS_REFERENCE_TIGHT_JUNCTION_ACTIN_SIGNALING_PATHWAY	N01287	act-2	act-4	act-1	act-2	act-4	arx-2	arx-1	arx-3	arx-3	arx-4	arx-5	arx-6	C46H11.3	arx-7	C46H11.3	arx-7	zoo-1
+KEGG_MEDICUS_REFERENCE_TLR1_2_4_NFKB_SIGNALING_PATHWAY	N00435	pik-1	pik-1	Y105C5A.24
+KEGG_MEDICUS_REFERENCE_TLR2_4_MAPK_SIGNALING_PATHWAY	N00438	pik-1	pik-1	mek-2	mek-2	sek-1	mkk-4	sek-1	mek-1	Y105C5A.24	mpk-1	jnk-1	pmk-1	pmk-1	pmk-2	pmk-1	pmk-2	pmk-1	mpk-1	jnk-1	jnk-1
+KEGG_MEDICUS_REFERENCE_TLR3_IRF3_SIGNALING_PATHWAY	N00149	cbp-1	cbp-1	tol-1
+KEGG_MEDICUS_REFERENCE_TLR3_IRF7_SIGNALING_PATHWAY	N00148	tol-1
+KEGG_MEDICUS_REFERENCE_TLR3_NFKB_SIGNALING_PATHWAY	N00563	Y105C5A.24	tol-1
+KEGG_MEDICUS_REFERENCE_TLR5_NFKB_SIGNALING_PATHWAY	N01566	pik-1	pik-1	Y105C5A.24
+KEGG_MEDICUS_REFERENCE_TLR7_8_9_IRF5_SIGNALING_PATHWAY	N01543	pik-1	pik-1
+KEGG_MEDICUS_REFERENCE_TLR7_9_IRF7_SIGNALING_PATHWAY	N00690	pik-1	pik-1
+KEGG_MEDICUS_REFERENCE_TNF_JNK_SIGNALING_PATHWAY	N00446	mkk-4	mek-1	Y105C5A.24	jnk-1	jnk-1	jnk-1	tap-1	trf-1
+KEGG_MEDICUS_REFERENCE_TNF_NFKB_SIGNALING_PATHWAY	N00151	Y105C5A.24	tap-1	trf-1
+KEGG_MEDICUS_REFERENCE_TNF_P38_SIGNALING_PATHWAY	N00444	atf-6	crh-1	let-607	sek-1	sek-1	Y105C5A.24	pmk-1	rskn-2	rskn-2	tap-1	trf-1
+KEGG_MEDICUS_REFERENCE_TNF_RIPK1_3_SIGNALING_PATHWAY	N01621	trf-1
+KEGG_MEDICUS_REFERENCE_TRAIP_DEPENDENT_REPLISOME_DISASSEMBLY	N01474	evl-18	psf-1	psf-2	psf-3	sld-5	mcm-2	mcm-3	mcm-4	mcm-5	mcm-6	mcm-7	npl-4.1	trul-1	ufd-1	cdc-48.1	cdc-48.2
+KEGG_MEDICUS_REFERENCE_TRANSCRIPTIONAL_ACTIVATION_BY_ACETYLATION_OF_H3K27	N01701	swan-2	cbp-1	his-71	his-13	his-40	his-13	mig-32	tag-294	Y48A6C.4
+KEGG_MEDICUS_REFERENCE_TRANSCRIPTION_COUPLED_NER	N01430	cyh-1	cdk-7	cul-4	ddb-1	xpd-1	xpb-1	F53H4.6	gtf-2H1	gtf-2H2C	gtf-2H3	gtf-2H4	gtf-2H5	mnat-1	ama-1	rpb-2	rpb-3	rpb-4	rpb-5	rpb-6	rpb-7	rpb-8	rpb-9	rpb-11	rpb-11	rpb-12	rpb-10	rbx-1	uvs-1
+KEGG_MEDICUS_REFERENCE_TRANSLATION_INITIATION	N01317	rps-30	rpl-10	rpl-1	rpl-11.1	rpl-12	rpl-13	rpl-16	rpl-14	rpl-15	rpl-17	rpl-18	rpl-20	rpl-19	rpl-21	rpl-22	rpl-23	rpl-25.1	rpl-24.1	rpl-26	rpl-27	Y37E3.8	rpl-28	rpl-29	rpl-3	rpl-30	rpl-31	rpl-32	rpl-34	rpl-35	rpl-33	rpl-36	rpl-36.A	rpl-37	rpl-43	rpl-38	rpl-39	rpl-4	rpl-5	rpl-6	rpl-7	rpl-7A	rpl-2	rpl-9	rla-0	rla-1	C37A2.7	rla-2	rps-10	rps-11	rps-12	rps-13	rps-14	rps-15	rps-22	rps-16	rps-17	rps-18	rps-19	rps-2	rps-20	rps-21	rps-23	rps-24	rps-25	rps-26	rps-27	ubl-1	rps-28	rps-29	rps-3	rps-1	rps-4	rps-4	rps-4	rps-5	rps-6	rps-7	rps-8	rps-9	rps-0	ubq-2
+KEGG_MEDICUS_REFERENCE_TRANSPORT_OF_CALCIUM	N00970	nmr-1	nmr-2	nmr-2	nmr-2	nmr-2
+KEGG_MEDICUS_REFERENCE_TRAPPI_RAB1_SIGNALING_PATHWAY	N01291	rab-1	rab-1	trpp-1	sedl-1	trpp-3	trpp-4	trpp-5	trpp-6	trpp-6
+KEGG_MEDICUS_REFERENCE_TRH_TRHR_PLCB_PKC_SIGNALING_PATHWAY	N00918	egl-30	egl-30	egl-8	pkc-2	pkc-2	pkc-2	trhr-1
+KEGG_MEDICUS_REFERENCE_TSC1_2_MTORC1_SIGNALING_PATHWAY	N01575	mlst-8	let-363	rheb-1	daf-15	clk-2	R10H10.7
+KEGG_MEDICUS_REFERENCE_TSH_DUOX2_TG_SIGNALING_PATHWAY	N00793	bli-3	egl-30	egl-8	pkc-2	pkc-2	pkc-2	fshr-1
+KEGG_MEDICUS_REFERENCE_TSH_TG_SIGNALING_PATHWAY	N00782	acy-2	acy-4	acy-2	acy-4	acy-4	acy-1	atf-6	crh-1	let-607	gsa-1	egl-38	pax-2	kin-1	kin-1	kin-1	fshr-1	T23H2.3
+KEGG_MEDICUS_REFERENCE_TYPE_II_INTERFERON_TO_JAK_STAT_SIGNALING_PATHWAY	N01559	sta-1	sta-1
+KEGG_MEDICUS_REFERENCE_TYPE_I_IFN_SIGNALING_PATHWAY	N00150	Y38E10A.8	sta-1	sta-1
+KEGG_MEDICUS_REFERENCE_TYPE_I_INTERFERON_TO_JAK_STAT_SIGNALING_PATHWAY	N01558	sta-1	sta-1
+KEGG_MEDICUS_REFERENCE_TYROSINE_DEGRADATION	N00708	fah-1	gst-42	hgo-1	hpd-1	tatn-1
+KEGG_MEDICUS_REFERENCE_UCHL1_MEDIATED_HYDROLYSIS	N01027	ubl-1	ubq-2	ubq-1	ubh-2
+KEGG_MEDICUS_REFERENCE_UREA_CYCLE	N00593	argn-1	pyr-1
+KEGG_MEDICUS_REFERENCE_VALINE_DEGRADATION	N00852	acdh-9	acdh-7	alh-8	ech-6	ech-1.1	B0250.5	hach-1
+KEGG_MEDICUS_REFERENCE_VGCC_CA2_APOPTOTIC_PATHWAY	N00967	unc-2	unc-2	egl-19	egl-19	unc-2	egl-19	cca-1	egl-19	cyc-2.2	mcu-1	ant-1.2	ant-1.2	ant-1.1	ant-1.2	vdac-1	vdac-1	vdac-1
+KEGG_MEDICUS_REFERENCE_V_D_J_RECOMBINATION	N01467	lig-4	cku-80	cku-70
+KEGG_MEDICUS_REFERENCE_WEE1_CELL_CYCLE_G2_M	N00459	cyb-1	cyb-1	cyb-3	cdk-1	chk-1
+KEGG_MEDICUS_REFERENCE_WNT5A_ROR_SIGNALING_PATHWAY	N01427	dsh-2	mig-5	dsh-2	dsh-2	mig-5	mom-5	mom-5	mom-5	cfz-2	mom-5	mom-5	cfz-2	cam-1	cam-1	cwn-2
+KEGG_MEDICUS_REFERENCE_WNT_SIGNALING_MODULATION_LGR_RSPO	N01440	mom-5	mom-5	mom-5	cfz-2	mom-5	mom-5	cfz-2	plr-1	plr-1
+KEGG_MEDICUS_REFERENCE_WNT_SIGNALING_MODULATION_SOST_LRP4	N01441	mom-5	mom-5	mom-5	cfz-2	mom-5	mom-5	cfz-2
+KEGG_MEDICUS_REFERENCE_WNT_SIGNALING_MODULATION_WNT_ACYLATION	N01443	mom-1	egl-20	cwn-1	cwn-2	cwn-2	cwn-1
+KEGG_MEDICUS_REFERENCE_WNT_SIGNALING_MODULATION_WNT_INHIBITOR	N01442	sfrp-1	sfrp-1	sfrp-1	C05G5.5	C05G5.5	egl-20	cwn-1	cwn-2	cwn-2	cwn-1
+KEGG_MEDICUS_REFERENCE_WNT_SIGNALING_PATHWAY	N00056	cyd-1	hmp-2	dsh-2	mig-5	dsh-2	dsh-2	mig-5	mom-5	mom-5	mom-5	cfz-2	mom-5	mom-5	cfz-2	gsk-3	pop-1	pop-1	pop-1	pop-1	egl-20	cwn-1	cwn-2	cwn-2	cwn-1
+KEGG_MEDICUS_VARIANT_AMPLIFIED_CCND1_TO_CELL_CYCLE_G1_S	N00275	cyd-1	cdk-4	lin-35
+KEGG_MEDICUS_VARIANT_AMPLIFIED_CCNE_TO_CELL_CYCLE_G1_S	N00255	cye-1	lin-35
+KEGG_MEDICUS_VARIANT_AMPLIFIED_CDK4_TO_CELL_CYCLE_G1_S	N00072	cyd-1	cyd-1	cyd-1	cdk-4	lin-35
+KEGG_MEDICUS_VARIANT_AMPLIFIED_EGFR_TO_PI3K_SIGNALING_PATHWAY	N00035	akt-1	akt-1	akt-1	akt-2	let-23	let-363	age-1	age-1	age-1
+KEGG_MEDICUS_VARIANT_AMPLIFIED_EGFR_TO_PLCG_CAMK_SIGNALING_PATHWAY	N00027	cmd-1	cal-1	cal-3	cmd-1	cmd-1	cmk-1	cmk-1	cmk-1	unc-43	unc-43	unc-43	unc-43	let-23	plc-3	plc-3
+KEGG_MEDICUS_VARIANT_AMPLIFIED_FGFR_TO_PI3K_SIGNALING_PATHWAY	N00038	akt-1	akt-1	akt-1	akt-2	let-363	age-1	age-1	age-1
+KEGG_MEDICUS_VARIANT_AMPLIFIED_FGFR_TO_RAS_ERK_SIGNALING_PATHWAY	N00020	lin-45	lin-45	sem-5	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45	sos-1	sos-1
+KEGG_MEDICUS_VARIANT_AMPLIFIED_MDM2_TO_P21_CELL_CYCLE_G1_S	N00068	cyd-1	cyd-1	cyd-1	cdk-4	cdk-4	lin-35
+KEGG_MEDICUS_VARIANT_AMPLIFIED_MET_TO_PI3K_SIGNALING_PATHWAY	N00260	akt-1	akt-1	akt-1	akt-2	F11E6.8	let-363	age-1	age-1	age-1
+KEGG_MEDICUS_VARIANT_AMPLIFIED_MYCN_TO_TRANSCRIPTIONAL_ACTIVATION	N00131	mxl-3	kin-32
+KEGG_MEDICUS_VARIANT_AMPLIFIED_MYCN_TO_TRANSCRIPTIONAL_REPRESSION	N00132	mxl-3
+KEGG_MEDICUS_VARIANT_AMPLIFIED_MYC_TO_CELL_CYCLE_G1_S	N00089	cyd-1	cyd-1	cyd-1	cdk-4	cdk-4	mxl-3	lin-35
+KEGG_MEDICUS_VARIANT_AMPLIFIED_MYC_TO_P27_CELL_CYCLE_G1_S	N00092	cye-1	cye-1	cks-1	cul-1	mxl-3	lin-35	rbx-1	skr-2	skpt-1
+KEGG_MEDICUS_VARIANT_AMPLIFIED_PDGFR_TO_PI3K_SIGNALING_PATHWAY	N00040	akt-1	akt-1	akt-1	akt-2	let-363	age-1	age-1	age-1
+KEGG_MEDICUS_VARIANT_AMPLIFIED_PDGFR_TO_PLCG_CAMK_SIGNALING_PATHWAY	N00029	cmd-1	cal-1	cal-3	cmd-1	cmd-1	cmk-1	cmk-1	cmk-1	unc-43	unc-43	unc-43	unc-43	plc-3	plc-3
+KEGG_MEDICUS_VARIANT_AMPLIFIED_PDGFR_TO_RAS_ERK_SIGNALING_PATHWAY	N00018	lin-45	lin-45	sem-5	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45	sos-1	sos-1
+KEGG_MEDICUS_VARIANT_AMPLIFIED_REL_TO_TRANSCRIPTION	N00123	ced-9	cyd-1
+KEGG_MEDICUS_VARIANT_BCL2_OVEREXPRESSION_TO_INTRINSIC_APOPTOTIC_PATHWAY	N00100	ced-9	cyc-2.2
+KEGG_MEDICUS_VARIANT_BCR_ABL_FUSION_KINASE_TO_PI3K_SIGNALING_PATHWAY	N00048	abl-1	akt-1	akt-1	akt-1	akt-2	ced-2	ced-2	age-1	age-1	age-1
+KEGG_MEDICUS_VARIANT_BCR_ABL_FUSION_KINASE_TO_RAS_ERK_SIGNALING_PATHWAY	N00002	abl-1	lin-45	lin-45	sem-5	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45	sos-1	sos-1
+KEGG_MEDICUS_VARIANT_CDH1_REDUCED_EXPRESSION_TO_BETA_CATENIN_SIGNALING_PATHWAY	N00061	cyd-1	hmp-2	pop-1	pop-1	pop-1	pop-1
+KEGG_MEDICUS_VARIANT_CDX2_OVEREXPRESSION_TO_TRANSCRIPTIONAL_ACTIVATION	N00250	pgp-1
+KEGG_MEDICUS_VARIANT_CYP11B1_CYP11B2_FUSION_TO_ACTH_CORTISOL_SIGNALING_PATHWAY	N00298	acy-2	acy-4	acy-2	acy-4	acy-4	acy-1	atf-6	crh-1	let-607	gsa-1	nhr-6	nhr-25	ceh-20	kin-1	kin-1	kin-1
+KEGG_MEDICUS_VARIANT_DELETED_DMD_TO_DYSTROPHIN_ASSOCIATED_PROTEIN_COMPLEX	N00465	act-2	act-4	act-1	act-2	act-4	dgn-1	dys-1	dyb-1	stn-1	stn-1	stn-1	stn-2	stn-2
+KEGG_MEDICUS_VARIANT_DUPLICATION_OR_MUTATION_ACTIVATED_FLT3_TO_JAK_STAT_SIGNALING_PATHWAY	N00054	prk-2	prk-1	prk-2	sta-1	sta-1
+KEGG_MEDICUS_VARIANT_DUPLICATION_OR_MUTATION_ACTIVATED_FLT3_TO_RAS_ERK_SIGNALING_PATHWAY	N00004	lin-45	lin-45	sem-5	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45	sos-1	sos-1
+KEGG_MEDICUS_VARIANT_DUPLICATION_OR_MUTATION_ACTIVATED_FLT3_TO_RAS_PI3K_SIGNALING_PATHWAY	N00031	akt-1	akt-1	akt-1	akt-2	sem-5	let-60	let-60	let-60	age-1	age-1	age-1	sos-1	sos-1
+KEGG_MEDICUS_VARIANT_EGFR_OVEREXPRESSION_TO_PI3K_SIGNALING_PATHWAY	N00042	akt-1	akt-1	akt-1	akt-2	let-23	let-363	age-1	age-1	age-1	rsks-1	rsks-1
+KEGG_MEDICUS_VARIANT_EGF_OVEREXPRESSION_TO_PI3K_SIGNALING_PATHWAY	N00281	akt-1	akt-1	akt-1	akt-2	let-23	age-1	age-1	age-1
+KEGG_MEDICUS_VARIANT_EGF_OVEREXPRESSION_TO_RAS_ERK_SIGNALING_PATHWAY	N00276	lin-45	lin-45	let-23	sem-5	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45	sos-1	sos-1
+KEGG_MEDICUS_VARIANT_EML4_ALK_FUSION_KINASE_TO_JAK_STAT_SIGNALING_PATHWAY	N00105	scd-2	sta-1	sta-1	sta-1
+KEGG_MEDICUS_VARIANT_EML4_ALK_FUSION_KINASE_TO_PI3K_SIGNALING_PATHWAY	N00047	akt-1	akt-1	akt-1	akt-2	scd-2	age-1	age-1	age-1
+KEGG_MEDICUS_VARIANT_EML4_ALK_FUSION_KINASE_TO_PLCG_ERK_SIGNALING_PATHWAY	N00025	scd-2	lin-45	lin-45	cyd-1	mek-2	mek-2	mpk-1	mpk-1	plc-3	plc-3	pkc-2	pkc-2	pkc-2	lin-45
+KEGG_MEDICUS_VARIANT_EML4_ALK_FUSION_KINASE_TO_RAS_ERK_SIGNALING_PATHWAY	N00007	scd-2	lin-45	lin-45	cyd-1	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45
+KEGG_MEDICUS_VARIANT_ERBB2_OVEREXPRESSION_TO_EGF_JAK_STAT_SIGNALING_PATHWAY	N00095	let-23	let-23	sta-1	sta-1
+KEGG_MEDICUS_VARIANT_ERBB2_OVEREXPRESSION_TO_PI3K_SIGNALING_PATHWAY	N00034	akt-1	akt-1	akt-1	akt-2	let-23	let-23	let-363	age-1	age-1	age-1	rsks-1	rsks-1
+KEGG_MEDICUS_VARIANT_ESR1_POSITIVE_TO_NUCLEAR_INITIATED_ESTROGEN_SIGNALING_PATHWAY	N00287	cyd-1
+KEGG_MEDICUS_VARIANT_EWSR1_WT1_FUSION_TO_TRANSCRIPTIONAL_ACTIVATION	N00137	F54G2.1	Y17G7B.17	pvf-1
+KEGG_MEDICUS_VARIANT_FZD7_OVEREXPRESSION_TO_WNT_SIGNALING_PATHWAY	N00059	cyd-1	hmp-2	dsh-2	mig-5	dsh-2	dsh-2	mig-5	mom-5	gsk-3	pop-1	pop-1	pop-1	pop-1	egl-20	cwn-1	cwn-2	cwn-2	cwn-1
+KEGG_MEDICUS_VARIANT_HRAS_OVEREXPRESSION_TO_ERK_SIGNALING_PATHWAY	N00077	lin-45	lin-45	let-60	mek-2	mek-2	mpk-1	mpk-1	lin-45	rskn-2
+KEGG_MEDICUS_VARIANT_IGF2_OVEREXPRESSION_TO_RAS_ERK_SIGNALING_PATHWAY	N00235	lin-45	lin-45	sem-5	let-60	daf-2	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45	sos-1	sos-1
+KEGG_MEDICUS_VARIANT_IGH_MMSET_FUSION_TO_TRANSCRIPTIONAL_ACTIVATION	N00125	cyd-1	his-71	his-69	his-71	his-74	his-13	his-40	his-13	his-13	his-13	his-13	his-13	his-40	his-13	his-13	his-13	his-13	his-13	his-13
+KEGG_MEDICUS_VARIANT_LMO2_REARRANGEMENT_TO_TRANSCRIPTIONAL_ACTIVATION	N00121	ldb-1
+KEGG_MEDICUS_VARIANT_LMO2_REARRANGEMENT_TO_TRANSCRIPTIONAL_REPRESSION	N00122	ldb-1
+KEGG_MEDICUS_VARIANT_LOSS_OF_CDKN1B_TO_P27_CELL_CYCLE_G1_S	N00093	cye-1	cye-1	lin-35
+KEGG_MEDICUS_VARIANT_LOSS_OF_NKX3_1_TO_PI3K_SIGNALING_PATHWAY	N00082	akt-1	akt-1	akt-1	akt-2
+KEGG_MEDICUS_VARIANT_LOSS_OF_RASSF1_TO_RAS_RASSF1_SIGNALING_PATHWAY	N00097	let-60	let-60	let-60	rsf-1	rsf-1	cst-1	cst-2
+KEGG_MEDICUS_VARIANT_LOSS_OF_VHL_TO_HIF_1_SIGNALING_PATHWAY	N00080	aha-1	cul-2	elb-1	elc-1	pvf-1	rbx-1	fgt-1	vhl-1
+KEGG_MEDICUS_VARIANT_LRP6_OVEREXPRESSION_TO_WNT_SIGNALING_PATHWAY	N00060	cyd-1	hmp-2	dsh-2	mig-5	dsh-2	dsh-2	mig-5	mom-5	mom-5	mom-5	cfz-2	mom-5	mom-5	cfz-2	gsk-3	pop-1	pop-1	pop-1	pop-1	egl-20	cwn-1	cwn-2	cwn-2	cwn-1
+KEGG_MEDICUS_VARIANT_MET_OVEREXPRESSION_TO_RAS_ERK_SIGNALING_PATHWAY	N00248	lin-45	lin-45	sem-5	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	F11E6.8	let-60	lin-45	sos-1	sos-1
+KEGG_MEDICUS_VARIANT_MLL_AF4_FUSION_TO_TRANSCRIPTIONAL_ACTIVATION	N00119	cit-1.1	cit-1.2	cit-1.2	cdk-14	cdk-9	dot-1.1	dot-1.5	daf-2	utx-1	ceh-20	prmn-1	rnt-1	sma-2
+KEGG_MEDICUS_VARIANT_MLL_ENL_FUSION_TO_TRANSCRIPTIONAL_ACTIVATION	N00120	eya-1	fut-8	glr-1	unc-62	ceh-33	ceh-34	ceh-34	unc-39
+KEGG_MEDICUS_VARIANT_MUTATION_ACTIVATED_BRAF_TO_ERK_SIGNALING_PATHWAY	N00013	lin-45	mek-2	mek-2	mpk-1	mpk-1
+KEGG_MEDICUS_VARIANT_MUTATION_ACTIVATED_CACNA1D_H_TO_ANGIOTENSIN_ALDOSTERONE_SIGNALING_PATHWAY	N00302	atf-6	egl-19	cmd-1	cal-1	cal-3	cmd-1	cmd-1	cmk-1	cmk-1	cmk-1	unc-43	unc-43	unc-43	unc-43	crh-1	let-607
+KEGG_MEDICUS_VARIANT_MUTATION_ACTIVATED_EGFR_TO_PI3K_SIGNALING_PATHWAY	N00036	akt-1	akt-1	akt-1	akt-2	let-23	age-1	age-1	age-1
+KEGG_MEDICUS_VARIANT_MUTATION_ACTIVATED_EGFR_TO_PLCG_ERK_SIGNALING_PATHWAY	N00024	lin-45	lin-45	cyd-1	let-23	mek-2	mek-2	mpk-1	mpk-1	plc-3	plc-3	pkc-2	pkc-2	pkc-2	lin-45
+KEGG_MEDICUS_VARIANT_MUTATION_ACTIVATED_EGFR_TO_RAS_ERK_SIGNALING_PATHWAY	N00014	lin-45	lin-45	cyd-1	let-23	sem-5	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45	sos-1	sos-1
+KEGG_MEDICUS_VARIANT_MUTATION_ACTIVATED_FGFR3_TO_RAS_ERK_SIGNALING_PATHWAY	N00011	lin-45	lin-45	egl-15	sem-5	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45	rskn-2	sos-1	sos-1
+KEGG_MEDICUS_VARIANT_MUTATION_ACTIVATED_GNAS_TO_ACTH_CORTISOL_SIGNALING_PATHWAY	N00321	acy-2	acy-4	acy-2	acy-4	acy-4	acy-1	atf-6	crh-1	let-607	gsa-1	nhr-6	nhr-25	ceh-20	kin-1	kin-1	kin-1	strl-1	tag-340
+KEGG_MEDICUS_VARIANT_MUTATION_ACTIVATED_GNAS_TO_CRHR_PKA_ACTH_SIGNALING_PATHWAY	N00326	acy-2	acy-4	acy-2	acy-4	acy-4	acy-1	atf-6	crh-1	let-607	gsa-1	kin-1	kin-1	kin-1
+KEGG_MEDICUS_VARIANT_MUTATION_ACTIVATED_KCNJ5_TO_ANGIOTENSIN_ALDOSTERONE_SIGNALING_PATHWAY	N00303	atf-6	egl-19	cmd-1	cal-1	cal-3	cmd-1	cmd-1	cmk-1	cmk-1	cmk-1	unc-43	unc-43	unc-43	unc-43	crh-1	let-607
+KEGG_MEDICUS_VARIANT_MUTATION_ACTIVATED_KIT_TO_PI3K_SIGNALING_PATHWAY	N00046	akt-1	akt-1	akt-1	akt-2	age-1	age-1	age-1
+KEGG_MEDICUS_VARIANT_MUTATION_ACTIVATED_KIT_TO_RAS_ERK_SIGNALING_PATHWAY	N00003	lin-45	lin-45	sem-5	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45	sos-1	sos-1
+KEGG_MEDICUS_VARIANT_MUTATION_ACTIVATED_KRAS_NRAS_TO_ERK_SIGNALING_PATHWAY	N00012	lin-45	lin-45	cyd-1	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45
+KEGG_MEDICUS_VARIANT_MUTATION_ACTIVATED_KRAS_NRAS_TO_PI3K_SIGNALING_PATHWAY	N00032	akt-1	akt-1	akt-1	akt-2	let-60	let-60	age-1	age-1	age-1
+KEGG_MEDICUS_VARIANT_MUTATION_ACTIVATED_LRRK2_TO_INTRINSIC_APOPTOTIC_PATHWAY	N01047	cyc-2.2
+KEGG_MEDICUS_VARIANT_MUTATION_ACTIVATED_MET_TO_PI3K_SIGNALING_PATHWAY	N00044	akt-1	akt-1	akt-1	akt-2	F11E6.8	age-1	age-1	age-1
+KEGG_MEDICUS_VARIANT_MUTATION_ACTIVATED_MET_TO_RAS_ERK_SIGNALING_PATHWAY	N00005	lin-45	lin-45	cyd-1	sem-5	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	F11E6.8	let-60	lin-45	sos-1	sos-1
+KEGG_MEDICUS_VARIANT_MUTATION_ACTIVATED_PI3K_TO_PI3K_SIGNALING_PATHWAY	N00049	akt-1	akt-1	akt-1	akt-2	let-363	age-1	rsks-1	rsks-1
+KEGG_MEDICUS_VARIANT_MUTATION_ACTIVATED_PRKACA_TO_ACTH_CORTISOL_SIGNALING_PATHWAY	N00320	atf-6	crh-1	let-607	nhr-6	nhr-25	ceh-20	kin-1	strl-1	tag-340
+KEGG_MEDICUS_VARIANT_MUTATION_ACTIVATED_PRKCG_TO_MGLUR1_TRPC3_SIGNALING_PATHWAY	N00956	egl-30	mgl-2	itr-1	itr-1	itr-1	egl-8	pkc-2
+KEGG_MEDICUS_VARIANT_MUTATION_ACTIVATED_RET_TO_PI3K_SIGNALING_PATHWAY	N01065	akt-1	akt-1	akt-1	akt-2	let-363	age-1	age-1	age-1
+KEGG_MEDICUS_VARIANT_MUTATION_ACTIVATED_SMO_TO_HEDGEHOG_SIGNALING_PATHWAY	N00017	dbl-1	ptc-1	ptc-1	egl-20	cwn-1	cwn-2	cwn-2	cwn-1
+KEGG_MEDICUS_VARIANT_MUTATION_ACTIVATED_USP8_TO_EGFR_ERK_ACTH_SIGNALING_PATHWAY	N00319	let-23	mpk-1	mpk-1	usp-50
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABBERANT_ATXN2_3_TO_MGLUR5_CA2_APOPTOTIC_PATHWAY	N00957	atx-2	atx-3	cyc-2.2	egl-30	mgl-2	itr-1	mcu-1	egl-8	ant-1.2	ant-1.2	ant-1.1	ant-1.2	vdac-1	vdac-1	vdac-1
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_ABETA_TO_26S_PROTEASOME_MEDIATED_PROTEIN_DEGRADATION	N01060	rpn-13	apl-1	pas-6	pas-2	pas-7	pas-3	pas-5	pas-1	pas-4	pas-4	pbs-6	pbs-4	pbs-3	pbs-7	pbs-5	pbs-1	pbs-2	rpt-2	rpt-1	rpt-5	rpt-3	rpt-6	rpt-4	rpn-2	rpn-6.1	rpn-5	rpn-9	rpn-11	rpn-1	rpn-3	rpn-10	rpn-7	rpn-8	rpn-12	psmd-9
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_ABETA_TO_AGE_RAGE_SIGNALING_PATHWAY	N00996	apl-1	lin-45	lin-45	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_ABETA_TO_ANTEROGRADE_AXONAL_TRANSPORT	N01018	apl-1	clp-1	clp-7	clp-1	cdk-5	cdka-1	acr-11	acr-16	ptl-1	mec-12	tba-5	mec-12	tba-9	mec-12	tba-1	tba-2	tba-4	tba-8	mec-12	mec-12	mec-12	mec-12	tba-2	tba-4	tba-7	tba-9	ben-1	tbb-1	tbb-2	ben-1	mec-7	tbb-1	tbb-2	tbb-4	tbb-6	mec-7	tbb-4	mec-7	ben-1	tbb-1	tbb-2	tbb-4	ben-1	tbb-1	tbb-2	mec-7
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_ABETA_TO_CROSSTALK_BETWEEN_EXTRINSIC_AND_INTRINSIC_APOPTOTIC_PATHWAYS	N01005	apl-1	ced-9	cyc-2.2
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_ABETA_TO_ELECTRON_TRANSFER_IN_COMPLEX_I	N00997	apl-1	clp-1	clp-7	clp-1	cdk-5	cdka-1	acr-11	acr-16	ptl-1	nduo-1	nduo-4	nduo-5	nuo-4	Y94H6A.8	C34B2.8	Y63D3A.7	C33A12.1	nuo-3	F45H10.3	Y54F10AM.5	nduf-9	Y56A3A.19	F59C6.5	F42G8.10	F44G4.2	C18E9.4	nuo-6	C25H3.9	D2030.4	Y51H1A.3	C16A3.5	Y71H2AM.4	nuo-5	gas-1	nuo-2	lpd-5	nduf-5	nduf-6	nduf-7	T20H4.5	nuo-1	F53F4.10
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_ABETA_TO_ELECTRON_TRANSFER_IN_COMPLEX_IV	N00999	apl-1	cox-4	cox-4	cox-5A	cox-5B	cox-6A	cox-6A	cox-6B	cox-6B	cox-7C	ctc-1	ctc-2	ctc-3
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_ABETA_TO_IRE1A_JNK_SIGNALING_PATHWAY	N01014	apl-1	mek-1	nsy-1	jnk-1	jnk-1	jnk-1
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_ABETA_TO_MACHR_CA2_APOPTOTIC_PATHWAY	N01001	apl-1	gar-3	gar-3	gar-3	cyc-2.2	egl-30	itr-1	itr-1	itr-1	mcu-1	egl-8	ant-1.2	ant-1.2	ant-1.1	ant-1.2	vdac-1	vdac-1	vdac-1
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_ABETA_TO_MGLUR5_CA2_APOPTOTIC_PATHWAY	N01002	apl-1	cyc-2.2	egl-30	mgl-2	itr-1	itr-1	itr-1	mcu-1	egl-8	ant-1.2	ant-1.2	ant-1.1	ant-1.2	vdac-1	vdac-1	vdac-1
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_ABETA_TO_TRANSPORT_OF_CALCIUM	N01003	apl-1	cyc-2.2	nmr-1	nmr-2	nmr-2	nmr-2	nmr-2	mcu-1	ant-1.2	ant-1.2	ant-1.1	ant-1.2	vdac-1	vdac-1	vdac-1
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_ABETA_TO_VGCC_CA2_APOPTOTIC_PATHWAY_N01004	N01004	apl-1	egl-19	egl-19	egl-19	egl-19	cyc-2.2	mcu-1	ant-1.2	ant-1.2	ant-1.1	ant-1.2	vdac-1	vdac-1	vdac-1
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_ABETA_TO_VGCC_CA2_APOPTOTIC_PATHWAY_N01006	N01006	apl-1	cyc-2.2	ant-1.2	ant-1.2	ant-1.1	ant-1.2	vdac-1	vdac-1	vdac-1
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_ATXN1_TO_RORA_MEDIATED_TRANSCRIPTION	N00966	K04F10.1	mgl-2	itr-1	mys-1	nhr-23	glt-4
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_DCTN1_TO_RETROGRADE_AXONAL_TRANSPORT	N01158	dnc-1	mec-12	tba-5	mec-12	tba-9	mec-12	tba-1	tba-2	tba-4	tba-8	mec-12	mec-12	mec-12	mec-12	tba-2	tba-4	tba-7	tba-9	ben-1	tbb-1	tbb-2	ben-1	mec-7	tbb-1	tbb-2	tbb-4	tbb-6	mec-7	tbb-4	mec-7	ben-1	tbb-1	tbb-2	tbb-4	ben-1	tbb-1	tbb-2	mec-7
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_HTT_TO_26S_PROTEASOME_MEDIATED_PROTEIN_DEGRADATION	N01061	rpn-13	pas-6	pas-2	pas-7	pas-3	pas-5	pas-1	pas-4	pas-4	pbs-6	pbs-4	pbs-3	pbs-7	pbs-5	pbs-1	pbs-2	rpt-2	rpt-1	rpt-5	rpt-3	rpt-6	rpt-4	rpn-2	rpn-6.1	rpn-5	rpn-9	rpn-11	rpn-1	rpn-3	rpn-10	rpn-7	rpn-8	rpn-12	psmd-9
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_HTT_TO_ANTEROGRADE_AXONAL_TRANSPORT	N00979	unc-116	unc-116	unc-116	klc-2	klc-2	klc-1	klc-2	klc-2	jnk-1	mec-12	tba-5	mec-12	tba-9	mec-12	tba-1	tba-2	tba-4	tba-8	mec-12	mec-12	mec-12	mec-12	tba-2	tba-4	tba-7	tba-9	ben-1	tbb-1	tbb-2	ben-1	mec-7	tbb-1	tbb-2	tbb-4	tbb-6	mec-7	tbb-4	mec-7	ben-1	tbb-1	tbb-2	tbb-4	ben-1	tbb-1	tbb-2	mec-7
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_HTT_TO_AUTOPHAGY_VESICLE_NUCLEATION	N00993	bec-1	vps-34	vps-15
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_HTT_TO_CREB_MEDIATED_TRANSCRIPTION	N00981	atf-6	crh-1	let-607	taf-4
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_HTT_TO_ELECTRON_TRANSFER_IN_COMPLEX_II	N00989	sdha-2	sdhb-1	mev-1	sdhd-1
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_HTT_TO_ELECTRON_TRANSFER_IN_COMPLEX_III	N00991	cyc-1	ctb-1	T02H6.11	ucr-1	ucr-2.1	ucr-2.2	isp-1	T27E9.2	T27E9.2	F45H10.2	R07E4.3
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_HTT_TO_EXTRINSIC_APOPTOTIC_PATHWAY	N00983	hipr-1	che-13
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_HTT_TO_MGLUR5_CA2_APOPTOTIC_PATHWAY	N00985	cyc-2.2	egl-30	mgl-2	itr-1	itr-1	itr-1	mcu-1	egl-8	ant-1.2	ant-1.2	ant-1.1	ant-1.2	vdac-1	vdac-1	vdac-1
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_HTT_TO_REST_MEDIATED_TRANSCRIPTIONAL_REPRESSION	N00980	hda-1	hda-3	hda-1	rcor-1	spr-1	sin-3
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_HTT_TO_RETROGRADE_AXONAL_TRANSPORT	N00977	arp-11	arp-1	arp-1	dnc-1	dnc-2	dnc-4	dnc-5	dnc-6	dyla-1	mec-12	tba-5	mec-12	tba-9	mec-12	tba-1	tba-2	tba-4	tba-8	mec-12	mec-12	mec-12	mec-12	tba-2	tba-4	tba-7	tba-9	ben-1	tbb-1	tbb-2	ben-1	mec-7	tbb-1	tbb-2	tbb-4	tbb-6	mec-7	tbb-4	mec-7	ben-1	tbb-1	tbb-2	tbb-4	ben-1	tbb-1	tbb-2	mec-7
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_HTT_TO_TNF_JNK_SIGNALING_PATHWAY	N00992	mek-1	jnk-1	jnk-1	jnk-1
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_HTT_TO_TRANSPORT_OF_CALCIUM	N00987	cyc-2.2	dlg-1	nmr-1	nmr-2	nmr-2	nmr-2	nmr-2	mcu-1	ant-1.2	ant-1.2	ant-1.1	ant-1.2	vdac-1	vdac-1	vdac-1
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_PDYN_TO_TRANSPORT_OF_CALCIUM	N00971	nmr-1	nmr-2	nmr-2	nmr-2	nmr-2
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_PSEN1_TO_ANTEROGRADE_AXONAL_TRANSPORT	N01017	gsk-3	unc-116	unc-116	unc-116	klc-2	klc-2	klc-1	klc-2	klc-2	sel-12
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_PSEN1_TO_MGLUR5_CA2_APOPTOTIC_PATHWAY	N01008	cyc-2.2	itr-1	itr-1	itr-1	mcu-1	sel-12	ant-1.2	ant-1.2	ant-1.1	ant-1.2	vdac-1	vdac-1	vdac-1
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_PSEN1_TO_PERK_ATF4_SIGNALING_PATHWAY	N01010	pek-1	eif-2alpha	sel-12
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_PSEN_TO_MGLUR5_CA2_APOPTOTIC_PATHWAY	N01007	cyc-2.2	mcu-1	sel-12	sel-12	unc-68	ant-1.2	ant-1.2	ant-1.1	ant-1.2	vdac-1	vdac-1	vdac-1
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_SNCA_TO_26S_PROTEASOME_MEDIATED_PROTEIN_DEGRADATION	N01030	rpn-13	pas-6	pas-2	pas-7	pas-3	pas-5	pas-1	pas-4	pas-4	pbs-6	pbs-4	pbs-3	pbs-7	pbs-5	pbs-1	pbs-2	rpt-2	rpt-1	rpt-5	rpt-3	rpt-6	rpt-4	rpn-2	rpn-6.1	rpn-5	rpn-9	rpn-11	rpn-1	rpn-3	rpn-10	rpn-7	rpn-8	rpn-12	psmd-9
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_SNCA_TO_ANTEROGRADE_AXONAL_TRANSPORT	N01055	unc-116	unc-116	unc-116	klc-2	klc-2	klc-1	klc-2	klc-2	mec-12	tba-5	mec-12	tba-9	mec-12	tba-1	tba-2	tba-4	tba-8	mec-12	mec-12	mec-12	mec-12	tba-2	tba-4	tba-7	tba-9	ben-1	tbb-1	tbb-2	ben-1	mec-7	tbb-1	tbb-2	tbb-4	tbb-6	mec-7	tbb-4	mec-7	ben-1	tbb-1	tbb-2	tbb-4	ben-1	tbb-1	tbb-2	mec-7
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_SNCA_TO_ELECTRON_TRANSFER_IN_COMPLEX_I	N01042	nduo-1	nduo-4	nduo-5	nuo-4	Y94H6A.8	C34B2.8	Y63D3A.7	C33A12.1	nuo-3	F45H10.3	Y54F10AM.5	nduf-9	Y56A3A.19	F59C6.5	F42G8.10	F44G4.2	C18E9.4	nuo-6	C25H3.9	D2030.4	Y51H1A.3	C16A3.5	Y71H2AM.4	nuo-5	gas-1	nuo-2	lpd-5	nduf-5	nduf-6	nduf-7	T20H4.5	nuo-1	F53F4.10
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_SNCA_TO_PERK_ATF4_SIGNALING_PATHWAY	N01035	pek-1	eif-2alpha	hsp-4
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_SNCA_TO_VGCC_CA2_APOPTOTIC_PATHWAY	N01031	cyc-2.2	mcu-1	ant-1.2	ant-1.2	ant-1.1	ant-1.2	vdac-1	vdac-1	vdac-1
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_SOD1_TO_26S_PROTEASOME_MEDIATED_PROTEIN_DEGRADATION	N01144	rpn-13	cup-2	pas-6	pas-2	pas-7	pas-3	pas-5	pas-1	pas-4	pas-4	pbs-6	pbs-4	pbs-3	pbs-7	pbs-5	pbs-1	pbs-2	rpt-2	rpt-1	rpt-5	rpt-3	rpt-6	rpt-4	rpn-2	rpn-6.1	rpn-5	rpn-9	rpn-11	rpn-1	rpn-3	rpn-10	rpn-7	rpn-8	rpn-12	psmd-9	ubl-1	sod-5	ubq-2	ubq-1
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_SOD1_TO_INTRINSIC_APOPTOTIC_PATHWAY	N01135	ced-9	cyc-2.2	sod-5
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_SOD1_TO_PERK_ATF4_SIGNALING_PATHWAY	N01149	pek-1	eif-2alpha	hsp-4	sod-5
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_SOD1_TO_RETROGRADE_AXONAL_TRANSPORT	N01160	arp-11	arp-1	arp-1	dnc-1	dnc-2	dnc-4	dnc-5	dnc-6	dyla-1	sod-5
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_SPTBN2_TO_MGLUR1_TRPC3_SIGNALING_PATHWAY	N00960	egl-30	mgl-2	itr-1	itr-1	itr-1	egl-8	unc-70
+KEGG_MEDICUS_VARIANT_MUTATION_CAUSED_ABERRANT_TDP43_TO_ELECTRON_TRANSFER_IN_COMPLEX_I	N01136	nduo-1	nduo-4	nduo-5	nuo-4	Y94H6A.8	C34B2.8	Y63D3A.7	C33A12.1	nuo-3	F45H10.3	Y54F10AM.5	nduf-9	Y56A3A.19	F59C6.5	F42G8.10	F44G4.2	C18E9.4	nuo-6	C25H3.9	D2030.4	Y51H1A.3	C16A3.5	Y71H2AM.4	nuo-5	gas-1	nuo-2	lpd-5	nduf-5	nduf-6	nduf-7	T20H4.5	nuo-1	F53F4.10	tdp-1
+KEGG_MEDICUS_VARIANT_MUTATION_INACTIVATED_APC_TO_WNT_SIGNALING_PATHWAY	N00057	bir-1	cyd-1	hmp-2	gsk-3	pop-1	pop-1	pop-1	pop-1
+KEGG_MEDICUS_VARIANT_MUTATION_INACTIVATED_ATP1A1_TO_ANGIOTENSIN_ALDOSTERONE_SIGNALING_PATHWAY	N00304	atf-6	eat-6	egl-19	cmd-1	cal-1	cal-3	cmd-1	cmd-1	cmk-1	cmk-1	cmk-1	unc-43	unc-43	unc-43	unc-43	crh-1	let-607
+KEGG_MEDICUS_VARIANT_MUTATION_INACTIVATED_ATP2B3_TO_ANGIOTENSIN_ALDOSTERONE_SIGNALING_PATHWAY	N00305	atf-6	mca-2	cmd-1	cal-1	cal-3	cmd-1	cmd-1	cmk-1	cmk-1	cmk-1	unc-43	unc-43	unc-43	unc-43	crh-1	let-607
+KEGG_MEDICUS_VARIANT_MUTATION_INACTIVATED_ATXN3_TO_AUTOPHAGY_VESICLE_NUCLEATION	N00962	atx-3	bec-1	vps-34	vps-15
+KEGG_MEDICUS_VARIANT_MUTATION_INACTIVATED_AXIN_TO_WNT_SIGNALING_PATHWAY	N00242	cyd-1	hmp-2	gsk-3	pop-1	pop-1	pop-1	pop-1
+KEGG_MEDICUS_VARIANT_MUTATION_INACTIVATED_DJ1_TO_FAS_JNK_SIGNALING_PATWHAY	N01057	nsy-1	jnk-1	jnk-1	jnk-1	djr-1.2
+KEGG_MEDICUS_VARIANT_MUTATION_INACTIVATED_ERBB4_TO_NRG_ERBB4_PI3K_SIGNALING_PATHWAY	N01164	let-23
+KEGG_MEDICUS_VARIANT_MUTATION_INACTIVATED_FGF17_TO_RAS_ERK_SIGNALING_PATHWAY	N00877	lin-45	lin-45	sem-5	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45	sos-1	sos-1
+KEGG_MEDICUS_VARIANT_MUTATION_INACTIVATED_OPTN_TO_PINK_PARKIN_MEDIATED_AUTOPHAGOSOME_FORMATION	N01138	cisd-1	cisd-1	H40L08.1	hxk-1	hxk-3	pink-1	pdr-1
+KEGG_MEDICUS_VARIANT_MUTATION_INACTIVATED_P62_TO_PINK_PARKIN_MEDIATED_AUTOPHAGOSOME_FORMATION	N01139	cisd-1	cisd-1	H40L08.1	hxk-1	hxk-3	lgg-2	lgg-2	lgg-2	pink-1	pdr-1	C06G3.6	sqst-2
+KEGG_MEDICUS_VARIANT_MUTATION_INACTIVATED_PDE11A_PDE8B_TO_ACTH_CORTISOL_SIGNALING_PATHWAY	N00323	atf-6	crh-1	let-607	nhr-6	nhr-25	ceh-20	pde-6	kin-1	kin-2	strl-1	tag-340
+KEGG_MEDICUS_VARIANT_MUTATION_INACTIVATED_PINK1_TO_ELECTRON_TRANSFER_IN_COMPLEX_I	N01043	nduo-1	nduo-4	nduo-5	nuo-4	Y94H6A.8	C34B2.8	Y63D3A.7	C33A12.1	nuo-3	F45H10.3	Y54F10AM.5	nduf-9	Y56A3A.19	F59C6.5	F42G8.10	F44G4.2	C18E9.4	nuo-6	C25H3.9	D2030.4	Y51H1A.3	C16A3.5	Y71H2AM.4	nuo-5	gas-1	nuo-2	lpd-5	nduf-5	nduf-6	nduf-7	T20H4.5	nuo-1	F53F4.10	pink-1
+KEGG_MEDICUS_VARIANT_MUTATION_INACTIVATED_PINK1_TO_INTRINSIC_APOPTOTIC_PATHWAY_N01048	N01048	cyc-2.2	pink-1	hsp-75
+KEGG_MEDICUS_VARIANT_MUTATION_INACTIVATED_PINK1_TO_INTRINSIC_APOPTOTIC_PATHWAY_N01050	N01050	ced-9	cyc-2.2	pink-1	pdr-1
+KEGG_MEDICUS_VARIANT_MUTATION_INACTIVATED_PRKAR1A_TO_ACTH_CORTISOL_SIGNALING_PATHWAY	N00322	atf-6	crh-1	let-607	nhr-6	nhr-25	ceh-20	kin-1	kin-2	strl-1	tag-340
+KEGG_MEDICUS_VARIANT_MUTATION_INACTIVATED_PRKN_TO_INTRINSIC_APOPTOTIC_PATHWAY	N01049	ced-9	cyc-2.2	pdr-1
+KEGG_MEDICUS_VARIANT_MUTATION_INACTIVATED_PRKN_TO_MGLUR1_SIGNALING_PATHWAY	N01032	itr-1	itr-1	itr-1	plc-3	pdr-1
+KEGG_MEDICUS_VARIANT_MUTATION_INACTIVATED_PROK2_TO_PROK_PRKR_GI_ERK_SIGNALING_PATHWAY	N00880	gpa-16	gpa-4	gpa-16	mpk-1	mpk-1
+KEGG_MEDICUS_VARIANT_MUTATION_INACTIVATED_PROKR2_TO_PROK_PRKR_GI_ERK_SIGNALING_PATHWAY	N00881	gpa-16	gpa-4	gpa-16	mpk-1	mpk-1
+KEGG_MEDICUS_VARIANT_MUTATION_INACTIVATED_PTCH1_TO_HEDGEHOG_SIGNALING_PATHWAY	N00010	dbl-1	ptc-1	ptc-1	egl-20	cwn-1	cwn-2	cwn-2	cwn-1
+KEGG_MEDICUS_VARIANT_MUTATION_INACTIVATED_RASD1_TO_CRHR_PKA_ACTH_SIGNALING_PATHWAY	N00325	acy-2	acy-4	acy-2	acy-4	acy-4	acy-1	atf-6	crh-1	let-607	gpa-16	gpa-4	gpa-16	kin-1	kin-1	kin-1
+KEGG_MEDICUS_VARIANT_MUTATION_INACTIVATED_RUNX1_TO_TRANSCRIPTION	N00116	pxn-1	pxn-2
+KEGG_MEDICUS_VARIANT_MUTATION_INACTIVATED_SIGMAR1_TO_CA2_APOPTOTIC_PATHWAY	N01151	cyc-2.2	itr-1	itr-1	itr-1	mcu-1	W08F4.3	ant-1.2	ant-1.2	ant-1.1	ant-1.2	vdac-1	vdac-1	vdac-1
+KEGG_MEDICUS_VARIANT_MUTATION_INACTIVATED_TP53_TO_TRANSCRIPTION	N00115	ced-9	polk-1
+KEGG_MEDICUS_VARIANT_MUTATION_INACTIVATED_UBQLN2_TO_26S_PROTEASOME_MEDIATED_PROTEIN_DEGRADATION	N01146	rpn-13	pas-6	pas-2	pas-7	pas-3	pas-5	pas-1	pas-4	pas-4	pbs-6	pbs-4	pbs-3	pbs-7	pbs-5	pbs-1	pbs-2	rpt-2	rpt-1	rpt-5	rpt-3	rpt-6	rpt-4	rpn-2	rpn-6.1	rpn-5	rpn-9	rpn-11	rpn-1	rpn-3	rpn-10	rpn-7	rpn-8	rpn-12	psmd-9	ubl-1	ubq-2	ubq-1	ubql-1
+KEGG_MEDICUS_VARIANT_MUTATION_INACTIVATED_VCP_TO_26S_PROTEASOME_MEDIATED_PROTEIN_DEGRADATION	N01145	rpn-13	pas-6	pas-2	pas-7	pas-3	pas-5	pas-1	pas-4	pas-4	pbs-6	pbs-4	pbs-3	pbs-7	pbs-5	pbs-1	pbs-2	rpt-2	rpt-1	rpt-5	rpt-3	rpt-6	rpt-4	rpn-2	rpn-6.1	rpn-5	rpn-9	rpn-11	rpn-1	rpn-3	rpn-10	rpn-7	rpn-8	rpn-12	psmd-9	ubl-1	ubq-2	ubq-1	cdc-48.1	cdc-48.2
+KEGG_MEDICUS_VARIANT_NOTCH_OVEREXPRESSION_TO_NOTCH_SIGNALING_PATHWAY	N00087	let-23	glp-1	lin-12	lin-12	lag-1	lag-1
+KEGG_MEDICUS_VARIANT_OLIGOMERIC_CONFORMATION_PRPC_TO_ANTEROGRADE_AXONAL_TRANSPORT	N01202	kin-3	kin-3	kin-3	kin-10	gsk-3	unc-116	unc-116	unc-116	klc-2	klc-2	klc-1	klc-2	klc-2
+KEGG_MEDICUS_VARIANT_PAX8_PPARG_FUSION_TO_PPARG_MEDIATED_TRANSCRIPTION	N00126	egl-38	pax-2	sex-1
+KEGG_MEDICUS_VARIANT_RET_FUSION_KINASE_TO_RAS_ERK_SIGNALING_PATHWAY	N00008	lin-45	lin-45	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45
+KEGG_MEDICUS_VARIANT_SCRAPIE_CONFORMATION_PRPSC_TO_26S_PROTEASOME_MEDIATED_PROTEIN_DEGRADATION	N01197	rpn-13	pas-6	pas-2	pas-7	pas-3	pas-5	pas-1	pas-4	pas-4	pbs-6	pbs-4	pbs-3	pbs-7	pbs-5	pbs-1	pbs-2	rpt-2	rpt-1	rpt-5	rpt-3	rpt-6	rpt-4	rpn-2	rpn-6.1	rpn-5	rpn-9	rpn-11	rpn-1	rpn-3	rpn-10	rpn-7	rpn-8	rpn-12	psmd-9
+KEGG_MEDICUS_VARIANT_SCRAPIE_CONFORMATION_PRPSC_TO_MGLUR5_CA2_APOPTOTIC_PATHWAY	N01199	cyc-2.2	itr-1	itr-1	itr-1	mcu-1	unc-68	unc-68	unc-68	ant-1.2	ant-1.2	ant-1.1	ant-1.2	vdac-1	vdac-1	vdac-1
+KEGG_MEDICUS_VARIANT_SCRAPIE_CONFORMATION_PRPSC_TO_PERK_ATF4_SIGNALING_PATHWAY	N01198	pek-1	eif-2alpha	hsp-4
+KEGG_MEDICUS_VARIANT_SCRAPIE_CONFORMATION_PRPSC_TO_TRANSPORT_OF_CALCIUM	N01200	cyc-2.2	nmr-1	nmr-2	nmr-2	nmr-2	nmr-2	mcu-1	ant-1.2	ant-1.2	ant-1.1	ant-1.2	vdac-1	vdac-1	vdac-1
+KEGG_MEDICUS_VARIANT_SCRAPIE_CONFORMATION_PRPSC_TO_VGCC_CA2_APOPTOTIC_PATHWAY	N01201	unc-2	egl-19	egl-19	egl-19	egl-19
+KEGG_MEDICUS_VARIANT_TEL_AML1_FUSION_TO_TRANSCRIPTIONAL_REPRESSION	N00118	hda-1	hda-3	hda-1	pxn-1	pxn-2	sin-3
+KEGG_MEDICUS_VARIANT_TGFA_OVEREXPRESSION_TO_PI3K_SIGNALING_PATHWAY	N00232	akt-1	akt-1	akt-1	akt-2	let-23	age-1	age-1	age-1
+KEGG_MEDICUS_VARIANT_TMPRSS2_ERG_FUSION_TO_TRANSCRIPTIONAL_ACTIVATION	N00128	zag-1
+KEGG_MEDICUS_VARIANT_TRK_FUSION_KINASE_TO_RAS_ERK_SIGNALING_PATHWAY	N00009	lin-45	lin-45	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	lin-45
+KEGG_MELANOGENESIS	hsa04916	acy-2	acy-4	acy-2	acy-4	acy-4	acy-1	cmd-1	cal-1	cal-3	cmd-1	cmd-1	cal-1	cal-3	unc-43	unc-43	unc-43	unc-43	crh-1	let-607	cbp-1	hmp-2	tyr-3	tyr-4	tyr-5	dsh-2	mig-5	dsh-2	dsh-2	mig-5	cbp-1	mom-5	mom-5	mom-5	cfz-2	mom-5	mom-5	cfz-2	gpa-16	gpa-4	gpa-16	goa-1	egl-30	gsa-1	gsk-3	let-60	let-60	pop-1	mek-2	mek-2	mpk-1	mpk-1	hlh-30	let-60	egl-8	kin-1	kin-1	kin-1	pkc-2	pkc-2	pkc-2	F47F2.1	lin-45	pop-1	pop-1	pop-1	tyr-2	tyr-6	tyr-4	egl-20	cwn-1	cwn-2	cwn-2	cwn-1
+KEGG_MELANOMA	hsa05218	akt-1	akt-1	akt-1	akt-2	lin-45	lin-45	cyd-1	cdk-4	cdk-4	let-23	let-756	let-756	let-756	let-60	daf-2	let-60	mek-2	mek-2	mpk-1	mpk-1	F11E6.8	hlh-30	let-60	pvf-1	pvf-1	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	daf-18	lin-45	lin-35
+KEGG_METABOLISM_OF_XENOBIOTICS_BY_CYTOCHROME_P450	hsa00980	adh-5	adh-5	adh-5	adh-5	adh-5	adh-5	alh-1	alh-2	alh-5	alh-5	alh-4	alh-5	cyp-33C4	cyp-33D1	cyp-33E1	cyp-33E2	cyp-33C4	cyp-33D1	cyp-33E1	cyp-33E2	cyp-25A1	cyp-25A2	cyp-25A3	cyp-25A4	cyp-25A6	cyp-13B1	W01A11.1	gstk-1	gsto-2	gsto-2	gst-10	gst-42	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-61	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62	ugt-10	ugt-18	ugt-19	ugt-20	ugt-21	ugt-22	ugt-26	ugt-29	ugt-61	ugt-62	ugt-66	ugt-7	ugt-8	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62
+KEGG_MISMATCH_REPAIR	hsa03430	exo-1	lig-1	mlh-1	msh-2	msh-6	pcn-1	pms-2	F10C2.4	F12F6.7	rfc-1	rfc-2	rfc-3	rfc-4	F44B9.8	rpa-1	rpa-2	mtss-1
+KEGG_MTOR_SIGNALING_PATHWAY	hsa04150	akt-1	akt-1	akt-1	akt-2	lin-45	mop-25.2	mop-25.2	ife-5	ife-3	ife-5	ife-4	mpk-1	mpk-1	mlst-8	let-363	pdk-1	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	aak-2	aak-2	rheb-1	rict-1	rps-6	rskn-1	rskn-1	rskn-1	rskn-1	rsks-1	rsks-1	daf-15	par-4	strd-1	unc-51	unc-51
+KEGG_NATURAL_KILLER_CELL_MEDIATED_CYTOTOXICITY	hsa04650	lin-45	lin-45	chpf-1	chpf-1	chpf-2	src-1	sem-5	let-60	pat-3	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	pak-1	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	plc-3	plc-3	tax-6	tax-6	tax-6	cnb-1	cnb-1	pkc-2	pkc-2	pkc-2	kin-32	ptp-2	ptp-2	rac-2	ced-10	rac-2	rac-2	lin-45	shc-1	shc-1	sos-1	sos-1	vav-1	vav-1	vav-1
+KEGG_NEUROACTIVE_LIGAND_RECEPTOR_INTERACTION	hsa04080	ador-1	dop-4	octr-1	ntr-1	ntr-2	ntr-2	ntr-2	ckr-1	gar-3	gar-3	gar-3	gar-3	gar-3	acr-12	acr-2	acr-3	acr-6	acr-8	lev-8	unc-29	unc-38	unc-63	acr-21	unc-63	unc-63	unc-38	unc-63	unc-38	unc-63	unc-38	acr-11	acr-16	acr-21	acr-12	acr-2	acr-3	acr-6	acr-8	lev-8	unc-29	unc-38	unc-63	unc-38	unc-63	acr-12	acr-2	acr-3	acr-6	acr-8	lev-8	unc-29	unc-38	unc-63	seb-3	dop-3	fshr-1	gbb-1	gbb-2	lgc-37	lgc-37	gab-1	gab-1	gab-1	lgc-37	lgc-37	lgc-37	gab-1	npr-9	nmur-1	nmur-2	glc-1	glc-3	glc-1	glc-1	glc-2	glc-1	glc-2	lgc-57	gnrr-1	tkr-3	glr-1	glr-1	glr-1	glr-1	glr-3	glr-5	glr-3	glr-3	glr-3	glr-3	nmr-1	nmr-2	nmr-2	nmr-2	nmr-2	mgl-2	mgl-1	mgl-1	mgl-3	mgl-2	mgl-3	mgl-3	mgl-3	ser-4	ser-7	npr-9	fshr-1	npr-24	nmur-1	nmur-2	nmur-1	nmur-2	nmur-1	npr-6	ntr-2	par-3	npr-6	npr-24	npr-24	npr-24	npr-24	tkr-1	tkr-2	tkr-1	trhr-1	osm-9	fshr-1	tspo-1
+KEGG_NEUROTROPHIN_SIGNALING_PATHWAY	hsa04722	abl-1	akt-1	akt-1	akt-1	akt-2	rhi-1	rhi-1	ced-9	lin-45	cmd-1	cal-1	cal-3	cmd-1	cmd-1	cal-1	cal-3	unc-43	unc-43	unc-43	unc-43	cdc-42	ced-2	ced-2	csk-1	rog-1	sem-5	gsk-3	let-60	pik-1	pik-1	pik-1	pik-1	kdin-1	let-60	mek-2	mek-2	mek-1	nsy-1	mpk-1	jnk-1	pmk-1	pmk-1	pmk-2	pmk-1	pmk-2	pmk-1	mpk-1	jnk-1	jnk-1	mak-1	mak-2	let-60	pdk-1	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	plc-3	plc-3	tpa-1	sel-12	ptp-2	rac-2	lin-45	rap-1	rap-1	rho-1	rskn-1	rskn-1	rskn-1	rskn-2	rskn-2	rskn-1	shc-1	shc-1	sos-1	sos-1	par-5	ftt-2	par-5	ftt-2	par-5	ftt-2	par-5	par-5
+KEGG_NICOTINATE_AND_NICOTINAMIDE_METABOLISM	hsa00760	F15E6.6	gad-3	xdh-1	C27A7.3	C27A7.3	qns-1	nmat-1	nmat-2	nmat-1	nmat-2	anmt-1	anmt-3	nnt-1	Y71H10B.1	F25B5.3	ndx-9	pnp-1
+KEGG_NITROGEN_METABOLISM	hsa00910	gcst-1	asns-1	cah-5	cah-5	cah-6	cah-4	cah-5	cah-5	cah-5	cah-5	pyr-1	cth-2	glna-3	glna-2	glna-3	gdh-1	gdh-1	gln-3	haly-1
+KEGG_NOD_LIKE_RECEPTOR_SIGNALING_PATHWAY	hsa04621	hsp-90	hsp-90	enpl-1	Y105C5A.24	mpk-1	jnk-1	pmk-1	pmk-1	pmk-2	pmk-1	pmk-2	pmk-1	mpk-1	jnk-1	jnk-1	D1054.3	tap-1
+KEGG_NON_HOMOLOGOUS_END_JOINING	hsa03450	crn-1	lig-4	mre-11	rad-50	cku-80	cku-70
+KEGG_NON_SMALL_CELL_LUNG_CANCER	hsa05223	akt-1	akt-1	akt-1	akt-2	lin-45	lin-45	cyd-1	cdk-4	cdk-4	let-23	let-23	sem-5	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	let-60	pdk-1	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	plc-3	plc-3	pkc-2	pkc-2	pkc-2	lin-45	sex-1	rsf-1	rsf-1	lin-35	sos-1	sos-1	cst-1	cst-2
+KEGG_NOTCH_SIGNALING_PATHWAY	hsa04330	adm-4	aph-1	cir-1	cbp-1	ctbp-1	ctbp-1	dsh-2	mig-5	dsh-2	dsh-2	mig-5	cbp-1	hda-1	hda-3	hda-1	pcaf-1	pcaf-1	aph-2	glp-1	lin-12	glp-1	lin-12	glp-1	lin-12	lin-12	num-1	num-1	sel-12	sel-12	pen-2	lag-1	lag-1	skp-1
+KEGG_NUCLEOTIDE_EXCISION_REPAIR	hsa03420	cyh-1	cdk-7	cul-4	cul-4	ddb-1	ercc-1	xpd-1	xpb-1	xpf-1	xpg-1	F53H4.6	gtf-2H1	gtf-2H2C	gtf-2H3	gtf-2H4	gtf-2H5	lig-1	mnat-1	pcn-1	F10C2.4	F12F6.7	pole-1	pole-2	T26A5.8	pole-4	rad-23	rad-23	rbx-1	rfc-1	rfc-2	rfc-3	rfc-4	F44B9.8	rpa-1	rpa-2	xpa-1	xpc-1
+KEGG_N_GLYCAN_BIOSYNTHESIS	hsa00510	algn-1	algn-10	algn-10	algn-11	algn-12	algn-13	algn-14	algn-2	algn-3	algn-5	algn-6	algn-8	algn-9	bre-4	bre-4	bre-4	dad-1	ostb-1	algn-7	dpm-1	dpm-3	fut-8	aagr-4	mans-1	mans-2	mans-4	mans-1	aman-2	aman-2	gly-13	gly-20	gly-2	gly-2	mogs-1	rfth-1	ribo-1	ostd-1	stt-3	stt-3	ZK686.3
+KEGG_OLFACTORY_TRANSDUCTION	hsa04740	arr-1	cmd-1	cal-1	cal-3	cmd-1	cmd-1	cal-1	cal-3	unc-43	unc-43	unc-43	unc-43	tax-4	tax-4	tax-2	gsa-1	grk-2	ncs-2	mau-8	pde-1	kin-1	kin-1	kin-1	egl-4	egl-4	F47F2.1
+KEGG_ONE_CARBON_POOL_BY_FOLATE	hsa00670	alh-3	gcst-1	atic-1	dhfr-1	F38B6.4	K07E3.4	dao-3	dao-3	mthf-1	Y106G6E.4	metr-1	mel-32	mel-32	tyms-1
+KEGG_OOCYTE_MEIOSIS	hsa04114	acy-2	acy-4	acy-2	acy-4	acy-4	acy-1	apc-1	Y48G1C.12	apc-11	apc-2	emb-30	gfi-3	such-1	air-2	lin-23	bub-1	cmd-1	cal-1	cal-3	cmd-1	cmd-1	cal-1	cal-3	unc-43	unc-43	unc-43	unc-43	cyb-1	cyb-1	cye-1	cye-1	emb-27	mat-3	cdc-25.3	mat-1	cdk-1	chpf-1	chpf-1	chpf-2	cpb-3	cul-1	ZK430.5	lin-23	daf-2	itr-1	itr-1	itr-1	mdf-2	mek-2	mpk-1	pmk-1	pmk-2	mpk-1	wee-1.1	wee-1.3	plk-2	gsp-2	gsp-1	gsp-2	let-92	let-92	paa-1	paa-1	pptr-1	pptr-1	pptr-2	pptr-2	pptr-1	tax-6	tax-6	tax-6	cnb-1	cnb-1	kin-1	kin-1	kin-1	F47F2.1	rbx-1	rskn-1	rskn-1	rskn-1	rskn-1	skr-2	gck-4	him-1	him-1	smc-3	scc-3	par-5	ftt-2	par-5	ftt-2	par-5	ftt-2	par-5	par-5
+KEGG_OTHER_GLYCAN_DEGRADATION	hsa00511	R04B3.2	eng-1	W03G11.3	W03G11.3	gba-4	bgal-1	hex-1	hex-1	aman-1	C33G3.4
+KEGG_OXIDATIVE_PHOSPHORYLATION	hsa00190	catp-4	catp-4	atp-1	atp-2	Y69A2AR.18	F58F12.1	R05D3.6	hpo-18	Y82E9BR.3	Y82E9BR.3	Y82E9BR.3	R04F11.2	R53.4	asg-1	asg-2	asb-1	atp-5	atp-3	vha-19	unc-32	unc-32	unc-32	vha-4	vha-1	vha-3	vha-16	vha-16	vha-17	vha-17	vha-13	vha-12	spe-5	vha-12	vha-11	vha-11	vha-14	vha-8	vha-8	vha-9	vha-10	vha-10	vha-10	vha-15	cox-10	cox-11	cox-15	cox-17	cox-4	cox-4	cox-5A	cox-5B	cox-6A	cox-6A	cox-6B	cox-6B	cox-7C	cyc-1	C13C4.4	ctc-1	ctc-2	ctc-3	ctb-1	nduo-1	nduo-4	nduo-5	nuo-4	Y63D3A.7	C33A12.1	nuo-3	F45H10.3	Y54F10AM.5	nduf-9	Y56A3A.19	F59C6.5	F44G4.2	C18E9.4	nuo-6	C25H3.9	D2030.4	Y51H1A.3	C16A3.5	Y71H2AM.4	nuo-5	gas-1	nuo-2	lpd-5	nduf-5	nduf-6	nduf-7	T20H4.5	nuo-1	F53F4.10	pyp-1	pyp-1	sdha-2	sdhb-1	mev-1	sdhd-1	unc-32	T02H6.11	ucr-1	ucr-2.1	ucr-2.2	isp-1	T27E9.2	T27E9.2	F45H10.2	R07E4.3
+KEGG_O_GLYCAN_BIOSYNTHESIS	hsa00512	bre-5	bus-17	W02B12.11	bre-4	C38H2.2	C02H6.1	C16D9.6	E03H4.3	F56H6.1	Y38C1AB.1	bus-4	gly-3	gly-10	gly-11	gly-5	gly-3	gly-4	gly-4	gly-7	gly-11	gly-8	gly-10	gly-16	gly-17	gly-15	gly-18
+KEGG_P53_SIGNALING_PATHWAY	hsa04115	ced-9	cyb-1	cyb-1	cyb-3	cyd-1	cyd-1	cyd-1	cye-1	cye-1	cdk-1	cdk-4	cdk-4	chk-1	chk-2	cyc-2.2	epg-4	vab-9	ppm-1.D	daf-18	rnr-2	rnr-2	srp-1	srp-3	sesn-1	sesn-1	sesn-1	ftt-2	par-5	siah-1
+KEGG_PANCREATIC_CANCER	hsa05212	akt-1	akt-1	akt-1	akt-2	lin-45	pix-1	lin-45	cyd-1	cdc-42	cdk-4	cdk-4	let-23	let-23	let-60	mek-2	mpk-1	jnk-1	mpk-1	jnk-1	jnk-1	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	pld-1	rac-2	ced-10	rac-2	rac-2	rad-51	lin-45	ral-1	ral-1	rlbp-1	lin-35	sma-2	sma-4	sta-1	sta-1
+KEGG_PANTOTHENATE_AND_COA_BIOSYNTHESIS	hsa00770	bcat-1	bcat-1	Y65B4A.8	dpyd-1	dhp-1	dhp-2	C27A7.3	C27A7.3	pnk-4	F25H9.6	Y71H2AM.6	upb-1
+KEGG_PARKINSONS_DISEASE	hsa05012	atp-1	atp-2	Y69A2AR.18	F58F12.1	R05D3.6	hpo-18	Y82E9BR.3	Y82E9BR.3	Y82E9BR.3	asb-1	atp-5	atp-3	cox-4	cox-4	cox-5A	cox-5B	cox-6A	cox-6A	cox-6B	cox-6B	cox-7C	cyc-1	cyc-2.2	ctc-1	ctc-2	ctc-3	ctb-1	nduo-1	nduo-4	nduo-5	nuo-4	Y63D3A.7	C33A12.1	nuo-3	F45H10.3	Y54F10AM.5	nduf-9	Y56A3A.19	F59C6.5	F44G4.2	C18E9.4	nuo-6	C25H3.9	D2030.4	Y51H1A.3	C16A3.5	Y71H2AM.4	nuo-5	gas-1	nuo-2	lpd-5	nduf-5	nduf-6	nduf-7	T20H4.5	nuo-1	F53F4.10	djr-1.2	pink-1	pdr-1	sdha-2	sdhb-1	mev-1	sdhd-1	cat-1	cat-1	ant-1.2	ant-1.2	ant-1.1	ant-1.2	dat-1	cat-2	uba-1	uba-1	ubc-7	ubc-14	ubc-6	ubc-26	ubc-18	ubc-18	ubh-2	T02H6.11	ucr-1	ucr-2.1	ucr-2.2	isp-1	T27E9.2	T27E9.2	F45H10.2	R07E4.3	vdac-1	vdac-1	vdac-1
+KEGG_PATHOGENIC_ESCHERICHIA_COLI_INFECTION	hsa05130	abl-1	act-2	act-4	act-1	act-2	act-4	arx-3	arx-3	arx-4	arx-5	arx-6	C46H11.3	arx-7	C46H11.3	arx-7	cdc-42	hmp-2	erm-1	src-1	pat-3	nck-1	nck-1	pkc-2	rho-1	let-502	let-502	mec-12	tba-5	mec-12	tba-9	mec-12	tba-1	tba-2	tba-4	tba-8	mec-12	mec-12	mec-12	mec-12	tba-2	tba-4	tba-7	tba-9	tba-8	ben-1	tbb-1	tbb-2	ben-1	mec-7	tbb-1	tbb-2	tbb-4	tbb-6	mec-7	tbb-4	mec-7	ben-1	tbb-1	tbb-2	tbb-4	ben-1	tbb-1	tbb-2	mec-7	ftt-2	par-5	par-5
+KEGG_PATHWAYS_IN_CANCER	hsa05200	abl-1	akt-1	akt-1	akt-1	akt-2	lin-45	aha-1	aha-1	ced-9	bir-1	dbl-1	lin-45	sli-1	T09B9.4	cya-1	cyd-1	cye-1	cye-1	cdc-42	cdk-4	cdk-4	cks-1	emb-9	emb-9	emb-9	cbp-1	ced-2	ced-2	ctbp-1	ctbp-1	hmp-1	hmp-1	hmp-1	hmp-2	cul-2	cyc-2.2	dapk-1	dapk-1	dapk-1	unc-40	dsh-2	mig-5	dsh-2	dsh-2	mig-5	let-23	egl-9	egl-9	elb-1	elc-1	cbp-1	let-23	let-756	let-756	let-756	egl-15	fum-1	mom-5	mom-5	mom-5	cfz-2	mom-5	mom-5	cfz-2	sem-5	gsk-3	gst-10	hda-1	hda-3	hda-1	let-60	hsp-90	hsp-90	enpl-1	daf-2	pat-2	ina-1	ina-1	pat-2	pat-3	hmp-2	let-60	lam-3	lam-3	epi-1	epi-1	epi-1	lam-1	lam-1	lam-1	lam-2	lam-2	pop-1	mek-2	mek-2	mpk-1	jnk-1	mpk-1	jnk-1	jnk-1	mxl-3	F11E6.8	hlh-30	mlh-1	msh-2	msh-6	let-363	let-60	egl-38	pax-2	pvf-1	pvf-1	gei-17	gei-17	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	plc-3	plc-3	pld-1	nhr-2	sex-1	sex-1	pkc-2	pkc-2	pkc-2	ptc-1	ptc-1	daf-18	kin-32	rac-2	ced-10	rac-2	rac-2	rad-51	lin-45	ral-1	ral-1	rlbp-1	sex-1	rsf-1	rsf-1	lin-35	rbx-1	rho-1	grd-11	grd-2	wrt-4	skpt-1	fgt-1	sma-2	sma-4	sos-1	sos-1	sta-1	sta-1	sta-1	sta-1	cst-1	cst-2	pop-1	pop-1	pop-1	tfg-1	lev-11	trf-1	trf-1	vhl-1	egl-20	cwn-1	cwn-2	cwn-2	cwn-1
+KEGG_PENTOSE_AND_GLUCURONATE_INTERCONVERSIONS	hsa00040	Y39G8B.1	Y39G8B.2	Y71F9B.9	dhs-21	Y105E8B.9	F08F8.7	F08F8.7	sqv-4	rml-1	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-61	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62	ugt-10	ugt-18	ugt-19	ugt-20	ugt-21	ugt-22	ugt-26	ugt-29	ugt-61	ugt-62	ugt-66	ugt-7	ugt-8	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62	R08D7.7
+KEGG_PENTOSE_PHOSPHATE_PATHWAY	hsa00030	aldo-1	aldo-2	aldo-1	aldo-1	F09E5.3	fbp-1	fbp-1	gspd-1	gpi-1	pfk-1.1	pfk-1.1	pfk-1.1	T25B9.9	Y57G11C.3	R05F9.6	Y43F4B.5	R151.2	R151.2	R151.2	F07A11.5	F08F8.7	F08F8.7	rpia-1	tald-1	tkt-1	tkt-1	tkt-1
+KEGG_PEROXISOME	hsa04146	pmp-4	pmp-4	pmp-1	pmp-2	pmp-3	C37H5.13	F25E2.3	acox-1.5	acox-1.1	acox-1.2	acox-1.3	acox-1.4	acox-1.6	acox-3	acs-13	acs-15	acs-18	acs-5	acs-4	acs-4	acs-13	ads-1	agxt-1	ZK892.4	W03D8.8	ctl-1	B0395.3	F41E7.6	T20B3.1	daao-1	daao-1	dhs-13	Y25C1A.13	ech-4	ech-9	fard-1	fard-1	acl-7	gstk-1	hacl-1	F41E6.5	F41E6.5	Y71G12B.10	dhs-28	idh-1	idh-2	mlcd-1	T18D3.9	mvk-1	ndx-9	ndx-7	amx-3	prx-1	prx-11	prx-12	prx-13	prx-14	prx-19	prx-2	prx-3	prx-5	prx-6	ZK550.6	C15B12.8	F32D8.13	prdx-2	pxmp-4	daf-22	sod-5	xdh-1
+KEGG_PHENYLALANINE_METABOLISM	hsa00360	alh-1	alh-2	alh-5	alh-5	alh-4	alh-5	basl-1	got-1.2	got-2.2	hpd-1	mif-1	C56G2.15	pah-1	prdx-6	tatn-1
+KEGG_PHOSPHATIDYLINOSITOL_SIGNALING_SYSTEM	hsa04070	cmd-1	cal-1	cal-3	cmd-1	cmd-1	cal-1	cal-3	pisy-1	cdgs-1	cdgs-1	dgk-3	dgk-3	dgk-4	dgk-2	dgk-3	dgk-4	dgk-5	dgk-1	dgk-5	ttx-7	ttx-7	R01H10.7	R01H10.7	ipp-5	ocrl-1	cil-1	cil-1	ippk-1	lfe-2	itr-1	itr-1	itr-1	ocrl-1	Y75B8A.24	pifk-1	piki-1	piki-1	piki-1	vps-34	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	ppk-3	ppk-2	ppk-2	ppk-2	ppk-1	ppk-1	ppk-1	egl-8	plc-4	plc-4	plc-4	plc-1	plc-3	plc-3	pkc-2	pkc-2	pkc-2	daf-18	unc-26	unc-26
+KEGG_PORPHYRIN_AND_CHLOROPHYLL_METABOLISM	hsa00860	cox-10	cox-15	ears-2	ears-1	ftn-2	ftn-1	ftn-2	Y105E8B.9	cchl-1	mmab-1	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-61	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62	ugt-10	ugt-18	ugt-19	ugt-20	ugt-21	ugt-22	ugt-26	ugt-29	ugt-61	ugt-62	ugt-66	ugt-7	ugt-8	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62
+KEGG_PPAR_SIGNALING_PATHWAY	hsa03320	acdh-7	acox-1.5	acox-1.1	acox-1.2	acox-1.3	acox-1.4	acox-1.6	acox-3	acs-13	acs-15	acs-18	acs-5	acs-4	acs-4	acs-13	aqp-2	aqp-7	scav-1	scav-2	cpt-1	cpt-1	cpt-1	cpt-2	acbp-1	ech-9	lbp-7	lbp-5	lbp-7	lbp-8	lbp-7	lbp-7	fat-4	R11F4.1	R11F4.1	hmgs-1	pat-4	men-1	nhr-118	pck-1	pck-1	pck-2	pdk-1	C55C3.1	T19C3.5	nhr-2	sex-1	nhr-2	sex-1	sex-1	fat-5	fat-5	daf-22	acs-20	acs-22	acs-20	sorb-1	ubq-1
+KEGG_PRIMARY_BILE_ACID_BIOSYNTHESIS	hsa00120	acox-1.1	acox-1.2	acox-1.3	acox-1.4	acox-1.6	Y39G8B.1	Y39G8B.2	ZK892.4	W03D8.8	F35C8.5	dhs-28	daf-22
+KEGG_PRIMARY_IMMUNODEFICIENCY	hsa05340	adah-1	haf-7	haf-8	haf-7	haf-8	ung-1
+KEGG_PRION_DISEASES	hsa05020	ced-9	tep-1	src-1	F44E5.5	hsp-1	hsp-70	hsp-4	lam-2	mek-2	mek-2	mpk-1	mpk-1	ncam-1	glp-1	lin-12	kin-1	kin-1	kin-1	F47F2.1	sod-5	sti-1
+KEGG_PROGESTERONE_MEDIATED_OOCYTE_MATURATION	hsa04914	acy-2	acy-4	acy-2	acy-4	acy-4	acy-1	akt-1	akt-1	akt-1	akt-2	apc-1	Y48G1C.12	apc-11	apc-2	emb-30	gfi-3	such-1	lin-45	lin-45	bub-1	cya-1	cya-1	cyb-1	cyb-1	cyb-3	emb-27	mat-3	cdc-25.2	cdc-25.3	cdc-25.2	cdc-25.3	cdc-25.3	mat-1	cdk-1	cpb-3	fzr-1	gpa-16	gpa-4	gpa-16	hsp-90	hsp-90	daf-2	let-60	mdf-2	mek-2	mpk-1	jnk-1	pmk-1	pmk-1	pmk-2	pmk-1	pmk-2	pmk-1	mpk-1	jnk-1	jnk-1	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	wee-1.1	wee-1.3	plk-2	kin-1	kin-1	kin-1	F47F2.1	lin-45	rskn-1	rskn-1	rskn-1	rskn-1
+KEGG_PROPANOATE_METABOLISM	hsa00640	gta-1	pod-2	pod-2	acdh-7	kat-1	acs-19	alh-2	alh-2	alh-5	alh-8	alh-9	alh-11	ech-6	ech-9	ech-1.1	hach-1	ldh-1	ldh-1	ldh-1	ldh-1	ldh-1	mce-1	mlcd-1	mmcm-1	pcca-1	pccb-1	suca-1	sucl-1	sucg-1
+KEGG_PROSTATE_CANCER	hsa05215	akt-1	akt-1	akt-1	akt-2	lin-45	lin-45	cyd-1	cye-1	cye-1	crh-1	let-607	cbp-1	hmp-2	let-23	cbp-1	let-23	sem-5	gsk-3	gst-10	let-60	hsp-90	hsp-90	enpl-1	daf-2	daf-2	let-60	pop-1	mek-2	mek-2	mpk-1	mpk-1	let-363	let-60	pvf-1	pvf-1	pdk-1	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	daf-18	lin-45	lin-35	sos-1	sos-1	ZK1251.3	pop-1	pop-1	pop-1
+KEGG_PROTEASOME	hsa03050	pas-6	pas-2	pas-7	pas-3	pas-5	pas-1	pas-4	pas-4	pbs-6	pbs-2	pbs-5	pbs-4	pbs-3	pbs-7	pbs-5	pbs-1	pbs-2	pbs-5	pbs-1	rpt-2	rpt-1	rpt-5	rpt-3	rpt-6	rpt-4	rpn-2	rpn-6.1	rpn-5	rpn-9	rpn-11	rpn-1	rpn-3	rpn-10	rpn-7	rpn-8	rpn-12	psme-3	psme-3	psme-3	C14C10.5
+KEGG_PROTEIN_EXPORT	hsa03060	hsp-4	immp-1	immp-2	oxa-1	sec-11	sec-11	sec-61.A	sec-61.A	sec-61.B	sec-61.G	C18E9.2	dnj-29	spcs-1	spcs-2	spcs-3	F25G6.8	F37F2.2	F21D5.7	srpa-68	srpa-72	ZK512.4	F38A1.8	R186.3
+KEGG_PROXIMAL_TUBULE_BICARBONATE_RECLAMATION	hsa04964	eat-6	eat-6	eat-6	eat-6	nkb-3	nkb-1	nkb-1	nkb-1	glna-3	glna-2	glna-3	gdh-1	gdh-1	mdh-1	pck-1	pck-1	pck-2	slc-25A10	abts-1	nhx-2
+KEGG_PURINE_METABOLISM	hsa00230	adah-1	acy-2	acy-4	acy-2	acy-4	acy-4	acy-1	adk-1	adsl-1	adss-1	adss-1	F38B2.4	let-754	ZK673.2	F13E6.2	ampd-1	ampd-1	ampd-1	T19B4.3	atic-1	apy-1	C27A7.3	C27A7.3	mig-23	ntp-1	uda-1	uda-1	F38B6.4	cpin-1	gmpr-1	gmpr-1	gmps-1	gcy-32	gcy-34	gcy-35	gcy-36	guk-1	hprt-1	T22D1.3	T22D1.3	hap-1	ndk-1	ndk-1	ndk-1	ndk-1	gcy-28	gcy-28	Y71H10B.1	F25B5.3	ndx-4	ndx-2	ndx-6	paic-1	pps-1	pps-1	pde-5	pde-1	pde-1	pde-1	pde-2	pde-4	pde-4	pde-4	pdl-1	pde-6	pde-6	pfas-1	pyk-1	pyk-1	pyk-2	pnp-1	BE0003N10.1	pola-1	div-1	F10C2.4	F12F6.7	pole-1	pole-2	T26A5.8	pole-4	rpoa-1	rpoa-2	rpac-40	rpac-19	rpoa-12	ama-1	rpb-2	rpb-3	rpb-4	rpb-5	rpb-6	rpb-7	rpb-8	rpb-9	rpb-11	rpb-11	rpb-12	rpb-10	rpc-1	rpc-2	let-611	W09C3.4	Y47G6A.9	Y47G6A.9	rpc-25	rpc-11	ppat-1	pri-1	pri-2	R151.2	R151.2	R151.2	rnr-1	rnr-2	rnr-2	xdh-1
+KEGG_PYRIMIDINE_METABOLISM	hsa00240	ZK673.2	pyr-1	apy-1	cdd-2	C29F7.3	F40F8.1	ctps-1	ctps-1	ZK643.2	dhod-1	dpyd-1	dhp-1	dhp-2	dtmk-1	dut-1	mig-23	ntp-1	uda-1	uda-1	hap-1	ndk-1	ndk-1	ndk-1	ndk-1	Y71H10B.1	F25B5.3	ndx-4	pnp-1	BE0003N10.1	pola-1	div-1	F10C2.4	F12F6.7	pole-1	pole-2	T26A5.8	pole-4	rpoa-1	rpoa-2	rpac-40	rpac-19	rpoa-12	ama-1	rpb-2	rpb-3	rpb-4	rpb-5	rpb-6	rpb-7	rpb-8	rpb-9	rpb-11	rpb-11	rpb-12	rpb-10	rpc-1	rpc-2	let-611	W09C3.4	Y47G6A.9	Y47G6A.9	rpc-25	rpc-11	pri-1	pri-2	rnr-1	rnr-2	rnr-2	thk-1	trxr-1	trxr-2	tyms-1	B0001.4	B0001.4	F19B6.1	umps-1	upb-1	upp-1	upp-1	C47B2.2
+KEGG_PYRUVATE_METABOLISM	hsa00620	pod-2	pod-2	kat-1	acs-19	Y39G8B.1	Y39G8B.2	alh-2	alh-2	alh-5	alh-9	alh-11	dlat-1	dld-1	Y17G7B.3	Y17G7B.3	ldh-1	ldh-1	ldh-1	ldh-1	ldh-1	F32D8.12	mdh-1	mdh-2	men-1	men-1	men-1	pyc-1	pck-1	pck-1	pck-2	pdha-1	pdha-1	pdhb-1	pyk-1	pyk-1	pyk-2
+KEGG_REGULATION_OF_ACTIN_CYTOSKELETON	hsa04810	abi-1	act-2	act-4	act-1	act-2	act-4	atn-1	atn-1	atn-1	atn-1	lin-45	rga-5	rhgf-1	rhgf-1	pix-1	pix-1	arx-3	arx-3	arx-4	arx-5	arx-6	C46H11.3	arx-7	C46H11.3	arx-7	lin-45	cdc-42	unc-60	F53E2.2	unc-60	gar-3	gar-3	gar-3	gar-3	gar-3	ced-2	ced-2	csk-1	gex-2	gex-2	cyk-1	cyk-1	ced-5	let-23	erm-1	let-756	let-756	let-756	egl-15	egl-15	git-1	gpa-12	gpa-12	gpc-1	gsnl-1	let-60	daf-2	pes-7	pes-7	pes-7	pat-2	ina-1	pat-2	ina-1	ina-1	pat-2	pat-2	pat-3	pat-3	pat-3	pat-3	pat-3	pat-3	pat-3	pat-3	let-60	mek-2	mek-2	mpk-1	mpk-1	ras-2	erm-1	nmy-1	nmy-1	nmy-1	mlc-1	mlc-2	mlc-1	mlc-2	mlc-4	mlc-4	mlc-1	mlc-2	mlc-1	mlc-2	mlc-1	mlc-2	mlc-4	gex-3	gex-3	let-60	pak-1	pak-1	pak-1	pak-2	pak-2	pvf-1	pvf-1	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	ppk-3	ppk-2	ppk-2	ppk-2	ppk-1	ppk-1	ppk-1	gsp-2	gsp-1	gsp-2	kin-32	pxl-1	rac-2	ced-10	rac-2	rac-2	lin-45	erm-1	rho-1	let-502	let-502	ras-1	ras-1	gsnl-1	nhx-1	nhx-3	sos-1	sos-1	vav-1	vav-1	vav-1	deb-1	wve-1	wve-1
+KEGG_REGULATION_OF_AUTOPHAGY	hsa04140	lgg-3	atg-3	atg-4.1	atg-4.1	atg-4.2	atg-4.2	atg-5	atg-7	bec-1	bec-1	lgg-1	lgg-1	vps-34	vps-15	aak-2	aak-2	unc-51	unc-51
+KEGG_RENAL_CELL_CARCINOMA	hsa05211	akt-1	akt-1	akt-1	akt-2	lin-45	aha-1	aha-1	lin-45	cdc-42	cbp-1	ced-2	ced-2	cul-2	egl-9	egl-9	elb-1	elc-1	cbp-1	fum-1	flcn-1	sem-5	let-60	let-60	mek-2	mek-2	mpk-1	mpk-1	F11E6.8	let-60	pak-1	pak-1	pak-1	pak-2	pak-2	pvf-1	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	ptp-2	rac-2	lin-45	rap-1	rap-1	rbx-1	fgt-1	sos-1	sos-1	vhl-1
+KEGG_RENIN_ANGIOTENSIN_SYSTEM	hsa04614	acn-1	anp-1	ctsa-1.1	anp-1	F49B2.6	nep-2	ZK550.3	asp-1	asp-15	asp-16	asp-17	asp-3	asp-4	asp-7	asp-8	ZK550.3
+KEGG_RETINOL_METABOLISM	hsa00830	adh-5	adh-5	adh-5	adh-5	adh-5	adh-5	alh-1	alh-2	alh-1	alh-2	Y53G8B.2	dgat-2	dgtr-1	bcmo-1	bcmo-2	cyp-33C4	cyp-33D1	cyp-33E1	cyp-33E2	cyp-33C4	cyp-33D1	cyp-33E1	cyp-33E2	cyp-25A1	cyp-25A2	cyp-25A3	cyp-25A4	cyp-25A6	cyp-13B1	mboa-2	dgat-2	dhs-4	dhs-13	dhrs-4	dhs-16	dhs-2	D1054.1	dhs-16	dhs-16	dhs-2	bcmo-1	bcmo-2	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-61	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62	ugt-10	ugt-18	ugt-19	ugt-20	ugt-21	ugt-22	ugt-26	ugt-29	ugt-61	ugt-62	ugt-66	ugt-7	ugt-8	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62
+KEGG_RIBOFLAVIN_METABOLISM	hsa00740	Y94H6A.7	pho-5	pho-7	pho-5	F02E9.7	acp-2	C27A7.3	C27A7.3	flad-1	mtm-1	mtm-1	mtm-6	mtm-6	phip-1	rfk-1	tyr-2	tyr-6
+KEGG_RIBOSOME	hsa03010	rps-30	mrpl-13	rpl-10	rpl-1	rpl-10	rpl-11.1	rpl-12	rpl-13	rpl-16	rpl-14	rpl-15	rpl-17	rpl-18	rpl-20	rpl-19	rpl-21	rpl-22	rpl-22	rpl-23	rpl-25.1	rpl-24.1	rpl-26	rpl-26	rpl-27	Y37E3.8	rpl-28	rpl-29	rpl-3	rpl-30	rpl-31	rpl-32	rpl-34	rpl-35	rpl-33	rpl-36	rpl-36.A	rpl-36.A	rpl-37	rpl-43	rpl-38	rpl-39	rpl-3	rpl-4	rpl-5	rpl-6	rpl-7	rpl-7A	rpl-2	rpl-9	rla-0	rla-1	C37A2.7	rla-2	rps-10	rps-11	rps-12	rps-13	rps-15	rps-22	rps-16	rps-17	rps-18	rps-19	rps-2	rps-20	rps-21	rps-23	rps-24	rps-25	rps-26	rps-27	ubl-1	rps-27	rps-28	rps-29	rps-3	rps-1	rps-4	rps-4	rps-5	rps-6	rps-7	rps-8	rps-9	rps-0	rpl-24.2	ubq-2
+KEGG_RIG_I_LIKE_RECEPTOR_SIGNALING_PATHWAY	hsa04622	lgg-3	atg-5	laf-1	vbh-1	drh-1	drh-3	drh-1	Y105C5A.24	jnk-1	pmk-1	pmk-1	pmk-2	pmk-1	pmk-2	pmk-1	jnk-1	jnk-1	otub-4	pinn-1	drh-1	W02H5.8
+KEGG_RNA_DEGRADATION	hsa03018	Y51H7C.7	let-711	ntl-2	ntl-3	ntl-4	ccr-4	ccr-4	ccf-1	ccf-1	ntl-9	dcap-1	dcap-1	dcap-2	dcs-1	cgh-1	dis-3	edc-4	enol-1	enol-1	enol-1	exos-1	crn-3	exos-2	exos-3	exos-4.1	crn-5	exos-7	exos-8	exos-9	hsp-6	hsp-60	lsm-1	gut-2	lsm-3	lsm-4	lsm-5	lsm-6	lsm-7	lsm-8	F29A7.6	mtr-4	pap-1	pap-2	pap-3	pap-1	pap-1	pap-2	pap-3	parn-1	patr-1	BE0003N10.1	skih-2	ttc-37	F02E9.10	gld-4	xrn-1	xrn-2
+KEGG_RNA_POLYMERASE	hsa03020	rpoa-1	rpoa-2	rpac-40	rpac-19	rpoa-12	ama-1	rpb-2	rpb-3	rpb-4	rpb-5	rpb-6	rpb-7	rpb-8	rpb-9	rpb-11	rpb-11	rpb-12	rpb-10	rpc-1	rpc-2	let-611	W09C3.4	Y47G6A.9	Y47G6A.9	rpc-25	rpc-11
+KEGG_SELENOAMINO_ACID_METABOLISM	hsa00450	ahcy-1	C27F2.4	cbs-2	cth-2	C53D5.5	Y7A9A.1	lcmt-1	mars-1	Y105E8A.20	sams-1	sams-5	sams-1	sams-5	metl-2	metl-6	pps-1	pps-1	F13H8.9	seld-1	seld-1	Y71F9AL.1
+KEGG_SMALL_CELL_LUNG_CANCER	hsa05222	akt-1	akt-1	akt-1	akt-2	cyd-1	cye-1	cye-1	cdk-4	cdk-4	cks-1	emb-9	emb-9	emb-9	cyc-2.2	pat-2	ina-1	ina-1	pat-2	pat-3	lam-3	lam-3	epi-1	epi-1	epi-1	lam-1	lam-1	lam-1	lam-2	lam-2	mxl-3	gei-17	gei-17	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	daf-18	kin-32	sex-1	lin-35	skpt-1	trf-1	trf-1
+KEGG_SNARE_INTERACTIONS_IN_VESICULAR_TRANSPORT	hsa04130	nbet-1	sec-20	gos-28	memb-1	sec-22	ric-4	ric-4	snap-29	syx-6	syx-7	syx-16	syx-17	syx-18	unc-64	unc-64	unc-64	unc-64	syx-5	syx-6	syx-7	use-1	snb-1	snb-2	snb-1	snb-2	vamp-8	vti-1	ykt-6
+KEGG_SPHINGOLIPID_METABOLISM	hsa00600	W02F12.2	W02F12.2	sul-2	asah-1	cerk-1	ttm-5	ttm-5	C01B10.9	C29E4.10	gba-4	gana-1	bgal-1	Y37E11AM.3	plpp-1.1	plpp-1.1	plpp-1.1	sms-1	sms-1	spl-1	asm-2	T27F6.6	R05D11.9	sphk-1	sphk-1	sptl-1	sptl-2	cgt-1	ugt-58
+KEGG_SPLICEOSOME	hsa03040	acin-1	aly-2	aly-3	emb-4	bcas-2	bud-31	ccdc-12	prp-17	cdc-5L	tag-65	syf-3	ctnb-1	cwc-15	ddx-23	hel-1	C46F11.4	ddx-46	ddx-17	ddx-15	mog-4	mog-1	mog-5	eftu-2	F33D11.10	Y65B4A.6	hrpa-1	hrpa-1	hrpa-1	hrpk-1	sup-46	F44E5.5	hsp-1	hsp-70	F44E5.5	hsp-70	F44E5.5	hsp-70	hsp-1	F44E5.5	hsp-70	hsp-1	isy-1	gut-2	lsm-3	lsm-4	lsm-5	lsm-6	lsm-7	lsm-8	mag-1	mag-1	ncbp-1	ncbp-2	pes-4	phf-5	plrg-1	cyn-13	cyn-11	cyn-12	pqbp-1.1	prp-18	prp-19	prp-3	prp-31	prp-38	Y108G3AL.2	prp-4	prp-40	prp-40	prp-6	prp-8	rnp-6	rbm-17	rbm-22	rbm-25	rnp-4	snu-66	prp-21	repo-1	prp-9	sftb-1	sftb-2	teg-4	sap-49	sftb-6	sluh-7	smr-1	snrp-200	snrp-27	snrp-40.1	rnp-7	rnp-2	rnp-3	mog-2	snr-2	rnp-2	rnp-3	snrp-3	snr-3	snr-4	snr-1	snr-6	snr-5	snr-7	snu-13	skp-1	rsp-3	rsp-4	rsp-6	rsp-2	rsp-2	rsp-6	rsp-4	rsp-3	syf-2	tcer-1	thoc-1	thoc-2	thoc-3	rsp-8	rsp-8	dib-1	uaf-2	uaf-1	sap-140	usp-39	wbp-11	syf-1	snu-23
+KEGG_STARCH_AND_SUCROSE_METABOLISM	hsa00500	agl-1	C50B6.7	C50B6.7	C50B6.7	C50B6.7	C50B6.7	C27A7.3	C27A7.3	aagr-2	aagr-4	klo-2	T04A8.7	hxk-1	hxk-2	hxk-3	gpi-1	Y105E8B.9	gsy-1	gsy-1	hxk-1	hxk-3	hxk-1	hxk-1	aagr-2	R05F9.6	Y43F4B.5	Y43F4B.5	pygl-1	pygl-1	pygl-1	aagr-2	tre-5	sqv-4	rml-1	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-61	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62	ugt-10	ugt-18	ugt-19	ugt-20	ugt-21	ugt-22	ugt-26	ugt-29	ugt-61	ugt-62	ugt-66	ugt-7	ugt-8	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62	sqv-1
+KEGG_STEROID_BIOSYNTHESIS	hsa00100	dhcr-24	dhcr-7	lipl-1	lipl-2	lipl-3	lipl-5	hsd-3	mboa-1	mboa-1	dhcr-7
+KEGG_STEROID_HORMONE_BIOSYNTHESIS	hsa00140	Y39G8B.1	Y39G8B.2	cyp-25A1	cyp-25A2	cyp-25A3	cyp-25A4	cyp-25A6	cyp-13B1	stdh-4	dhs-5	stdh-1	stdh-2	stdh-3	dhs-16	dhs-25	F19H6.4	F42F12.3	ZK1251.3	B0024.13	sul-2	ssu-1	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-61	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-27	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62	ugt-10	ugt-18	ugt-19	ugt-20	ugt-21	ugt-22	ugt-26	ugt-29	ugt-61	ugt-62	ugt-66	ugt-7	ugt-8	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62	ugt-61	ugt-62
+KEGG_SULFUR_METABOLISM	hsa00920	bpnt-1	pps-1	pps-1	ssu-1	suox-1
+KEGG_SYSTEMIC_LUPUS_ERYTHEMATOSUS	hsa05322	atn-1	atn-1	atn-1	atn-1	tep-1	tep-1	tep-1	nmr-2	nmr-2	his-12	his-12	his-35	his-57	his-12	his-35	his-35	htz-1	htz-1	his-41	his-41	his-41	his-41	his-41	his-41	his-41	his-41	his-41	his-41	his-71	his-69	his-71	his-74	his-13	his-40	his-13	his-13	his-13	his-13	his-13	his-40	his-13	his-13	his-13	his-13	his-13	his-13	his-14	his-14	rop-1	snr-2	snr-3	snr-1	ssb-1
+KEGG_TASTE_TRANSDUCTION	hsa04742	acy-2	acy-4	acd-4	delm-1	unc-2	unc-2	gsa-1	gpa-16	gpb-1	gpb-1	gpc-2	gpc-1	mgl-3	itr-1	pde-1	kin-1	kin-1	kin-1	F47F2.1	asic-2	mec-10	mec-4	mec-10	mec-4	mec-4
+KEGG_TAURINE_AND_HYPOTAURINE_METABOLISM	hsa00430	Y50D4C.6	W03D8.8	cdo-1	unc-25	unc-25	C53D5.5	Y7A9A.1
+KEGG_TERPENOID_BACKBONE_BIOSYNTHESIS	hsa00900	kat-1	T01G1.4	fdps-1	hmgr-1	hmgs-1	hmgs-1	idi-1	idi-1	Y48B6A.13	mvk-1	coq-1	F32D8.13
+KEGG_TGF_BETA_SIGNALING_PATHWAY	hsa04350	daf-1	daf-4	daf-4	dbl-1	sma-6	sma-6	cbp-1	cul-1	efl-1	efl-1	cbp-1	mpk-1	mpk-1	let-92	let-92	paa-1	paa-1	lin-35	lin-35	rbx-1	rho-1	let-502	let-502	rsks-1	rsks-1	skr-2	sma-2	sma-2	sma-4	sma-2	sma-2	dpl-1	aka-1	aka-1
+KEGG_THYROID_CANCER	hsa05216	lin-45	T09B9.4	cyd-1	hmp-2	let-60	let-60	pop-1	mek-2	mek-2	mpk-1	mpk-1	let-60	egl-38	pax-2	sex-1	pop-1	pop-1	pop-1	tfg-1	lev-11
+KEGG_TIGHT_JUNCTION	hsa04530	act-2	act-4	act-1	act-2	act-4	atn-1	atn-1	atn-1	atn-1	afd-1	akt-1	akt-1	akt-1	akt-2	lin-2	cdc-42	cdk-4	kin-3	kin-3	kin-10	hmp-1	hmp-1	hmp-1	hmp-2	frm-1	frm-1	frm-1	frm-1	sec-6	sec-8	gpa-16	gpa-4	gpa-16	let-60	let-60	lgl-1	lgl-1	magi-1	magi-1	magi-1	zak-1	mpz-1	ras-2	myo-1	myo-2	myo-3	nmy-1	nmy-1	myo-1	myo-2	myo-3	nmy-1	myo-1	myo-2	myo-3	myo-5	myo-1	myo-2	myo-3	myo-2	myo-1	myo-2	myo-3	myo-1	myo-2	myo-3	myo-1	myo-2	myo-3	myo-1	myo-2	myo-3	myo-1	myo-2	myo-3	nmy-1	mlc-1	mlc-2	mlc-1	mlc-2	mlc-4	mlc-4	mlc-1	mlc-2	mlc-1	mlc-2	mlc-1	mlc-2	mlc-4	let-60	magu-2	par-3	par-6	par-6	par-6	mpz-1	let-92	let-92	paa-1	paa-1	sur-6	sur-6	sur-6	sur-6	pkc-2	pkc-2	tpa-1	pkc-1	pkc-2	pkc-1	pkc-3	tpa-1	pkc-3	daf-18	rab-8	rab-3	rho-1	ras-1	ras-1	spc-1	symk-1	zoo-1	zoo-1	zoo-1	vpr-1	cey-1	src-1
+KEGG_TOLL_LIKE_RECEPTOR_SIGNALING_PATHWAY	hsa04620	akt-1	akt-1	akt-1	akt-2	pik-1	pik-1	mek-2	mek-2	sek-1	mkk-4	sek-1	mek-1	Y105C5A.24	mpk-1	jnk-1	pmk-1	pmk-1	pmk-2	pmk-1	pmk-2	pmk-1	mpk-1	jnk-1	jnk-1	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	rac-2	sta-1	tap-1	tol-1	tli-1
+KEGG_TRYPTOPHAN_METABOLISM	hsa00380	kat-1	acsd-1	afmd-1	afmd-2	alh-2	alh-2	alh-5	alh-9	alh-11	F15E6.6	gad-3	xdh-1	ctl-1	basl-1	ech-6	ech-9	F54D5.7	haao-1	B0272.3	F54C8.1	ech-1.1	anmt-1	anmt-2	kmo-1	kynu-1	ogdh-1	ogdh-1	tdo-2	tph-1	tph-1	wars-1	prx-10
+KEGG_TYPE_II_DIABETES_MELLITUS	hsa04930	unc-2	unc-2	egl-19	egl-19	unc-2	cca-1	hxk-1	hxk-2	hxk-3	hxk-1	hxk-3	hxk-1	hxk-1	daf-2	irk-1	irk-2	maf-1	mpk-1	jnk-1	mpk-1	jnk-1	jnk-1	let-363	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	pyk-1	pyk-1	pyk-2	tpa-1	pkc-1	pkc-3	R09B5.11	fgt-1	fgt-1
+KEGG_TYPE_I_DIABETES_MELLITUS	hsa04940	egl-21	unc-25	unc-25	hsp-60	ric-19	ida-1	ida-1
+KEGG_TYROSINE_METABOLISM	hsa00350	adh-5	adh-5	adh-5	adh-5	adh-5	adh-5	alh-1	alh-2	alh-5	alh-5	alh-4	alh-5	F15E6.6	gad-3	xdh-1	C27F2.4	tbh-1	tyr-3	tyr-4	tyr-5	basl-1	fah-1	got-1.2	got-2.2	gst-42	hgo-1	hpd-1	lcmt-1	metl-2	metl-6	mif-1	C56G2.15	anmt-1	anmt-2	tatn-1	cat-2	Y71F9AL.1	tyr-2	tyr-6	tyr-4
+KEGG_T_CELL_RECEPTOR_SIGNALING_PATHWAY	hsa04660	akt-1	akt-1	akt-1	akt-2	sli-1	cdc-42	cdk-4	chpf-1	chpf-1	chpf-2	dlg-1	src-1	sem-5	sem-5	gsk-3	let-60	let-60	malt-1	mek-2	mek-2	mek-1	Y105C5A.24	mpk-1	pmk-1	pmk-1	pmk-2	pmk-1	pmk-2	pmk-1	mpk-1	jnk-1	nck-1	nck-1	let-60	pak-1	pak-1	pak-1	pak-2	pak-2	pdk-1	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	plc-3	tax-6	tax-6	tax-6	cnb-1	cnb-1	tpa-1	ptp-2	lin-45	rgef-1	rho-1	sos-1	sos-1	vav-1	vav-1	vav-1
+KEGG_UBIQUITIN_MEDIATED_PROTEOLYSIS	hsa04120	apc-1	Y48G1C.12	apc-11	apc-2	emb-30	gfi-3	such-1	ubc-17	lin-23	sli-1	emb-27	mat-3	mat-1	ubc-3	cul-1	cul-2	cul-3	cul-4	cul-4	cul-5	ddb-1	elb-1	elc-1	C14B1.3	lin-23	sel-10	fzr-1	herc-1	herc-1	eel-1	wwp-1	mgrn-1	Y92H12A.2	Y92H12A.2	gei-17	gei-17	cyn-4	pdr-1	prp-19	rbx-1	rbx-2	aos-1	siah-1	skr-2	skpt-1	chn-1	sel-11	uba-1	uba-2	rfl-1	uba-1	ubc-1	ubc-1	let-70	let-70	let-70	let-70	ubc-12	ubc-7	ubc-14	ubc-8	ubc-9	ubc-6	ubc-26	ubc-20	ubc-21	ubc-18	ubc-18	ubc-13	ubc-13	ubc-25	ubc-25	ubc-3	ubc-16	oxi-1	etc-1	ufd-2	ubr-5	vhl-1	wwp-1	wwp-1
+KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_BIOSYNTHESIS	hsa00290	bcat-1	bcat-1	iars-1	iars-2	lars-1	lars-2	pdha-1	pdha-1	pdhb-1	glp-4	glp-4
+KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION	hsa00280	gta-1	acaa-2	acdh-9	acdh-7	acdh-1	kat-1	alh-2	alh-2	alh-5	alh-8	alh-9	alh-11	F15E6.6	gad-3	xdh-1	ech-5	bcat-1	bcat-1	bckd-1A	bckd-1B	dbt-1	dld-1	ech-6	ech-9	B0272.3	F54C8.1	ech-1.1	B0303.3	B0250.5	hach-1	Y71G12B.10	hmgs-1	hmgs-1	ard-1	ivd-1	mccc-1	mccc-2	mce-1	mmcm-1	C05C10.3	C05C10.3	pcca-1	pccb-1
+KEGG_VASCULAR_SMOOTH_MUSCLE_CONTRACTION	hsa04270	act-5	act-5	acy-2	acy-4	acy-2	acy-4	acy-4	acy-1	ador-1	dop-4	lin-45	rhgf-1	rhgf-1	rhgf-1	ntr-1	ntr-2	ntr-2	lin-45	egl-19	egl-19	egl-19	egl-19	cmd-1	cal-1	cal-3	cmd-1	cmd-1	cal-1	cal-3	egl-30	gpa-12	gpa-12	egl-30	gsa-1	gcy-32	gcy-34	gcy-35	gcy-36	itr-1	itr-1	itr-1	slo-1	mek-2	mek-2	mpk-1	mpk-1	nmy-1	mlc-5	mlc-5	mlc-4	gcy-28	gcy-28	C31H1.5	F44B9.10	C31H1.5	F44B9.10	C07E3.9	ipla-2	ipla-3	ipla-7	egl-8	gsp-2	gsp-1	gsp-2	mel-11	F55C10.5	kin-1	kin-1	kin-1	pkc-2	pkc-2	tpa-1	pkc-1	pkc-2	pkc-1	tpa-1	egl-4	F47F2.1	lin-45	rho-1	let-502	let-502
+KEGG_VASOPRESSIN_REGULATED_WATER_REABSORPTION	hsa04962	acy-4	acy-1	aqp-7	rhi-1	rhi-1	ntr-2	crh-1	let-607	dnc-1	dnc-2	dnc-4	dnc-5	dnc-6	dhc-1	dyci-1	dyci-1	dli-1	dli-1	che-3	xbx-1	dlc-1	dlc-1	gsa-1	nsf-1	kin-1	kin-1	kin-1	F47F2.1	rab-11.1	rab-11.1	rab-5	rab-5	rab-5	snb-1
+KEGG_VEGF_SIGNALING_PATHWAY	hsa04370	akt-1	akt-1	akt-1	akt-2	cdc-42	chpf-1	chpf-1	chpf-2	let-60	F08H9.4	hsp-12.1	hsp-12.2	hsp-16.1	hsp-16.2	hsp-16.41	hsp-16.48	hsp-25	let-60	mek-2	mek-2	mpk-1	pmk-1	pmk-1	pmk-2	pmk-1	pmk-2	pmk-1	mpk-1	mak-1	mak-2	mak-2	let-60	age-1	age-1	age-1	age-1	aap-1	aap-1	aap-1	C31H1.5	F44B9.10	C31H1.5	F44B9.10	C07E3.9	ipla-2	ipla-3	ipla-7	plc-3	plc-3	tax-6	tax-6	tax-6	cnb-1	cnb-1	pkc-2	pkc-2	pkc-2	kin-32	pxl-1	rac-2	ced-10	rac-2	rac-2	lin-45	sphk-1	sphk-1
+KEGG_VIBRIO_CHOLERAE_INFECTION	hsa05110	act-2	act-4	act-1	act-2	act-4	acy-1	arf-1	vha-19	unc-32	unc-32	unc-32	vha-4	vha-1	vha-3	vha-16	vha-16	vha-17	vha-17	vha-13	vha-12	spe-5	vha-12	vha-11	vha-11	vha-14	vha-8	vha-8	vha-9	vha-10	vha-10	vha-10	vha-15	ero-1	gsa-1	kqt-3	erd-2.1	erd-2.1	erd-2.1	erd-2.2	C14B9.2	plc-3	plc-3	kin-1	kin-1	kin-1	pkc-2	pkc-2	pkc-2	F47F2.1	sec-61.A	sec-61.A	sec-61.B	sec-61.G	nkcc-1	unc-32	zoo-1	zoo-1
+KEGG_VIRAL_MYOCARDITIS	hsa05416	abl-1	act-2	act-4	act-1	act-2	act-4	cav-1	cyd-1	cyc-2.2	dgn-1	dys-1	ifg-1	src-1	pat-3	lam-3	myo-1	myo-2	myo-3	nmy-1	nmy-1	myo-1	myo-2	myo-3	nmy-1	myo-1	myo-2	myo-3	myo-5	myo-1	myo-2	myo-3	myo-2	myo-1	myo-2	myo-3	myo-1	myo-2	myo-3	myo-1	myo-2	myo-3	myo-1	myo-2	myo-3	myo-1	myo-2	myo-3	nmy-1	rac-2	ced-10	rac-2	rac-2	sgca-1	sgcb-1	sgn-1	sgn-1
+KEGG_WNT_SIGNALING_PATHWAY	hsa04310	lin-23	unc-43	unc-43	unc-43	unc-43	cyd-1	cyd-1	cyd-1	chd-7	chpf-1	chpf-1	chpf-2	cbp-1	kin-19	kin-19	kin-20	kin-3	kin-3	kin-10	ctbp-1	ctbp-1	hmp-2	cul-1	daam-1	daam-1	dsh-2	mig-5	dsh-2	dsh-2	mig-5	cbp-1	lin-23	mom-5	mom-5	mom-5	cfz-2	mom-5	mom-5	cfz-2	gsk-3	pop-1	Y105C5A.24	jnk-1	jnk-1	jnk-1	lit-1	egl-8	mom-1	nhr-2	sex-1	let-92	let-92	paa-1	paa-1	pptr-1	pptr-1	pptr-2	pptr-2	pptr-1	tax-6	tax-6	tax-6	cnb-1	cnb-1	prkl-1	kin-1	kin-1	kin-1	pkc-2	pkc-2	pkc-2	F47F2.1	sel-12	rac-2	ced-10	rac-2	rac-2	rbx-1	rho-1	let-502	let-502	ruvb-1	ulp-1	sfrp-1	sfrp-1	sfrp-1	siah-1	skr-2	sma-2	sma-4	pop-1	pop-1	pop-1	vang-1	vang-1	egl-20	cwn-1	cwn-2	cwn-2	cwn-1
