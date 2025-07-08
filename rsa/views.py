@@ -80,9 +80,16 @@ def home(request):
                         status='pending',
                         species=form.cleaned_data['genome_of_interest'],
                         genome_reference={
-                            'yeast': 'Saccharomyces cerevisiae (R64-1-1)',
+                            'arabidopsis': 'Arabidopsis thaliana (TAIR10)',
+                            'worm': 'Caenorhabditis elegans (WBcel235)',
+                            'zebrafish': 'Danio rerio (GRCz11)',
+                            'fly': 'Drosophila melanogaster (BDGP6)',
                             'human': 'Homo sapiens (GRCh38)',
-                            'mouse': 'Mus musculus (GRCm39)'
+                            'mouse': 'Mus musculus (GRCm39)',
+                            'rice': 'Oryza sativa (IRGSP-1.0)',
+                            'yeast': 'Saccharomyces cerevisiae (R64-1-1)',
+                            'maize': 'Zea mays (Zm-B73-REFERENCE-NAM-5.0)'
+
                         }.get(form.cleaned_data['genome_of_interest'], 'Unknown'),
                         pipeline_version='1.0.0',
                         sequencing_type=form.cleaned_data['sequencing_type'],

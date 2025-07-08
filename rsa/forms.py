@@ -31,9 +31,15 @@ class RNAseekForm(forms.Form):
     genome_of_interest = forms.ChoiceField(
         choices=[
             ('', 'Select a genome'),
-            ('yeast', 'Yeast (Saccharomyces cerevisiae, R64-1-1)'),
+            ('arabidopsis', 'Arabidopsis (Arabidopsis thaliana, TAIR10)'),
+            ('worm', 'Worm (Caenorhabditis elegans, WBcel235)'),
+            ('zebrafish', 'Zebrafish (Danio rerio, GRCz11)'),
+            ('fly', 'Fly (Drosophila melanogaster, BDGP6)'),
             ('human', 'Human (Homo sapiens, GRCh38)'),
-            ('mouse', 'Mouse (Mus musculus, GRCm39)')
+            ('mouse', 'Mouse (Mus musculus, GRCm39)'),
+            ('rice', 'Rice (Oryza sativa, IRGSP-1.0)'),
+            ('yeast', 'Yeast (Saccharomyces cerevisiae, R64-1-1)'),
+            ('maize', 'Maize (Zea mays, Zm-B73-REFERENCE-NAM-5.0)')
         ],
         required=True,
         label="Genome of Interest",

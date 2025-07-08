@@ -25,9 +25,15 @@ def run_hisat2(project, input_files, output_dir, data_txt_paths):
     sequencing_type = project.sequencing_type.lower()
     # Map species to index prefix
     species_to_index_prefix = {
-        'human': 'genome',
-        'mouse': 'genome',
-        'yeast': 'scerevisiae_cdna_index'
+        'human': 'human_hisat2_index',
+        'mouse': 'mouse_hisat2_index',
+        'yeast': 'scerevisiae_hisat2_index',
+        'arabidopsis': 'arabidopsis_hisat2_index',
+        'zebrafish': 'zebrafish_hisat2_index',
+        'fly': 'fly_hisat2_index',
+        'worm': 'worm_hisat2_index',
+        'maize': 'maize_hisat2_index',
+        'rice': 'oryza_hisat2_index'
     }
     index_prefix = species_to_index_prefix.get(project.species.lower(), 'genome')
     index_base = os.path.join(settings.BASE_DIR, 'rsa', 'references', 'index', project.species.lower(), f"{index_prefix}")
