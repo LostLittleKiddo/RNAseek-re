@@ -116,7 +116,7 @@
             </div>
         {% endif %}
         
-        {% if gsea_output_content %}
+        {% if go_gsea_output_content %}
             <div class="mb-6">
                 <h3 class="text-lg font-semibold text-gray-800 mb-4">GSEA Results Preview</h3>
                 <p class="text-sm text-gray-600 mb-3">Preview of the first 5 rows of the GSEA output (gsea_results.csv).</p>
@@ -124,13 +124,13 @@
                     <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm">
                         <thead>
                             <tr class="bg-gray-100">
-                                {% for header in gsea_output_content.0 %}
+                                {% for header in go_gsea_output_content.0 %}
                                     <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">{{ header }}</th>
                                 {% endfor %}
                             </tr>
                         </thead>
                         <tbody>
-                            {% for row in gsea_output_content|slice:"1:" %}
+                            {% for row in go_gsea_output_content|slice:"1:" %}
                                 <tr class="border-t border-gray-200">
                                     {% for value in row %}
                                         <td class="px-4 py-3 text-sm text-gray-700">
@@ -148,6 +148,41 @@
                 </div>
             </div>
         {% endif %}
+
+
+        {% if kegg_gsea_output_content %}
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">KEGG Results Preview</h3>
+                <p class="text-sm text-gray-600 mb-3">Preview of the first 5 rows of the KEGG output (kegg_results.csv).</p>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                {% for header in kegg_gsea_output_content.0 %}
+                                    <th class="px-4 py-3 text-left text-sm font-bold text-gray-700">{{ header }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in kegg_gsea_output_content|slice:"1:" %}
+                                <tr class="border-t border-gray-200">
+                                    {% for value in row %}
+                                        <td class="px-4 py-3 text-sm text-gray-700">
+                                            {% if value|is_number %}
+                                                {{ value|to_significant_digits:4 }}
+                                            {% else %}
+                                                {{ value }}
+                                            {% endif %}
+                                        </td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        {% endif %}
+
 
         <!-- Visualizations Section -->
         <h3 class="text-lg font-semibold text-gray-800 mb-4">Visualizations</h3>

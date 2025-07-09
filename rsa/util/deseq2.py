@@ -1,4 +1,3 @@
-# rsa/util/deseq2.py (updated with GSEA, filtering, PDF merging, GFF3 parsing, and 4 significant digits for DESeq2 results)
 import pandas as pd
 import logging
 import re
@@ -23,15 +22,32 @@ def parse_gff3_for_symbols(gff3_path):
         gff3_df = pd.read_csv(gff3_path, sep='\t', comment='#', names=gff3_cols, low_memory=False)
         gff3_df = gff3_df[gff3_df['feature'] == 'gene']
         gene_mapping = {}
+        
         for attr in gff3_df['attributes']:
-            gene_id_match = re.search(r'gene_id=([^;]+)', attr)
-            name_match = re.search(r'Name=([^;]+)', attr)
-            if gene_id_match:
-                gene_id = gene_id_match.group(1)
-                gene_name = name_match.group(1) if name_match else gene_id
-                gene_mapping[gene_id] = gene_name
+            # Initialize default values
+            gene_id = None
+            gene_name = None
+            
+            # Split attributes by semicolon
+            attr_dict = dict(field.split('=') for field in attr.split(';') if '=' in field)
+            
+            # Extract gene_id
+            if 'gene_id' in attr_dict:
+                gene_id = attr_dict['gene_id']
+            
+            # Extract gene_name (use Name if available, otherwise fallback to gene_id)
+            if 'Name' in attr_dict:
+                gene_name = attr_dict['Name']
+            
+            # Only add to mapping if gene_id is found
+            if gene_id:
+                gene_mapping[gene_id] = gene_name if gene_name else gene_id
+                
         logger.info(f"Parsed {len(gene_mapping)} gene symbols from GFF3")
+        if not gene_mapping:
+            logger.warning("No gene mappings were extracted from GFF3")
         return gene_mapping
+    
     except Exception as e:
         logger.error(f"Failed to parse GFF3 file {gff3_path}: {str(e)}")
         raise RuntimeError(f"Failed to parse GFF3 file: {str(e)}")
@@ -141,8 +157,93 @@ def check_gmt_file(gmt_path):
         logger.error(f"Failed to check GMT file {gmt_path}: {str(e)}")
         raise
 
-def run_gsea(project, deseq2_output_file, gmt_path, output_dir):
-    """Run GSEA prerank analysis on DESeq2 results, save filtered outputs, and combine PDFs."""
+def update_gsea_results_with_links(project, gsea_output_file, gmt_type, output_dir):
+    """Update GSEA results CSV with links from species-specific link files."""
+    try:
+        species_to_link = {
+            'human': {
+                'go': 'homo_sapiens_go_links.csv',
+                'kegg': 'homo_sapiens_kegg_links.csv'
+            },
+            'mouse': {
+                'go': 'mus_musculus_go_links.csv',
+                'kegg': 'mus_musculus_kegg_links.csv'
+            },
+            'yeast': {
+                'go': 'saccharomyces_cerevisiae_go_links.csv',
+                'kegg': 'saccharomyces_cerevisiae_kegg_links.csv'
+            },
+            'arabidopsis': {
+                'go': 'arabidopsis_thaliana_go_links.csv',
+                'kegg': 'arabidopsis_thaliana_kegg_links.csv'
+            },
+            'worm': {
+                'go': 'caenorhabditis_elegans_go_links.csv',
+                'kegg': 'caenorhabditis_elegans_kegg_links.csv'
+            },
+            'zebrafish': {
+                'go': 'danio_rerio_go_links.csv',
+                'kegg': 'danio_rerio_kegg_links.csv'
+            },
+            'fly': {
+                'go': 'drosophila_melanogaster_go_links.csv',
+                'kegg': 'drosophila_melanogaster_kegg_links.csv'
+            },
+            'rice': {
+                'go': 'oryza_sativa_go_links.csv',
+                'kegg': 'oryza_sativa_kegg_links.csv'
+            },
+            'maize': {
+                'go': 'zea_mays_go_links.csv',
+                'kegg': 'zea_mays_kegg_links.csv'
+            }
+        }
+        link_file = species_to_link.get(project.species.lower(), {}).get(gmt_type)
+        if not link_file:
+            logger.warning(f"No link file defined for species {project.species} and type {gmt_type}")
+            return gsea_output_file
+
+        link_path = os.path.join(settings.BASE_DIR, 'rsa', 'references', 'links', link_file)
+        if not os.path.exists(link_path):
+            logger.warning(f"Link file not found: {link_path}")
+            return gsea_output_file
+
+        # Read GSEA results and link file
+        gsea_df = pd.read_csv(gsea_output_file)
+        link_df = pd.read_csv(link_path)
+
+        # Merge dataframes based on Term and Term_Name
+        merged_df = pd.merge(
+            gsea_df,
+            link_df[['Term_Name', 'Link']],
+            left_on='Term',
+            right_on='Term_Name',
+            how='left'
+        )
+
+        # Drop the redundant Term_Name column
+        merged_df = merged_df.drop('Term_Name', axis=1, errors='ignore')
+
+        # Reorder columns to place Link as the second column
+        columns = merged_df.columns.tolist()
+        if 'Link' in columns:
+            term_index = columns.index('Term')
+            columns.insert(term_index + 1, columns.pop(columns.index('Link')))
+            merged_df = merged_df[columns]
+
+        # Save the updated GSEA results
+        updated_output_file = os.path.join(output_dir, f"{gmt_type}_gsea_results.csv")
+        merged_df.to_csv(updated_output_file, index=False)
+        logger.info(f"Updated {gmt_type.upper()} GSEA results with links saved to: {updated_output_file}")
+
+        return updated_output_file
+
+    except Exception as e:
+        logger.error(f"Failed to update {gmt_type.upper()} GSEA results with links: {str(e)}")
+        return gsea_output_file
+
+def run_gsea(project, deseq2_output_file, gmt_paths, output_dir):
+    """Run GSEA prerank analysis on DESeq2 results, save filtered outputs, and combine PDFs for KEGG and GO."""
     try:
         # Read DESeq2 full results
         deseq2_df = pd.read_csv(deseq2_output_file)
@@ -157,96 +258,106 @@ def run_gsea(project, deseq2_output_file, gmt_path, output_dir):
         logger.info(f"Prepared ranked list for GSEA with {len(ranked_list)} genes")
         logger.info(f"Sample gene symbols: {ranked_list.index[:5].tolist()}")
 
-        # Run GSEA prerank with adjusted min_size and max_size
-        gsea_results = gp.prerank(
-            rnk=ranked_list,
-            gene_sets=gmt_path,
-            outdir=output_dir,
-            permutation_num=100,  
-            min_size=15,  
-            max_size=500, 
-            seed=42,
-            threads=1
-        )
-        logger.info(f"GSEA prerank completed. Results saved in: {output_dir}")
+        output_files = []
+        for gmt_type, gmt_path in gmt_paths.items():
+            if not os.path.exists(gmt_path):
+                logger.warning(f"GMT file not found: {gmt_path}")
+                continue
+            
+            check_gmt_file(gmt_path)
+            sub_output_dir = os.path.join(output_dir, gmt_type)
+            os.makedirs(sub_output_dir, exist_ok=True)
 
-        # Filter GSEA results based on specified criteria
-        filtered_results = gsea_results.res2d[
-            (gsea_results.res2d['NES'].abs() > 1.5) &
-            (gsea_results.res2d['FDR q-val'] < 0.25) &
-            (gsea_results.res2d['NOM p-val'] < 0.05)
-        ]
-        logger.info(f"Filtered GSEA results to {len(filtered_results)} gene sets with "
-                    f"|NES| > 1.5, FDR < 0.25, NOM p-val < 0.05")
-
-        # Drop 'Name' column and save filtered GSEA results to CSV without index
-        filtered_results = filtered_results.drop(columns=['Name'], errors='ignore')
-        gsea_output_file = os.path.join(output_dir, "gsea_results.csv")
-        filtered_results.to_csv(gsea_output_file, index=False)
-        logger.info(f"Filtered GSEA results CSV saved to: {gsea_output_file}")
-
-        # Combine PDFs in output_dir/prerank into gsea_plot.pdf
-        prerank_dir = os.path.join(output_dir, "prerank")
-        combined_pdf_path = os.path.join(output_dir, "gsea_plot.pdf")
-        merger = PdfMerger()
-        pdf_files = [f for f in os.listdir(prerank_dir) if f.endswith('.pdf')] if os.path.exists(prerank_dir) else []
-        
-        if pdf_files:
-            for pdf_file in sorted(pdf_files):  # Sort for consistent order
-                pdf_path = os.path.join(prerank_dir, pdf_file)
-                try:
-                    merger.append(pdf_path)
-                    logger.info(f"Added {pdf_path} to combined PDF")
-                except Exception as e:
-                    logger.warning(f"Failed to append {pdf_path}: {str(e)}")
-            try:
-                merger.write(combined_pdf_path)
-                logger.info(f"Combined GSEA PDFs saved to: {combined_pdf_path}")
-            except Exception as e:
-                logger.error(f"Failed to save combined PDF: {str(e)}")
-                combined_pdf_path = None
-            finally:
-                merger.close()
-        else:
-            logger.warning(f"No PDF files found in {prerank_dir}")
-            combined_pdf_path = None
-
-        # Register GSEA outputs in ProjectFiles
-        output_files = [gsea_output_file]
-        
-        if combined_pdf_path and os.path.exists(combined_pdf_path):
-            file_size = os.path.getsize(combined_pdf_path)
-            ProjectFiles.objects.create(
-                project=project,
-                type='gsea_visualization',
-                path=combined_pdf_path,
-                is_directory=False,
-                file_format='pdf',
-                size=file_size
+            # Run GSEA prerank
+            gsea_results = gp.prerank(
+                rnk=ranked_list,
+                gene_sets=gmt_path,
+                outdir=sub_output_dir,
+                permutation_num=100,  
+                min_size=15,  
+                max_size=500, 
+                seed=42,
+                threads=1
             )
-            logger.info(f"Registered combined GSEA PDF: {combined_pdf_path} with size {file_size} bytes")
-            output_files.append(combined_pdf_path)
+            logger.info(f"{gmt_type.upper()} GSEA prerank completed. Results saved in: {sub_output_dir}")
 
-        for file_path in [gsea_output_file]:
-            if os.path.exists(file_path):
-                file_size = os.path.getsize(file_path)
-                file_type = 'gsea_output'
-                file_format = 'csv'
+            # Filter GSEA results
+            filtered_results = gsea_results.res2d[
+                (gsea_results.res2d['NES'].abs() > 1.5) &
+                (gsea_results.res2d['FDR q-val'] < 0.25) &
+                (gsea_results.res2d['NOM p-val'] < 0.05)
+            ]
+            logger.info(f"Filtered {gmt_type.upper()} GSEA results to {len(filtered_results)} gene sets with "
+                        f"|NES| > 1.5, FDR < 0.25, NOM p-val < 0.05")
+
+            # Drop 'Name' column and save filtered GSEA results to CSV without index
+            filtered_results = filtered_results.drop(columns=['Name'], errors='ignore')
+            gsea_output_file = os.path.join(sub_output_dir, f"{gmt_type}_gsea_results.csv")
+            filtered_results.to_csv(gsea_output_file, index=False)
+            logger.info(f"Filtered {gmt_type.upper()} GSEA results CSV saved to: {gsea_output_file}")
+
+            # Update GSEA results with links
+            gsea_output_file = update_gsea_results_with_links(project, gsea_output_file, gmt_type, sub_output_dir)
+            output_files.append(gsea_output_file)
+
+            # Combine PDFs
+            prerank_dir = os.path.join(sub_output_dir, "prerank")
+            combined_pdf_path = os.path.join(sub_output_dir, f"{gmt_type}_gsea_plot.pdf")
+            merger = PdfMerger()
+            pdf_files = [f for f in os.listdir(prerank_dir) if f.endswith('.pdf')] if os.path.exists(prerank_dir) else []
+            
+            if pdf_files:
+                for pdf_file in sorted(pdf_files):
+                    pdf_path = os.path.join(prerank_dir, pdf_file)
+                    try:
+                        merger.append(pdf_path)
+                        logger.info(f"Added {pdf_path} to combined {gmt_type.upper()} PDF")
+                    except Exception as e:
+                        logger.warning(f"Failed to append {pdf_path}: {str(e)}")
+                try:
+                    merger.write(combined_pdf_path)
+                    logger.info(f"Combined {gmt_type.upper()} GSEA PDFs saved to: {combined_pdf_path}")
+                except Exception as e:
+                    logger.error(f"Failed to save combined {gmt_type.upper()} PDF: {str(e)}")
+                    combined_pdf_path = None
+                finally:
+                    merger.close()
+            else:
+                logger.warning(f"No PDF files found in {prerank_dir}")
+                combined_pdf_path = None
+
+            if combined_pdf_path and os.path.exists(combined_pdf_path):
+                file_size = os.path.getsize(combined_pdf_path)
                 ProjectFiles.objects.create(
                     project=project,
-                    type=file_type,
-                    path=file_path,
+                    type=f'{gmt_type}_gsea_visualization',
+                    path=combined_pdf_path,
                     is_directory=False,
-                    file_format=file_format,
+                    file_format='pdf',
                     size=file_size
                 )
-                logger.info(f"Registered GSEA file: {file_path} with size {file_size} bytes")
+                logger.info(f"Registered combined {gmt_type.upper()} GSEA PDF: {combined_pdf_path} with size {file_size} bytes")
+                output_files.append(combined_pdf_path)
+
+            for file_path in [gsea_output_file]:
+                if os.path.exists(file_path):
+                    file_size = os.path.getsize(file_path)
+                    file_type = f'{gmt_type}_gsea_output'
+                    file_format = 'csv'
+                    ProjectFiles.objects.create(
+                        project=project,
+                        type=file_type,
+                        path=file_path,
+                        is_directory=False,
+                        file_format=file_format,
+                        size=file_size
+                    )
+                    logger.info(f"Registered {gmt_type.upper()} GSEA file: {file_path} with size {file_size} bytes")
 
         return output_files
 
     except Exception as e:
         logger.error(f"GSEA failed: {str(e)}")
-        # Return empty list to allow DESeq2 to complete
         return []
 
 def run_deseq2(project, counts_file, metadata_file, output_dir):
@@ -271,9 +382,15 @@ def run_deseq2(project, counts_file, metadata_file, output_dir):
     pca_output = os.path.join(output_dir, "pca_plot.png")
 
     species_to_gff3 = {
-        'human': 'Homo_sapiens.GRCh38.gff3',
-        'mouse': 'Mus_musculus.GRCm39.gff3',
-        'yeast': 'Saccharomyces_cerevisiae.R64-1-1.gff3'
+        'human': 'Homo_sapiens.GRCh38.114.gff3',
+        'mouse': 'Mus_musculus.GRCm39.114.gff3',
+        'yeast': 'Saccharomyces_cerevisiae.R64-1-1.114.gff3',
+        'arabidopsis': 'Arabidopsis_thaliana.TAIR10.61.gff3',
+        'worm': 'Caenorhabditis_elegans.WBcel235.114.gff3',
+        'zebrafish': 'Danio_rerio.GRCz11.114.gff3',
+        'fly': 'Drosophila_melanogaster.BDGP6.54.61.gff3',
+        'rice': 'Oryza_sativa.IRGSP-1.0.61.gff3',
+        'maize': 'Zea_mays.Zm-B73-REFERENCE-NAM-5.0.61.gff3'
     }
     gff3_file = species_to_gff3.get(project.species.lower(), None)
     if not gff3_file:
@@ -367,23 +484,51 @@ def run_deseq2(project, counts_file, metadata_file, output_dir):
         
         inspect_deseq2_output(output_file)
 
-        # species_to_gmt = {
-        #     'human': 'c5.go.v2023.1.Hs.symbols.gmt',
-        #     'mouse': 'm2.all.v2023.1.Mm.symbols.gmt',
-        #     'yeast': 'c5.go.bp.v2023.1.Sc.symbols.gmt'
-        # }
-        # gmt_file = species_to_gmt.get(project.species.lower())
-        # if gmt_file:
-        #     gmt_path = os.path.join(settings.BASE_DIR, 'rsa', 'references', 'gsea', gmt_file)
-        #     if os.path.exists(gmt_path):
-        #         check_gmt_file(gmt_path)
-        #         # Use full DESeq2 results for GSEA
-        #         gsea_output_files = run_gsea(project, full_output_file, gmt_path, output_dir)
-        #         output_files.extend(gsea_output_files)
-        #     else:
-        #         logger.warning(f"GMT file not found: {gmt_path}")
-        # else:
-        #     logger.warning(f"No GMT file defined for species: {project.species}")
+        species_to_gmt = {
+            'human': {
+                'go': 'homo_sapiens_go.gmt',
+                'kegg': 'homo_sapiens_kegg.gmt'
+            },
+            'mouse': {
+                'go': 'mus_musculus_go.gmt',
+                'kegg': 'mus_musculus_kegg.gmt'
+            },
+            'yeast': {
+                'go': 'saccharomyces_cerevisiae_go.gmt',
+                'kegg': 'saccharomyces_cerevisiae_kegg.gmt'
+            },
+            'arabidopsis': {
+                'go': 'arabidopsis_thaliana_go.gmt',
+                'kegg': 'arabidopsis_thaliana_kegg.gmt'
+            },
+            'worm': {
+                'go': 'caenorhabditis_elegans_go.gmt',
+                'kegg': 'caenorhabditis_elegans_kegg.gmt'
+            },
+            'zebrafish': {
+                'go': 'danio_rerio_go.gmt',
+                'kegg': 'danio_rerio_kegg.gmt'
+            },
+            'fly': {
+                'go': 'drosophila_melanogaster_go.gmt',
+                'kegg': 'drosophila_melanogaster_kegg.gmt'
+            },
+            'rice': {
+                'go': 'oryza_sativa_go.gmt',
+                'kegg': 'oryza_sativa_kegg.gmt'
+            },
+            'maize': {
+                'go': 'zea_mays_go.gmt',
+                'kegg': 'zea_mays_kegg.gmt'
+            }
+        }
+        gmt_files = species_to_gmt.get(project.species.lower())
+        if gmt_files:
+            gmt_paths = {gmt_type: os.path.join(settings.BASE_DIR, 'rsa', 'references', 'gmt', gmt_file) for gmt_type, gmt_file in gmt_files.items()}
+            gsea_output_files = run_gsea(project, full_output_file, gmt_paths, output_dir)
+            output_files.extend(gsea_output_files)
+        else:
+            logger.warning(f"No GMT files defined for species: {project.species}")
 
         return output_files
     

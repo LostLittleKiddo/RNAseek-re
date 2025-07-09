@@ -26,9 +26,15 @@ def run_featurecounts(project, input_files, output_dir):
     
     # Map species to GFF3 annotation file
     species_to_gff3 = {
-        'human': 'Homo_sapiens.GRCh38.gff3',
-        'mouse': 'Mus_musculus.GRCm39.gff3',
-        'yeast': 'Saccharomyces_cerevisiae.R64-1-1.gff3'
+        'human': 'Homo_sapiens.GRCh38.114.gff3',
+        'mouse': 'Mus_musculus.GRCm39.114.gff3',
+        'yeast': 'Saccharomyces_cerevisiae.R64-1-1.114.gff3',
+        'arabidopsis': 'Arabidopsis_thaliana.TAIR10.61.gff3',
+        'worm': 'Caenorhabditis_elegans.WBcel235.114.gff3',
+        'zebrafish': 'Danio_rerio.GRCz11.114.gff3',
+        'fly': 'Drosophila_melanogaster.BDGP6.54.61.gff3',
+        'rice': 'Oryza_sativa.IRGSP-1.0.61.gff3',
+        'maize': 'Zea_mays.Zm-B73-REFERENCE-NAM-5.0.61.gff3'
     }
     gff3_file = species_to_gff3.get(project.species.lower(), None)
     if not gff3_file:
